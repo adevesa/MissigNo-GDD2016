@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.botonVolver = new System.Windows.Forms.Button();
+            this.listaDeHorarios = new System.Windows.Forms.ListBox();
             this.botonAceptar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.listaDeDeDias = new System.Windows.Forms.ListBox();
             this.BotonFiltrar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.listaDeHorarios = new System.Windows.Forms.ListBox();
-            this.botonVolver = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,31 @@
             this.panel1.Size = new System.Drawing.Size(779, 558);
             this.panel1.TabIndex = 1;
             // 
+            // botonVolver
+            // 
+            this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonVolver.ForeColor = System.Drawing.Color.Black;
+            this.botonVolver.Location = new System.Drawing.Point(589, 464);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(150, 59);
+            this.botonVolver.TabIndex = 51;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            // 
+            // listaDeHorarios
+            // 
+            this.listaDeHorarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaDeHorarios.FormattingEnabled = true;
+            this.listaDeHorarios.ItemHeight = 29;
+            this.listaDeHorarios.Location = new System.Drawing.Point(435, 176);
+            this.listaDeHorarios.Margin = new System.Windows.Forms.Padding(2);
+            this.listaDeHorarios.Name = "listaDeHorarios";
+            this.listaDeHorarios.Size = new System.Drawing.Size(286, 265);
+            this.listaDeHorarios.TabIndex = 50;
+            // 
             // botonAceptar
             // 
             this.botonAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -67,6 +92,7 @@
             this.botonAceptar.TabIndex = 49;
             this.botonAceptar.Text = "Aceptar";
             this.botonAceptar.UseVisualStyleBackColor = true;
+            this.botonAceptar.Click += new System.EventHandler(this.botonAceptar_Click);
             // 
             // label2
             // 
@@ -131,30 +157,6 @@
             this.label1.Text = "Pedido de Turno";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listaDeHorarios
-            // 
-            this.listaDeHorarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaDeHorarios.FormattingEnabled = true;
-            this.listaDeHorarios.ItemHeight = 29;
-            this.listaDeHorarios.Location = new System.Drawing.Point(435, 176);
-            this.listaDeHorarios.Margin = new System.Windows.Forms.Padding(2);
-            this.listaDeHorarios.Name = "listaDeHorarios";
-            this.listaDeHorarios.Size = new System.Drawing.Size(286, 265);
-            this.listaDeHorarios.TabIndex = 50;
-            // 
-            // botonVolver
-            // 
-            this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonVolver.ForeColor = System.Drawing.Color.Black;
-            this.botonVolver.Location = new System.Drawing.Point(589, 464);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(150, 59);
-            this.botonVolver.TabIndex = 51;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
-            // 
             // AbmElegirHorario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,6 +167,7 @@
             this.Name = "AbmElegirHorario";
             this.Text = "Elegir Horario y Fecha";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.AbmElegirHorario_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

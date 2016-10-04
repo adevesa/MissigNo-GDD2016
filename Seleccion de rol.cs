@@ -19,9 +19,32 @@ namespace ClinicaFrba.Registro_Resultado
 
         private void IniciarSesion_Click(object sender, EventArgs e)
         {
-
+            if (rol.Text == "Afiliado")  {
+                AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
+                this.Hide();
+                abmRolAfiliado.ShowDialog();
+                this.Close();
+           }
+            else {
+                if (rol.Text == "Profesional"){
+                    AbmRol.AbmRolProfesional abmRolProfesional = new AbmRol.AbmRolProfesional();
+                    this.Hide();
+                    abmRolProfesional.ShowDialog();
+                    this.Close();
+                     }
+                else{
+                        if(rol.Text == "Administrador"){
+                    AbmRol.AbmRolAdministrador abmRolAdministrador = new AbmRol.AbmRolAdministrador();
+                    this.Hide();
+                    abmRolAdministrador.ShowDialog();
+                    this.Close();
+                    }
+                        else{
+                            MessageBox.Show("Rol invalido");
+                        }
+                }
+            }
         }
-
         private void seleccionDeRol_Load(object sender, EventArgs e)
         {
             

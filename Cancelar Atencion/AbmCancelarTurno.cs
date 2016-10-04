@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.Pedir_Turno
 {
-    public partial class Cancelar_Turno : Form
+    public partial class AbmCancelarTurno : Form
     {
-        public Cancelar_Turno()
+        public AbmCancelarTurno()
         {
             InitializeComponent();
         }
@@ -20,6 +20,21 @@ namespace ClinicaFrba.Pedir_Turno
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cancelar_Turno_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void botonConfirmar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

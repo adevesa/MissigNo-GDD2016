@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.botonAceptar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ListaDeProfecionales = new System.Windows.Forms.ListBox();
+            this.BotonFiltrar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textoEspecialidad = new System.Windows.Forms.TextBox();
-            this.BotonFiltrar = new System.Windows.Forms.Button();
-            this.ListaDeProfecionales = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.botonAceptar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.botonVolver);
             this.panel1.Controls.Add(this.botonAceptar);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.ListaDeProfecionales);
@@ -53,18 +55,56 @@
             this.panel1.Size = new System.Drawing.Size(779, 558);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // botonAceptar
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(21, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(380, 55);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Pedido de Turno";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.botonAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonAceptar.ForeColor = System.Drawing.Color.Black;
+            this.botonAceptar.Location = new System.Drawing.Point(557, 286);
+            this.botonAceptar.Margin = new System.Windows.Forms.Padding(2);
+            this.botonAceptar.Name = "botonAceptar";
+            this.botonAceptar.Size = new System.Drawing.Size(172, 89);
+            this.botonAceptar.TabIndex = 49;
+            this.botonAceptar.Text = "Aceptar";
+            this.botonAceptar.UseVisualStyleBackColor = true;
+            this.botonAceptar.Click += new System.EventHandler(this.botonAceptar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(37, 225);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(264, 37);
+            this.label2.TabIndex = 48;
+            this.label2.Text = "Elegir profecional";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ListaDeProfecionales
+            // 
+            this.ListaDeProfecionales.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListaDeProfecionales.FormattingEnabled = true;
+            this.ListaDeProfecionales.ItemHeight = 29;
+            this.ListaDeProfecionales.Location = new System.Drawing.Point(44, 286);
+            this.ListaDeProfecionales.Margin = new System.Windows.Forms.Padding(2);
+            this.ListaDeProfecionales.Name = "ListaDeProfecionales";
+            this.ListaDeProfecionales.Size = new System.Drawing.Size(442, 207);
+            this.ListaDeProfecionales.TabIndex = 47;
+            // 
+            // BotonFiltrar
+            // 
+            this.BotonFiltrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BotonFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonFiltrar.ForeColor = System.Drawing.Color.Black;
+            this.BotonFiltrar.Location = new System.Drawing.Point(478, 161);
+            this.BotonFiltrar.Margin = new System.Windows.Forms.Padding(2);
+            this.BotonFiltrar.Name = "BotonFiltrar";
+            this.BotonFiltrar.Size = new System.Drawing.Size(109, 46);
+            this.BotonFiltrar.TabIndex = 36;
+            this.BotonFiltrar.Text = "Filtrar";
+            this.BotonFiltrar.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -88,56 +128,32 @@
             this.textoEspecialidad.Size = new System.Drawing.Size(241, 38);
             this.textoEspecialidad.TabIndex = 28;
             // 
-            // BotonFiltrar
+            // label1
             // 
-            this.BotonFiltrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BotonFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BotonFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.BotonFiltrar.Location = new System.Drawing.Point(478, 161);
-            this.BotonFiltrar.Margin = new System.Windows.Forms.Padding(2);
-            this.BotonFiltrar.Name = "BotonFiltrar";
-            this.BotonFiltrar.Size = new System.Drawing.Size(109, 46);
-            this.BotonFiltrar.TabIndex = 36;
-            this.BotonFiltrar.Text = "Filtrar";
-            this.BotonFiltrar.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(21, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(380, 55);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Pedido de Turno";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ListaDeProfecionales
+            // botonVolver
             // 
-            this.ListaDeProfecionales.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListaDeProfecionales.FormattingEnabled = true;
-            this.ListaDeProfecionales.ItemHeight = 29;
-            this.ListaDeProfecionales.Location = new System.Drawing.Point(44, 286);
-            this.ListaDeProfecionales.Margin = new System.Windows.Forms.Padding(2);
-            this.ListaDeProfecionales.Name = "ListaDeProfecionales";
-            this.ListaDeProfecionales.Size = new System.Drawing.Size(442, 207);
-            this.ListaDeProfecionales.TabIndex = 47;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(37, 225);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(264, 37);
-            this.label2.TabIndex = 48;
-            this.label2.Text = "Elegir profecional";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // botonAceptar
-            // 
-            this.botonAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonAceptar.ForeColor = System.Drawing.Color.Black;
-            this.botonAceptar.Location = new System.Drawing.Point(556, 354);
-            this.botonAceptar.Margin = new System.Windows.Forms.Padding(2);
-            this.botonAceptar.Name = "botonAceptar";
-            this.botonAceptar.Size = new System.Drawing.Size(172, 89);
-            this.botonAceptar.TabIndex = 49;
-            this.botonAceptar.Text = "Aceptar";
-            this.botonAceptar.UseVisualStyleBackColor = true;
-            this.botonAceptar.Click += new System.EventHandler(this.botonAceptar_Click);
+            this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonVolver.ForeColor = System.Drawing.Color.Black;
+            this.botonVolver.Location = new System.Drawing.Point(557, 392);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(172, 89);
+            this.botonVolver.TabIndex = 50;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // AbmPedirTurno
             // 
@@ -166,5 +182,6 @@
         private System.Windows.Forms.Button botonAceptar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox ListaDeProfecionales;
+        private System.Windows.Forms.Button botonVolver;
     }
 }

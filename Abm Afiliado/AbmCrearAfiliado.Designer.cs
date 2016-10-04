@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.AnioDeBaja = new System.Windows.Forms.NumericUpDown();
             this.MesDeBaja = new System.Windows.Forms.NumericUpDown();
             this.DiaDeBaja = new System.Windows.Forms.NumericUpDown();
@@ -58,7 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textoNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AnioDeBaja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MesDeBaja)).BeginInit();
@@ -104,6 +104,20 @@
             this.panel1.Size = new System.Drawing.Size(862, 744);
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(41, 418);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(212, 29);
+            this.label4.TabIndex = 58;
+            this.label4.Text = "Asociar Familiares";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AnioDeBaja
             // 
@@ -493,20 +507,6 @@
             this.label1.Text = "Crear Afiliado";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(41, 418);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(212, 29);
-            this.label4.TabIndex = 58;
-            this.label4.Text = "Asociar Familiares";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // AbmEditarAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -516,6 +516,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AbmEditarAfiliado";
             this.Text = "Crear Afiliado";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AbmAfiliado_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

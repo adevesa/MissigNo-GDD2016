@@ -36,5 +36,13 @@ namespace ClinicaFrba.Pedir_Turno
             abmElegirHorario.ShowDialog();
             this.Close();
         }
+
+        private void botonVolver_Click(object sender, EventArgs e)
+        {
+            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
+            this.Hide();
+            abmRolAfiliado.ShowDialog();
+            this.Close();
+        }
     }
 }

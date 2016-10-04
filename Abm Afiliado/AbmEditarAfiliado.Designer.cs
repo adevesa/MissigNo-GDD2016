@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.botonBuscar = new System.Windows.Forms.Button();
+            this.textoID = new System.Windows.Forms.TextBox();
             this.AnioDeBaja = new System.Windows.Forms.NumericUpDown();
             this.MesDeBaja = new System.Windows.Forms.NumericUpDown();
             this.DiaDeBaja = new System.Windows.Forms.NumericUpDown();
@@ -59,8 +61,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textoNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textoID = new System.Windows.Forms.TextBox();
-            this.botonBuscar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AnioDeBaja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MesDeBaja)).BeginInit();
@@ -108,6 +108,28 @@
             this.panel1.Size = new System.Drawing.Size(862, 744);
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // botonBuscar
+            // 
+            this.botonBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonBuscar.ForeColor = System.Drawing.Color.Black;
+            this.botonBuscar.Location = new System.Drawing.Point(735, 33);
+            this.botonBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.botonBuscar.Name = "botonBuscar";
+            this.botonBuscar.Size = new System.Drawing.Size(109, 46);
+            this.botonBuscar.TabIndex = 59;
+            this.botonBuscar.Text = "Buscar";
+            this.botonBuscar.UseVisualStyleBackColor = true;
+            // 
+            // textoID
+            // 
+            this.textoID.BackColor = System.Drawing.Color.White;
+            this.textoID.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoID.Location = new System.Drawing.Point(428, 33);
+            this.textoID.Name = "textoID";
+            this.textoID.Size = new System.Drawing.Size(278, 40);
+            this.textoID.TabIndex = 58;
             // 
             // AnioDeBaja
             // 
@@ -512,28 +534,6 @@
             this.label1.Text = "ID De afiliado a editar";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textoID
-            // 
-            this.textoID.BackColor = System.Drawing.Color.White;
-            this.textoID.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoID.Location = new System.Drawing.Point(428, 33);
-            this.textoID.Name = "textoID";
-            this.textoID.Size = new System.Drawing.Size(278, 40);
-            this.textoID.TabIndex = 58;
-            // 
-            // botonBuscar
-            // 
-            this.botonBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonBuscar.ForeColor = System.Drawing.Color.Black;
-            this.botonBuscar.Location = new System.Drawing.Point(735, 33);
-            this.botonBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.botonBuscar.Name = "botonBuscar";
-            this.botonBuscar.Size = new System.Drawing.Size(109, 46);
-            this.botonBuscar.TabIndex = 59;
-            this.botonBuscar.Text = "Buscar";
-            this.botonBuscar.UseVisualStyleBackColor = true;
-            // 
             // AbmCrearAfiliado2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -543,6 +543,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AbmCrearAfiliado2";
             this.Text = "Crear Afiliado";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AbmAfiliado_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

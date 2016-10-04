@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.Abm_Afiliado
 {
-    public partial class AbmAfiliado : Form
+    public partial class AbmAdministrarAfiliado : Form
     {
-        public AbmAfiliado()
+        public AbmAdministrarAfiliado()
         {
             InitializeComponent();
         }
@@ -48,8 +48,16 @@ namespace ClinicaFrba.Abm_Afiliado
         private void botonBorrarAfiliado_Click(object sender, EventArgs e)
         {
             AbmBorrarAfiliado abmBorrarAfiliado = new AbmBorrarAfiliado();
-            this.Hide();
+
             abmBorrarAfiliado.ShowDialog();
+
+        }
+
+        private void botonVolver_Click(object sender, EventArgs e)
+        {
+            AbmRol.AbmRolAdministrador abmRolAdministrador = new AbmRol.AbmRolAdministrador();
+            this.Hide();
+            abmRolAdministrador.ShowDialog();
             this.Close();
         }
     }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.IniciarSesion = new System.Windows.Forms.Button();
-            this.roles = new System.Windows.Forms.ComboBox();
+            this.rol = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -51,20 +51,20 @@
             this.IniciarSesion.UseVisualStyleBackColor = true;
             this.IniciarSesion.Click += new System.EventHandler(this.IniciarSesion_Click);
             // 
-            // roles
+            // rol
             // 
-            this.roles.AccessibleName = "roles";
-            this.roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roles.FormattingEnabled = true;
-            this.roles.Items.AddRange(new object[] {
+            this.rol.AccessibleName = "roles";
+            this.rol.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rol.FormattingEnabled = true;
+            this.rol.Items.AddRange(new object[] {
             "Afiliado",
-            "Profecional",
+            "Profesional",
             "Administrador"});
-            this.roles.Location = new System.Drawing.Point(85, 212);
-            this.roles.Name = "roles";
-            this.roles.Size = new System.Drawing.Size(319, 47);
-            this.roles.TabIndex = 22;
-            this.roles.Text = "Roles";
+            this.rol.Location = new System.Drawing.Point(85, 212);
+            this.rol.Name = "rol";
+            this.rol.Size = new System.Drawing.Size(319, 47);
+            this.rol.TabIndex = 22;
+            this.rol.Text = "Roles";
             // 
             // label2
             // 
@@ -97,7 +97,7 @@
             this.panel1.Controls.Add(this.IniciarSesion);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.roles);
+            this.panel1.Controls.Add(this.rol);
             this.panel1.Location = new System.Drawing.Point(165, 36);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(472, 532);
@@ -124,7 +124,7 @@
         #endregion
 
         private System.Windows.Forms.Button IniciarSesion;
-        private System.Windows.Forms.ComboBox roles;
+        private System.Windows.Forms.ComboBox rol;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;

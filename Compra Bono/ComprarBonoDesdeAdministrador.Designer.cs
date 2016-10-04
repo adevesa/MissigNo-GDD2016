@@ -48,6 +48,7 @@
             this.botonConfirmar.TabIndex = 68;
             this.botonConfirmar.Text = "Confirmar";
             this.botonConfirmar.UseVisualStyleBackColor = true;
+            this.botonConfirmar.Click += new System.EventHandler(this.botonConfirmar_Click);
             // 
             // textoCantidadDeBonos
             // 

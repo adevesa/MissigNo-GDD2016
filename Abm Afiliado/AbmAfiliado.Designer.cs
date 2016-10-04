@@ -1,6 +1,6 @@
 ﻿namespace ClinicaFrba.Abm_Afiliado
 {
-    partial class AbmAfiliado
+    partial class AbmAdministrarAfiliado
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.botonBorrarAfiliado = new System.Windows.Forms.Button();
             this.botonModificarAfiliado = new System.Windows.Forms.Button();
             this.botonCrearAfiliado = new System.Windows.Forms.Button();
-            this.botonVolver = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +48,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(762, 529);
             this.panel1.TabIndex = 9;
+            // 
+            // botonVolver
+            // 
+            this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonVolver.ForeColor = System.Drawing.Color.Black;
+            this.botonVolver.Location = new System.Drawing.Point(343, 483);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(109, 46);
+            this.botonVolver.TabIndex = 35;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // botonBorrarAfiliado
             // 
@@ -91,28 +105,16 @@
             this.botonCrearAfiliado.UseVisualStyleBackColor = true;
             this.botonCrearAfiliado.Click += new System.EventHandler(this.botonCrearAfiliado_Click);
             // 
-            // botonVolver
-            // 
-            this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonVolver.ForeColor = System.Drawing.Color.Black;
-            this.botonVolver.Location = new System.Drawing.Point(343, 483);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(109, 46);
-            this.botonVolver.TabIndex = 35;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
-            // 
-            // AbmAfiliado
+            // AbmAdministrarAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 566);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "AbmAfiliado";
+            this.Name = "AbmAdministrarAfiliado";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AbmAfiliado_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

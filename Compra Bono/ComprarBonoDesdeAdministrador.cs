@@ -16,5 +16,10 @@ namespace ClinicaFrba.Compra_Bono
         {
             InitializeComponent();
         }
+
+        private void botonConfirmar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

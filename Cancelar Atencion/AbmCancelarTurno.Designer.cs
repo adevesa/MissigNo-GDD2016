@@ -1,6 +1,6 @@
 ﻿namespace ClinicaFrba.Pedir_Turno
 {
-    partial class Cancelar_Turno
+    partial class AbmCancelarTurno
     {
         /// <summary>
         /// Required designer variable.
@@ -42,13 +42,14 @@
             this.botonConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonConfirmar.ForeColor = System.Drawing.Color.Black;
-            this.botonConfirmar.Location = new System.Drawing.Point(210, 371);
+            this.botonConfirmar.Location = new System.Drawing.Point(218, 371);
             this.botonConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.botonConfirmar.Name = "botonConfirmar";
             this.botonConfirmar.Size = new System.Drawing.Size(151, 64);
             this.botonConfirmar.TabIndex = 65;
             this.botonConfirmar.Text = "Confirmar";
             this.botonConfirmar.UseVisualStyleBackColor = true;
+            this.botonConfirmar.Click += new System.EventHandler(this.botonConfirmar_Click);
             // 
             // textoIDTurno
             // 
@@ -93,8 +94,9 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(231, 29);
             this.label7.TabIndex = 67;
-            this.label7.Text = "Tipo de canselacion";
+            this.label7.Text = "Tipo de cancelacion";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label2
             // 
@@ -118,7 +120,7 @@
             this.textoMotivo.TabIndex = 70;
             this.textoMotivo.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // Cancelar_Turno
+            // AbmCancelarTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,9 +133,10 @@
             this.Controls.Add(this.textoIDTurno);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Cancelar_Turno";
+            this.Name = "AbmCancelarTurno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cancelar Turno";
+            this.Load += new System.EventHandler(this.Cancelar_Turno_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

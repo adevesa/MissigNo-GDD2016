@@ -96,7 +96,18 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
 
         private void BotonConfirmar2_Click(object sender, EventArgs e)
         {
+            AbmRol.AbmRolProfesional abmRolProfesional = new AbmRol.AbmRolProfesional();
+            this.Hide();
+            abmRolProfesional.ShowDialog();
+            this.Close();
+        }
 
+        private void botonVolver_Click(object sender, EventArgs e)
+        {
+            AbmRol.AbmRolProfesional abmRolProfesional = new AbmRol.AbmRolProfesional();
+            this.Hide();
+            abmRolProfesional.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -44,11 +44,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abm Afiliado\Form1.cs">
+    <Compile Include="Abm Afiliado\AbmAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Afiliado\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Abm Afiliado\AbmAfiliado.Designer.cs">
+      <DependentUpon>AbmAfiliado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Afiliado\AbmBorrarAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\AbmBorrarAfiliado.Designer.cs">
+      <DependentUpon>AbmBorrarAfiliado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Afiliado\AbmCrearAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\AbmCrearAfiliado.Designer.cs">
+      <DependentUpon>AbmCrearAfiliado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Afiliado\AbmEditarAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\AbmEditarAfiliado.Designer.cs">
+      <DependentUpon>AbmEditarAfiliado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Afiliado\AgregarFamiliar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\AgregarFamiliar.Designer.cs">
+      <DependentUpon>AgregarFamiliar.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Especialidades Medicas\Form1.cs">
       <SubType>Form</SubType>
@@ -74,23 +98,61 @@
     <Compile Include="AbmRol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cancelar Atencion\Form1.cs">
+    <Compile Include="Compra Bono\AbmComprarBono.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cancelar Atencion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Compra Bono\AbmComprarBono.Designer.cs">
+      <DependentUpon>AbmComprarBono.cs</DependentUpon>
     </Compile>
-    <Compile Include="Compra Bono\Form1.cs">
+    <Compile Include="Compra Bono\ComprarBonoDesdeAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Compra Bono\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Compra Bono\ComprarBonoDesdeAdministrador.Designer.cs">
+      <DependentUpon>ComprarBonoDesdeAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Pedir Turno\AbmElegirHorario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Pedir Turno\AbmElegirHorario.Designer.cs">
+      <DependentUpon>AbmElegirHorario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedir Turno\AbmPedirTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedir Turno\AbmPedirTurno.Designer.cs">
+      <DependentUpon>AbmPedirTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cancelar Atencion\AbmCancelarTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\AbmCancelarTurno.Designer.cs">
+      <DependentUpon>AbmCancelarTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Agenta Medico\AbmAgenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Agenta Medico\AbmAgenda.Designer.cs">
+      <DependentUpon>AbmAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro Resultado\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Resultado\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seleccion de rol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seleccion de rol.Designer.cs">
+      <DependentUpon>Seleccion de rol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logueo.cs">
+      <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Logueo.Designer.cs">
+      <DependentUpon>Logueo.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Listados\Form1.cs">
       <SubType>Form</SubType>
@@ -98,25 +160,13 @@
     <Compile Include="Listados\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pedir Turno\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pedir Turno\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrar Agenta Medico\Form1.cs">
+    <Compile Include="Registro Llegada\RegistroDeLlegada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrar Agenta Medico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Registro Llegada\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Registro Llegada\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registro Llegada\RegistroDeLlegada.Designer.cs">
+      <DependentUpon>RegistroDeLlegada.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro Resultado\Form1.cs">
       <SubType>Form</SubType>
@@ -124,6 +174,39 @@
     <Compile Include="Registro Resultado\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Abm Afiliado\AbmAfiliado.resx">
+      <DependentUpon>AbmAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\AbmBorrarAfiliado.resx">
+      <DependentUpon>AbmBorrarAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\AbmCrearAfiliado.resx">
+      <DependentUpon>AbmCrearAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\AbmEditarAfiliado.resx">
+      <DependentUpon>AbmEditarAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\AgregarFamiliar.resx">
+      <DependentUpon>AgregarFamiliar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compra Bono\AbmComprarBono.resx">
+      <DependentUpon>AbmComprarBono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compra Bono\ComprarBonoDesdeAdministrador.resx">
+      <DependentUpon>ComprarBonoDesdeAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logueo.resx">
+      <DependentUpon>Logueo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedir Turno\AbmElegirHorario.resx">
+      <DependentUpon>AbmElegirHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedir Turno\AbmPedirTurno.resx">
+      <DependentUpon>AbmPedirTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\AbmCancelarTurno.resx">
+      <DependentUpon>AbmCancelarTurno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -133,6 +216,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Registrar Agenta Medico\AbmAgenda.resx">
+      <DependentUpon>AbmAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Llegada\RegistroDeLlegada.resx">
+      <DependentUpon>RegistroDeLlegada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Resultado\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seleccion de rol.resx">
+      <DependentUpon>Seleccion de rol.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

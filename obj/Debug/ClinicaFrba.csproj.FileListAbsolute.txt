@@ -14,3 +14,20 @@ D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FR
 D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
 D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.Properties.Resources.resources
 D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
+C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.exe.config
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.exe
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.pdb
+C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\Logueo.cs
+C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\Logueo.Designer.cs
+C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.exe
+C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.pdb
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Logueo.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Properties.Resources.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Resultado.SeleccionDeRol.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Resultado.Form2.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmAfiliado.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado2.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmEditarAfiliado.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AgregarFamiliar.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado.resources

@@ -76,6 +76,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.bluewave_bkg_1980light;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(584, 316);
             this.Controls.Add(this.botonConfirmar);
             this.Controls.Add(this.textoCantidadDeBonos);

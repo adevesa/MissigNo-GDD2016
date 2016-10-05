@@ -370,6 +370,8 @@
             // 
             // AgregarFamiliar
             // 
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.bluewave_bkg_1980light;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(634, 566);
             this.Controls.Add(this.BotonConfirmar2);
             this.Controls.Add(this.AnioDeBaja);

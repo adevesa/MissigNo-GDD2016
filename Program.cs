@@ -11,6 +11,12 @@ namespace ClinicaFrba
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
+        /// 
+
+        //ATRIBUTOS GLOBALES//
+        public static string usuario;
+
+
         [STAThread]
         static void Main()
         {

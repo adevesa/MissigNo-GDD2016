@@ -152,12 +152,6 @@
     <Compile Include="Registrar Agenta Medico\AbmAgenda.Designer.cs">
       <DependentUpon>AbmAgenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Resultado\Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Registro Resultado\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Seleccion de rol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +233,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Registrar Agenta Medico\AbmAgenda.resx">
       <DependentUpon>AbmAgenda.cs</DependentUpon>
@@ -248,9 +243,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Resultado\AbmRegistroResultado.resx">
       <DependentUpon>AbmRegistroResultado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Registro Resultado\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Seleccion de rol.resx">
       <DependentUpon>Seleccion de rol.cs</DependentUpon>
@@ -268,7 +260,30 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\18968753_hiweb-e1436555480852.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6359333591850656692016340307_hospital.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\c589bbc5cd2bdf863bfe1d7dc5d2b708.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iStock_000049731446_Full.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-HOSPITAL-HALLWAY-facebook.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluewave-bkg-1980light.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\silver-light-blue-wave-abstract-backgrounds-powerpoint.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue-squares-powerpoint-backgrounds.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.botonAceptar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.ListaDeProfecionales = new System.Windows.Forms.ListBox();
@@ -36,12 +37,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textoEspecialidad = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.botonVolver = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.botonVolver);
             this.panel1.Controls.Add(this.botonAceptar);
             this.panel1.Controls.Add(this.label2);
@@ -54,6 +55,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(779, 558);
             this.panel1.TabIndex = 0;
+            // 
+            // botonVolver
+            // 
+            this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonVolver.ForeColor = System.Drawing.Color.Black;
+            this.botonVolver.Location = new System.Drawing.Point(557, 392);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(172, 89);
+            this.botonVolver.TabIndex = 50;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // botonAceptar
             // 
@@ -141,24 +156,12 @@
             this.label1.Text = "Pedido de Turno";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // botonVolver
-            // 
-            this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonVolver.ForeColor = System.Drawing.Color.Black;
-            this.botonVolver.Location = new System.Drawing.Point(557, 392);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(172, 89);
-            this.botonVolver.TabIndex = 50;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
-            // 
             // AbmPedirTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.c589bbc5cd2bdf863bfe1d7dc5d2b708;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 566);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

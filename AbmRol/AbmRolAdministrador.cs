@@ -27,6 +27,23 @@ namespace ClinicaFrba.AbmRol
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
+
+            timer1.Enabled = true;
+
+            Usuario.Text = "Administrador: " + Program.usuario;
+
+            //Mostrar Fecha y Hora
+            Fecha.Text = DateTime.Now.ToLongDateString();
+
+            //Centrar Usuario
+            Int32 anchoUsuario = (this.Width - Usuario.Width) / 2;
+            Usuario.Location = new Point(anchoUsuario, Usuario.Location.Y);
+
+            //Centrar Fecha
+            Int32 anchoFecha = (this.Width - Fecha.Width) - 10;
+            Fecha.Location = new Point(anchoFecha, Fecha.Location.Y);
+
+
         }
 
         private void botonCerrarSesion_Click(object sender, EventArgs e)
@@ -57,6 +74,14 @@ namespace ClinicaFrba.AbmRol
             this.Hide();
             abmRegistroDeLlegada.ShowDialog();
             this.Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            Hora.Text = DateTime.Now.ToLongTimeString();
+            timer1.Enabled = true;
+
         }
     }
 }

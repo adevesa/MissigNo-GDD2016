@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Turno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Profesional = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.BotonConfirmar2 = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,12 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Turno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Profesional = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -67,6 +67,63 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(778, 548);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(565, 287);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(134, 34);
+            this.button1.TabIndex = 70;
+            this.button1.Text = "Filtrar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Turno,
+            this.Profesional,
+            this.Especialidad});
+            this.dataGridView1.Location = new System.Drawing.Point(19, 339);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(599, 206);
+            this.dataGridView1.TabIndex = 69;
+            // 
+            // Turno
+            // 
+            this.Turno.HeaderText = "TurnoN°";
+            this.Turno.Name = "Turno";
+            this.Turno.ReadOnly = true;
+            // 
+            // Profesional
+            // 
+            this.Profesional.HeaderText = "Nombre y Apellido del profesional";
+            this.Profesional.Name = "Profesional";
+            this.Profesional.ReadOnly = true;
+            this.Profesional.Width = 300;
+            // 
+            // Especialidad
+            // 
+            this.Especialidad.HeaderText = "Especialidad";
+            this.Especialidad.Name = "Especialidad";
+            this.Especialidad.ReadOnly = true;
+            this.Especialidad.Width = 150;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(247, 222);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(452, 40);
+            this.textBox1.TabIndex = 68;
             // 
             // BotonConfirmar2
             // 
@@ -126,9 +183,9 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(11, 165);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 41);
+            this.label3.Size = new System.Drawing.Size(186, 41);
             this.label3.TabIndex = 63;
-            this.label3.Text = "ID de bono";
+            this.label3.Text = "N° de bono";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textoIDUsuario
@@ -148,10 +205,11 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(11, 112);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(206, 41);
+            this.label2.Size = new System.Drawing.Size(213, 41);
             this.label2.TabIndex = 61;
-            this.label2.Text = "ID de afiliado";
+            this.label2.Text = "N° de afiliado";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -178,63 +236,6 @@
             this.label5.TabIndex = 48;
             this.label5.Text = "Especialidad";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(247, 222);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(452, 40);
-            this.textBox1.TabIndex = 68;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Turno,
-            this.Profesional,
-            this.Especialidad});
-            this.dataGridView1.Location = new System.Drawing.Point(19, 339);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(599, 206);
-            this.dataGridView1.TabIndex = 69;
-            // 
-            // Turno
-            // 
-            this.Turno.HeaderText = "TurnoN°";
-            this.Turno.Name = "Turno";
-            this.Turno.ReadOnly = true;
-            // 
-            // Profesional
-            // 
-            this.Profesional.HeaderText = "Nombre y Apellido del profesional";
-            this.Profesional.Name = "Profesional";
-            this.Profesional.ReadOnly = true;
-            this.Profesional.Width = 300;
-            // 
-            // Especialidad
-            // 
-            this.Especialidad.HeaderText = "Especialidad";
-            this.Especialidad.Name = "Especialidad";
-            this.Especialidad.ReadOnly = true;
-            this.Especialidad.Width = 150;
-            // 
-            // button1
-            // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(565, 287);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 34);
-            this.button1.TabIndex = 70;
-            this.button1.Text = "Filtrar";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // RegistroDeLlegada
             // 

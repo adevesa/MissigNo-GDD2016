@@ -92,9 +92,9 @@
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(12, 89);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(166, 41);
+            this.label8.Size = new System.Drawing.Size(218, 41);
             this.label8.TabIndex = 70;
-            this.label8.Text = "ID Afiliado";
+            this.label8.Text = "N° de Afiliado";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2

@@ -85,5 +85,10 @@ namespace ClinicaFrba.AbmRol
             Hora.Text = DateTime.Now.ToLongTimeString();
             timer1.Enabled = true;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

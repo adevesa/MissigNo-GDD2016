@@ -128,11 +128,47 @@
     <Compile Include="Compra Bono\ComprarBonoDesdeAdministrador.Designer.cs">
       <DependentUpon>ComprarBonoDesdeAdministrador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Listados\AbmListado2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\AbmListado2.Designer.cs">
+      <DependentUpon>AbmListado2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listados\AbmListados.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Listados\AbmListados.Designer.cs">
       <DependentUpon>AbmListados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\top5_afiliados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\top5_afiliados.Designer.cs">
+      <DependentUpon>top5_afiliados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\top5_especialidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\top5_especialidades.Designer.cs">
+      <DependentUpon>top5_especialidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\top5_profesional_menos_horas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\top5_profesional_menos_horas.Designer.cs">
+      <DependentUpon>top5_profesional_menos_horas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\top5_cancelaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\top5_cancelaciones.Designer.cs">
+      <DependentUpon>top5_cancelaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\top5_consultados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\top5_consultados.Designer.cs">
+      <DependentUpon>top5_consultados.cs</DependentUpon>
     </Compile>
     <Compile Include="Pedir Turno\AbmElegirHorario.cs">
       <SubType>Form</SubType>
@@ -213,8 +249,26 @@
     <EmbeddedResource Include="Compra Bono\ComprarBonoDesdeAdministrador.resx">
       <DependentUpon>ComprarBonoDesdeAdministrador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Listados\AbmListado2.resx">
+      <DependentUpon>AbmListado2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Listados\AbmListados.resx">
       <DependentUpon>AbmListados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\top5_afiliados.resx">
+      <DependentUpon>top5_afiliados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\top5_especialidades.resx">
+      <DependentUpon>top5_especialidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\top5_profesional_menos_horas.resx">
+      <DependentUpon>top5_profesional_menos_horas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\top5_cancelaciones.resx">
+      <DependentUpon>top5_cancelaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\top5_consultados.resx">
+      <DependentUpon>top5_consultados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Logueo.resx">
       <DependentUpon>Logueo.cs</DependentUpon>

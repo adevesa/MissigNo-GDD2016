@@ -39,6 +39,7 @@
             this.Usuario = new System.Windows.Forms.Label();
             this.Hora = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.botonCerrarSesion);
             this.panel1.Controls.Add(this.botonPedirTurno);
             this.panel1.Controls.Add(this.botonComprarBonos);
@@ -61,7 +63,7 @@
             this.botonCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCerrarSesion.ForeColor = System.Drawing.Color.Black;
-            this.botonCerrarSesion.Location = new System.Drawing.Point(315, 459);
+            this.botonCerrarSesion.Location = new System.Drawing.Point(303, 394);
             this.botonCerrarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.botonCerrarSesion.Name = "botonCerrarSesion";
             this.botonCerrarSesion.Size = new System.Drawing.Size(158, 46);
@@ -75,10 +77,10 @@
             this.botonPedirTurno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonPedirTurno.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonPedirTurno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonPedirTurno.Location = new System.Drawing.Point(141, 186);
+            this.botonPedirTurno.Location = new System.Drawing.Point(0, 189);
             this.botonPedirTurno.Margin = new System.Windows.Forms.Padding(2);
             this.botonPedirTurno.Name = "botonPedirTurno";
-            this.botonPedirTurno.Size = new System.Drawing.Size(493, 100);
+            this.botonPedirTurno.Size = new System.Drawing.Size(378, 110);
             this.botonPedirTurno.TabIndex = 22;
             this.botonPedirTurno.Text = "Pedir turno";
             this.botonPedirTurno.UseVisualStyleBackColor = true;
@@ -89,10 +91,10 @@
             this.botonComprarBonos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonComprarBonos.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonComprarBonos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonComprarBonos.Location = new System.Drawing.Point(141, 47);
+            this.botonComprarBonos.Location = new System.Drawing.Point(0, 59);
             this.botonComprarBonos.Margin = new System.Windows.Forms.Padding(2);
             this.botonComprarBonos.Name = "botonComprarBonos";
-            this.botonComprarBonos.Size = new System.Drawing.Size(493, 110);
+            this.botonComprarBonos.Size = new System.Drawing.Size(378, 110);
             this.botonComprarBonos.TabIndex = 21;
             this.botonComprarBonos.Text = "Comprar bonos";
             this.botonComprarBonos.UseVisualStyleBackColor = true;
@@ -103,10 +105,10 @@
             this.botonCancelarTurno.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonCancelarTurno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonCancelarTurno.Location = new System.Drawing.Point(141, 315);
+            this.botonCancelarTurno.Location = new System.Drawing.Point(384, 59);
             this.botonCancelarTurno.Margin = new System.Windows.Forms.Padding(2);
             this.botonCancelarTurno.Name = "botonCancelarTurno";
-            this.botonCancelarTurno.Size = new System.Drawing.Size(493, 105);
+            this.botonCancelarTurno.Size = new System.Drawing.Size(378, 110);
             this.botonCancelarTurno.TabIndex = 20;
             this.botonCancelarTurno.Text = "Cancelar turno";
             this.botonCancelarTurno.UseVisualStyleBackColor = true;
@@ -167,6 +169,20 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
+            this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button1.Location = new System.Drawing.Point(384, 189);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(378, 110);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Cambiar Plan";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AbmRolAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,5 +215,6 @@
         private System.Windows.Forms.Label Usuario;
         private System.Windows.Forms.Label Hora;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button1;
     }
 }

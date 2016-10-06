@@ -44,5 +44,15 @@ namespace ClinicaFrba.Registro_Resultado
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MesDeBaja_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

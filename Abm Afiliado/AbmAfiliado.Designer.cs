@@ -52,7 +52,7 @@
             // botonVolver
             // 
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
             this.botonVolver.Location = new System.Drawing.Point(343, 483);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
@@ -66,7 +66,7 @@
             // botonBorrarAfiliado
             // 
             this.botonBorrarAfiliado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonBorrarAfiliado.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonBorrarAfiliado.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonBorrarAfiliado.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonBorrarAfiliado.Location = new System.Drawing.Point(141, 324);
             this.botonBorrarAfiliado.Margin = new System.Windows.Forms.Padding(2);
@@ -80,7 +80,7 @@
             // botonModificarAfiliado
             // 
             this.botonModificarAfiliado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonModificarAfiliado.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonModificarAfiliado.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonModificarAfiliado.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonModificarAfiliado.Location = new System.Drawing.Point(141, 165);
             this.botonModificarAfiliado.Margin = new System.Windows.Forms.Padding(2);
@@ -94,7 +94,7 @@
             // botonCrearAfiliado
             // 
             this.botonCrearAfiliado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCrearAfiliado.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCrearAfiliado.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCrearAfiliado.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonCrearAfiliado.Location = new System.Drawing.Point(141, 2);
             this.botonCrearAfiliado.Margin = new System.Windows.Forms.Padding(2);
@@ -109,13 +109,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.c589bbc5cd2bdf863bfe1d7dc5d2b708;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 566);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AbmAdministrarAfiliado";
-            this.Text = "Form1";
+            this.Text = "Clinica FRBA - Afiliado";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AbmAfiliado_Load);
             this.panel1.ResumeLayout(false);

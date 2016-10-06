@@ -40,7 +40,7 @@
             // 
             this.IniciarSesion.AccessibleName = "botonAceptar";
             this.IniciarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.IniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.IniciarSesion.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IniciarSesion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.IniciarSesion.Location = new System.Drawing.Point(124, 426);
             this.IniciarSesion.Margin = new System.Windows.Forms.Padding(2);
@@ -68,16 +68,18 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(85, 47);
+            this.label2.Location = new System.Drawing.Point(30, 35);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.MaximumSize = new System.Drawing.Size(0, 500);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(305, 42);
+            this.label2.Size = new System.Drawing.Size(409, 144);
             this.label2.TabIndex = 23;
-            this.label2.Text = "Seleccione un rol";
+            this.label2.Text = "Seleccione un rol para iniciar sesión";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -99,23 +101,22 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.rol);
-            this.panel1.Location = new System.Drawing.Point(165, 36);
+            this.panel1.Location = new System.Drawing.Point(165, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(472, 532);
+            this.panel1.Size = new System.Drawing.Size(472, 545);
             this.panel1.TabIndex = 25;
             // 
             // SeleccionDeRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ClinicaFrba.Properties.Resources._6359333591850656692016340307_hospital;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SeleccionDeRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Seleccion de rol";
+            this.Text = "Clinica FRBA-Seleccion de rol";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.seleccionDeRol_Load);
             this.panel1.ResumeLayout(false);

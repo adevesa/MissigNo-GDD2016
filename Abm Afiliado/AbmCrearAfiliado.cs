@@ -56,5 +56,10 @@ namespace ClinicaFrba.Abm_Afiliado
             this.Close();
            
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

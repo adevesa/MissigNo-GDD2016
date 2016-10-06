@@ -36,7 +36,7 @@
             // botonConfirmar
             // 
             this.botonConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonConfirmar.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonConfirmar.ForeColor = System.Drawing.Color.Black;
             this.botonConfirmar.Location = new System.Drawing.Point(216, 227);
             this.botonConfirmar.Margin = new System.Windows.Forms.Padding(2);
@@ -51,10 +51,11 @@
             // 
             this.textoCantidadDeBonos.BackColor = System.Drawing.Color.White;
             this.textoCantidadDeBonos.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoCantidadDeBonos.Location = new System.Drawing.Point(105, 125);
+            this.textoCantidadDeBonos.Location = new System.Drawing.Point(39, 122);
             this.textoCantidadDeBonos.Name = "textoCantidadDeBonos";
-            this.textoCantidadDeBonos.Size = new System.Drawing.Size(391, 62);
+            this.textoCantidadDeBonos.Size = new System.Drawing.Size(521, 62);
             this.textoCantidadDeBonos.TabIndex = 64;
+            this.textoCantidadDeBonos.Text = "Ingrese un número";
             this.textoCantidadDeBonos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textoCantidadDeBonos.TextChanged += new System.EventHandler(this.textoCantidadDeBonos_TextChanged);
             // 
@@ -62,11 +63,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(40, 42);
+            this.label1.Location = new System.Drawing.Point(31, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(510, 42);
+            this.label1.Size = new System.Drawing.Size(520, 47);
             this.label1.TabIndex = 63;
             this.label1.Text = "Cantidad de bonos a comprar";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -76,7 +77,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.bluewave_bkg_1980light;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(584, 316);
             this.Controls.Add(this.botonConfirmar);
@@ -85,7 +85,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AbmComprarBono";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Comprar Bono";
+            this.Text = "Clinica FRBA-Comprar Bono";
             this.Load += new System.EventHandler(this.AbmComprarBono_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

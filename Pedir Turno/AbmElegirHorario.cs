@@ -43,5 +43,10 @@ namespace ClinicaFrba.Pedir_Turno
             abmPedirTurno.ShowDialog();
             this.Close();
         }
+
+        private void listaDeHorarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

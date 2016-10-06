@@ -59,9 +59,9 @@
             // botonCerrarSesion
             // 
             this.botonCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCerrarSesion.ForeColor = System.Drawing.Color.Black;
-            this.botonCerrarSesion.Location = new System.Drawing.Point(315, 437);
+            this.botonCerrarSesion.Location = new System.Drawing.Point(313, 445);
             this.botonCerrarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.botonCerrarSesion.Name = "botonCerrarSesion";
             this.botonCerrarSesion.Size = new System.Drawing.Size(158, 46);
@@ -73,9 +73,9 @@
             // botonCrearAgenda
             // 
             this.botonCrearAgenda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCrearAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCrearAgenda.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonCrearAgenda.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonCrearAgenda.Location = new System.Drawing.Point(141, 294);
+            this.botonCrearAgenda.Location = new System.Drawing.Point(141, 323);
             this.botonCrearAgenda.Margin = new System.Windows.Forms.Padding(2);
             this.botonCrearAgenda.Name = "botonCrearAgenda";
             this.botonCrearAgenda.Size = new System.Drawing.Size(493, 105);
@@ -87,9 +87,9 @@
             // botonRegistrarResultados
             // 
             this.botonRegistrarResultados.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonRegistrarResultados.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonRegistrarResultados.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonRegistrarResultados.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonRegistrarResultados.Location = new System.Drawing.Point(141, 155);
+            this.botonRegistrarResultados.Location = new System.Drawing.Point(141, 184);
             this.botonRegistrarResultados.Margin = new System.Windows.Forms.Padding(2);
             this.botonRegistrarResultados.Name = "botonRegistrarResultados";
             this.botonRegistrarResultados.Size = new System.Drawing.Size(493, 108);
@@ -101,9 +101,9 @@
             // botonCancelarTurno
             // 
             this.botonCancelarTurno.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCancelarTurno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonCancelarTurno.Location = new System.Drawing.Point(141, 25);
+            this.botonCancelarTurno.Location = new System.Drawing.Point(141, 48);
             this.botonCancelarTurno.Margin = new System.Windows.Forms.Padding(2);
             this.botonCancelarTurno.Name = "botonCancelarTurno";
             this.botonCancelarTurno.Size = new System.Drawing.Size(493, 101);
@@ -170,14 +170,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ClinicaFrba.Properties.Resources._18968753_hiweb_e1436555480852;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 566);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AbmRolProfesional";
-            this.Text = "Profesional";
+            this.Text = "Clinica FRBA-Profesional";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AbmRolProfesional_Load);
             this.panel1.ResumeLayout(false);

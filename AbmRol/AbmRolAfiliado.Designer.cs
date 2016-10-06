@@ -59,9 +59,9 @@
             // botonCerrarSesion
             // 
             this.botonCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCerrarSesion.ForeColor = System.Drawing.Color.Black;
-            this.botonCerrarSesion.Location = new System.Drawing.Point(315, 436);
+            this.botonCerrarSesion.Location = new System.Drawing.Point(315, 459);
             this.botonCerrarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.botonCerrarSesion.Name = "botonCerrarSesion";
             this.botonCerrarSesion.Size = new System.Drawing.Size(158, 46);
@@ -73,9 +73,9 @@
             // botonPedirTurno
             // 
             this.botonPedirTurno.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonPedirTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonPedirTurno.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonPedirTurno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonPedirTurno.Location = new System.Drawing.Point(141, 159);
+            this.botonPedirTurno.Location = new System.Drawing.Point(141, 186);
             this.botonPedirTurno.Margin = new System.Windows.Forms.Padding(2);
             this.botonPedirTurno.Name = "botonPedirTurno";
             this.botonPedirTurno.Size = new System.Drawing.Size(493, 100);
@@ -87,9 +87,9 @@
             // botonComprarBonos
             // 
             this.botonComprarBonos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonComprarBonos.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonComprarBonos.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonComprarBonos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonComprarBonos.Location = new System.Drawing.Point(141, 24);
+            this.botonComprarBonos.Location = new System.Drawing.Point(141, 47);
             this.botonComprarBonos.Margin = new System.Windows.Forms.Padding(2);
             this.botonComprarBonos.Name = "botonComprarBonos";
             this.botonComprarBonos.Size = new System.Drawing.Size(493, 110);
@@ -101,9 +101,9 @@
             // botonCancelarTurno
             // 
             this.botonCancelarTurno.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonCancelarTurno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonCancelarTurno.Location = new System.Drawing.Point(141, 295);
+            this.botonCancelarTurno.Location = new System.Drawing.Point(141, 315);
             this.botonCancelarTurno.Margin = new System.Windows.Forms.Padding(2);
             this.botonCancelarTurno.Name = "botonCancelarTurno";
             this.botonCancelarTurno.Size = new System.Drawing.Size(493, 105);
@@ -171,14 +171,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.c589bbc5cd2bdf863bfe1d7dc5d2b708;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 566);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AbmRolAfiliado";
-            this.Text = "Afiliado";
+            this.Text = "Clinica FRBA-Afiliado";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AbmRolAfiliado_Load);
             this.panel1.ResumeLayout(false);

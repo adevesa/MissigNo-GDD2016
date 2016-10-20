@@ -71,7 +71,9 @@ namespace ClinicaFrba.AbmRol
         private void botonPedirTurno_Click(object sender, EventArgs e)
         {
             Pedir_Turno.AbmPedirTurno abmPedirTurno = new Pedir_Turno.AbmPedirTurno();
+            this.Hide();
             abmPedirTurno.ShowDialog();
+            this.Close();
         }
 
         private void Hora_Click(object sender, EventArgs e)

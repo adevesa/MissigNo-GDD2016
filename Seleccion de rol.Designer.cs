@@ -41,10 +41,10 @@
             this.IniciarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.IniciarSesion.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IniciarSesion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.IniciarSesion.Location = new System.Drawing.Point(129, 307);
+            this.IniciarSesion.Location = new System.Drawing.Point(85, 301);
             this.IniciarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.IniciarSesion.Name = "IniciarSesion";
-            this.IniciarSesion.Size = new System.Drawing.Size(236, 48);
+            this.IniciarSesion.Size = new System.Drawing.Size(319, 48);
             this.IniciarSesion.TabIndex = 21;
             this.IniciarSesion.Text = "Aceptar";
             this.IniciarSesion.UseVisualStyleBackColor = true;
@@ -70,7 +70,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(85, 65);
+            this.label2.Location = new System.Drawing.Point(85, 38);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.MaximumSize = new System.Drawing.Size(0, 500);
             this.label2.Name = "label2";
@@ -86,9 +86,9 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.rol);
             this.panel1.Controls.Add(this.IniciarSesion);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(11, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(472, 387);
+            this.panel1.Size = new System.Drawing.Size(793, 387);
             this.panel1.TabIndex = 25;
             // 
             // SeleccionDeRol

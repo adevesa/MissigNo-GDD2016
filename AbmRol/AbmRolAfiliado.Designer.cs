@@ -59,7 +59,7 @@
             // botonCerrarSesion
             // 
             this.botonCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCerrarSesion.ForeColor = System.Drawing.Color.Black;
             this.botonCerrarSesion.Location = new System.Drawing.Point(320, 440);
             this.botonCerrarSesion.Margin = new System.Windows.Forms.Padding(2);
@@ -73,7 +73,7 @@
             // botonPedirTurno
             // 
             this.botonPedirTurno.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonPedirTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.botonPedirTurno.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonPedirTurno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonPedirTurno.Location = new System.Drawing.Point(199, 179);
             this.botonPedirTurno.Margin = new System.Windows.Forms.Padding(2);
@@ -87,7 +87,7 @@
             // botonComprarBonos
             // 
             this.botonComprarBonos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonComprarBonos.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonComprarBonos.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonComprarBonos.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonComprarBonos.Location = new System.Drawing.Point(199, 51);
             this.botonComprarBonos.Margin = new System.Windows.Forms.Padding(2);
@@ -101,7 +101,7 @@
             // botonCancelarTurno
             // 
             this.botonCancelarTurno.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonCancelarTurno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonCancelarTurno.Location = new System.Drawing.Point(199, 303);
             this.botonCancelarTurno.Margin = new System.Windows.Forms.Padding(2);

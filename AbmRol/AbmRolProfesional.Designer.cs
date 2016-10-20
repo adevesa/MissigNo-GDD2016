@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.botonTops = new System.Windows.Forms.Button();
             this.botonCerrarSesion = new System.Windows.Forms.Button();
             this.botonCrearAgenda = new System.Windows.Forms.Button();
             this.botonRegistrarResultados = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@
             this.Usuario = new System.Windows.Forms.Label();
             this.Hora = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.botonTops = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -58,10 +58,24 @@
             this.panel1.Size = new System.Drawing.Size(762, 512);
             this.panel1.TabIndex = 11;
             // 
+            // botonTops
+            // 
+            this.botonTops.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonTops.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
+            this.botonTops.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.botonTops.Location = new System.Drawing.Point(141, 338);
+            this.botonTops.Margin = new System.Windows.Forms.Padding(2);
+            this.botonTops.Name = "botonTops";
+            this.botonTops.Size = new System.Drawing.Size(493, 105);
+            this.botonTops.TabIndex = 37;
+            this.botonTops.Text = "Tops";
+            this.botonTops.UseVisualStyleBackColor = true;
+            this.botonTops.Click += new System.EventHandler(this.botonTops_Click);
+            // 
             // botonCerrarSesion
             // 
             this.botonCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCerrarSesion.ForeColor = System.Drawing.Color.Black;
             this.botonCerrarSesion.Location = new System.Drawing.Point(326, 464);
             this.botonCerrarSesion.Margin = new System.Windows.Forms.Padding(2);
@@ -75,7 +89,7 @@
             // botonCrearAgenda
             // 
             this.botonCrearAgenda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCrearAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.botonCrearAgenda.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonCrearAgenda.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonCrearAgenda.Location = new System.Drawing.Point(141, 229);
             this.botonCrearAgenda.Margin = new System.Windows.Forms.Padding(2);
@@ -89,7 +103,7 @@
             // botonRegistrarResultados
             // 
             this.botonRegistrarResultados.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonRegistrarResultados.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.botonRegistrarResultados.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonRegistrarResultados.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonRegistrarResultados.Location = new System.Drawing.Point(141, 117);
             this.botonRegistrarResultados.Margin = new System.Windows.Forms.Padding(2);
@@ -103,7 +117,7 @@
             // botonCancelarTurno
             // 
             this.botonCancelarTurno.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCancelarTurno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.botonCancelarTurno.Location = new System.Drawing.Point(141, 12);
             this.botonCancelarTurno.Margin = new System.Windows.Forms.Padding(2);
@@ -167,20 +181,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // botonTops
-            // 
-            this.botonTops.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonTops.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.botonTops.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonTops.Location = new System.Drawing.Point(141, 338);
-            this.botonTops.Margin = new System.Windows.Forms.Padding(2);
-            this.botonTops.Name = "botonTops";
-            this.botonTops.Size = new System.Drawing.Size(493, 105);
-            this.botonTops.TabIndex = 37;
-            this.botonTops.Text = "Tops";
-            this.botonTops.UseVisualStyleBackColor = true;
-            this.botonTops.Click += new System.EventHandler(this.botonTops_Click);
             // 
             // AbmRolProfesional
             // 

@@ -31,5 +31,10 @@ namespace ClinicaFrba.Abm_Afiliado
         {
 
         }
+
+        private void AbmBorrarAfiliado_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

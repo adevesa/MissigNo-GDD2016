@@ -188,7 +188,7 @@
             // botonBuscar
             // 
             this.botonBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonBuscar.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.botonBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.botonBuscar.ForeColor = System.Drawing.Color.Black;
             this.botonBuscar.Location = new System.Drawing.Point(728, 36);
             this.botonBuscar.Margin = new System.Windows.Forms.Padding(2);
@@ -197,6 +197,7 @@
             this.botonBuscar.TabIndex = 59;
             this.botonBuscar.Text = "Buscar";
             this.botonBuscar.UseVisualStyleBackColor = true;
+            this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
             // 
             // textoID
             // 
@@ -325,7 +326,7 @@
             // botonQuitar
             // 
             this.botonQuitar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonQuitar.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.botonQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.botonQuitar.ForeColor = System.Drawing.Color.Black;
             this.botonQuitar.Location = new System.Drawing.Point(728, 559);
             this.botonQuitar.Margin = new System.Windows.Forms.Padding(2);
@@ -339,11 +340,11 @@
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(28, 293);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(131, 29);
+            this.label11.Size = new System.Drawing.Size(135, 29);
             this.label11.TabIndex = 50;
             this.label11.Text = "Nacimiento";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -351,7 +352,7 @@
             // butonAgregar
             // 
             this.butonAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.butonAgregar.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.butonAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.butonAgregar.ForeColor = System.Drawing.Color.Black;
             this.butonAgregar.Location = new System.Drawing.Point(728, 450);
             this.butonAgregar.Margin = new System.Windows.Forms.Padding(2);
@@ -375,11 +376,11 @@
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(423, 289);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(141, 29);
+            this.label10.Size = new System.Drawing.Size(147, 29);
             this.label10.TabIndex = 40;
             this.label10.Text = "Plan médico";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -388,11 +389,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(423, 172);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(126, 29);
+            this.label8.Size = new System.Drawing.Size(135, 29);
             this.label8.TabIndex = 38;
             this.label8.Text = "Estado civíl";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -402,11 +403,11 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label4.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(28, 341);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(197, 29);
+            this.label4.Size = new System.Drawing.Size(212, 29);
             this.label4.TabIndex = 37;
             this.label4.Text = "Asociar Familiares";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -415,11 +416,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(423, 230);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 29);
+            this.label3.Size = new System.Drawing.Size(110, 29);
             this.label3.TabIndex = 36;
             this.label3.Text = "Teléfono";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -427,7 +428,7 @@
             // BotonConfirmar2
             // 
             this.BotonConfirmar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BotonConfirmar2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14F);
+            this.BotonConfirmar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.BotonConfirmar2.ForeColor = System.Drawing.Color.Black;
             this.BotonConfirmar2.Location = new System.Drawing.Point(246, 696);
             this.BotonConfirmar2.Margin = new System.Windows.Forms.Padding(2);
@@ -441,7 +442,7 @@
             // botonVolver
             // 
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14F);
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
             this.botonVolver.Location = new System.Drawing.Point(572, 696);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
@@ -465,11 +466,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(28, 171);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(135, 29);
+            this.label7.Size = new System.Drawing.Size(136, 29);
             this.label7.TabIndex = 32;
             this.label7.Text = "Documento";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -487,11 +488,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(28, 226);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 29);
+            this.label6.Size = new System.Drawing.Size(115, 29);
             this.label6.TabIndex = 30;
             this.label6.Text = "Dirección";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -509,11 +510,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(423, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 29);
+            this.label2.Size = new System.Drawing.Size(102, 29);
             this.label2.TabIndex = 28;
             this.label2.Text = "Apellido";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -522,11 +523,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(28, 112);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 29);
+            this.label5.Size = new System.Drawing.Size(101, 29);
             this.label5.TabIndex = 27;
             this.label5.Text = "Nombre";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -544,11 +545,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(26, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(329, 41);
+            this.label1.Size = new System.Drawing.Size(323, 37);
             this.label1.TabIndex = 25;
             this.label1.Text = "N° de afiliado a editar";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

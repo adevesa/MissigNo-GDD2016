@@ -33,7 +33,7 @@
             this.top5 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.botonVolver = new System.Windows.Forms.Button();
-            this.BotonFiltrar = new System.Windows.Forms.Button();
+            this.BotonBuscar = new System.Windows.Forms.Button();
             this.AnioDeBaja = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.panel1.Controls.Add(this.top5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.botonVolver);
-            this.panel1.Controls.Add(this.BotonFiltrar);
+            this.panel1.Controls.Add(this.BotonBuscar);
             this.panel1.Controls.Add(this.AnioDeBaja);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label9);
@@ -94,11 +94,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(53, 306);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 37);
+            this.label3.Size = new System.Drawing.Size(140, 33);
             this.label3.TabIndex = 118;
             this.label3.Text = "Semestre";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -106,7 +106,7 @@
             // botonVolver
             // 
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
             this.botonVolver.Location = new System.Drawing.Point(252, 436);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
@@ -117,18 +117,18 @@
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // BotonFiltrar
+            // BotonBuscar
             // 
-            this.BotonFiltrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BotonFiltrar.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
-            this.BotonFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.BotonFiltrar.Location = new System.Drawing.Point(60, 436);
-            this.BotonFiltrar.Margin = new System.Windows.Forms.Padding(2);
-            this.BotonFiltrar.Name = "BotonFiltrar";
-            this.BotonFiltrar.Size = new System.Drawing.Size(153, 52);
-            this.BotonFiltrar.TabIndex = 116;
-            this.BotonFiltrar.Text = "Filtrar";
-            this.BotonFiltrar.UseVisualStyleBackColor = true;
+            this.BotonBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BotonBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
+            this.BotonBuscar.ForeColor = System.Drawing.Color.Black;
+            this.BotonBuscar.Location = new System.Drawing.Point(60, 436);
+            this.BotonBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.BotonBuscar.Name = "BotonBuscar";
+            this.BotonBuscar.Size = new System.Drawing.Size(153, 52);
+            this.BotonBuscar.TabIndex = 116;
+            this.BotonBuscar.Text = "Buscar";
+            this.BotonBuscar.UseVisualStyleBackColor = true;
             // 
             // AnioDeBaja
             // 
@@ -158,11 +158,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(54, 211);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 37);
+            this.label2.Size = new System.Drawing.Size(66, 33);
             this.label2.TabIndex = 65;
             this.label2.Text = "Año";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,11 +171,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(54, 109);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(172, 37);
+            this.label9.Size = new System.Drawing.Size(172, 33);
             this.label9.TabIndex = 62;
             this.label9.Text = "Elegir Top 5";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -184,11 +184,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(24, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 47);
+            this.label1.Size = new System.Drawing.Size(176, 42);
             this.label1.TabIndex = 61;
             this.label1.Text = "Registros";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -200,7 +200,9 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(435, 562);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AbmListados";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinica FRBA-Listados";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AbmListados_Load);
@@ -216,7 +218,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button botonVolver;
-        private System.Windows.Forms.Button BotonFiltrar;
+        private System.Windows.Forms.Button BotonBuscar;
         private System.Windows.Forms.NumericUpDown AnioDeBaja;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;

@@ -61,5 +61,10 @@ namespace ClinicaFrba.Abm_Afiliado
         {
 
         }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

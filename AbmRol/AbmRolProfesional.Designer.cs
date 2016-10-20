@@ -39,6 +39,7 @@
             this.Usuario = new System.Windows.Forms.Label();
             this.Hora = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.botonTops = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.botonTops);
             this.panel1.Controls.Add(this.botonCerrarSesion);
             this.panel1.Controls.Add(this.botonCrearAgenda);
             this.panel1.Controls.Add(this.botonRegistrarResultados);
@@ -59,9 +61,9 @@
             // botonCerrarSesion
             // 
             this.botonCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCerrarSesion.ForeColor = System.Drawing.Color.Black;
-            this.botonCerrarSesion.Location = new System.Drawing.Point(313, 445);
+            this.botonCerrarSesion.Location = new System.Drawing.Point(326, 464);
             this.botonCerrarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.botonCerrarSesion.Name = "botonCerrarSesion";
             this.botonCerrarSesion.Size = new System.Drawing.Size(158, 46);
@@ -73,9 +75,9 @@
             // botonCrearAgenda
             // 
             this.botonCrearAgenda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCrearAgenda.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
+            this.botonCrearAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.botonCrearAgenda.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonCrearAgenda.Location = new System.Drawing.Point(141, 323);
+            this.botonCrearAgenda.Location = new System.Drawing.Point(141, 229);
             this.botonCrearAgenda.Margin = new System.Windows.Forms.Padding(2);
             this.botonCrearAgenda.Name = "botonCrearAgenda";
             this.botonCrearAgenda.Size = new System.Drawing.Size(493, 105);
@@ -87,9 +89,9 @@
             // botonRegistrarResultados
             // 
             this.botonRegistrarResultados.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonRegistrarResultados.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
+            this.botonRegistrarResultados.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.botonRegistrarResultados.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonRegistrarResultados.Location = new System.Drawing.Point(141, 184);
+            this.botonRegistrarResultados.Location = new System.Drawing.Point(141, 117);
             this.botonRegistrarResultados.Margin = new System.Windows.Forms.Padding(2);
             this.botonRegistrarResultados.Name = "botonRegistrarResultados";
             this.botonRegistrarResultados.Size = new System.Drawing.Size(493, 108);
@@ -101,9 +103,9 @@
             // botonCancelarTurno
             // 
             this.botonCancelarTurno.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCancelarTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCancelarTurno.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonCancelarTurno.Location = new System.Drawing.Point(141, 48);
+            this.botonCancelarTurno.Location = new System.Drawing.Point(141, 12);
             this.botonCancelarTurno.Margin = new System.Windows.Forms.Padding(2);
             this.botonCancelarTurno.Name = "botonCancelarTurno";
             this.botonCancelarTurno.Size = new System.Drawing.Size(493, 101);
@@ -166,6 +168,20 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // botonTops
+            // 
+            this.botonTops.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonTops.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.botonTops.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.botonTops.Location = new System.Drawing.Point(141, 338);
+            this.botonTops.Margin = new System.Windows.Forms.Padding(2);
+            this.botonTops.Name = "botonTops";
+            this.botonTops.Size = new System.Drawing.Size(493, 105);
+            this.botonTops.TabIndex = 37;
+            this.botonTops.Text = "Tops";
+            this.botonTops.UseVisualStyleBackColor = true;
+            this.botonTops.Click += new System.EventHandler(this.botonTops_Click);
+            // 
             // AbmRolProfesional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,5 +214,6 @@
         private System.Windows.Forms.Label Usuario;
         private System.Windows.Forms.Label Hora;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button botonTops;
     }
 }

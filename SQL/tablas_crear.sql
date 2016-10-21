@@ -1,5 +1,7 @@
 USE GD2C2016
 GO
+DROP SCHEMA [MISSINGNO]
+GO
 CREATE SCHEMA [MISSINGNO]
 -- CREACION DE TABLAS
 
@@ -114,7 +116,7 @@ create table MISSINGNO.Usuario (
 	admin_id int not null,
 	unique (doc_nro))
 
-
+GO
 --DECLARACION DE CONSTRAINT
 alter table MISSINGNO.Profesional
 	add constraint FK_Profesional_especialidad_id foreign key (especialidad_id) references MISSINGNO.Especialidades_de_profesional(especialidad_id);

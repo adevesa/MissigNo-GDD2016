@@ -1,6 +1,7 @@
 USE GD2C2016
 GO
 
+
 --ELIMINACION DE FOREIGN KEYS
 
 alter table MISSINGNO.Administrador
@@ -113,7 +114,6 @@ drop table MISSINGNO.Especialidades_de_profesional;
 
 if object_id('MISSINGNO.Turno') is not null
 drop table MISSINGNO.Turno;
-
 
 DROP SCHEMA [MISSINGNO]
 GO

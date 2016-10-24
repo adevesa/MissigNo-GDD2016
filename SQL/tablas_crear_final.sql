@@ -106,16 +106,11 @@ alter table MISSINGNO.Dia
 alter table MISSINGNO.Sintoma
 	drop constraint FK_Sintoma_consulta_id;
 
-	-- TABLA REGISTRO_LLEGADA
-
-alter table MISSINGNO.Registro_llegada
-	drop constraint FK_Registro_llegada_bono_id;
-alter table MISSINGNO.Registro_llegada
-	drop constraint FK_Registro_llegada_admin_id;
- 
-
 GO
 --  ELIMINACION DE TABLAS
+
+if object_id('MISSINGNO.Tipo_especialidad') is not null
+drop table MISSINGNO.Tipo_especialidad;
 
 if object_id('MISSINGNO.Administrativo') is not null
 drop table MISSINGNO.Administrativo;
@@ -368,7 +363,7 @@ GO
 	-- TABLA PROFESIONAL (FALTA QUE FUNCIONE FK ROL_ID)
 
 alter table MISSINGNO.Profesional
-	add constraint FK_Profesional_rol_id foreign key (rol_id) references MISSINGNO.Rol_de_usuario(rol_id);
+	add constraint FK_Profesional_rol_id foreign key (rol_id) references MISSINGNO.Rol(rol_id);
 
 	-- TABLA BONO
 
@@ -391,7 +386,7 @@ alter table MISSINGNO.Compra_bono
 alter table MISSINGNO.Afiliado	
 	add constraint FK_Afiliado_plan_id foreign key (plan_id) references MISSINGNO.Planes(plan_id);
 alter table MISSINGNO.Afiliado 
-	add constraint FK_Afiliado_rol_id foreign key (rol_id) references MISSINGNO.Rol_de_usuario(rol_id);
+	add constraint FK_Afiliado_rol_id foreign key (rol_id) references MISSINGNO.Rol(rol_id);
 alter table MISSINGNO.Afiliado
 	add constraint FK_Afiliado_afiliado_encargado foreign key (afiliado_encargado) references MISSINGNO.Afiliado(afiliado_id);
 
@@ -415,7 +410,7 @@ alter table MISSINGNO.Cancelacion_turno
 	-- TABLA ADMINISTRATIVO (FALTA QUE FUNCIONE FK ROL_ID)
 
 alter table MISSINGNO.Administrativo
-	add constraint FK_Administrativo_rol_id foreign key (rol_id) references MISSINGNO.Rol_de_usuario(rol_id);
+	add constraint FK_Administrativo_rol_id foreign key (rol_id) references MISSINGNO.Rol(rol_id);
 
 
 	-- TABLA AGENDA

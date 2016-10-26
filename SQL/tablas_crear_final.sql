@@ -6,7 +6,7 @@ GO
 	-- TABLA ADMINISTRATIVO
 
 alter table MISSINGNO.Administrativo
-	drop constraint FK_Administrativo_username;
+	drop constraint FK_Administrativo_rol_id;
 
   -- TABLA CONSULTA_MEDICA
 
@@ -22,7 +22,7 @@ alter table MISSINGNO.Consulta_medica
   -- TABLA AFILIADO
   
 alter table MISSINGNO.Afiliado
-	drop constraint FK_Afiliado_username;
+	drop constraint FK_Afiliado_rol_id;
 alter table MISSINGNO.Afiliado
 	drop constraint FK_Afiliado_plan_id;
 alter table MISSINGNO.Afiliado
@@ -31,7 +31,7 @@ alter table MISSINGNO.Afiliado
   -- TABLA PROFESIONAL
   
 alter table MISSINGNO.Profesional
-	drop constraint FK_Profesional_username;
+	drop constraint FK_Profesional_rol_id;
 
   -- TABLA AGENDA
   
@@ -197,7 +197,7 @@ GO
 	-- TABLA USUARIO
 
 	create table MISSINGNO.Usuario (
-		username varchar(50) primary key,
+		username varchar(15) primary key,
 		doc_tipo varchar(10) not null,
 		doc_nro numeric(18,0) not null,
 		contrasenia nvarchar(30) not null,
@@ -214,7 +214,7 @@ GO
 
 	create table MISSINGNO.Rol_de_usuario(
 		rol_id int not null,
-		username varchar(50) not null,
+		username varchar(15) not null,
 		primary key (rol_id,username))
 
 	-- TABLA FUNCIONALIDAD_DE_ROL
@@ -248,7 +248,7 @@ GO
 
 	create table MISSINGNO.Profesional(
 		profesional_matricula int primary key,
-		username varchar(50) not null)
+		rol_id int not null)
 
 	-- TABLA ESPECIALIDAD_DE_PROFESIONAL
 
@@ -278,7 +278,7 @@ GO
 
 	create table MISSINGNO.Afiliado(
 		afiliado_id int primary key identity,
-		username varchar(50) not null,
+		rol_id int not null,
 		plan_id int not null,
 		afiliado_encargado int,
 		afiliado_fec_baja datetime,
@@ -353,7 +353,7 @@ GO
 	
 	create table MISSINGNO.Administrativo(
 		admin_id int primary key identity,
-		username varchar(50) not null)
+		rol_id int not null)
 	
 set dateformat dmy;
 GO
@@ -363,7 +363,7 @@ GO
 	-- TABLA PROFESIONAL (FALTA QUE FUNCIONE FK ROL_ID)
 
 alter table MISSINGNO.Profesional
-	add constraint FK_Profesional_username foreign key (username) references MISSINGNO.Usuario(username);
+	add constraint FK_Profesional_rol_id foreign key (rol_id) references MISSINGNO.Rol(rol_id);
 
 	-- TABLA BONO
 
@@ -381,12 +381,12 @@ alter table MISSINGNO.Compra_bono
 alter table MISSINGNO.Compra_bono
 	add constraint FK_Compra_bono_plan_id foreign key (plan_id) references MISSINGNO.Planes(plan_id);
 
-	-- TABLA AFILIADO 
+	-- TABLA AFILIADO (FALTA QUE FUNCIONE FK ROL_ID)
 
 alter table MISSINGNO.Afiliado	
 	add constraint FK_Afiliado_plan_id foreign key (plan_id) references MISSINGNO.Planes(plan_id);
 alter table MISSINGNO.Afiliado 
-	add constraint FK_Afiliado_username foreign key (username) references MISSINGNO.Usuario(username);
+	add constraint FK_Afiliado_rol_id foreign key (rol_id) references MISSINGNO.Rol(rol_id);
 alter table MISSINGNO.Afiliado
 	add constraint FK_Afiliado_afiliado_encargado foreign key (afiliado_encargado) references MISSINGNO.Afiliado(afiliado_id);
 
@@ -410,7 +410,7 @@ alter table MISSINGNO.Cancelacion_turno
 	-- TABLA ADMINISTRATIVO (FALTA QUE FUNCIONE FK ROL_ID)
 
 alter table MISSINGNO.Administrativo
-	add constraint FK_Administrativo_username foreign key (username) references MISSINGNO.Usuario(username);
+	add constraint FK_Administrativo_rol_id foreign key (rol_id) references MISSINGNO.Rol(rol_id);
 
 
 	-- TABLA AGENDA

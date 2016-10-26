@@ -135,9 +135,10 @@ INSERT INTO MISSINGNO.Funcionalidad_de_rol(
 INSERT INTO MISSINGNO.Funcionalidad_de_rol(
 			rol_id,
 			funcionalidad_id)
-		VALUES (3,3), (3,4), (3,7)
+		VALUES (3,3), (3,4), (3,5)
 
 GO
+
 
 /* pruebas */
 select * from MISSINGNO.Usuario
@@ -161,6 +162,8 @@ WHERE Tipo_Especialidad_Codigo IS NOT NULL
 SET IDENTITY_INSERT MISSINGNO.Tipo_especialidad OFF
 DBCC CHECKIDENT ("MISSINGNO.Tipo_especialidad")
 
+/*PRUEBA*/
+SELECT * FROM [MISSINGNO].[Tipo_especialidad]
 
 /* MIGRACION DE ESPECIALIDADES */
 SET IDENTITY_INSERT MISSINGNO.Especialidad ON
@@ -171,6 +174,9 @@ WHERE Especialidad_Codigo IS NOT NULL
 SET IDENTITY_INSERT MISSINGNO.Especialidad OFF
 DBCC CHECKIDENT ("MISSINGNO.Especialidad")
 
+/*PRUEBA*/
+SELECT * FROM [MISSINGNO].[Especialidad]
+
 /* MIGRACION DE PLANES */
 SET IDENTITY_INSERT MISSINGNO.Planes ON
 INSERT INTO MISSINGNO.Planes (plan_id, plan_descripcion, bono_precio_farmacia, bono_precio_consulta)
@@ -179,6 +185,9 @@ FROM gd_esquema.Maestra
 WHERE Plan_Med_Codigo IS NOT NULL
 SET IDENTITY_INSERT MISSINGNO.Planes OFF
 DBCC CHECKIDENT ("MISSINGNO.Planes")
+
+/* PRUEBA */
+SELECT * FROM MISSINGNO.Planes
 
 /* DECLARACION DE VARIABLES PARA CURSORES */
 
@@ -216,12 +225,76 @@ IF (@Existe IS NULL)
 		SET @Existe = @@IDENTITY
 	END
 
-INSERT INTO MISSINGNO.Afiliado(Paci_Usuario,Paci_Numero, Paci_Estado_Civil, Paci_Cant_Hijos, Paci_Plan) VALUES (@Existe, @Existe, 0, 0, @Plan)
+INSERT INTO MISSINGNO.Afiliado(username, afiliado_estado_civil, afiliado_encargado,plan_id, afiliado_baja_logica, afiliado_fec_baja) VALUES (@Mail, 0, NULL, @Plan,0, NULL)
 
-INSERT INTO CHAMBA.Rol_X_Usuario (Rol_X_Usua_Usuario, Rol_X_Usua_Rol) VALUES (@Existe, @Rol)
+INSERT INTO MISSINGNO.Rol_de_usuario(username, rol_id) VALUES (@Mail, @Rol)
 
-FETCH NEXT FROM cursorPacientes INTO @DNI, @Nombre, @Apellido, @Direccion, @Telefono, @Mail, @Fecha_Nac, @Plan
+FETCH NEXT FROM cursorAfiliados INTO @DNI, @Nombre, @Apellido, @Domicilio, @Telefono, @Mail, @Fec_Nac, @Plan
 END
-CLOSE cursorPacientes
-DEALLOCATE cursorPacientes
+CLOSE cursorAfiliados
+DEALLOCATE cursorAfiliados
 
+SELECT * FROM MISSINGNO.Usuario
+SELECT * FROM MISSINGNO.AFILIADO
+SELECT DISTINCT username FROM MISSINGNO.AFILIADO
+SELECT * FROM Missingno.rol_de_usuario
+
+--4895 USUARIOS SIN ADMIN
+--4895 Roles de usuario
+--4932 AFILIADOS, con distinct sale 4895, hay un problema con eso.
+
+
+/* MIGRACION DE PROFESIONALES */
+
+DECLARE cursorMedicos CURSOR FOR SELECT DISTINCT Medico_DNI, Medico_Nombre, Medico_Apellido, Medico_Direccion, Medico_Telefono, Medico_Mail, Medico_Fecha_Nac
+FROM gd_esquema.Maestra
+WHERE Medico_DNI IS NOT NULL
+DECLARE @DNI numeric(18,0), @Nombre varchar(255), @Apellido varchar(255), @Direccion varchar(255), @Telefono numeric(18,0), @Mail varchar(255), @Fecha_nac datetime
+DECLARE @Plan numeric(18,0)
+DECLARE @Existe numeric(18,0)
+
+/* DECLARACION PARA VARIABLE ROL */
+
+DECLARE @Rol numeric(18,0)
+
+
+SET @Rol = (SELECT rol_id FROM MISSINGNO.Rol WHERE rol_nombre = 'Profesional')
+
+OPEN cursorMedicos
+FETCH NEXT FROM cursorMedicos INTO @DNI, @Nombre, @Apellido, @Direccion, @Telefono, @Mail, @Fecha_Nac
+WHILE @@FETCH_STATUS=0
+BEGIN
+
+SET @Existe = NULL
+
+SELECT @Existe = username FROM MISSINGNO.Usuario WHERE doc_nro = @DNI
+
+IF (@Existe IS NULL) 
+	BEGIN
+		INSERT INTO MISSINGNO.Usuario (doc_nro, doc_tipo, nombre, apellido, domicilio, telefono, mail, fec_nac, sexo, username, contrasenia)
+		VALUES (@DNI, '-', @Nombre, @Apellido, @Direccion, @Telefono, @Mail, @Fecha_nac, '-', @Mail, HASHBYTES('SHA2_256', CAST(@DNI AS VARCHAR(18))))
+		SET @Existe = @@IDENTITY
+	END
+
+INSERT INTO MISSINGNO.Profesional(username, profesional_matricula) VALUES (@MaiL, -1) -- REVISAR.
+
+INSERT INTO MISSINGNO.Rol_de_usuario(username, rol_id) VALUES (@Mail, @Rol)
+
+
+FETCH NEXT FROM cursorMedicos INTO @DNI, @Nombre, @Apellido, @Direccion, @Telefono, @Mail, @Fecha_Nac
+END
+CLOSE cursorMedicos
+DEALLOCATE cursorMedicos
+
+/*pruebas*/
+select * from missingno.profesional
+select * from missingno.usuario
+select * from missingno.rol_de_usuario
+
+DELETE FROM MISSINGNO.Rol_de_usuario;
+DELETE FROM MISSINGNO.Profesional;
+DELETE FROM MISSINGNO.Usuario;
+
+select * from gd_esquema.Maestra
+
+--HAY QUE REVISAR LA CORRESPONDENCIA DE MATRICULA Y USERNAME, LOS PK Y FK HACEN CONFLICTO

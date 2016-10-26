@@ -1,55 +1,55 @@
 USE GD2C2016
 GO
 
-TRUNCATE TABLE MISSINGNO.Usuario;
-TRUNCATE TABLE MISSINGNO.Afiliado;
+DELETE FROM MISSINGNO.Usuario;
+DELETE FROM MISSINGNO.Afiliado;
 DBCC CHECKIDENT ('MISSINGNO.Afiliado', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Tipo_especialidad;
-TRUNCATE TABLE MISSINGNO.Profesional;
-TRUNCATE TABLE MISSINGNO.Administrativo;
+DELETE FROM MISSINGNO.Tipo_especialidad;
+DELETE FROM MISSINGNO.Profesional;
+DELETE FROM MISSINGNO.Administrativo;
 DBCC CHECKIDENT ('MISSINGNO.Administrativo', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Especialidad_de_profesional;
-TRUNCATE TABLE MISSINGNO.Planes;
-DBCC CHECKIDENT ('MISSINGNO.Planes', RESEED, 0)
+DELETE FROM MISSINGNO.Especialidad_de_profesional;
+DELETE FROM MISSINGNO.Planes
+DBCC CHECKIDENT ('MISSINGNO.Planes',RESEED,0)
 GO
-TRUNCATE TABLE MISSINGNO.Afiliado_Historial;
+DELETE FROM MISSINGNO.Afiliado_Historial;
 DBCC CHECKIDENT ('MISSINGNO.Afiliado_historial', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Agenda;
+DELETE FROM MISSINGNO.Agenda;
 DBCC CHECKIDENT ('MISSINGNO.Agenda', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Dia;
-TRUNCATE TABLE MISSINGNO.Consulta_medica;
+DELETE FROM MISSINGNO.Dia;
+DELETE FROM MISSINGNO.Consulta_medica;
 DBCC CHECKIDENT ('MISSINGNO.Consulta_medica', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Sintoma;
+DELETE FROM MISSINGNO.Sintoma;
 DBCC CHECKIDENT ('MISSINGNO.Sintoma', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Compra_bono;
+DELETE FROM MISSINGNO.Compra_bono;
 DBCC CHECKIDENT ('MISSINGNO.Compra_bono', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Bono;
+DELETE FROM MISSINGNO.Bono;
 DBCC CHECKIDENT ('MISSINGNO.Bono', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Turno;
+DELETE FROM MISSINGNO.Turno;
 DBCC CHECKIDENT ('MISSINGNO.Turno', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Cancelacion_turno;
+DELETE FROM MISSINGNO.Cancelacion_turno;
 DBCC CHECKIDENT ('MISSINGNO.Cancelacion_turno', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Funcionalidad;
+DELETE FROM MISSINGNO.Funcionalidad;
 DBCC CHECKIDENT ('MISSINGNO.Funcionalidad', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Especialidad;
+DELETE FROM MISSINGNO.Especialidad;
 DBCC CHECKIDENT ('MISSINGNO.Especialidad', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Funcionalidad_de_rol;
-TRUNCATE TABLE MISSINGNO.Rol;
+DELETE FROM MISSINGNO.Funcionalidad_de_rol;
+DELETE FROM MISSINGNO.Rol;
 DBCC CHECKIDENT ('MISSINGNO.Rol', RESEED, 0)
 GO
-TRUNCATE TABLE MISSINGNO.Rol_de_usuario;
+DELETE FROM MISSINGNO.Rol_de_usuario;
 
 GO
 
@@ -139,6 +139,19 @@ INSERT INTO MISSINGNO.Funcionalidad_de_rol(
 
 GO
 
+/* pruebas */
+select * from MISSINGNO.Usuario
+select * from MISSINGNO.Rol
+select * from MISSINGNO.Funcionalidad
+select * from MISSINGNO.Rol_de_usuario
+select * from MISSINGNO.Funcionalidad_de_rol
+select U.username, F.Funcionalidad_nombre, R.rol_nombre from MISSINGNO.Usuario as U, MISSINGNO.Funcionalidad as F, MISSINGNO.Rol as R, MISSINGNO.Rol_de_usuario as RO, MISSINGNO.Funcionalidad_de_rol as FO
+	where U.username = RO.username and
+		  RO.rol_id = R.rol_id and
+		  R.rol_id = FO.rol_id and
+		  FO.funcionalidad_id = F.funcionalidad_id	
+		  
+
 /* MIGRACION DE TIPOS DE ESPECIALIDAD */
 SET IDENTITY_INSERT MISSINGNO.Tipo_especialidad ON
 INSERT INTO MISSINGNO.Tipo_especialidad(tipo_especialidad_id,tipo_especialidad_desc)
@@ -157,7 +170,6 @@ FROM gd_esquema.Maestra
 WHERE Especialidad_Codigo IS NOT NULL
 SET IDENTITY_INSERT MISSINGNO.Especialidad OFF
 DBCC CHECKIDENT ("MISSINGNO.Especialidad")
-
 
 /* MIGRACION DE PLANES */
 SET IDENTITY_INSERT MISSINGNO.Planes ON
@@ -200,7 +212,7 @@ SELECT @Existe = username FROM MISSINGNO.Usuario WHERE doc_nro = @DNI
 IF (@Existe IS NULL) 
 	BEGIN
 		INSERT INTO MISSINGNO.Usuario (doc_nro, doc_tipo, nombre, apellido, domicilio, telefono, mail, fec_nac, sexo, username, contrasenia)
-		VALUES (@DNI, '-', @Nombre, @Apellido, @Domicilio, @Telefono, @Mail, @Fec_nac, 'M', @Mail, HASHBYTES('SHA2_256', CAST(@DNI AS VARCHAR(18))))
+		VALUES (@DNI, '-', @Nombre, @Apellido, @Domicilio, @Telefono, @Mail, @Fec_nac, '-', @Mail, HASHBYTES('SHA2_256', CAST(@DNI AS VARCHAR(18))))
 		SET @Existe = @@IDENTITY
 	END
 

@@ -1,6 +1,8 @@
 USE GD2C2016
 GO
 
+-- EJECUTAR LOS DELETES MAS DE UNA VEZ ( DEBE HABER UN ERROR CON LAS PRECEDENCIAS)
+
 DELETE FROM MISSINGNO.Usuario;
 DELETE FROM MISSINGNO.Afiliado;
 DBCC CHECKIDENT ('MISSINGNO.Afiliado', RESEED, 0)
@@ -23,9 +25,6 @@ GO
 DELETE FROM MISSINGNO.Dia;
 DELETE FROM MISSINGNO.Consulta_medica;
 DBCC CHECKIDENT ('MISSINGNO.Consulta_medica', RESEED, 0)
-GO
-DELETE FROM MISSINGNO.Sintoma;
-DBCC CHECKIDENT ('MISSINGNO.Sintoma', RESEED, 0)
 GO
 DELETE FROM MISSINGNO.Compra_bono;
 DBCC CHECKIDENT ('MISSINGNO.Compra_bono', RESEED, 0)
@@ -139,20 +138,6 @@ INSERT INTO MISSINGNO.Funcionalidad_de_rol(
 
 GO
 
-
-/* pruebas */
-select * from MISSINGNO.Usuario
-select * from MISSINGNO.Rol
-select * from MISSINGNO.Funcionalidad
-select * from MISSINGNO.Rol_de_usuario
-select * from MISSINGNO.Funcionalidad_de_rol
-select U.username, F.Funcionalidad_nombre, R.rol_nombre from MISSINGNO.Usuario as U, MISSINGNO.Funcionalidad as F, MISSINGNO.Rol as R, MISSINGNO.Rol_de_usuario as RO, MISSINGNO.Funcionalidad_de_rol as FO
-	where U.username = RO.username and
-		  RO.rol_id = R.rol_id and
-		  R.rol_id = FO.rol_id and
-		  FO.funcionalidad_id = F.funcionalidad_id	
-		  
-
 /* MIGRACION DE TIPOS DE ESPECIALIDAD */
 SET IDENTITY_INSERT MISSINGNO.Tipo_especialidad ON
 INSERT INTO MISSINGNO.Tipo_especialidad(tipo_especialidad_id,tipo_especialidad_desc)
@@ -186,7 +171,19 @@ WHERE Plan_Med_Codigo IS NOT NULL
 SET IDENTITY_INSERT MISSINGNO.Planes OFF
 DBCC CHECKIDENT ("MISSINGNO.Planes")
 
-/* PRUEBA */
+
+/* pruebas */
+select * from MISSINGNO.Usuario
+select * from MISSINGNO.Rol
+select * from MISSINGNO.Funcionalidad
+select * from MISSINGNO.Rol_de_usuario
+select * from MISSINGNO.Funcionalidad_de_rol
+select U.username, F.Funcionalidad_nombre, R.rol_nombre from MISSINGNO.Usuario as U, MISSINGNO.Funcionalidad as F, MISSINGNO.Rol as R, MISSINGNO.Rol_de_usuario as RO, MISSINGNO.Funcionalidad_de_rol as FO
+	where U.username = RO.username and
+		  RO.rol_id = R.rol_id and
+		  R.rol_id = FO.rol_id and
+		  FO.funcionalidad_id = F.funcionalidad_id	
+		  
 SELECT * FROM MISSINGNO.Planes
 
 /* DECLARACION DE VARIABLES PARA CURSORES */
@@ -225,8 +222,10 @@ IF (@Existe IS NULL)
 		SET @Existe = @@IDENTITY
 	END
 
+IF(NOT EXISTS(SELECT username from MISSINGNO.Afiliado where username = @MAIL))
+BEGIN
 INSERT INTO MISSINGNO.Afiliado(username, afiliado_estado_civil, afiliado_encargado,plan_id, afiliado_baja_logica, afiliado_fec_baja) VALUES (@Mail, 0, NULL, @Plan,0, NULL)
-
+END
 INSERT INTO MISSINGNO.Rol_de_usuario(username, rol_id) VALUES (@Mail, @Rol)
 
 FETCH NEXT FROM cursorAfiliados INTO @DNI, @Nombre, @Apellido, @Domicilio, @Telefono, @Mail, @Fec_Nac, @Plan
@@ -234,15 +233,25 @@ END
 CLOSE cursorAfiliados
 DEALLOCATE cursorAfiliados
 
+/* Pruebas */
+
 SELECT * FROM MISSINGNO.Usuario
 SELECT * FROM MISSINGNO.AFILIADO
-SELECT DISTINCT username FROM MISSINGNO.AFILIADO
+SELECT NOT(DISTINCT) username FROM MISSINGNO.AFILIADO
 SELECT * FROM Missingno.rol_de_usuario
 
---4895 USUARIOS SIN ADMIN
---4895 Roles de usuario
---4932 AFILIADOS, con distinct sale 4895, hay un problema con eso.
+SELECT username, count(*)
+FROM MISSINGNO.Afiliado
+GROUP BY username
+HAVING count(*) > 1
 
+select * from MISSINGNO.Afiliado
+	where username = 'belena_Paz@gmail.com'
+
+DELETE FROM MISSINGNO.Usuario
+DELETE FROM MISSINGNO.Afiliado
+DELETE FROM MISSINGNO.Rol_de_usuario
+--4895 USUARIOS SIN ADMIN sin profesionales
 
 /* MIGRACION DE PROFESIONALES */
 
@@ -253,10 +262,7 @@ DECLARE @DNI numeric(18,0), @Nombre varchar(255), @Apellido varchar(255), @Direc
 DECLARE @Plan numeric(18,0)
 DECLARE @Existe numeric(18,0)
 
-/* DECLARACION PARA VARIABLE ROL */
-
 DECLARE @Rol numeric(18,0)
-
 
 SET @Rol = (SELECT rol_id FROM MISSINGNO.Rol WHERE rol_nombre = 'Profesional')
 
@@ -276,7 +282,7 @@ IF (@Existe IS NULL)
 		SET @Existe = @@IDENTITY
 	END
 
-INSERT INTO MISSINGNO.Profesional(username, profesional_matricula) VALUES (@MaiL, -1) -- REVISAR.
+INSERT INTO MISSINGNO.Profesional(username, profesional_matricula) VALUES (@MaiL, -1) -- -1 valor a revisar.
 
 INSERT INTO MISSINGNO.Rol_de_usuario(username, rol_id) VALUES (@Mail, @Rol)
 
@@ -287,9 +293,14 @@ CLOSE cursorMedicos
 DEALLOCATE cursorMedicos
 
 /*pruebas*/
+
 select * from missingno.profesional
 select * from missingno.usuario
 select * from missingno.rol_de_usuario
+select * from missingno.Especialidad
+select * from missingno.Tipo_especialidad
+select * from missiNgno.Especialidad_de_profesional
+
 
 DELETE FROM MISSINGNO.Rol_de_usuario;
 DELETE FROM MISSINGNO.Profesional;
@@ -297,4 +308,15 @@ DELETE FROM MISSINGNO.Usuario;
 
 select * from gd_esquema.Maestra
 
---HAY QUE REVISAR LA CORRESPONDENCIA DE MATRICULA Y USERNAME, LOS PK Y FK HACEN CONFLICTO
+-- MIGRACION DE ESPECIALIDAD CON PROFESIONAL.
+
+INSERT INTO MISSINGNO.Especialidad_de_profesional(especialidad_id, profesional_id)
+SELECT DISTINCT E.especialidad_id, P.profesional_id
+from gd_esquema.Maestra, MISSINGNO.Profesional P, MISSINGNO.Especialidad E
+where P.username = Medico_Mail and
+	  E.especialidad_id = Especialidad_Codigo
+
+/* Pruebas */
+select  DISTINCT profesional_id from MISSINGNO.Especialidad_de_profesional
+select * from MISSINGNO.Especialidad
+DELETE FROM MISSINGNO.Especialidad_de_profesional;

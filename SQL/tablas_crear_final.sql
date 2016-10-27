@@ -101,12 +101,6 @@ alter table MISSINGNO.Afiliado_historial
 alter table MISSINGNO.Dia
 	drop constraint FK_Dia_agenda_id;
 
-	--TABLA SINTOMA
-
-alter table MISSINGNO.Sintoma
-	drop constraint FK_Sintoma_consulta_id;
-
-GO
 --  ELIMINACION DE TABLAS
 
 if object_id('MISSINGNO.Tipo_especialidad') is not null
@@ -141,9 +135,6 @@ drop table MISSINGNO.Profesional;
 
 if object_id('MISSINGNO.Usuario') is not null
 drop table MISSINGNO.Usuario;
-
-if object_id('MISSINGNO.Sintoma') is not null
-drop table MISSINGNO.Sintoma;
 
 if object_id('MISSINGNO.Compra_bono') is not null
 drop table MISSINGNO.Compra_bono;
@@ -254,7 +245,7 @@ GO
 	-- TABLA ESPECIALIDAD_DE_PROFESIONAL
 
 	create table MISSINGNO.Especialidad_de_profesional(
-		especialidad_id int primary key identity,
+		especialidad_id int not null,
 		profesional_id int not null)
 
 	-- TABLA TURNO
@@ -439,11 +430,6 @@ alter table MISSINGNO.Funcionalidad_de_rol
 	add constraint FK_Funcionalidad_de_rol_rol_id foreign key (rol_id) references MISSINGNO.Rol(rol_id);
 alter table MISSINGNO.Funcionalidad_de_rol
 	add constraint FK_Funcionalidad_de_rol_funcionalidad_id foreign key (funcionalidad_id) references MISSINGNO.Funcionalidad(funcionalidad_id);
-
-	-- TABLA SINTOMA
-
-alter table MISSINGNO.Sintoma
-	add constraint FK_Sintoma_consulta_id foreign key (consulta_id) references MISSINGNO.Consulta_medica(consulta_id);
 
 	-- TABLA AFILIADO_HISTORIAL
 

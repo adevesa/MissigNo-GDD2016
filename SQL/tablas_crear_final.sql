@@ -11,7 +11,7 @@ alter table MISSINGNO.Administrativo
   -- TABLA CONSULTA_MEDICA
 
 alter table MISSINGNO.Consulta_medica
-	drop constraint FK_Consulta_medica_profesional_matricula;
+	drop constraint FK_Consulta_medica_profesional_id;
 alter table MISSINGNO.Consulta_medica
 	drop constraint FK_Consulta_medica_afiliado_id;
 alter table MISSINGNO.Consulta_medica
@@ -36,7 +36,7 @@ alter table MISSINGNO.Profesional
   -- TABLA AGENDA
   
 alter table MISSINGNO.Agenda
-	drop constraint FK_Agenda_profesional_matricula;
+	drop constraint FK_Agenda_profesional_id;
 
   -- TABLA CANCELACION_TURNO
   
@@ -46,7 +46,7 @@ alter table MISSINGNO.Cancelacion_turno
   -- TABLA TURNO
     
 alter table MISSINGNO.Turno
-	drop constraint FK_Turno_profesional_matricula
+	drop constraint FK_Turno_profesional_id;
 alter table MISSINGNO.Turno
 	drop constraint FK_Turno_bono_id;
 
@@ -87,7 +87,7 @@ alter table MISSINGNO.Especialidad
 	-- TABLA ESPECIALIDAD_DE_PROFESIONAL
 
 alter table MISSINGNO.Especialidad_de_profesional
-	drop constraint FK_Especialidad_de_profesional_profesional_matricula;
+	drop constraint FK_Especialidad_de_profesional_profesional_id;
 alter table MISSINGNO.Especialidad_de_profesional
 	drop constraint FK_Especialidad_de_profesional_especialidad_id;
 
@@ -227,7 +227,7 @@ GO
 
 	create table MISSINGNO.Agenda(
 		agenda_id int primary key identity,
-		profesional_matricula int,
+		profesional_id int not null,
 		agenda_inicio datetime,
 		agenda_fin datetime)
 
@@ -247,20 +247,21 @@ GO
 	-- TABLA PROFESIONAL
 
 	create table MISSINGNO.Profesional(
-		username varchar(50) primary key,
+		profesional_id int primary key identity,
+		username varchar(50) not null,
 		profesional_matricula int )
 
 	-- TABLA ESPECIALIDAD_DE_PROFESIONAL
 
 	create table MISSINGNO.Especialidad_de_profesional(
 		especialidad_id int primary key identity,
-		profesional_matricula int not null)
+		profesional_id int not null)
 
 	-- TABLA TURNO
 
 	create table MISSINGNO.Turno(
 		turno_id int primary key identity,
-		profesional_matricula int not null,
+		profesional_id int not null,
 		bono_id int not null,
 		fecha datetime not null,
 		horario time not null)
@@ -332,7 +333,7 @@ GO
 
 	create table MISSINGNO.Consulta_medica(
 		consulta_id int primary key identity,
-		profesional_matricula int,
+		profesional_id int not null,
 		afiliado_id int not null,
 		agenda_id int not null,
 		turno_id int not null,
@@ -393,8 +394,8 @@ alter table MISSINGNO.Afiliado
 
 	-- TABLA CONSULTA_MEDICA
 
---alter table MISSINGNO.Consulta_medica  <--- PARA REVISAR
-	--add constraint FK_Consulta_medica_profesional_matricula foreign key (profesional_matricula) references MISSINGNO.Profesional(profesional_matricula);
+alter table MISSINGNO.Consulta_medica 
+	add constraint FK_Consulta_medica_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
 alter table MISSINGNO.Consulta_medica	
 	add constraint FK_Consulta_medica_afiliado_id foreign key (afiliado_id) references MISSINGNO.Afiliado(afiliado_id);
 alter table MISSINGNO.Consulta_medica
@@ -416,12 +417,12 @@ alter table MISSINGNO.Administrativo
 	-- TABLA AGENDA
 
 alter table MISSINGNO.Agenda
-	add constraint FK_Agenda_profesional_matricula foreign key (profesional_matricula) references MISSINGNO.Profesional(profesional_matricula);
+	add constraint FK_Agenda_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
 	
 	-- TABLA TURNO
 
 alter table MISSINGNO.Turno
-	add constraint FK_Turno_profesional_matricula foreign key (profesional_matricula) references MISSINGNO.Profesional(profesional_matricula);
+	add constraint FK_Turno_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
 alter table MISSINGNO.Turno
 	add constraint FK_Turno_bono_id foreign key (bono_id) references MISSINGNO.Bono(bono_id);
 
@@ -465,4 +466,4 @@ alter table MISSINGNO.Especialidad
 alter table MISSINGNO.Especialidad_de_profesional
 	add constraint FK_Especialidad_de_profesional_especialidad_id foreign key (especialidad_id) references MISSINGNO.Especialidad(especialidad_id);
 alter table MISSINGNO.Especialidad_de_profesional
-	add constraint FK_Especialidad_de_profesional_profesional_matricula foreign key (profesional_matricula) references MISSINGNO.Profesional(profesional_matricula);
+	add constraint FK_Especialidad_de_profesional_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);

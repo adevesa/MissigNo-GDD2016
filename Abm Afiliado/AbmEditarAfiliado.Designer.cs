@@ -39,11 +39,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.botonBuscar = new System.Windows.Forms.Button();
             this.textoID = new System.Windows.Forms.TextBox();
-            this.AnioDeBaja = new System.Windows.Forms.NumericUpDown();
-            this.MesDeBaja = new System.Windows.Forms.NumericUpDown();
-            this.DiaDeBaja = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.estadoCivil = new System.Windows.Forms.ComboBox();
             this.botonQuitar = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -64,26 +59,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textoNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AnioDeBaja)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MesDeBaja)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiaDeBaja)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.comboBox2);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.botonBuscar);
             this.panel1.Controls.Add(this.textoID);
-            this.panel1.Controls.Add(this.AnioDeBaja);
-            this.panel1.Controls.Add(this.MesDeBaja);
-            this.panel1.Controls.Add(this.DiaDeBaja);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.estadoCivil);
             this.panel1.Controls.Add(this.botonQuitar);
             this.panel1.Controls.Add(this.label11);
@@ -207,104 +196,6 @@
             this.textoID.Name = "textoID";
             this.textoID.Size = new System.Drawing.Size(339, 44);
             this.textoID.TabIndex = 58;
-            // 
-            // AnioDeBaja
-            // 
-            this.AnioDeBaja.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F);
-            this.AnioDeBaja.Location = new System.Drawing.Point(294, 299);
-            this.AnioDeBaja.Margin = new System.Windows.Forms.Padding(2);
-            this.AnioDeBaja.Maximum = new decimal(new int[] {
-            2016,
-            0,
-            0,
-            0});
-            this.AnioDeBaja.Minimum = new decimal(new int[] {
-            1900,
-            0,
-            0,
-            0});
-            this.AnioDeBaja.Name = "AnioDeBaja";
-            this.AnioDeBaja.Size = new System.Drawing.Size(61, 32);
-            this.AnioDeBaja.TabIndex = 57;
-            this.AnioDeBaja.Value = new decimal(new int[] {
-            2016,
-            0,
-            0,
-            0});
-            // 
-            // MesDeBaja
-            // 
-            this.MesDeBaja.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F);
-            this.MesDeBaja.Location = new System.Drawing.Point(240, 299);
-            this.MesDeBaja.Margin = new System.Windows.Forms.Padding(2);
-            this.MesDeBaja.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.MesDeBaja.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.MesDeBaja.Name = "MesDeBaja";
-            this.MesDeBaja.Size = new System.Drawing.Size(34, 32);
-            this.MesDeBaja.TabIndex = 56;
-            this.MesDeBaja.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // DiaDeBaja
-            // 
-            this.DiaDeBaja.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DiaDeBaja.Location = new System.Drawing.Point(184, 299);
-            this.DiaDeBaja.Margin = new System.Windows.Forms.Padding(2);
-            this.DiaDeBaja.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.DiaDeBaja.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.DiaDeBaja.Name = "DiaDeBaja";
-            this.DiaDeBaja.Size = new System.Drawing.Size(34, 32);
-            this.DiaDeBaja.TabIndex = 55;
-            this.DiaDeBaja.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(279, 299);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(20, 29);
-            this.label12.TabIndex = 54;
-            this.label12.Text = "/";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(223, 296);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(20, 29);
-            this.label13.TabIndex = 53;
-            this.label13.Text = "/";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // estadoCivil
             // 
@@ -554,6 +445,14 @@
             this.label1.Text = "N° de afiliado a editar";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(184, 301);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(217, 20);
+            this.dateTimePicker1.TabIndex = 85;
+            // 
             // AbmCrearAfiliado2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,9 +468,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AnioDeBaja)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MesDeBaja)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DiaDeBaja)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -599,11 +495,6 @@
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox estadoCivil;
         private System.Windows.Forms.Button botonQuitar;
-        private System.Windows.Forms.NumericUpDown AnioDeBaja;
-        private System.Windows.Forms.NumericUpDown MesDeBaja;
-        private System.Windows.Forms.NumericUpDown DiaDeBaja;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button botonBuscar;
         private System.Windows.Forms.TextBox textoID;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -614,5 +505,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sexo;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

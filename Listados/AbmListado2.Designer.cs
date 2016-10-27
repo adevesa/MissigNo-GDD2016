@@ -106,7 +106,7 @@
             this.semestre.Items.AddRange(new object[] {
             "Primer semestr",
             "Segundo semestre"});
-            this.semestre.Location = new System.Drawing.Point(252, 182);
+            this.semestre.Location = new System.Drawing.Point(252, 179);
             this.semestre.Margin = new System.Windows.Forms.Padding(2);
             this.semestre.Name = "semestre";
             this.semestre.Size = new System.Drawing.Size(326, 40);
@@ -123,7 +123,7 @@
             "Profesionales más perezosos",
             "Afiliado con màs bonos comprados",
             "Especialidades con mas consultas"});
-            this.top5.Location = new System.Drawing.Point(252, 89);
+            this.top5.Location = new System.Drawing.Point(252, 83);
             this.top5.Margin = new System.Windows.Forms.Padding(2);
             this.top5.Name = "top5";
             this.top5.Size = new System.Drawing.Size(326, 33);
@@ -134,19 +134,20 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
+            this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(53, 182);
+            this.label3.Location = new System.Drawing.Point(54, 182);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 33);
+            this.label3.Size = new System.Drawing.Size(138, 37);
             this.label3.TabIndex = 118;
             this.label3.Text = "Semestre";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // botonVolver
             // 
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
             this.botonVolver.Location = new System.Drawing.Point(425, 493);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
@@ -159,7 +160,7 @@
             // BotonFiltrar
             // 
             this.BotonFiltrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BotonFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.BotonFiltrar.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 18F);
             this.BotonFiltrar.ForeColor = System.Drawing.Color.Black;
             this.BotonFiltrar.Location = new System.Drawing.Point(444, 236);
             this.BotonFiltrar.Margin = new System.Windows.Forms.Padding(2);
@@ -172,7 +173,7 @@
             // AnioDeBaja
             // 
             this.AnioDeBaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AnioDeBaja.Location = new System.Drawing.Point(252, 132);
+            this.AnioDeBaja.Location = new System.Drawing.Point(252, 130);
             this.AnioDeBaja.Margin = new System.Windows.Forms.Padding(2);
             this.AnioDeBaja.Maximum = new decimal(new int[] {
             2100,
@@ -197,11 +198,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
+            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(54, 131);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 33);
+            this.label2.Size = new System.Drawing.Size(72, 37);
             this.label2.TabIndex = 65;
             this.label2.Text = "Año";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -210,11 +211,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(53, 83);
+            this.label9.Location = new System.Drawing.Point(54, 83);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(172, 33);
+            this.label9.Size = new System.Drawing.Size(172, 37);
             this.label9.TabIndex = 62;
             this.label9.Text = "Elegir Top 5";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -223,11 +224,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 42);
+            this.label1.Size = new System.Drawing.Size(182, 47);
             this.label1.TabIndex = 61;
             this.label1.Text = "Registros";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

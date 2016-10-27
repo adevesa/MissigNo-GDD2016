@@ -37,16 +37,6 @@
             this.botonSabado = new System.Windows.Forms.RadioButton();
             this.botonDomingo = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.diaDesde = new System.Windows.Forms.NumericUpDown();
-            this.mesDesde = new System.Windows.Forms.NumericUpDown();
-            this.anioDesde = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.diaHasta = new System.Windows.Forms.NumericUpDown();
-            this.mesHasta = new System.Windows.Forms.NumericUpDown();
-            this.anioHasta = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.desdeLunes = new System.Windows.Forms.NumericUpDown();
@@ -96,12 +86,8 @@
             this.BotonConfirmar2 = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.diaDesde)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mesDesde)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anioDesde)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diaHasta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mesHasta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anioHasta)).BeginInit();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.desdeLunes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hastaLunes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.desdeMartes)).BeginInit();
@@ -234,226 +220,25 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(51, 133);
+            this.label3.Location = new System.Drawing.Point(78, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 44);
+            this.label3.Size = new System.Drawing.Size(82, 30);
             this.label3.TabIndex = 36;
             this.label3.Text = "Desde";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(221, 140);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(20, 29);
-            this.label13.TabIndex = 58;
-            this.label13.Text = "/";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label13.Click += new System.EventHandler(this.label13_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(279, 139);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(20, 29);
-            this.label12.TabIndex = 59;
-            this.label12.Text = "/";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label12.Click += new System.EventHandler(this.label12_Click);
-            // 
-            // diaDesde
-            // 
-            this.diaDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diaDesde.Location = new System.Drawing.Point(184, 142);
-            this.diaDesde.Margin = new System.Windows.Forms.Padding(2);
-            this.diaDesde.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.diaDesde.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.diaDesde.Name = "diaDesde";
-            this.diaDesde.Size = new System.Drawing.Size(34, 28);
-            this.diaDesde.TabIndex = 60;
-            this.diaDesde.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.diaDesde.ValueChanged += new System.EventHandler(this.DiaDeBaja_ValueChanged);
-            // 
-            // mesDesde
-            // 
-            this.mesDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mesDesde.Location = new System.Drawing.Point(240, 142);
-            this.mesDesde.Margin = new System.Windows.Forms.Padding(2);
-            this.mesDesde.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.mesDesde.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.mesDesde.Name = "mesDesde";
-            this.mesDesde.Size = new System.Drawing.Size(34, 28);
-            this.mesDesde.TabIndex = 61;
-            this.mesDesde.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.mesDesde.ValueChanged += new System.EventHandler(this.MesDeBaja_ValueChanged);
-            // 
-            // anioDesde
-            // 
-            this.anioDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.anioDesde.Location = new System.Drawing.Point(296, 142);
-            this.anioDesde.Margin = new System.Windows.Forms.Padding(2);
-            this.anioDesde.Maximum = new decimal(new int[] {
-            2100,
-            0,
-            0,
-            0});
-            this.anioDesde.Minimum = new decimal(new int[] {
-            1900,
-            0,
-            0,
-            0});
-            this.anioDesde.Name = "anioDesde";
-            this.anioDesde.Size = new System.Drawing.Size(61, 28);
-            this.anioDesde.TabIndex = 62;
-            this.anioDesde.Value = new decimal(new int[] {
-            2016,
-            0,
-            0,
-            0});
-            this.anioDesde.ValueChanged += new System.EventHandler(this.AnioDeBaja_ValueChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(580, 143);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(20, 29);
-            this.label5.TabIndex = 63;
-            this.label5.Text = "/";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(638, 142);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 29);
-            this.label4.TabIndex = 64;
-            this.label4.Text = "/";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // diaHasta
-            // 
-            this.diaHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diaHasta.Location = new System.Drawing.Point(543, 145);
-            this.diaHasta.Margin = new System.Windows.Forms.Padding(2);
-            this.diaHasta.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.diaHasta.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.diaHasta.Name = "diaHasta";
-            this.diaHasta.Size = new System.Drawing.Size(34, 28);
-            this.diaHasta.TabIndex = 65;
-            this.diaHasta.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // mesHasta
-            // 
-            this.mesHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mesHasta.Location = new System.Drawing.Point(599, 146);
-            this.mesHasta.Margin = new System.Windows.Forms.Padding(2);
-            this.mesHasta.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.mesHasta.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.mesHasta.Name = "mesHasta";
-            this.mesHasta.Size = new System.Drawing.Size(34, 28);
-            this.mesHasta.TabIndex = 66;
-            this.mesHasta.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // anioHasta
-            // 
-            this.anioHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.anioHasta.Location = new System.Drawing.Point(654, 146);
-            this.anioHasta.Margin = new System.Windows.Forms.Padding(2);
-            this.anioHasta.Maximum = new decimal(new int[] {
-            2100,
-            0,
-            0,
-            0});
-            this.anioHasta.Minimum = new decimal(new int[] {
-            1900,
-            0,
-            0,
-            0});
-            this.anioHasta.Name = "anioHasta";
-            this.anioHasta.Size = new System.Drawing.Size(61, 28);
-            this.anioHasta.TabIndex = 67;
-            this.anioHasta.Value = new decimal(new int[] {
-            2016,
-            0,
-            0,
-            0});
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 26.25F);
+            this.label6.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 18F);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(430, 134);
+            this.label6.Location = new System.Drawing.Point(452, 144);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 44);
+            this.label6.Size = new System.Drawing.Size(75, 30);
             this.label6.TabIndex = 68;
             this.label6.Text = "Hasta";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1229,6 +1014,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.dateTimePicker2);
+            this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.botonVolver);
             this.panel1.Controls.Add(this.BotonConfirmar2);
             this.panel1.Controls.Add(this.label38);
@@ -1277,16 +1064,6 @@
             this.panel1.Controls.Add(this.desdeLunes);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.anioHasta);
-            this.panel1.Controls.Add(this.mesHasta);
-            this.panel1.Controls.Add(this.diaHasta);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.anioDesde);
-            this.panel1.Controls.Add(this.mesDesde);
-            this.panel1.Controls.Add(this.diaDesde);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.botonDomingo);
             this.panel1.Controls.Add(this.botonSabado);
@@ -1301,6 +1078,22 @@
             this.panel1.Size = new System.Drawing.Size(776, 763);
             this.panel1.TabIndex = 76;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(177, 149);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(217, 20);
+            this.dateTimePicker1.TabIndex = 86;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(546, 151);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(217, 20);
+            this.dateTimePicker2.TabIndex = 116;
+            // 
             // AbmAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1313,12 +1106,6 @@
             this.Text = "Clinica FRBA- Agenda";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AbmAgenda_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.diaDesde)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mesDesde)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anioDesde)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diaHasta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mesHasta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anioHasta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.desdeLunes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hastaLunes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.desdeMartes)).EndInit();
@@ -1350,16 +1137,6 @@
         private System.Windows.Forms.RadioButton botonSabado;
         private System.Windows.Forms.RadioButton botonDomingo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown diaDesde;
-        private System.Windows.Forms.NumericUpDown mesDesde;
-        private System.Windows.Forms.NumericUpDown anioDesde;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown diaHasta;
-        private System.Windows.Forms.NumericUpDown mesHasta;
-        private System.Windows.Forms.NumericUpDown anioHasta;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown desdeLunes;
@@ -1409,6 +1186,8 @@
         private System.Windows.Forms.Button BotonConfirmar2;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
 
     }
 }

@@ -56,16 +56,9 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.anioDesde = new System.Windows.Forms.NumericUpDown();
-            this.mesDesde = new System.Windows.Forms.NumericUpDown();
-            this.diaDesde = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anioDesde)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mesDesde)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diaDesde)).BeginInit();
             this.SuspendLayout();
             // 
             // botonConfirmar
@@ -233,6 +226,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label4.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F);
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label4.Location = new System.Drawing.Point(12, 148);
@@ -352,104 +346,6 @@
             this.button2.Text = "Filtrar";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // anioDesde
-            // 
-            this.anioDesde.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F);
-            this.anioDesde.Location = new System.Drawing.Point(247, 188);
-            this.anioDesde.Margin = new System.Windows.Forms.Padding(2);
-            this.anioDesde.Maximum = new decimal(new int[] {
-            2100,
-            0,
-            0,
-            0});
-            this.anioDesde.Minimum = new decimal(new int[] {
-            1900,
-            0,
-            0,
-            0});
-            this.anioDesde.Name = "anioDesde";
-            this.anioDesde.Size = new System.Drawing.Size(61, 32);
-            this.anioDesde.TabIndex = 82;
-            this.anioDesde.Value = new decimal(new int[] {
-            2016,
-            0,
-            0,
-            0});
-            // 
-            // mesDesde
-            // 
-            this.mesDesde.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F);
-            this.mesDesde.Location = new System.Drawing.Point(191, 188);
-            this.mesDesde.Margin = new System.Windows.Forms.Padding(2);
-            this.mesDesde.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.mesDesde.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.mesDesde.Name = "mesDesde";
-            this.mesDesde.Size = new System.Drawing.Size(34, 32);
-            this.mesDesde.TabIndex = 81;
-            this.mesDesde.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // diaDesde
-            // 
-            this.diaDesde.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diaDesde.Location = new System.Drawing.Point(135, 188);
-            this.diaDesde.Margin = new System.Windows.Forms.Padding(2);
-            this.diaDesde.Maximum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.diaDesde.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.diaDesde.Name = "diaDesde";
-            this.diaDesde.Size = new System.Drawing.Size(34, 32);
-            this.diaDesde.TabIndex = 80;
-            this.diaDesde.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(230, 185);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(20, 29);
-            this.label12.TabIndex = 79;
-            this.label12.Text = "/";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(172, 186);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(20, 29);
-            this.label13.TabIndex = 78;
-            this.label13.Text = "/";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -463,18 +359,22 @@
             this.label7.Text = "Nacimiento";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(137, 189);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(239, 21);
+            this.dateTimePicker1.TabIndex = 84;
+            // 
             // AbmBorrarAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(996, 585);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.anioDesde);
-            this.Controls.Add(this.mesDesde);
-            this.Controls.Add(this.diaDesde);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
@@ -499,9 +399,6 @@
             this.Text = "Clinica FRBA-Borrar Afiliado";
             this.Load += new System.EventHandler(this.AbmBorrarAfiliado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anioDesde)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mesDesde)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diaDesde)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -537,11 +434,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.NumericUpDown anioDesde;
-        private System.Windows.Forms.NumericUpDown mesDesde;
-        private System.Windows.Forms.NumericUpDown diaDesde;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         public System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

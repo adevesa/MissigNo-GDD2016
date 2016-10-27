@@ -196,7 +196,7 @@ GO
 		apellido varchar(20) not null,
 		fec_nac datetime not null,
 		sexo char not null,
-		domicilio varchar(30) not null,
+		domicilio varchar(150) not null,
 		mail varchar(40) not null,
 		telefono int not null,
 		unique (doc_nro))
@@ -285,13 +285,6 @@ GO
 		motivo varchar(140),
 		fecha_modif datetime)
 
-	-- TABLA SINTOMA
-
-	create table MISSINGNO.Sintoma(
-		sintoma_id int primary key identity,
-		consulta_id int not null,
-		sintoma_nombre varchar(30))
-
 	-- TABLA BONO
 
 	create table MISSINGNO.Bono(
@@ -299,7 +292,6 @@ GO
 		plan_id int not null,
 		afiliado_id int not null,
 		compra_bono_id int not null,
-		afiliado_nro_consulta int not null,
 		bono_estado bit not null,
 		bono_precio decimal(8,2) not null)
 
@@ -330,7 +322,8 @@ GO
 		turno_id int not null,
 		confirmacion_de_atencion char(2),
 		diagnostico varchar(140),
-		consulta_horario time)
+		consulta_horario time,
+		sintoma varchar(140))
 
 	-- TABLA CANCELACION_TURNO
 

@@ -323,7 +323,11 @@ GO
 		confirmacion_de_atencion char(2),
 		diagnostico varchar(140),
 		consulta_horario time,
+<<<<<<< HEAD
 		sintoma varchar(140))
+=======
+		sintoma varchar(100))
+>>>>>>> origin/master
 
 	-- TABLA CANCELACION_TURNO
 

@@ -285,13 +285,6 @@ GO
 		motivo varchar(140),
 		fecha_modif datetime)
 
-	-- TABLA SINTOMA
-
-	create table MISSINGNO.Sintoma(
-		sintoma_id int primary key identity,
-		consulta_id int not null,
-		sintoma_nombre varchar(30))
-
 	-- TABLA BONO
 
 	create table MISSINGNO.Bono(
@@ -330,7 +323,8 @@ GO
 		turno_id int not null,
 		confirmacion_de_atencion char(2),
 		diagnostico varchar(140),
-		consulta_horario time)
+		consulta_horario time,
+		sintoma varchar(100))
 
 	-- TABLA CANCELACION_TURNO
 

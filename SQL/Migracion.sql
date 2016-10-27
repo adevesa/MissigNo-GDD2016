@@ -322,39 +322,42 @@ select * from MISSINGNO.Especialidad
 DELETE FROM MISSINGNO.Especialidad_de_profesional;
 
 
-	(SELECT bono_id FROM MISSINGNO.Bono WHERE bono_precio =
-
-/* MIGRACION DE TURNOS */
-SET IDENTITY_INSERT MISSINGNO.Turno ON
-INSERT INTO MISSINGNO.Turno
-	(turno_id, profesional_id, bono_id, fecha)
-SELECT DISTINCT 
-	Turno_Numero, 
-	(SELECT profesional_id FROM MISSINGNO.Profesional WHERE username =  Medico_Mail ), 
-	Bono_Consulta_Numero, 
-	Turno_fecha
-FROM gd_esquema.Maestra
-WHERE Turno_Numero IS NOT NULL
-SET IDENTITY_INSERT MISSINGNO.Turno OFF
-
-
-
-
+select * from MISSINGNO.Turno
+select * from MISSINGNO.Bono
 
 /* MIGRACION DE COMPRA DE BONOS*/
 SET IDENTITY_INSERT MISSINGNO.Turno ON
 INSERT INTO MISSINGNO.Compra_bono
 	(Afiliado_id, plan_id, fecha_compra)
-SELECT DISTINCT
-	(SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username =  Paciente_Mail), 
-	 Plan_Med_Codigo, Compra_Bono_Fecha
-FROM gd_esquema.Maestra
-WHERE Compra_Bono_Fecha IS NOT NULL
+SELECT DISTINCT afiliado_id, A.plan_id , Compra_Bono_Fecha
+FROM gd_esquema.Maestra, MISSINGNO.Afiliado A
+WHERE Compra_Bono_Fecha IS NOT NULL and A.username = Paciente_Mail and A.plan_id = Plan_Med_Codigo
 SET IDENTITY_INSERT MISSINGNO.Turno OFF
 
+select * from MISSINGNO.Bono
+
+/* MIGRACION DE BONOS */ -- PROBLEMA "HAY REGISTROS DUPLICADOS..." SINO REVISAR LA PARTE DE SELECT DISTNCT HASTA 46494
+
+INSERT INTO MISSINGNO.Bono(bono_id, plan_id, afiliado_id, compra_bono_id, bono_estado, bono_precio)
+SELECT DISTINCT Bono_Consulta_Numero, C.plan_id, C.afiliado_id, C.compra_bono_id, 0, Plan_Med_Precio_Bono_Consulta
+	FROM gd_esquema.Maestra, MISSINGNO.Compra_bono C, MISSINGNO.Afiliado A
+	WHERE Compra_Bono_Fecha IS NOT NULL and C.plan_id = Plan_Med_Codigo and C.afiliado_id = A.afiliado_id and A.username = Paciente_Mail and Bono_Consulta_Numero = 46494
 
 
+/* MIGRACION DE TURNOS */
+SET IDENTITY_INSERT MISSINGNO.Turno ON
+INSERT INTO MISSINGNO.Turno
+	(turno_id, profesional_id, bono_id, fecha, horario)
+SELECT DISTINCT 
+	Turno_Numero, 
+	(SELECT profesional_id FROM MISSINGNO.Profesional WHERE username =  Medico_Mail ), 
+	Bono_Consulta_Numero, 
+	Turno_fecha, cast(Turno_Fecha as time)
+FROM gd_esquema.Maestra
+WHERE Turno_Numero IS NOT NULL and Bono_Consulta_Numero IS NOT NULL
+SET IDENTITY_INSERT MISSINGNO.Turno OFF
 
+select * from MISSINGNO.Compra_bono
 
 
 
@@ -375,17 +378,4 @@ SET IDENTITY_INSERT MISSINGNO.Turno OFF
 
 
 
-/* MIGRACION DE BONOS */
-SET IDENTITY_INSERT MISSINGNO.Turno ON
-INSERT INTO MISSINGNO.Bono
-	(bono_id, plan_id, afiliado_id, compra_bono_id, bono_estado, bono_precio)
-SELECT DISTINCT 
-	Bono_Consulta_Numero,
-	(SELECT plan_id FROM MISSINGNO.Compra_bonos WHERE fecha_de_compra = Compra_Bono_Fecha),
-	(SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username =  Paciente_Mail),
-	(SELECT compra_bono_id FROM MISSINGNO.Compra_bonos WHERE fecha_de_compra = Compra_Bono_Fecha),
-	0, Plan_Med_Precio_Bono_Consulta
-	FROM gd_esquema.Maestra
-	WHERE Compra_Bono_Fecha IS NOT NULL
-SET IDENTITY_INSERT MISSINGNO.Turno OFF
 	

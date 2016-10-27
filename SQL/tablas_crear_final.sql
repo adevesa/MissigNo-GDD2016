@@ -288,7 +288,7 @@ GO
 	-- TABLA BONO
 
 	create table MISSINGNO.Bono(
-		bono_id int primary key identity,
+		bono_id int primary key,
 		plan_id int not null,
 		afiliado_id int not null,
 		compra_bono_id int not null,
@@ -301,8 +301,7 @@ GO
 		compra_bono_id int primary key identity,
 		afiliado_id int not null,
 		plan_id int not null,
-		fecha_compra datetime not null,
-		total_compra decimal(8,2) not null)
+		fecha_compra datetime not null)
 
 	-- TABLA PLANES
 
@@ -323,11 +322,8 @@ GO
 		confirmacion_de_atencion char(2),
 		diagnostico varchar(140),
 		consulta_horario time,
-<<<<<<< HEAD
 		sintoma varchar(140))
-=======
-		sintoma varchar(100))
->>>>>>> origin/master
+
 
 	-- TABLA CANCELACION_TURNO
 
@@ -335,7 +331,7 @@ GO
 		cancelacion_id int primary key identity,
 		turno_id int not null,
 		cancelacion_motivo varchar(140),
-		cancelacion_tipo varchar(20),
+		cancelacion_tipo4 varchar(20),
 		cancelacion_fecha datetime)
 
 	-- TABLA ADMINISTRATIVO

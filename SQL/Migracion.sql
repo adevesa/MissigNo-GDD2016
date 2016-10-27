@@ -39,14 +39,14 @@ DELETE FROM MISSINGNO.Cancelacion_turno;
 DBCC CHECKIDENT ('MISSINGNO.Cancelacion_turno', RESEED, 0)
 GO
 DELETE FROM MISSINGNO.Funcionalidad;
-DBCC CHECKIDENT ('MISSINGNO.Funcionalidad', RESEED, 0)
+DBCC CHECKIDENT ('MISSINGNO.Funcionalidad', RESEED, 1)
 GO
 DELETE FROM MISSINGNO.Especialidad;
 DBCC CHECKIDENT ('MISSINGNO.Especialidad', RESEED, 0)
 GO
 DELETE FROM MISSINGNO.Funcionalidad_de_rol;
 DELETE FROM MISSINGNO.Rol;
-DBCC CHECKIDENT ('MISSINGNO.Rol', RESEED, 0)
+DBCC CHECKIDENT ('MISSINGNO.Rol', RESEED, 1)
 GO
 DELETE FROM MISSINGNO.Rol_de_usuario;
 
@@ -100,9 +100,10 @@ INSERT INTO MISSINGNO.Usuario(
 		'15/06/1995',
 		'M',
 		'mi casa',
-		 'admin@gmail.com',
+		 'admin',
 		 01140000000,
 		 'DNI')
+
 
 /* ASIGNACION DE ROL AL USUARIO "admin" */
 
@@ -138,6 +139,45 @@ INSERT INTO MISSINGNO.Funcionalidad_de_rol(
 
 GO
 
+--VALORES MIGRADOS.
+INSERT INTO MISSINGNO.Usuario(
+		username,
+		doc_nro ,
+		contrasenia, 
+		nombre, 
+		apellido, 
+		fec_nac, 
+		sexo, 
+		domicilio, 
+		mail, 
+		telefono,
+		doc_tipo) 
+	VALUES(
+		'MIGRADO',
+		-2, 
+		HASHBYTES('SHA2_256', 'MIGRADO'),
+		'MIGRADO',
+		'MIGRADO',
+		'16/01/1995',
+		'M',
+		'CASA MIGRADA',
+		 'MIGRADO',
+		 01140000000,
+		 'DNI')
+
+SET IDENTITY_INSERT MISSINGNO.Administrativo ON
+INSERT INTO MISSINGNO.Administrativo(admin_id,username) VALUES(1,'admin')
+SET IDENTITY_INSERT MISSINGNO.Administrativo OFF
+
+SET IDENTITY_INSERT MISSINGNO.Profesional ON
+INSERT INTO MISSINGNO.Profesional(profesional_id,username,profesional_matricula) VALUES(-1,'MIGRADO',-1)
+SET IDENTITY_INSERT MISSINGNO.Profesional OFF
+
+SET IDENTITY_INSERT MISSINGNO.Agenda ON
+INSERT INTO MISSINGNO.Agenda(agenda_id,profesional_id,agenda_inicio,agenda_fin) VALUES(-1,-1,getdate(),getdate()) -- Valor migrado
+SET IDENTITY_INSERT MISSINGNO.Agenda OFF
+
+
 /* MIGRACION DE TIPOS DE ESPECIALIDAD */
 SET IDENTITY_INSERT MISSINGNO.Tipo_especialidad ON
 INSERT INTO MISSINGNO.Tipo_especialidad(tipo_especialidad_id,tipo_especialidad_desc)
@@ -146,9 +186,6 @@ FROM gd_esquema.Maestra
 WHERE Tipo_Especialidad_Codigo IS NOT NULL
 SET IDENTITY_INSERT MISSINGNO.Tipo_especialidad OFF
 DBCC CHECKIDENT ("MISSINGNO.Tipo_especialidad")
-
-/*PRUEBA*/
-SELECT * FROM [MISSINGNO].[Tipo_especialidad]
 
 /* MIGRACION DE ESPECIALIDADES */
 SET IDENTITY_INSERT MISSINGNO.Especialidad ON
@@ -159,9 +196,6 @@ WHERE Especialidad_Codigo IS NOT NULL
 SET IDENTITY_INSERT MISSINGNO.Especialidad OFF
 DBCC CHECKIDENT ("MISSINGNO.Especialidad")
 
-/*PRUEBA*/
-SELECT * FROM [MISSINGNO].[Especialidad]
-
 /* MIGRACION DE PLANES */
 SET IDENTITY_INSERT MISSINGNO.Planes ON
 INSERT INTO MISSINGNO.Planes (plan_id, plan_descripcion, bono_precio_farmacia, bono_precio_consulta)
@@ -170,21 +204,6 @@ FROM gd_esquema.Maestra
 WHERE Plan_Med_Codigo IS NOT NULL
 SET IDENTITY_INSERT MISSINGNO.Planes OFF
 DBCC CHECKIDENT ("MISSINGNO.Planes")
-
-
-/* pruebas */
-select * from MISSINGNO.Usuario
-select * from MISSINGNO.Rol
-select * from MISSINGNO.Funcionalidad
-select * from MISSINGNO.Rol_de_usuario
-select * from MISSINGNO.Funcionalidad_de_rol
-select U.username, F.Funcionalidad_nombre, R.rol_nombre from MISSINGNO.Usuario as U, MISSINGNO.Funcionalidad as F, MISSINGNO.Rol as R, MISSINGNO.Rol_de_usuario as RO, MISSINGNO.Funcionalidad_de_rol as FO
-	where U.username = RO.username and
-		  RO.rol_id = R.rol_id and
-		  R.rol_id = FO.rol_id and
-		  FO.funcionalidad_id = F.funcionalidad_id	
-		  
-SELECT * FROM MISSINGNO.Planes
 
 /* DECLARACION DE VARIABLES PARA CURSORES */
 
@@ -233,36 +252,13 @@ END
 CLOSE cursorAfiliados
 DEALLOCATE cursorAfiliados
 
-/* Pruebas */
-
-SELECT * FROM MISSINGNO.Usuario
-SELECT * FROM MISSINGNO.AFILIADO
-SELECT NOT(DISTINCT) username FROM MISSINGNO.AFILIADO
-SELECT * FROM Missingno.rol_de_usuario
-
-SELECT username, count(*)
-FROM MISSINGNO.Afiliado
-GROUP BY username
-HAVING count(*) > 1
-
-select * from MISSINGNO.Afiliado
-	where username = 'belena_Paz@gmail.com'
-
-DELETE FROM MISSINGNO.Usuario
-DELETE FROM MISSINGNO.Afiliado
-DELETE FROM MISSINGNO.Rol_de_usuario
---4895 USUARIOS SIN ADMIN sin profesionales
-
 /* MIGRACION DE PROFESIONALES */
 
 DECLARE cursorMedicos CURSOR FOR SELECT DISTINCT Medico_DNI, Medico_Nombre, Medico_Apellido, Medico_Direccion, Medico_Telefono, Medico_Mail, Medico_Fecha_Nac
 FROM gd_esquema.Maestra
 WHERE Medico_DNI IS NOT NULL
-DECLARE @DNI numeric(18,0), @Nombre varchar(255), @Apellido varchar(255), @Direccion varchar(255), @Telefono numeric(18,0), @Mail varchar(255), @Fecha_nac datetime
-DECLARE @Plan numeric(18,0)
-DECLARE @Existe numeric(18,0)
-
-DECLARE @Rol numeric(18,0)
+DECLARE @Direccion varchar(255)
+DECLARE @Fecha_nac datetime
 
 SET @Rol = (SELECT rol_id FROM MISSINGNO.Rol WHERE rol_nombre = 'Profesional')
 
@@ -292,22 +288,6 @@ END
 CLOSE cursorMedicos
 DEALLOCATE cursorMedicos
 
-/*pruebas*/
-
-select * from missingno.profesional
-select * from missingno.usuario
-select * from missingno.rol_de_usuario
-select * from missingno.Especialidad
-select * from missingno.Tipo_especialidad
-select * from missiNgno.Especialidad_de_profesional
-
-
-DELETE FROM MISSINGNO.Rol_de_usuario;
-DELETE FROM MISSINGNO.Profesional;
-DELETE FROM MISSINGNO.Usuario;
-
-select * from gd_esquema.Maestra
-
 -- MIGRACION DE ESPECIALIDAD CON PROFESIONAL.
 
 INSERT INTO MISSINGNO.Especialidad_de_profesional(especialidad_id, profesional_id)
@@ -316,66 +296,75 @@ from gd_esquema.Maestra, MISSINGNO.Profesional P, MISSINGNO.Especialidad E
 where P.username = Medico_Mail and
 	  E.especialidad_id = Especialidad_Codigo
 
-/* Pruebas */
-select  DISTINCT profesional_id from MISSINGNO.Especialidad_de_profesional
-select * from MISSINGNO.Especialidad
-DELETE FROM MISSINGNO.Especialidad_de_profesional;
-
-
-select * from MISSINGNO.Turno
-select * from MISSINGNO.Bono
-
 /* MIGRACION DE COMPRA DE BONOS*/
-SET IDENTITY_INSERT MISSINGNO.Turno ON
+
 INSERT INTO MISSINGNO.Compra_bono
 	(Afiliado_id, plan_id, fecha_compra)
 SELECT DISTINCT afiliado_id, A.plan_id , Compra_Bono_Fecha
-FROM gd_esquema.Maestra, MISSINGNO.Afiliado A
-WHERE Compra_Bono_Fecha IS NOT NULL and A.username = Paciente_Mail and A.plan_id = Plan_Med_Codigo
-SET IDENTITY_INSERT MISSINGNO.Turno OFF
+FROM gd_esquema.Maestra, MISSINGNO.Afiliado A, MISSINGNO.Planes P
+WHERE Compra_Bono_Fecha IS NOT NULL 
+and A.username = Paciente_Mail 
+and A.plan_id = Plan_Med_Codigo 
+and P.plan_id = A.plan_id
 
-select * from MISSINGNO.Bono
-
-/* MIGRACION DE BONOS */ -- PROBLEMA "HAY REGISTROS DUPLICADOS..." SINO REVISAR LA PARTE DE SELECT DISTNCT HASTA 46494
+/* MIGRACION DE BONOS */ 
 
 INSERT INTO MISSINGNO.Bono(bono_id, plan_id, afiliado_id, compra_bono_id, bono_estado, bono_precio)
 SELECT DISTINCT Bono_Consulta_Numero, C.plan_id, C.afiliado_id, C.compra_bono_id, 0, Plan_Med_Precio_Bono_Consulta
-	FROM gd_esquema.Maestra, MISSINGNO.Compra_bono C, MISSINGNO.Afiliado A
-	WHERE Compra_Bono_Fecha IS NOT NULL and C.plan_id = Plan_Med_Codigo and C.afiliado_id = A.afiliado_id and A.username = Paciente_Mail and Bono_Consulta_Numero = 46494
-
-
+	FROM gd_esquema.Maestra, MISSINGNO.Compra_bono C, MISSINGNO.Afiliado A, MISSINGNO.Planes P
+	WHERE Compra_Bono_Fecha IS NOT NULL 
+	and C.plan_id = Plan_Med_Codigo 
+	and C.afiliado_id = A.afiliado_id 
+	and A.username = Paciente_Mail 
+	and P.plan_id = C.plan_id 
+	and C.fecha_compra = Compra_Bono_Fecha
+	
 /* MIGRACION DE TURNOS */
+
 SET IDENTITY_INSERT MISSINGNO.Turno ON
-INSERT INTO MISSINGNO.Turno
-	(turno_id, profesional_id, bono_id, fecha, horario)
-SELECT DISTINCT 
-	Turno_Numero, 
-	(SELECT profesional_id FROM MISSINGNO.Profesional WHERE username =  Medico_Mail ), 
-	Bono_Consulta_Numero, 
-	Turno_fecha, cast(Turno_Fecha as time)
-FROM gd_esquema.Maestra
-WHERE Turno_Numero IS NOT NULL and Bono_Consulta_Numero IS NOT NULL
+INSERT INTO MISSINGNO.Turno(turno_id, profesional_id, bono_id, fecha, horario)
+SELECT DISTINCT Turno_Numero, P.profesional_id, Bono_Consulta_Numero,Turno_fecha,cast(Turno_Fecha as time)
+FROM gd_esquema.Maestra, MISSINGNO.Profesional P, MISSINGNO.Bono B
+WHERE Turno_Numero IS NOT NULL 
+and Bono_Consulta_Numero IS NOT NULL
+and P.username = Medico_Mail
+and Bono_Consulta_Numero = B.bono_id
 SET IDENTITY_INSERT MISSINGNO.Turno OFF
-
-select * from MISSINGNO.Compra_bono
-
-
 
 /* MIGRACION DE CONSULTAS MEDICAS */
-SET IDENTITY_INSERT MISSINGNO.Turno ON
-INSERT INTO MISSINGNO.Consulta_medica
-	(turno_id, sintomas, diagnostico, profesional_id, afiliado_id, agenda_id, turno_id, consulta_horario)
-SELECT
-	Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades, 
-	(SELECT profesional_id FROM MISSINGNO.Profesional WHERE username =  Medico_Mail ), 
-	(SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username =  Paciente_Mail), 
-	-1,	Turno_Fecha
-FROM gd_esquema.Maestra
+
+INSERT INTO MISSINGNO.Consulta_medica(turno_id, sintoma, diagnostico, profesional_id, afiliado_id, agenda_id, consulta_horario, confirmacion_de_atencion)
+SELECT Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades,P.profesional_id,A.afiliado_id, -1, cast(Turno_Fecha as time),1
+FROM gd_esquema.Maestra, MISSINGNO.Turno T, MISSINGNO.Profesional P, MISSINGNO.Afiliado A
 WHERE Consulta_Sintomas IS NOT NULL
-SET IDENTITY_INSERT MISSINGNO.Turno OFF
+and Turno_Numero = T.turno_id
+and P.username = Medico_Mail
+and A.username = Paciente_Mail
 
 
 
+/* PRUEBAS
 
+SELECT * FROM MISSINGNO.Administrativo
+SELECT * FROM MISSINGNO.Afiliado
+SELECT * FROM MISSINGNO.Afiliado_historial
+SELECT * FROM MISSINGNO.Agenda
+SELECT * FROM MISSINGNO.Bono
+SELECT * FROM MISSINGNO.Cancelacion_turno
+SELECT * FROM MISSINGNO.Compra_bono
+SELECT * FROM MISSINGNO.Consulta_medica
+SELECT * FROM MISSINGNO.Dia
+SELECT * FROM MISSINGNO.Especialidad
+SELECT * FROM MISSINGNO.Especialidad_de_profesional
+SELECT * FROM MISSINGNO.Funcionalidad
+SELECT * FROM MISSINGNO.Funcionalidad_de_rol
+SELECT * FROM MISSINGNO.Planes
+SELECT * FROM MISSINGNO.Profesional
+SELECT * FROM MISSINGNO.Rol
+SELECT * FROM MISSINGNO.Rol_de_usuario
+SELECT * FROM MISSINGNO.Tipo_especialidad
+SELECT * FROM MISSINGNO.Turno
+SELECT * FROM MISSINGNO.Usuario
 
+*/
 	

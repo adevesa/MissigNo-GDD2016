@@ -322,48 +322,70 @@ select * from MISSINGNO.Especialidad
 DELETE FROM MISSINGNO.Especialidad_de_profesional;
 
 
-
+	(SELECT bono_id FROM MISSINGNO.Bono WHERE bono_precio =
 
 /* MIGRACION DE TURNOS */
+SET IDENTITY_INSERT MISSINGNO.Turno ON
 INSERT INTO MISSINGNO.Turno
 	(turno_id, profesional_id, bono_id, fecha)
 SELECT DISTINCT 
 	Turno_Numero, 
-	(SELECT username FROM MISSINGNO.Usuario WHERE doc_nro =  Medico_DNI ), 
-	(SELECT bono_id FROM MISSINGNO.Bono WHERE afiliado_nro_consulta = Bono_Consulta_Numero), 
+	(SELECT profesional_id FROM MISSINGNO.Profesional WHERE username =  Medico_Mail ), 
+	Bono_Consulta_Numero, 
 	Turno_fecha
 FROM gd_esquema.Maestra
 WHERE Turno_Numero IS NOT NULL
+SET IDENTITY_INSERT MISSINGNO.Turno OFF
+
+
+
+
 
 /* MIGRACION DE COMPRA DE BONOS*/
-INSERT INTO MISSINGNO.Compra_bonos
+SET IDENTITY_INSERT MISSINGNO.Turno ON
+INSERT INTO MISSINGNO.Compra_bono
 	(Afiliado_id, plan_id, fecha_compra)
 SELECT DISTINCT
-	(SELECT username FROM MISSINGNO.Usuario WHERE doc_nro =  Paciente_DNI ), (SELECT ), Plan_Med_Codigo, Compra_Bono_Fecha
+	(SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username =  Paciente_Mail), 
+	 Plan_Med_Codigo, Compra_Bono_Fecha
 FROM gd_esquema.Maestra
 WHERE Compra_Bono_Fecha IS NOT NULL
+SET IDENTITY_INSERT MISSINGNO.Turno OFF
+
+
+
+
+
+
 
 /* MIGRACION DE CONSULTAS MEDICAS */
+SET IDENTITY_INSERT MISSINGNO.Turno ON
 INSERT INTO MISSINGNO.Consulta_medica
 	(turno_id, sintomas, diagnostico, profesional_id, afiliado_id, agenda_id, turno_id, consulta_horario)
 SELECT
 	Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades, 
-	(SELECT username FROM MISSINGNO.Usuario WHERE doc_nro =  Medico_DNI), 
-	(SELECT username FROM MISSINGNO.Usuario WHERE doc_nro =  Paciente_DNI ), 
+	(SELECT profesional_id FROM MISSINGNO.Profesional WHERE username =  Medico_Mail ), 
+	(SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username =  Paciente_Mail), 
 	-1,	Turno_Fecha
 FROM gd_esquema.Maestra
 WHERE Consulta_Sintomas IS NOT NULL
+SET IDENTITY_INSERT MISSINGNO.Turno OFF
+
+
+
+
 
 /* MIGRACION DE BONOS */
-
+SET IDENTITY_INSERT MISSINGNO.Turno ON
 INSERT INTO MISSINGNO.Bono
 	(bono_id, plan_id, afiliado_id, compra_bono_id, bono_estado, bono_precio)
 SELECT DISTINCT 
 	Bono_Consulta_Numero,
 	(SELECT plan_id FROM MISSINGNO.Compra_bonos WHERE fecha_de_compra = Compra_Bono_Fecha),
-	(SELECT username FROM MISSINGNO.Usuario WHERE doc_nro =  Paciente_DNI ),
+	(SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username =  Paciente_Mail),
 	(SELECT compra_bono_id FROM MISSINGNO.Compra_bonos WHERE fecha_de_compra = Compra_Bono_Fecha),
 	0, Plan_Med_Precio_Bono_Consulta
 	FROM gd_esquema.Maestra
 	WHERE Compra_Bono_Fecha IS NOT NULL
-
+SET IDENTITY_INSERT MISSINGNO.Turno OFF
+	

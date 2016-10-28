@@ -208,13 +208,13 @@ namespace WindowsFormsApplication1.Login
 
             cmd.CommandText = "SELECT COUNT(*) FROM MISSINGNO.USUARIO WHERE ";
             cmd.CommandText += "username = '" + textBox_usr.Text + "' ";
-            cmd.CommandText += "AND USUARIO_HABILITADO = 1"; //EL CAMPO USUARIO_HABILITADO SE LLENA CON 1 PARA INDICAR INHABILITACION
+            cmd.CommandText += "AND USUARIO_HABILITADO = 1"; //EL CAMPO USUARIO_HABILITADO SE LLENA CON 1 PARA INDICAR HABILITACION
             cmd.Connection = sqlCon;
 
             //ejecuto
             if ((Int32)cmd.ExecuteScalar() < 1)
             {
-                MessageBox.Show("El usuario se ha inhabilitado, contactese con el administrador.", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("El usuario se ha inhabilitado, contáctese con el administrador.", "Usuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
 

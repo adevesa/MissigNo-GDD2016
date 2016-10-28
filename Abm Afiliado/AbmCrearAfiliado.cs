@@ -41,11 +41,11 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-           /* AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
+            AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
             this.Hide();
             abmAfiliado.ShowDialog();
             this.Close();
-          */ 
+          
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -70,7 +70,9 @@ namespace ClinicaFrba.Abm_Afiliado
                  MessageBox.Show("Faltan completar datos");
              }
               else
-              {
+             {
+
+
               AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar();
               this.Hide();
               abmConsulta.ShowDialog();

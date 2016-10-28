@@ -26,7 +26,6 @@ C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Properties.Resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Resultado.SeleccionDeRol.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado2.resources
-C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmEditarAfiliado.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AgregarFamiliar.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Compra_Bono.AbmComprarBono.resources
@@ -49,3 +48,5 @@ C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_especi
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_profesional_menos_horas.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_cancelaciones.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_consultados.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado2.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado.resources

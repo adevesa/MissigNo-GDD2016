@@ -194,7 +194,7 @@ GO
 		contrasenia nvarchar(30) not null,
 		nombre varchar(20) not null,
 		apellido varchar(20) not null,
-		fec_nac datetime not null,
+		fec_nac datetime not null, 
 		sexo char not null,
 		domicilio varchar(150) not null,
 		mail varchar(40) not null,

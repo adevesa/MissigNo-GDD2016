@@ -1,6 +1,6 @@
 ﻿namespace ClinicaFrba.Abm_Afiliado
 {
-    partial class AbmEditarAfiliado
+    partial class AbmCrearAfiliado
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.fechaDeNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.eleccionSexo = new System.Windows.Forms.ComboBox();
+            this.planMedico = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +47,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.BotonConfirmar2 = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
             this.textoDocumento = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -57,7 +57,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textoNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.botonConfirmar = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textoContraseña = new System.Windows.Forms.TextBox();
+            this.textoTipoDocumento = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textoEmail = new System.Windows.Forms.TextBox();
+            this.textoUsername = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -65,9 +73,18 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.textoUsername);
+            this.panel1.Controls.Add(this.textoEmail);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.textoTipoDocumento);
+            this.panel1.Controls.Add(this.textoContraseña);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.botonConfirmar);
+            this.panel1.Controls.Add(this.fechaDeNacimiento);
+            this.panel1.Controls.Add(this.eleccionSexo);
+            this.panel1.Controls.Add(this.planMedico);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.estadoCivil);
@@ -78,7 +95,6 @@
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.BotonConfirmar2);
             this.panel1.Controls.Add(this.botonVolver);
             this.panel1.Controls.Add(this.textoDocumento);
             this.panel1.Controls.Add(this.label7);
@@ -96,36 +112,44 @@
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // comboBox2
+            // fechaDeNacimiento
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.fechaDeNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fechaDeNacimiento.Location = new System.Drawing.Point(191, 297);
+            this.fechaDeNacimiento.Name = "fechaDeNacimiento";
+            this.fechaDeNacimiento.Size = new System.Drawing.Size(234, 21);
+            this.fechaDeNacimiento.TabIndex = 85;
+            // 
+            // eleccionSexo
+            // 
+            this.eleccionSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.eleccionSexo.FormattingEnabled = true;
+            this.eleccionSexo.Items.AddRange(new object[] {
             "Hombre",
             "Mujer"});
-            this.comboBox2.Location = new System.Drawing.Point(602, 345);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(226, 28);
-            this.comboBox2.TabIndex = 77;
-            this.comboBox2.Text = "Sexo";
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.eleccionSexo.Location = new System.Drawing.Point(602, 345);
+            this.eleccionSexo.Name = "eleccionSexo";
+            this.eleccionSexo.Size = new System.Drawing.Size(226, 28);
+            this.eleccionSexo.TabIndex = 77;
+            this.eleccionSexo.Text = "Sexo";
+            this.eleccionSexo.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-            // comboBox1
+            // planMedico
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.planMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planMedico.FormattingEnabled = true;
+            this.planMedico.Items.AddRange(new object[] {
             "Soltero/a",
             "Casado/a",
             "Viudo/a",
             "Concubinato",
             "Divorciado/a"});
-            this.comboBox1.Location = new System.Drawing.Point(602, 297);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(226, 28);
-            this.comboBox1.TabIndex = 60;
-            this.comboBox1.Text = "Elija uno";
+            this.planMedico.Location = new System.Drawing.Point(602, 297);
+            this.planMedico.Margin = new System.Windows.Forms.Padding(2);
+            this.planMedico.Name = "planMedico";
+            this.planMedico.Size = new System.Drawing.Size(226, 28);
+            this.planMedico.TabIndex = 60;
+            this.planMedico.Text = "Elija uno";
             // 
             // dataGridView1
             // 
@@ -138,10 +162,10 @@
             this.Documento,
             this.ID,
             this.Sexo});
-            this.dataGridView1.Location = new System.Drawing.Point(46, 394);
+            this.dataGridView1.Location = new System.Drawing.Point(46, 430);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(651, 281);
+            this.dataGridView1.Size = new System.Drawing.Size(651, 245);
             this.dataGridView1.TabIndex = 59;
             // 
             // Nombre
@@ -181,7 +205,7 @@
             this.label4.Cursor = System.Windows.Forms.Cursors.Default;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(41, 344);
+            this.label4.Location = new System.Drawing.Point(41, 398);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(203, 29);
             this.label4.TabIndex = 58;
@@ -198,7 +222,7 @@
             "Viudo/a",
             "Concubinato",
             "Divorciado/a"});
-            this.estadoCivil.Location = new System.Drawing.Point(602, 186);
+            this.estadoCivil.Location = new System.Drawing.Point(602, 145);
             this.estadoCivil.Margin = new System.Windows.Forms.Padding(2);
             this.estadoCivil.Name = "estadoCivil";
             this.estadoCivil.Size = new System.Drawing.Size(226, 28);
@@ -259,7 +283,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(456, 296);
+            this.label10.Location = new System.Drawing.Point(450, 297);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(147, 29);
             this.label10.TabIndex = 40;
@@ -272,7 +296,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(456, 186);
+            this.label8.Location = new System.Drawing.Point(450, 141);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(135, 29);
             this.label8.TabIndex = 38;
@@ -285,27 +309,13 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(456, 241);
+            this.label3.Location = new System.Drawing.Point(450, 239);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 29);
             this.label3.TabIndex = 36;
             this.label3.Text = "Teléfono";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // BotonConfirmar2
-            // 
-            this.BotonConfirmar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BotonConfirmar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BotonConfirmar2.ForeColor = System.Drawing.Color.Black;
-            this.BotonConfirmar2.Location = new System.Drawing.Point(235, 698);
-            this.BotonConfirmar2.Margin = new System.Windows.Forms.Padding(2);
-            this.BotonConfirmar2.Name = "BotonConfirmar2";
-            this.BotonConfirmar2.Size = new System.Drawing.Size(109, 46);
-            this.BotonConfirmar2.TabIndex = 35;
-            this.BotonConfirmar2.Text = "Confirmar";
-            this.BotonConfirmar2.UseVisualStyleBackColor = true;
-            this.BotonConfirmar2.Click += new System.EventHandler(this.BotonConfirmar2_Click);
             // 
             // botonVolver
             // 
@@ -334,13 +344,13 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(41, 187);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(136, 29);
+            this.label7.Size = new System.Drawing.Size(150, 25);
             this.label7.TabIndex = 32;
-            this.label7.Text = "Documento";
+            this.label7.Text = "Nº Documento";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textoDireccion
@@ -369,7 +379,7 @@
             // 
             this.textoApellido.BackColor = System.Drawing.Color.White;
             this.textoApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoApellido.Location = new System.Drawing.Point(602, 132);
+            this.textoApellido.Location = new System.Drawing.Point(602, 91);
             this.textoApellido.Name = "textoApellido";
             this.textoApellido.Size = new System.Drawing.Size(226, 28);
             this.textoApellido.TabIndex = 29;
@@ -380,7 +390,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(456, 130);
+            this.label2.Location = new System.Drawing.Point(450, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 29);
             this.label2.TabIndex = 28;
@@ -393,7 +403,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(41, 128);
+            this.label5.Location = new System.Drawing.Point(41, 89);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 29);
             this.label5.TabIndex = 27;
@@ -404,7 +414,7 @@
             // 
             this.textoNombre.BackColor = System.Drawing.Color.White;
             this.textoNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoNombre.Location = new System.Drawing.Point(191, 130);
+            this.textoNombre.Location = new System.Drawing.Point(191, 91);
             this.textoNombre.Name = "textoNombre";
             this.textoNombre.Size = new System.Drawing.Size(234, 28);
             this.textoNombre.TabIndex = 26;
@@ -422,15 +432,109 @@
             this.label1.Text = "Crear Afiliado";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dateTimePicker1
+            // botonConfirmar
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(191, 297);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(234, 21);
-            this.dateTimePicker1.TabIndex = 85;
+            this.botonConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonConfirmar.ForeColor = System.Drawing.Color.Black;
+            this.botonConfirmar.Location = new System.Drawing.Point(200, 696);
+            this.botonConfirmar.Margin = new System.Windows.Forms.Padding(2);
+            this.botonConfirmar.Name = "botonConfirmar";
+            this.botonConfirmar.Size = new System.Drawing.Size(109, 46);
+            this.botonConfirmar.TabIndex = 88;
+            this.botonConfirmar.Text = "Confirmar";
+            this.botonConfirmar.UseVisualStyleBackColor = true;
+            this.botonConfirmar.Click += new System.EventHandler(this.botonConfirmar_Click);
             // 
-            // AbmEditarAfiliado
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(41, 139);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(136, 29);
+            this.label9.TabIndex = 89;
+            this.label9.Text = "Contraseña";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textoContraseña
+            // 
+            this.textoContraseña.BackColor = System.Drawing.Color.White;
+            this.textoContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoContraseña.Location = new System.Drawing.Point(191, 141);
+            this.textoContraseña.Name = "textoContraseña";
+            this.textoContraseña.Size = new System.Drawing.Size(234, 28);
+            this.textoContraseña.TabIndex = 90;
+            // 
+            // textoTipoDocumento
+            // 
+            this.textoTipoDocumento.BackColor = System.Drawing.Color.White;
+            this.textoTipoDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoTipoDocumento.Location = new System.Drawing.Point(627, 187);
+            this.textoTipoDocumento.Name = "textoTipoDocumento";
+            this.textoTipoDocumento.Size = new System.Drawing.Size(200, 28);
+            this.textoTipoDocumento.TabIndex = 91;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(450, 190);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(166, 25);
+            this.label12.TabIndex = 92;
+            this.label12.Text = "Tipo documento";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(41, 345);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(74, 29);
+            this.label13.TabIndex = 93;
+            this.label13.Text = "Email";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textoEmail
+            // 
+            this.textoEmail.BackColor = System.Drawing.Color.White;
+            this.textoEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoEmail.Location = new System.Drawing.Point(191, 343);
+            this.textoEmail.Name = "textoEmail";
+            this.textoEmail.Size = new System.Drawing.Size(234, 28);
+            this.textoEmail.TabIndex = 94;
+            // 
+            // textoUsername
+            // 
+            this.textoUsername.BackColor = System.Drawing.Color.White;
+            this.textoUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoUsername.Location = new System.Drawing.Point(594, 32);
+            this.textoUsername.Name = "textoUsername";
+            this.textoUsername.Size = new System.Drawing.Size(234, 28);
+            this.textoUsername.TabIndex = 95;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(458, 32);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(124, 29);
+            this.label14.TabIndex = 96;
+            this.label14.Text = "Username";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // AbmCrearAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -438,7 +542,7 @@
             this.ClientSize = new System.Drawing.Size(884, 766);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "AbmEditarAfiliado";
+            this.Name = "AbmCrearAfiliado";
             this.Text = "Clinica FRBA-Crear Afiliado";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AbmAfiliado_Load);
@@ -458,7 +562,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button BotonConfirmar2;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.TextBox textoDocumento;
         private System.Windows.Forms.Label label7;
@@ -472,14 +575,23 @@
         private System.Windows.Forms.ComboBox estadoCivil;
         private System.Windows.Forms.Button botonQuitar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox planMedico;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sexo;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox eleccionSexo;
+        private System.Windows.Forms.DateTimePicker fechaDeNacimiento;
+        private System.Windows.Forms.Button botonConfirmar;
+        private System.Windows.Forms.TextBox textoEmail;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textoTipoDocumento;
+        private System.Windows.Forms.TextBox textoContraseña;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textoUsername;
     }
 }

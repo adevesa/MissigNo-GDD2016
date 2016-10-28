@@ -31,7 +31,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void botonCrearAfiliado_Click(object sender, EventArgs e)
         {
-            AbmCrearAfiliado2 abmCrearAfiliado = new AbmCrearAfiliado2();
+            AbmCrearAfiliado abmCrearAfiliado = new AbmCrearAfiliado();
             this.Hide();
             abmCrearAfiliado.ShowDialog();
             this.Close();
@@ -39,7 +39,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void botonModificarAfiliado_Click(object sender, EventArgs e)
         {
-            AbmEditarAfiliado abmEditarAfiliado = new AbmEditarAfiliado();
+            AbmCrearAfiliado2 abmEditarAfiliado = new AbmCrearAfiliado2();
             this.Hide();
             abmEditarAfiliado.ShowDialog();
             this.Close();

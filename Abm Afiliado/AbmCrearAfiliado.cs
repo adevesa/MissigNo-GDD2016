@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.Abm_Afiliado
 {
-    public partial class AbmEditarAfiliado : Form
+    public partial class AbmCrearAfiliado : Form
     {
-        public AbmEditarAfiliado()
+        public AbmCrearAfiliado()
         {
             InitializeComponent();
         }
@@ -39,22 +39,13 @@ namespace ClinicaFrba.Abm_Afiliado
 
         }
 
-        private void BotonConfirmar2_Click(object sender, EventArgs e)
-        {
-            AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
-            this.Hide();
-            abmAfiliado.ShowDialog();
-            this.Close();
-           
-        }
-
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
+           /* AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
             this.Hide();
             abmAfiliado.ShowDialog();
             this.Close();
-           
+          */ 
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -66,5 +57,26 @@ namespace ClinicaFrba.Abm_Afiliado
         {
 
         }
+
+         public bool errores_de_registro()
+        {
+            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoDireccion.Text.Length == 0 || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length ==0 || textoUsername.Text.Length == 0); 
+
+       }
+         private void botonConfirmar_Click(object sender, EventArgs e)
+         {
+             if (errores_de_registro())
+             {
+                 MessageBox.Show("Faltan completar datos");
+             }
+              else
+              {
+              AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
+              this.Hide();
+              abmAfiliado.ShowDialog();
+              this.Close();
+              }
+         }
+
     }
 }

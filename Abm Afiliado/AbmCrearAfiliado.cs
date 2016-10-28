@@ -71,9 +71,9 @@ namespace ClinicaFrba.Abm_Afiliado
              }
               else
               {
-              AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
+              AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar();
               this.Hide();
-              abmAfiliado.ShowDialog();
+              abmConsulta.ShowDialog();
               this.Close();
               }
          }

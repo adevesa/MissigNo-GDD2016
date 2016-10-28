@@ -50,3 +50,4 @@ C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_cancel
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_consultados.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado2.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar.resources

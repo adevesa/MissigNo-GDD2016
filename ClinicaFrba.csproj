@@ -66,6 +66,12 @@
     <Compile Include="Abm Afiliado\AbmBorrarAfiliado2.Designer.cs">
       <DependentUpon>AbmBorrarAfiliado2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Afiliado\AbmConsultaFamiliar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\AbmConsultaFamiliar.Designer.cs">
+      <DependentUpon>AbmConsultaFamiliar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Afiliado\AbmCrearAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,7 +144,6 @@
     <Compile Include="Compra Bono\ComprarBonoDesdeAdministrador.Designer.cs">
       <DependentUpon>ComprarBonoDesdeAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="conexionBD.cs" />
     <Compile Include="Listados\AbmListado2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\AbmBorrarAfiliado2.resx">
       <DependentUpon>AbmBorrarAfiliado2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\AbmConsultaFamiliar.resx">
+      <DependentUpon>AbmConsultaFamiliar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\AbmCrearAfiliado.resx">
       <DependentUpon>AbmCrearAfiliado.cs</DependentUpon>

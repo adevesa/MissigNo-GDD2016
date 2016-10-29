@@ -14,7 +14,8 @@ namespace ClinicaFrba.Abm_Afiliado
     {
         public string userPadre;
         public string direccionPadre;
-
+        public List<AfiliadoSimple> listaFamiliares = new List<AfiliadoSimple>();
+        
         public AgregarFamiliar()
         {
             InitializeComponent();
@@ -22,8 +23,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
         public bool errores_de_registro()
         {
-            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length == 0 || textoUsername.Text.Length == 0);
-
+            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length == 0 || textoUsername.Text.Length == 0);  
         }
 
         private void BotonConfirmar2_Click(object sender, EventArgs e)
@@ -37,15 +37,19 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 UsuarioDAL.crearAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, this.direccionPadre, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text, this.userPadre);
                 AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar();
+                this.listaFamiliares.Add(UsuarioDAL.Buscar_afiliado_por_username(textoUsername.Text));
+                abmConsulta.listaFamiliares = this.listaFamiliares;
+                this.Hide();
+                abmConsulta.ShowDialog();
                 this.Close();
             }
-            
-            
-            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar();
+            this.Hide();
+            abmConsulta.ShowDialog();
             this.Close();
         }
 

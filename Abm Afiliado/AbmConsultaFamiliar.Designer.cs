@@ -30,19 +30,14 @@
         {
             this.botonConfirmar = new System.Windows.Forms.Button();
             this.eleccionSexo = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.botonQuitar = new System.Windows.Forms.Button();
             this.butonAgregar = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvFamiliares = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFamiliares)).BeginInit();
             this.SuspendLayout();
             // 
             // botonConfirmar
@@ -71,53 +66,6 @@
             this.eleccionSexo.Size = new System.Drawing.Size(226, 28);
             this.eleccionSexo.TabIndex = 93;
             this.eleccionSexo.Text = "Sexo";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre,
-            this.Apellido,
-            this.Documento,
-            this.ID,
-            this.Sexo});
-            this.dataGridView1.Location = new System.Drawing.Point(51, 98);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(545, 296);
-            this.dataGridView1.TabIndex = 92;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Apellido
-            // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            this.Apellido.ReadOnly = true;
-            // 
-            // Documento
-            // 
-            this.Documento.HeaderText = "Documento";
-            this.Documento.Name = "Documento";
-            this.Documento.ReadOnly = true;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Sexo
-            // 
-            this.Sexo.HeaderText = "Sexo";
-            this.Sexo.Name = "Sexo";
-            this.Sexo.ReadOnly = true;
             // 
             // botonQuitar
             // 
@@ -177,16 +125,24 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.dgvFamiliares);
             this.panel1.Controls.Add(this.botonConfirmar);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.botonVolver);
             this.panel1.Controls.Add(this.botonQuitar);
-            this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.butonAgregar);
             this.panel1.Location = new System.Drawing.Point(1, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(783, 542);
             this.panel1.TabIndex = 96;
+            // 
+            // dgvFamiliares
+            // 
+            this.dgvFamiliares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFamiliares.Location = new System.Drawing.Point(26, 112);
+            this.dgvFamiliares.Name = "dgvFamiliares";
+            this.dgvFamiliares.Size = new System.Drawing.Size(546, 272);
+            this.dgvFamiliares.TabIndex = 96;
             // 
             // AbmConsultaFamiliar
             // 
@@ -201,9 +157,9 @@
             this.Text = "AbmConsultaFamiliar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AbmConsultaFamiliar_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFamiliares)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -212,16 +168,11 @@
 
         private System.Windows.Forms.Button botonConfirmar;
         private System.Windows.Forms.ComboBox eleccionSexo;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sexo;
         private System.Windows.Forms.Button botonQuitar;
         private System.Windows.Forms.Button butonAgregar;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgvFamiliares;
     }
 }

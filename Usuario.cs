@@ -9,6 +9,9 @@ using System.Data.SqlClient;
 
 namespace ClinicaFrba
 {
+
+
+
     class Usuario
     {
 

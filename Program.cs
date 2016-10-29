@@ -24,7 +24,7 @@ namespace ClinicaFrba
         [STAThread]
         static void Main()
         {
-           /* try
+            try
             {
                 //con esto nos conectamos
                 SqlConnection sqlCon = null;
@@ -32,12 +32,12 @@ namespace ClinicaFrba
                 sqlCon = new SqlConnection("server=localhost\\SQLSERVER2012; initial catalog=GD2C2016; user id=gd; password=gd2016");
                 //nos conectamos
                 sqlCon.Open();
-            */
+            
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 ClinicaFrba.Login.frm_login login = new ClinicaFrba.Login.frm_login();
                 Application.Run(login);
-            /*
+            
                 //cerramos la conexion
                 sqlCon.Close();
             
@@ -46,7 +46,7 @@ namespace ClinicaFrba
             {
                 //le informamos al usuario
                 MessageBox.Show(e.Message, "Error: " + e.Number);
-            }*/
+            }
         }
     }
 }

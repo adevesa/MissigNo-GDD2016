@@ -66,14 +66,17 @@ INSERT INTO MISSINGNO.Rol(
 
 INSERT INTO MISSINGNO.Funcionalidad (funcionalidad_nombre)
 	VALUES 
-		('Gestionar roles'), 
-		('Gestionar afiliados'), 
-		('Comprar bonos'), 
-		('Pedir turnos'), 
-		('Registrar llegada para atencion'), 
-		('Registrar resultado de atencion'), 
-		('Cancelar turnos'), 
-		('Estadisticas')
+		('ABM_rol'), 
+		('ABM_afiliado'), 
+		('Compra_bonos'), 
+		('Pedir_turno'), 
+		('Registrar_llegada_atencion'), 
+		('Registrar_resultado_atencion'), 
+		('Cancelar_turno'), 
+		('Estadisticas'),
+		('ABM_profesional'),
+		('ABM_especialidad'),
+		('Registrar_agenda')
 		
 GO
 
@@ -108,34 +111,34 @@ INSERT INTO MISSINGNO.Usuario(
 /* ASIGNACION DE ROL AL USUARIO "admin" */
 
 INSERT INTO MISSINGNO.Rol_de_usuario(
-			rol_id,
+			rol_nombre,
 			username)
 			VALUES
-			(1,'admin')
+			('Administrativo','admin')
 
 /* ASIGNACION DE FUNCIONALIDADES A CADA ROL */
 
 	-- Administrativo
 
 INSERT INTO MISSINGNO.Funcionalidad_de_rol(
-			rol_id,
-			funcionalidad_id)
-		VALUES (1,1), (1,2), (1,5), (1,8)
+			rol_nombre,
+			funcionalidad_nombre)
+		VALUES ('Administrativo','ABM_rol'), ('Administrativo','ABM_afiliado'), ('Administrativo','Registrar_llegada_atencion'), ('Administrativo','Estadisticas')
 
 	-- Profesional
 
 INSERT INTO MISSINGNO.Funcionalidad_de_rol(
-			rol_id,
-			funcionalidad_id)
-		VALUES (2,6), (2,7)
+			rol_nombre,
+			funcionalidad_nombre)
+		VALUES ('Profesional','Registrar_resultado_atencion'), ('Profesional','Cancelar_turno')
 
 
 	-- Afiliado
 
 INSERT INTO MISSINGNO.Funcionalidad_de_rol(
-			rol_id,
-			funcionalidad_id)
-		VALUES (3,3), (3,4), (3,5)
+			rol_nombre,
+			funcionalidad_nombre)
+		VALUES ('Afiliado','Compra_bonos'), ('Afiliado','Pedir_turno'), ('Afiliado','Registrar_llegada_atencion')
 
 GO
 

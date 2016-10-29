@@ -261,7 +261,7 @@ namespace ClinicaFrba.Login
 
                             //seteo para que retorne con exito
                             existeUsr = true;
-                            //seteo nombre de ususrio para luego recuperarlo desdes del form padre
+                            //seteo nombre de usuario para luego recuperarlo desdes del form padre
                             usrString = textBox_usr.Text;
 
                             //borro

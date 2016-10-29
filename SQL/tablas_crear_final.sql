@@ -69,16 +69,16 @@ alter table MISSINGNO.Bono
 	-- TABLA ROL_DE_USUARIO
 
 alter table MISSINGNO.Rol_de_usuario
-	drop constraint FK_Rol_de_usuario_rol_id;
+	drop constraint FK_Rol_de_usuario_rol_nombre;
 alter table MISSINGNO.Rol_de_usuario
 	drop constraint FK_Rol_de_usuario_username;
 
 	-- TABLA FUNCIONALIDAD_DE_ROL
 
 alter table MISSINGNO.Funcionalidad_de_rol
-	drop constraint FK_Funcionalidad_de_rol_funcionalidad_id;
+	drop constraint FK_Funcionalidad_de_rol_funcionalidad_nombre;
 alter table MISSINGNO.Funcionalidad_de_rol
-	drop constraint FK_Funcionalidad_de_rol_rol_id;
+	drop constraint FK_Funcionalidad_de_rol_rol_nombre;
 
 	-- TABLA ESPECIALIDAD
 alter table MISSINGNO.Especialidad
@@ -175,14 +175,12 @@ GO
 	-- TABLA FUNCIONALIDAD
 
 	create table MISSINGNO.Funcionalidad(
-		funcionalidad_id int primary key identity,
-		funcionalidad_nombre varchar(50) not null)
+		funcionalidad_nombre varchar(50) primary key)
 
 	-- TABLA ROL
 
 	create table MISSINGNO.Rol(
-		rol_id int primary key identity,
-		rol_nombre varchar(20) not null,
+		rol_nombre varchar(20) not null primary key,
 		rol_habilitado bit not null)
 
 	-- TABLA USUARIO
@@ -199,20 +197,21 @@ GO
 		domicilio varchar(150) not null,
 		mail varchar(40) not null,
 		telefono int not null,
-		unique (doc_nro))
+		unique (doc_nro),
+		intentos_login int)
 
 	-- TABLA ROL_DE_USUARIO
 
 	create table MISSINGNO.Rol_de_usuario(
-		rol_id int not null,
+		rol_nombre varchar(20) not null,
 		username varchar(50) not null,
-		primary key (rol_id,username))
+		primary key (rol_nombre,username))
 
 	-- TABLA FUNCIONALIDAD_DE_ROL
 
 	create table MISSINGNO.Funcionalidad_de_rol(
-		rol_id int,
-		funcionalidad_id int)
+		rol_nombre varchar(20) not null,
+		funcionalidad_nombre varchar(50) not null)
 
 	-- TABLA AGENDA
 
@@ -240,7 +239,8 @@ GO
 	create table MISSINGNO.Profesional(
 		profesional_id int primary key identity,
 		username varchar(50) not null,
-		profesional_matricula int )
+		profesional_matricula int,
+		profesional_baja_logica int )
 
 	-- TABLA ESPECIALIDAD_DE_PROFESIONAL
 
@@ -338,7 +338,8 @@ GO
 	
 	create table MISSINGNO.Administrativo(
 		admin_id int primary key identity,
-		username varchar(50) not null)
+		username varchar(50) not null,
+		admin_baja_logica int)
 	
 set dateformat dmy;
 GO
@@ -413,16 +414,16 @@ alter table MISSINGNO.Turno
 	-- TABLA ROL_DE_USUARIO
 
 alter table MISSINGNO.Rol_de_usuario
-	add constraint FK_Rol_de_usuario_rol_id foreign key (rol_id) references MISSINGNO.Rol(rol_id);
+	add constraint FK_Rol_de_usuario_rol_nombre foreign key (rol_nombre) references MISSINGNO.Rol(rol_nombre);
 alter table MISSINGNO.Rol_de_usuario
 	add constraint FK_Rol_de_usuario_username foreign key (username) references MISSINGNO.Usuario(username);
 
 	-- TABLA FUNCIONALIDAD_DE_ROL
 
 alter table MISSINGNO.Funcionalidad_de_rol
-	add constraint FK_Funcionalidad_de_rol_rol_id foreign key (rol_id) references MISSINGNO.Rol(rol_id);
+	add constraint FK_Funcionalidad_de_rol_rol_nombre foreign key (rol_nombre) references MISSINGNO.Rol(rol_nombre);
 alter table MISSINGNO.Funcionalidad_de_rol
-	add constraint FK_Funcionalidad_de_rol_funcionalidad_id foreign key (funcionalidad_id) references MISSINGNO.Funcionalidad(funcionalidad_id);
+	add constraint FK_Funcionalidad_de_rol_funcionalidad_nombre foreign key (funcionalidad_nombre) references MISSINGNO.Funcionalidad(funcionalidad_nombre);
 
 	-- TABLA AFILIADO_HISTORIAL
 

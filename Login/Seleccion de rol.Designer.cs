@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1.Login
+﻿namespace ClinicaFrba.Login
 {
     partial class SeleccionRol
     {

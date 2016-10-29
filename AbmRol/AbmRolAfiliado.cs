@@ -49,7 +49,7 @@ namespace ClinicaFrba.AbmRol
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            Logueo logueo = new Logueo();
+            ClinicaFrba.Login.frm_login logueo = new ClinicaFrba.Login.frm_login();
             this.Hide();
             logueo.ShowDialog();
             this.Close();

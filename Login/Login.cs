@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Configuration;
 
-namespace WindowsFormsApplication1.Login
+namespace ClinicaFrba.Login
 {
     public partial class frm_login : Form
     {

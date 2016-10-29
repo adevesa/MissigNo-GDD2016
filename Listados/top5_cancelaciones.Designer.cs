@@ -94,6 +94,7 @@
             this.Name = "top5_cancelaciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinica FRBA-TOP 5 Cancelaciones";
+            this.Load += new System.EventHandler(this.top5_cancelaciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

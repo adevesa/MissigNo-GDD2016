@@ -16,5 +16,10 @@ namespace ClinicaFrba.Listados
         {
             InitializeComponent();
         }
+
+        private void top5_cancelaciones_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

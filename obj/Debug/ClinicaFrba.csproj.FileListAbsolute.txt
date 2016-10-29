@@ -17,14 +17,10 @@ D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FR
 C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.exe.config
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.exe
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.pdb
-C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\Logueo.cs
-C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\Logueo.Designer.cs
 C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.exe
 C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.pdb
-C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Logueo.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Properties.Resources.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
-C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Resultado.SeleccionDeRol.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado2.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AgregarFamiliar.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado.resources
@@ -51,4 +47,4 @@ C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_consul
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado2.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar.resources
-C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\WindowsFormsApplication1.Login.frm_login.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Login.frm_login.resources

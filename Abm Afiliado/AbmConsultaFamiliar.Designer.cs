@@ -79,6 +79,7 @@
             this.botonQuitar.TabIndex = 91;
             this.botonQuitar.Text = "Quitar";
             this.botonQuitar.UseVisualStyleBackColor = true;
+            this.botonQuitar.Click += new System.EventHandler(this.botonQuitar_Click);
             // 
             // butonAgregar
             // 

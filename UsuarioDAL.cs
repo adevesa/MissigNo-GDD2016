@@ -46,15 +46,24 @@ namespace ClinicaFrba
             int plan = Convert.ToInt32(planMedico);
             string genero = cifrarGenero(sexo);
 
-            SqlCommand comando = new SqlCommand(string.Format("INSERT INTO Usuarios (username, doc_tipo, doc_nro, contrasenia, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono) VALUES ('{0}', '{1}' , '{2}', '{3}', '{4}', '{5}', '{6}' , '{7}', '{8}', '{9}', '{10}')",
+            SqlCommand comando = new SqlCommand(string.Format("INSERT INTO Usuarios (username, doc_tipo, doc_nro, contrasenia, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono) VALUES ('{0}', '{1}' , {2}, '{3}', '{4}', '{5}', '{6}' , '{7}', '{8}', '{9}', {10})",
                  username, tipoDocumento, doc, contraseña, nombre, apellido, fechaNacimiento, genero, direccion, email, tel));
 
-            SqlCommand otroComando = new SqlCommand(string.Format("INSERT INTO Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado) VALUES ('{0}', '{1}' , '{2}', '{3}', '{4}')",
+            SqlCommand otroComando = new SqlCommand(string.Format("INSERT INTO Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado) VALUES ('{0}', {1} , '{2}', '{3}', '{4}')",
                 username, plan, estadoCivil, "01/01/2018", encargado));
         }
 
 
+        public static void borrarAfiliado(string username)
+        {
+            //int retorno = 0;
 
+            SqlCommand comando = new SqlCommand(string.Format("Delete From Afiliado where username='{0}'", username));
+            //retorno = comando.ExecuteNonQuery();
+
+           // return retorno;
+
+        }
 
     }
 }

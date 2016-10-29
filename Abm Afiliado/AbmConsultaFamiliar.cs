@@ -15,6 +15,7 @@ namespace ClinicaFrba.Abm_Afiliado
         public string userPadre;
         public string direccionPadre;
         public List<AfiliadoSimple> listaFamiliares;
+        public AfiliadoSimple AfiliadoSelecionado;
 
         public AbmConsultaFamiliar()
         {
@@ -62,6 +63,17 @@ namespace ClinicaFrba.Abm_Afiliado
             this.Hide();
             abmFamiliar.ShowDialog();
             this.Close();
+        }
+
+        private void botonQuitar_Click(object sender, EventArgs e)
+        {
+            if (dgvFamiliares.SelectedRows.Count == 1)
+            {
+                string afiliado = Convert.ToInt32(dgvFamiliares.CurrentRow.Cells[0].Value);
+                UsuarioDAL.borrarAfiliado(id);
+            }
+            else
+                MessageBox.Show("debe de seleccionar un afiliado");
         }
     }
 }

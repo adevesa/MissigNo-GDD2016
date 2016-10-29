@@ -33,6 +33,7 @@ namespace ClinicaFrba.Abm_Afiliado
         private void botonVolver_Click(object sender, EventArgs e)
         {
             AbmCrearAfiliado abmAfiliado = new AbmCrearAfiliado();
+            listaFamiliares.Clear();
             this.Hide();
             abmAfiliado.ShowDialog();
             this.Close();
@@ -69,8 +70,8 @@ namespace ClinicaFrba.Abm_Afiliado
         {
             if (dgvFamiliares.SelectedRows.Count == 1)
             {
-                string afiliado = Convert.ToInt32(dgvFamiliares.CurrentRow.Cells[0].Value);
-                UsuarioDAL.borrarAfiliado(id);
+               // string afiliado = Convert.ToString(dgvFamiliares.CurrentRow.Cells[1].Value);
+              //  UsuarioDAL.borrarAfiliado(afiliado);
             }
             else
                 MessageBox.Show("debe de seleccionar un afiliado");

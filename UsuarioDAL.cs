@@ -8,12 +8,6 @@ using System.Data.SqlClient;
 namespace ClinicaFrba
 {
 
-    class AfiliadoSimple
-    {
-        public string username { get; set; }
-        public int afiliado_id { get; set; }
-    }
-
     class UsuarioDAL
     {
         public static AfiliadoSimple Buscar_afiliado_por_username(string username)

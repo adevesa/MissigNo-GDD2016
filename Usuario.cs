@@ -12,7 +12,7 @@ namespace ClinicaFrba
 
 
 
-    class Usuario
+    public class Usuario
     {
 
         public string username { get; set; }

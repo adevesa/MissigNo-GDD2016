@@ -126,6 +126,7 @@
     <Compile Include="AbmRol\AbmRolProfesional.Designer.cs">
       <DependentUpon>AbmRolProfesional.cs</DependentUpon>
     </Compile>
+    <Compile Include="AfiliadoSimple.cs" />
     <Compile Include="bin\Debug\Logueo.cs">
       <SubType>Form</SubType>
     </Compile>

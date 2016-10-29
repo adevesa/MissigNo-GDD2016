@@ -14,7 +14,7 @@ namespace ClinicaFrba.Abm_Afiliado
     {
         public string userPadre;
         public string direccionPadre;
-        public List<AfiliadoSimple> listaFamiliares = new List<AfiliadoSimple>();
+        public List<AfiliadoSimple> listaFamiliares;
         
         public AgregarFamiliar()
         {

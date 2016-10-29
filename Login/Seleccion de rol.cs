@@ -18,18 +18,11 @@ namespace ClinicaFrba.Login
 
         private String usr = null;
 
-        public SeleccionRol()
+        public SeleccionRol(string username)
         {
+            this.usr = username;
             InitializeComponent();
         }
-
-        public SeleccionRol(SqlConnection sqlCon, String usr)
-            : this()
-        {
-            this.sqlCon = sqlCon;
-            this.usr = usr;
-        }
-
         private bool recuperarRolesHabilitados()
         {
             //consula

@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,32 +11,36 @@ namespace ClinicaFrba
 {
     class Usuario
     {
-/*
-        public static string cifrarGenero(string genero)
+
+        public string username { get; set; }
+        public string doc_tipo { get; set; }
+        public int doc_nro { get; set; }
+        public string contrasenia { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+        public DateTime fec_nac { get; set; }
+        public string sexo { get; set; }
+        public string domicilio { get; set; }
+        public string mail { get; set; }
+        public int telefono { get; set; }
+
+
+        public Usuario() { }
+
+        public Usuario(string pUsername, string pDoc_tipo, int pDoc_nro, string pContrasenia, string pNombre, string pApellido, DateTime pFec_nac, string pSexo, string pDomicilio, string pMail, int pTelefono)
         {
-            if (genero == "Hombre")
-            { return "H"; }
-            else
-            { return "M"; }
+            this.username = pUsername;
+            this.doc_tipo = pDoc_tipo;
+            this.doc_nro = pDoc_nro;
+            this.contrasenia = pContrasenia;
+            this.nombre = pNombre;
+            this.apellido = pApellido;
+            this.fec_nac = pFec_nac;
+            this.sexo = pSexo;
+            this.domicilio = pDomicilio;
+            this.mail = pMail;
+            this.telefono = pTelefono;
         }
 
-        public static void crearAfiliado(string username, string tipoDocumento, string numDocumento, string contraseña, string nombre, string apellido, DateTime fechaNacimiento, string sexo, string direccion, string email, string telefono, string estadoCivil, string planMedico) {
-
-            int doc = Convert.ToInt32(numDocumento);
-            int tel = Convert.ToInt32(telefono);
-            int plan = Convert.ToInt32(plan);
-            string genero = cifrarGenero(sexo);
-
-            SqlConnection conexion = conexionBD.ObtenerConexion();
-
-            SqlCommand comando = new SqlCommand(string.Format("INSERT INTO Usuarios (username, doc_tipo, doc_nro, contrasenia, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono) VALUES ('{0}', '{1}' , '{2}', '{3}', '{4}', '{5}', '{6}' , '{7}', '{8}', '{9}', '{10}')",
-                 username, tipoDocumento, doc, contraseña, nombre, apellido, fechaNacimiento, genero, direccion, email, tel), conexionBD.ObtenerConexion());
-
-            SqlCommand otroComando = new SqlCommand(string.Format("INSERT INTO Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja) VALUES ('{0}', '{1}' , '{2}', '{3}')",
-                username, plan, estadoCivil, "01/01/2018"), conexionBD.ObtenerConexion());
-        }
-
-         public static void crearFamiliarAfiliado(
-*/
     }
 }

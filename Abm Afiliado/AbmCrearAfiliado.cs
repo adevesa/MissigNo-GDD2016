@@ -7,15 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace ClinicaFrba.Abm_Afiliado
 {
     public partial class AbmCrearAfiliado : Form
     {
+        
         public AbmCrearAfiliado()
         {
             InitializeComponent();
         }
+
 
         private void AbmAfiliado_Load(object sender, EventArgs e)
         {
@@ -28,6 +30,7 @@ namespace ClinicaFrba.Abm_Afiliado
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
         }
+
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -71,13 +74,19 @@ namespace ClinicaFrba.Abm_Afiliado
              }
               else
              {
-
-
+              UsuarioDAL.crearAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text, "NULL");
               AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar();
+              abmConsulta.userPadre = textoUsername.Text;
+              abmConsulta.direccionPadre = textoDireccion.Text;
               this.Hide();
               abmConsulta.ShowDialog();
               this.Close();
               }
+         }
+
+         private void fechaDeNacimiento_ValueChanged(object sender, EventArgs e)
+         {
+
          }
 
     }

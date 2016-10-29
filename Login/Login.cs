@@ -225,6 +225,9 @@ namespace WindowsFormsApplication1.Login
 
         private void btn_ingresar_Click(object sender, EventArgs e)
         {
+
+            ClinicaFrba.Program.setUsuario(textBox_usr.Text);
+
             bool vacio = false;
 
             if (textBox_usr.Text.Length == 0)

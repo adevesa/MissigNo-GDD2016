@@ -12,6 +12,9 @@ namespace ClinicaFrba.Abm_Afiliado
 {
     public partial class AbmConsultaFamiliar : Form
     {
+        public string userPadre;
+        public string direccionPadre;
+
         public AbmConsultaFamiliar()
         {
             InitializeComponent();
@@ -48,6 +51,8 @@ namespace ClinicaFrba.Abm_Afiliado
         private void butonAgregar_Click(object sender, EventArgs e)
         {
             AgregarFamiliar abmFamiliar = new AgregarFamiliar();
+            abmFamiliar.direccionPadre = this.direccionPadre;
+            abmFamiliar.userPadre = this.userPadre;
             abmFamiliar.ShowDialog();
         }
     }

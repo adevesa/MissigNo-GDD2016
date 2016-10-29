@@ -51,3 +51,4 @@ C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_consul
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado2.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\WindowsFormsApplication1.Login.frm_login.resources

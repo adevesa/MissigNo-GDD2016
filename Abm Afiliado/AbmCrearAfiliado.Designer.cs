@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textoUsername = new System.Windows.Forms.TextBox();
+            this.textoEmail = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textoTipoDocumento = new System.Windows.Forms.TextBox();
+            this.textoContraseña = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.botonConfirmar = new System.Windows.Forms.Button();
             this.fechaDeNacimiento = new System.Windows.Forms.DateTimePicker();
             this.eleccionSexo = new System.Windows.Forms.ComboBox();
             this.planMedico = new System.Windows.Forms.ComboBox();
@@ -48,15 +57,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textoNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.botonConfirmar = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textoContraseña = new System.Windows.Forms.TextBox();
-            this.textoTipoDocumento = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textoEmail = new System.Windows.Forms.TextBox();
-            this.textoUsername = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +98,108 @@
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(288, 105);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(124, 29);
+            this.label14.TabIndex = 96;
+            this.label14.Text = "Username";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textoUsername
+            // 
+            this.textoUsername.BackColor = System.Drawing.Color.White;
+            this.textoUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoUsername.Location = new System.Drawing.Point(441, 107);
+            this.textoUsername.Name = "textoUsername";
+            this.textoUsername.Size = new System.Drawing.Size(234, 28);
+            this.textoUsername.TabIndex = 95;
+            // 
+            // textoEmail
+            // 
+            this.textoEmail.BackColor = System.Drawing.Color.White;
+            this.textoEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoEmail.Location = new System.Drawing.Point(191, 502);
+            this.textoEmail.Name = "textoEmail";
+            this.textoEmail.Size = new System.Drawing.Size(234, 28);
+            this.textoEmail.TabIndex = 94;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(41, 500);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(74, 29);
+            this.label13.TabIndex = 93;
+            this.label13.Text = "Email";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(450, 316);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(166, 25);
+            this.label12.TabIndex = 92;
+            this.label12.Text = "Tipo documento";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textoTipoDocumento
+            // 
+            this.textoTipoDocumento.BackColor = System.Drawing.Color.White;
+            this.textoTipoDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoTipoDocumento.Location = new System.Drawing.Point(628, 313);
+            this.textoTipoDocumento.Name = "textoTipoDocumento";
+            this.textoTipoDocumento.Size = new System.Drawing.Size(200, 28);
+            this.textoTipoDocumento.TabIndex = 91;
+            // 
+            // textoContraseña
+            // 
+            this.textoContraseña.BackColor = System.Drawing.Color.White;
+            this.textoContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoContraseña.Location = new System.Drawing.Point(191, 249);
+            this.textoContraseña.Name = "textoContraseña";
+            this.textoContraseña.Size = new System.Drawing.Size(234, 28);
+            this.textoContraseña.TabIndex = 90;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(41, 247);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(136, 29);
+            this.label9.TabIndex = 89;
+            this.label9.Text = "Contraseña";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // botonConfirmar
+            // 
+            this.botonConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonConfirmar.ForeColor = System.Drawing.Color.Black;
+            this.botonConfirmar.Location = new System.Drawing.Point(519, 572);
+            this.botonConfirmar.Margin = new System.Windows.Forms.Padding(2);
+            this.botonConfirmar.Name = "botonConfirmar";
+            this.botonConfirmar.Size = new System.Drawing.Size(109, 46);
+            this.botonConfirmar.TabIndex = 88;
+            this.botonConfirmar.Text = "Confirmar";
+            this.botonConfirmar.UseVisualStyleBackColor = true;
+            this.botonConfirmar.Click += new System.EventHandler(this.botonConfirmar_Click);
+            // 
             // fechaDeNacimiento
             // 
             this.fechaDeNacimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -105,6 +207,7 @@
             this.fechaDeNacimiento.Name = "fechaDeNacimiento";
             this.fechaDeNacimiento.Size = new System.Drawing.Size(234, 21);
             this.fechaDeNacimiento.TabIndex = 85;
+            this.fechaDeNacimiento.ValueChanged += new System.EventHandler(this.fechaDeNacimiento_ValueChanged);
             // 
             // eleccionSexo
             // 
@@ -330,108 +433,6 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Crear Afiliado";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // botonConfirmar
-            // 
-            this.botonConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonConfirmar.ForeColor = System.Drawing.Color.Black;
-            this.botonConfirmar.Location = new System.Drawing.Point(519, 572);
-            this.botonConfirmar.Margin = new System.Windows.Forms.Padding(2);
-            this.botonConfirmar.Name = "botonConfirmar";
-            this.botonConfirmar.Size = new System.Drawing.Size(109, 46);
-            this.botonConfirmar.TabIndex = 88;
-            this.botonConfirmar.Text = "Confirmar";
-            this.botonConfirmar.UseVisualStyleBackColor = true;
-            this.botonConfirmar.Click += new System.EventHandler(this.botonConfirmar_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(41, 247);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(136, 29);
-            this.label9.TabIndex = 89;
-            this.label9.Text = "Contraseña";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textoContraseña
-            // 
-            this.textoContraseña.BackColor = System.Drawing.Color.White;
-            this.textoContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoContraseña.Location = new System.Drawing.Point(191, 249);
-            this.textoContraseña.Name = "textoContraseña";
-            this.textoContraseña.Size = new System.Drawing.Size(234, 28);
-            this.textoContraseña.TabIndex = 90;
-            // 
-            // textoTipoDocumento
-            // 
-            this.textoTipoDocumento.BackColor = System.Drawing.Color.White;
-            this.textoTipoDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoTipoDocumento.Location = new System.Drawing.Point(628, 313);
-            this.textoTipoDocumento.Name = "textoTipoDocumento";
-            this.textoTipoDocumento.Size = new System.Drawing.Size(200, 28);
-            this.textoTipoDocumento.TabIndex = 91;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(450, 316);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(166, 25);
-            this.label12.TabIndex = 92;
-            this.label12.Text = "Tipo documento";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(41, 500);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(74, 29);
-            this.label13.TabIndex = 93;
-            this.label13.Text = "Email";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textoEmail
-            // 
-            this.textoEmail.BackColor = System.Drawing.Color.White;
-            this.textoEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoEmail.Location = new System.Drawing.Point(191, 502);
-            this.textoEmail.Name = "textoEmail";
-            this.textoEmail.Size = new System.Drawing.Size(234, 28);
-            this.textoEmail.TabIndex = 94;
-            // 
-            // textoUsername
-            // 
-            this.textoUsername.BackColor = System.Drawing.Color.White;
-            this.textoUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoUsername.Location = new System.Drawing.Point(441, 107);
-            this.textoUsername.Name = "textoUsername";
-            this.textoUsername.Size = new System.Drawing.Size(234, 28);
-            this.textoUsername.TabIndex = 95;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(288, 105);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(124, 29);
-            this.label14.TabIndex = 96;
-            this.label14.Text = "Username";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AbmCrearAfiliado
             // 

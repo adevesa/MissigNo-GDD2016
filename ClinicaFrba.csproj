@@ -126,6 +126,12 @@
     <Compile Include="AbmRol\AbmRolProfesional.Designer.cs">
       <DependentUpon>AbmRolProfesional.cs</DependentUpon>
     </Compile>
+    <Compile Include="bin\Debug\Logueo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\Logueo.Designer.cs">
+      <DependentUpon>Logueo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cancelar Atencion\AbmCancelarTurno.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,21 @@
     <Compile Include="Listados\top5_consultados.Designer.cs">
       <DependentUpon>top5_consultados.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Seleccion de rol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Seleccion de rol.Designer.cs">
+      <DependentUpon>Seleccion de rol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Pedir Turno\AbmElegirHorario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,20 +225,6 @@
     <Compile Include="Registrar Agenta Medico\AbmAgenda.Designer.cs">
       <DependentUpon>AbmAgenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="Seleccion de rol.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seleccion de rol.Designer.cs">
-      <DependentUpon>Seleccion de rol.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Logueo.cs">
-      <SubType>Form</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Logueo.Designer.cs">
-      <DependentUpon>Logueo.cs</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro Llegada\RegistroDeLlegada.cs">
@@ -233,6 +240,7 @@
       <DependentUpon>AbmRegistroResultado.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuario.cs" />
+    <Compile Include="UsuarioDAL.cs" />
     <EmbeddedResource Include="Abm Afiliado\AbmAfiliado.resx">
       <DependentUpon>AbmAfiliado.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,8 +301,8 @@
     <EmbeddedResource Include="Listados\top5_consultados.resx">
       <DependentUpon>top5_consultados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Logueo.resx">
-      <DependentUpon>Logueo.cs</DependentUpon>
+    <EmbeddedResource Include="Login\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pedir Turno\AbmElegirHorario.resx">
       <DependentUpon>AbmElegirHorario.cs</DependentUpon>
@@ -321,9 +329,9 @@
     <EmbeddedResource Include="Registro Resultado\AbmRegistroResultado.resx">
       <DependentUpon>AbmRegistroResultado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Seleccion de rol.resx">
-      <DependentUpon>Seleccion de rol.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="bin\Debug\ClinicaFrba.exe.config" />
+    <None Include="bin\Debug\ClinicaFrba.vshost.exe.config" />
+    <None Include="bin\Debug\ClinicaFrba.vshost.exe.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -360,6 +368,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\blue-squares-powerpoint-backgrounds.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\ClinicaFrba.exe" />
+    <Content Include="bin\Debug\ClinicaFrba.pdb" />
+    <Content Include="bin\Debug\ClinicaFrba.vshost.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

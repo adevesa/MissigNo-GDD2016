@@ -45,53 +45,6 @@ namespace ClinicaFrba.Login
             this.DialogResult = existeUsr && usrRol != null ? DialogResult.Yes : DialogResult.No;
         }
 
-        /*
-        void incrementarIntentosFallidos()
-        {
-
-    
-            if ((cantIntentosFallidos = intentosFallidos()) != -1)
-            {
-                if (cantIntentosFallidos < 3)
-                {
-                    //consula sql
-                    SqlCommand cmd = new SqlCommand();
-
-                    cmd.CommandText = "UPDATE MISSINGNO.usuario ";
-                    cmd.CommandText += "SET USUARIO_INTENTOS_FALLIDOS = " + (cantIntentosFallidos + 1) + " ";
-                    cmd.CommandText += "WHERE username = '" + textBox_usr.Text + "'";
-                    cmd.Connection = sqlCon;
-
-                    //ejecuto
-                    if (cmd.ExecuteNonQuery() < 1)
-                    {
-                        //fallo
-                        MessageBox.Show("Error al actualizar el campo USR_INTENTOS_FALLIDOS de tabla USUARIO.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    if (cantIntentosFallidos > 1)
-                    {
-                        //inhabilito
-                        cmd.CommandText = "UPDATE MISSINGNO.USUARIO ";
-                        cmd.CommandText += "SET USUARIO_HABILITADO = 0 ";  //HAY QUE TENER UN CAMPO ASI EN LA TABLA USUARIO
-                        cmd.CommandText += "WHERE username = '" + textBox_usr.Text + "'";
-
-                        //ejecuto
-                        if (cmd.ExecuteNonQuery() < 1)
-                        {
-                            //fallo
-                            MessageBox.Show("Error al actualizar el campo USUARIO_HABILITADO de tabla USUARIO.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-
-                    //libero
-                    cmd.Dispose();
-                }
-            }
-        }
-        */
-
-
 
         private void btn_ingresar_Click(object sender, EventArgs e)
         {
@@ -131,7 +84,7 @@ namespace ClinicaFrba.Login
                         else
                         { 
                             intentos++;
-                             MessageBox.Show("Los datos no coinciden");
+                            MessageBox.Show("Los datos no coinciden");
                         }
                     } 
                    

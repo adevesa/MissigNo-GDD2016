@@ -12,7 +12,11 @@ namespace ClinicaFrba.Abm_Afiliado
 {
     public partial class AbmCrearAfiliado : Form
     {
-        
+
+        BDComun conexion = new BDComun();
+
+        String plan;
+
         public AbmCrearAfiliado()
         {
             InitializeComponent();
@@ -29,6 +33,9 @@ namespace ClinicaFrba.Abm_Afiliado
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
+
+            conexion.recuperarPlanes(planMedico, plan);
+
         }
 
 
@@ -74,16 +81,20 @@ namespace ClinicaFrba.Abm_Afiliado
              }
               else
              {
-              UsuarioDAL.crearAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text, "NULL");
-              AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar();
-              abmConsulta.userPadre = textoUsername.Text;
-              abmConsulta.direccionPadre = textoDireccion.Text;
+                 if(!conexion.existeUsuario(textoUsername.Text))
+                {
+                List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
+                  //  List<string> lista = new List<string>();
+              conexion.crearAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text);
+              AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar(lista, textoUsername.Text,textoDireccion.Text);
               this.Hide();
               abmConsulta.ShowDialog();
               this.Close();
               }
+                 else MessageBox.Show("Username en uso");
+            }
          }
-
+   
          private void fechaDeNacimiento_ValueChanged(object sender, EventArgs e)
          {
 

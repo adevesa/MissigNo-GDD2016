@@ -47,7 +47,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void botonBorrarAfiliado_Click(object sender, EventArgs e)
         {
-            AbmBorrarAfiliado abmBorrarAfiliado = new AbmBorrarAfiliado();
+            AbmBorrarAfiliado2 abmBorrarAfiliado = new AbmBorrarAfiliado2();
 
             abmBorrarAfiliado.ShowDialog();
 

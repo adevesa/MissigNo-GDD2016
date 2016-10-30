@@ -189,16 +189,16 @@ GO
 
 	create table MISSINGNO.Usuario (
 		username varchar(50) primary key,
-		doc_tipo varchar(10) not null,
-		doc_nro numeric(18,0) not null,
-		contrasenia nvarchar(30) not null,
-		nombre varchar(20) not null,
-		apellido varchar(20) not null,
-		fec_nac datetime not null, 
-		sexo char not null,
-		domicilio varchar(150) not null,
-		mail varchar(40) not null,
-		telefono int not null,
+		doc_tipo varchar(10),
+		doc_nro numeric(18,0),
+		contrasenia nvarchar(30),
+		nombre varchar(20),
+		apellido varchar(20),
+		fec_nac datetime, 
+		sexo char,
+		domicilio varchar(150),
+		mail varchar(40),
+		telefono bigint,
 		unique (doc_nro))
 
 	-- TABLA ROL_DE_USUARIO
@@ -274,7 +274,7 @@ GO
 		plan_id int not null,
 		afiliado_encargado int,
 		afiliado_fec_baja datetime,
-		afiliado_estado_civil char,
+		afiliado_estado_civil varchar(15),
 		afiliado_baja_logica bit)
 
 	-- TABLA AFILIADO_HISTORIAL

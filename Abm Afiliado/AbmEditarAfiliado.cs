@@ -59,8 +59,10 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void butonAgregar_Click(object sender, EventArgs e)
         {
-            AgregarFamiliar agregarFamiliar = new AgregarFamiliar();
-            agregarFamiliar.ShowDialog();
+            //List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
+            //List<string> lista = new List<string>();
+            //AgregarFamiliar agregarFamiliar = new AgregarFamiliar(this);
+            //agregarFamiliar.ShowDialog();
        
         }
 

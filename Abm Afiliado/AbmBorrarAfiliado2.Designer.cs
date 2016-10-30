@@ -87,6 +87,7 @@
             this.Name = "AbmBorrarAfiliado2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinica FRBA- Borrar Afiliados";
+            this.Load += new System.EventHandler(this.AbmBorrarAfiliado2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

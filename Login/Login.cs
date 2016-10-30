@@ -114,10 +114,11 @@ namespace ClinicaFrba.Login
             return usrRol;
         }
 
-
         private void frm_login_Load(object sender, EventArgs e)
         {
-            intentos = 0;
+           // DateTime fechaNacimiento = new DateTime(2000,11,11);
+           //conexion.crearFamiliar("fam" , "fam", "1234", "asd", "asd" , "asd", fechaNacimiento, "Hombre", "asd", "asd" , "12312", "asd", "555555", 5509);
+           intentos = 0;
         }
 
         private void label3_Click(object sender, EventArgs e)

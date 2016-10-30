@@ -30,7 +30,6 @@
         {
             this.botonConfirmar = new System.Windows.Forms.Button();
             this.eleccionSexo = new System.Windows.Forms.ComboBox();
-            this.botonQuitar = new System.Windows.Forms.Button();
             this.butonAgregar = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -67,26 +66,12 @@
             this.eleccionSexo.TabIndex = 93;
             this.eleccionSexo.Text = "Sexo";
             // 
-            // botonQuitar
-            // 
-            this.botonQuitar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonQuitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
-            this.botonQuitar.ForeColor = System.Drawing.Color.Black;
-            this.botonQuitar.Location = new System.Drawing.Point(617, 295);
-            this.botonQuitar.Margin = new System.Windows.Forms.Padding(2);
-            this.botonQuitar.Name = "botonQuitar";
-            this.botonQuitar.Size = new System.Drawing.Size(109, 46);
-            this.botonQuitar.TabIndex = 91;
-            this.botonQuitar.Text = "Quitar";
-            this.botonQuitar.UseVisualStyleBackColor = true;
-            this.botonQuitar.Click += new System.EventHandler(this.botonQuitar_Click);
-            // 
             // butonAgregar
             // 
             this.butonAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butonAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.butonAgregar.ForeColor = System.Drawing.Color.Black;
-            this.butonAgregar.Location = new System.Drawing.Point(617, 141);
+            this.butonAgregar.Location = new System.Drawing.Point(625, 213);
             this.butonAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.butonAgregar.Name = "butonAgregar";
             this.butonAgregar.Size = new System.Drawing.Size(109, 46);
@@ -130,7 +115,6 @@
             this.panel1.Controls.Add(this.botonConfirmar);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.botonVolver);
-            this.panel1.Controls.Add(this.botonQuitar);
             this.panel1.Controls.Add(this.butonAgregar);
             this.panel1.Location = new System.Drawing.Point(1, 12);
             this.panel1.Name = "panel1";
@@ -169,11 +153,10 @@
 
         private System.Windows.Forms.Button botonConfirmar;
         private System.Windows.Forms.ComboBox eleccionSexo;
-        private System.Windows.Forms.Button botonQuitar;
         private System.Windows.Forms.Button butonAgregar;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvFamiliares;
+        public System.Windows.Forms.DataGridView dgvFamiliares;
     }
 }

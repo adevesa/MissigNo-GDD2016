@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textoTipoDocumento = new System.Windows.Forms.TextBox();
+            this.textoDocumento = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -39,7 +43,7 @@
             this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.botonBuscar = new System.Windows.Forms.Button();
-            this.textoID = new System.Windows.Forms.TextBox();
+            this.textoUsername = new System.Windows.Forms.TextBox();
             this.estadoCivil = new System.Windows.Forms.ComboBox();
             this.botonQuitar = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -58,10 +62,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textoNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textoTipoDocumento = new System.Windows.Forms.TextBox();
-            this.textoDocumento = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -78,7 +78,7 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.botonBuscar);
-            this.panel1.Controls.Add(this.textoID);
+            this.panel1.Controls.Add(this.textoUsername);
             this.panel1.Controls.Add(this.estadoCivil);
             this.panel1.Controls.Add(this.botonQuitar);
             this.panel1.Controls.Add(this.label11);
@@ -103,6 +103,50 @@
             this.panel1.Size = new System.Drawing.Size(862, 744);
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(423, 173);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(166, 25);
+            this.label12.TabIndex = 96;
+            this.label12.Text = "Tipo documento";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textoTipoDocumento
+            // 
+            this.textoTipoDocumento.BackColor = System.Drawing.Color.White;
+            this.textoTipoDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoTipoDocumento.Location = new System.Drawing.Point(587, 170);
+            this.textoTipoDocumento.Name = "textoTipoDocumento";
+            this.textoTipoDocumento.Size = new System.Drawing.Size(250, 28);
+            this.textoTipoDocumento.TabIndex = 95;
+            // 
+            // textoDocumento
+            // 
+            this.textoDocumento.BackColor = System.Drawing.Color.White;
+            this.textoDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoDocumento.Location = new System.Drawing.Point(183, 170);
+            this.textoDocumento.Name = "textoDocumento";
+            this.textoDocumento.Size = new System.Drawing.Size(218, 28);
+            this.textoDocumento.TabIndex = 94;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(29, 173);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(150, 25);
+            this.label7.TabIndex = 93;
+            this.label7.Text = "Nº Documento";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dateTimePicker1
             // 
@@ -200,14 +244,14 @@
             this.botonBuscar.UseVisualStyleBackColor = true;
             this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
             // 
-            // textoID
+            // textoUsername
             // 
-            this.textoID.BackColor = System.Drawing.Color.White;
-            this.textoID.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoID.Location = new System.Drawing.Point(371, 33);
-            this.textoID.Name = "textoID";
-            this.textoID.Size = new System.Drawing.Size(339, 44);
-            this.textoID.TabIndex = 58;
+            this.textoUsername.BackColor = System.Drawing.Color.White;
+            this.textoUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoUsername.Location = new System.Drawing.Point(371, 33);
+            this.textoUsername.Name = "textoUsername";
+            this.textoUsername.Size = new System.Drawing.Size(339, 44);
+            this.textoUsername.TabIndex = 58;
             // 
             // estadoCivil
             // 
@@ -435,50 +479,6 @@
             this.label1.Text = "N° de afiliado a editar";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(423, 173);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(166, 25);
-            this.label12.TabIndex = 96;
-            this.label12.Text = "Tipo documento";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textoTipoDocumento
-            // 
-            this.textoTipoDocumento.BackColor = System.Drawing.Color.White;
-            this.textoTipoDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoTipoDocumento.Location = new System.Drawing.Point(587, 170);
-            this.textoTipoDocumento.Name = "textoTipoDocumento";
-            this.textoTipoDocumento.Size = new System.Drawing.Size(250, 28);
-            this.textoTipoDocumento.TabIndex = 95;
-            // 
-            // textoDocumento
-            // 
-            this.textoDocumento.BackColor = System.Drawing.Color.White;
-            this.textoDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoDocumento.Location = new System.Drawing.Point(183, 170);
-            this.textoDocumento.Name = "textoDocumento";
-            this.textoDocumento.Size = new System.Drawing.Size(218, 28);
-            this.textoDocumento.TabIndex = 94;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(29, 173);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(150, 25);
-            this.label7.TabIndex = 93;
-            this.label7.Text = "Nº Documento";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // AbmCrearAfiliado2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -520,7 +520,7 @@
         private System.Windows.Forms.ComboBox estadoCivil;
         private System.Windows.Forms.Button botonQuitar;
         private System.Windows.Forms.Button botonBuscar;
-        private System.Windows.Forms.TextBox textoID;
+        private System.Windows.Forms.TextBox textoUsername;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;

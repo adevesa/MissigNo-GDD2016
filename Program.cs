@@ -35,7 +35,10 @@ namespace ClinicaFrba
             */
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                ClinicaFrba.Login.frm_login login = new ClinicaFrba.Login.frm_login();
+                
+                List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
+                ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar login = new ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar(lista, "afi", "mi casa");
+                //ClinicaFrba.Login.frm_login login = new ClinicaFrba.Login.frm_login();
                 Application.Run(login);
             /*
                 //cerramos la conexion

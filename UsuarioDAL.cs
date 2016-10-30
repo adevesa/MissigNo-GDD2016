@@ -11,7 +11,7 @@ namespace ClinicaFrba
     class UsuarioDAL
     {
 
-       // BDComun c = new BDComun();
+    /*   // BDComun c = new BDComun();
         public static AfiliadoSimple Buscar_afiliado_por_username(string username)
         {
 

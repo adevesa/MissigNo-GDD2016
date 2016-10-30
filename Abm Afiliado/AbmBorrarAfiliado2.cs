@@ -12,6 +12,9 @@ namespace ClinicaFrba.Abm_Afiliado
 {
     public partial class AbmBorrarAfiliado2 : Form
     {
+
+        BDComun conexion = new BDComun();
+
         public AbmBorrarAfiliado2()
         {
             InitializeComponent();
@@ -24,10 +27,13 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            UsuarioDAL.borrarAfiliado(textoUsername.Text);
+            if(conexion.existeUsuario(textoUsername.Text))
+            {
+            conexion.borrarAfiliado(textoUsername.Text);
             MessageBox.Show("Afiliado borrado exitosamente");
             textoUsername.Clear();
+                }
+            else  MessageBox.Show("Usuario inexistente");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -38,6 +44,11 @@ namespace ClinicaFrba.Abm_Afiliado
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AbmBorrarAfiliado2_Load(object sender, EventArgs e)
+        {
+        
         }
     }
 }

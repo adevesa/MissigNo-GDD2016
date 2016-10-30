@@ -14,11 +14,22 @@ namespace ClinicaFrba.Abm_Afiliado
     {
         public string userPadre;
         public string direccionPadre;
-        public List<AfiliadoSimple> listaFamiliares;
-        public AfiliadoSimple AfiliadoSelecionado;
+        public List<AfiliadoSimple> listaFamiliares = new List <AfiliadoSimple>();
+        public AfiliadoSimple nuevoFamiliar = new AfiliadoSimple();
+        //public List<string> listaFamiliares;
+        public string userHijo;
+        public string nombreHijo;
+        public string apellidoHijo;
+    
+        public void actualizar(){
+            dgvFamiliares.DataSource = listaFamiliares;
+        }
 
-        public AbmConsultaFamiliar()
+        public AbmConsultaFamiliar(List<AfiliadoSimple> lista,string padre, string direccion)
         {
+            this.listaFamiliares = lista;
+            this.userPadre = padre;
+            this.direccionPadre = direccion;
             InitializeComponent();
         }
 
@@ -49,18 +60,15 @@ namespace ClinicaFrba.Abm_Afiliado
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
+            dgvFamiliares.DataSource = listaFamiliares;
 
             dgvFamiliares.DataSource = listaFamiliares;
-            
 
         }
 
         private void butonAgregar_Click(object sender, EventArgs e)
         {
-            AgregarFamiliar abmFamiliar = new AgregarFamiliar();
-            abmFamiliar.direccionPadre = this.direccionPadre;
-            abmFamiliar.userPadre = this.userPadre;
-            
+            AgregarFamiliar abmFamiliar = new AgregarFamiliar(listaFamiliares, userPadre, direccionPadre);
             this.Hide();
             abmFamiliar.ShowDialog();
             this.Close();

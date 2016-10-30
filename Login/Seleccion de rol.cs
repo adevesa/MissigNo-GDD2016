@@ -56,7 +56,7 @@ namespace ClinicaFrba.Login
                 }
             }
         }
-
+        /*
         private bool clienteEliminado()
         {
             //consula
@@ -81,7 +81,7 @@ namespace ClinicaFrba.Login
             cmd.Dispose();
             return true;
         }
-
+        */
         public String getRol()
         {
             return rol;

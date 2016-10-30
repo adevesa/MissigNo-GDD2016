@@ -214,15 +214,16 @@ namespace ClinicaFrba
             int idPlan = obtenerPlanId(planMedico);
             try{
             {
-
+                if(!existeUsuario(username)){
                 cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Usuario (username, doc_tipo, doc_nro, contrasenia, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono) VALUES ('{0}', '{1}' , {2}, HASHBYTES('SHA2_256','{3}'), '{4}','{5}', '{6}' , '{7}', '{8}', '{9}', {10})",
                     // "afi", "DNI", 39064509, "afi", "afi", "afi", fecha, 'H', "Mi casa", "afi@gmail.com", 123), cn);
                     username, tipoDocumento, doc, contraseña, nombre, apellido, fechaNacimiento, genero, direccion, email, tel), cn);
                 cmd.ExecuteNonQuery();
+                }
 
                 cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', '{3}', {4}, {5})",
-                  "fam", 555555, "soltero", fecha, "NULL" , 1), cn);
-                //   username, idPlan, estadoCivil, "01/01/2018", encargado, 1), cn);
+                 // "fam", 555555, "soltero", fecha, "NULL" , 1), cn);
+                   username, idPlan, estadoCivil, "01/01/2018", idPlan, 1), cn);
                 cmd.ExecuteNonQuery();
 
                  cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Rol_de_Usuario (rol_id, username) VALUES (3, '{0}')", username),cn);
@@ -248,15 +249,15 @@ namespace ClinicaFrba
             try
             {
                 {
-
+                      if(!existeUsuario(username)){
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Usuario (username, doc_tipo, doc_nro, contrasenia, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono) VALUES ('{0}', '{1}' , {2}, HASHBYTES('SHA2_256','{3}'), '{4}','{5}', '{6}' , '{7}', '{8}', '{9}', {10})",
                         // "afi", "DNI", 39064509, "afi", "afi", "afi", fecha, 'H', "Mi casa", "afi@gmail.com", 123), cn);
                         username, tipoDocumento, doc, contraseña, nombre, apellido, fechaNacimiento, genero, direccion, email, tel), cn);
                     cmd.ExecuteNonQuery();
-
+                      }
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', '{3}', {4}, {5})",
-                      "fam", 555555, "soltero", fecha, idPadre, 1), cn);
-                    //   username, idPlan, estadoCivil, "01/01/2018", encargado, 1), cn);
+                     // "fam", 555555, "soltero", fecha, idPadre, 1), cn);
+                      username, idPlan, estadoCivil, "01/01/2018", idPlan, 1), cn);
                     cmd.ExecuteNonQuery();
 
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Rol_de_Usuario (rol_id, username) VALUES (3, '{0}')", username), cn);

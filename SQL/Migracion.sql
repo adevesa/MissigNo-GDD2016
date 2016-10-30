@@ -367,8 +367,8 @@ SELECT * FROM MISSINGNO.Turno
 SELECT * FROM MISSINGNO.Usuario
 
 */
-
-/* TEST DEL AGU
+/*
+-- TEST DEL AGU
 
 INSERT INTO MISSINGNO.Usuario (username, doc_tipo, doc_nro, contrasenia, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono)
 VALUES ('afi', 'DNI' , 39054509 , HASHBYTES('SHA2_256','afiliado') , 'afiliado', 'Afilado' , '11/11/11', 'H' , 'Mi casa', 'afiliado@gmail.com', 011469696969);
@@ -386,7 +386,7 @@ VALUES ('fam', 'DNI' , 394509 , HASHBYTES('SHA2_256','fam') , 'fam', 'fam' , '11
 INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado) 
 VALUES ('fam', 555555 , 'soltero/a', '11/11/2016' , 5511);
 
-INSERT INTO MISSINGNO.Rol_de_Usuario (rol_id, username) VALUES (3, 'fam')
-
-
+DELETE FROM MISSINGNO.Afiliado  WHERE username = 'afi';
+DELETE FROM MISSINGNO.Rol_de_Usuario WHERE username = 'afi';
+DELETE FROM MISSINGNO.Usuario WHERE username = 'afi';
 */

@@ -68,7 +68,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-
+            //conexion.buscarDatosDeAfiliado(textoUsername.
         }
     }
 }

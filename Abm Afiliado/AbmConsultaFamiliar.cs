@@ -41,14 +41,7 @@ namespace ClinicaFrba.Abm_Afiliado
             this.Close();
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)
-        {
-            AbmCrearAfiliado abmAfiliado = new AbmCrearAfiliado();
-            listaFamiliares.Clear();
-            this.Hide();
-            abmAfiliado.ShowDialog();
-            this.Close();
-        }
+
 
         private void AbmConsultaFamiliar_Load(object sender, EventArgs e)
         {
@@ -60,8 +53,6 @@ namespace ClinicaFrba.Abm_Afiliado
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
-            dgvFamiliares.DataSource = listaFamiliares;
-
             dgvFamiliares.DataSource = listaFamiliares;
 
         }

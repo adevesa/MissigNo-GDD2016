@@ -55,7 +55,7 @@ namespace ClinicaFrba
               }
               catch(Exception ex)
               {
-               //  MessageBox.Show("Error en verificar existencia" + ex.ToString());
+    
                  return false;
               }
              
@@ -273,13 +273,110 @@ namespace ClinicaFrba
         }
 
 
+        public int obtenerTurnoId(int consultaMedica)
+        {
+            try
+            {
+                int id = new int();
+                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Consulta_medica WHERE consulta_id = {0}",
+                     consultaMedica), cn);
+                cmd.ExecuteNonQuery();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+                reader.Close();
+                return id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener turno ID: " + ex.ToString());
+                return -1;
+            }
+
+        }
+
+        public void cancelarConsultaMedica(int numeroConsulta, string tipoCancelacion, string motivoCancelacion)
+        {
+            try
+            {
+                int numeroTurno = obtenerTurnoId(numeroConsulta);
+
+                SqlCommand comando = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Cancelacion_Turno(turno_id, cancelacion_motivo, cancelacion_tipo, cancelacion_fecha) VALUES ({0},'{1}','{2}',getDate())",
+                    numeroTurno, tipoCancelacion, motivoCancelacion), cn);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cancelar Consulta Medica. Error: " + ex.ToString());
+            }
+        }
+
+        public bool consultaYaCancelada(int consulta_id)
+        {
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Cancelacion_Turno C, MISSINGNO.Consulta_medica CO  WHERE C.turno_id = CO.turno_id and CO.consulta_id = {0}",
+                    consulta_id), cn);
+                cmd.ExecuteNonQuery();
+                return ((Int32)cmd.ExecuteScalar() >= 1);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool chequearConsultaMedica(int consulta_id, string usernameProfesional)
+        {
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Consulta_medica C, MISSINGNO.Profesional P WHERE consulta_id= '{0}' and P.profesional_id = C.profesional_id and P.username = '{1}'",
+                    consulta_id, usernameProfesional), cn);
+                cmd.ExecuteNonQuery();
+                return ((Int32)cmd.ExecuteScalar() >= 1);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+        /*
+        public bool chequearConsultaMedica(int consulta_id, string usernameProfesional)
+        {
+            try
+            {  
+                cmd = new SqlCommand(string.Format("SELECT consulta_id FROM MISSINGNO.Consulta_medica C, MISSINGNO.Profesional P WHERE consulta_id= '{0}' and P.profesional_id = C.profesional_id and P.username = '{1}'",
+                     consulta_id, usernameProfesional), cn);
+                cmd.ExecuteNonQuery();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    reader.GetInt32(0);
+                }
+                reader.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la ID Consulta, Error: " + ex.ToString());
+                return bool;
+            }
+
+        }
+        */
 
 
 
         public void borrarAfiliado(string username)
         {
             try{
-                SqlCommand comando = new SqlCommand(string.Format("Delete from MISSINGNO.Rol_de_Usuario where (username ='{0}' AND rol_id = 3); Delete From MISSINGNO.Afiliado where username='{0}'", username));
+                cmd = new SqlCommand(string.Format("Delete from MISSINGNO.Rol_de_Usuario where (username ='{0}' AND rol_id = 3); Delete From MISSINGNO.Afiliado where username='{0}'", username));
             cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -331,5 +428,116 @@ namespace ClinicaFrba
             }
         }        
 
+
+        //----------------------------CONEXIONES PARA EDITAR AFILIADO
+
+        public AfiliadoCompleto obtenerDatosAfiliado(string username)
+             {
+              AfiliadoCompleto afiliado = new AfiliadoCompleto();
+           try
+              {
+              cmd = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono, afiliado_estado_civil FROM MISSINGNO.Usuario as X , MISSINGNO.Afiliado AS Y WHERE (Y.username = '{0}' AND X.username = '{0}')",
+                   username), cn);
+               //SqlCommand comando = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono FROM MISSINGNO.Usuario WHERE username = '{0}'",
+                //  username), cn);
+               cmd.ExecuteNonQuery();
+
+               SqlDataReader reader = cmd.ExecuteReader();
+               while (reader.Read())
+               {
+                   afiliado.doc_tipo = reader.GetString(0);
+                   afiliado.doc_nro = reader.GetInt64(1);
+                   afiliado.nombre = reader.GetString(2);
+                   afiliado.apellido = reader.GetString(3);
+                   afiliado.fec_nac = reader.GetDateTime(4);
+                   afiliado.sexo = reader.GetString(5);
+                   afiliado.domicilio = reader.GetString(6);
+                   afiliado.mail = reader.GetString(7);
+                   afiliado.telefono = reader.GetInt64(8);
+                   afiliado.afiliado_estado_civil = reader.GetString(9);
+               }
+               reader.Close();
+               List<int> listaID = new List<int>();
+               Int32 id = new Int32();
+               int idAfiliado = this.obtenerAfiliadoId(username);
+               cmd = new SqlCommand(string.Format("SELECT afiliado_id FROM  MISSINGNO.Afiliado WHERE afiliado_encargado = {0}",
+                   idAfiliado), cn);
+               cmd.ExecuteNonQuery();
+               SqlDataReader reader2 = cmd.ExecuteReader();
+
+               while (reader2.Read())
+                   {
+                    id =reader2.GetInt32(0);
+                    listaID.Add(id);
+                   }
+              
+               reader2.Close();
+               afiliado.hijos = listaID;
+               return afiliado;
+
+              }
+           catch (Exception ex)
+           {
+               MessageBox.Show("Error al buscar datos: " + ex.ToString());
+               return afiliado;
+           }
+         }
+
+
+        public AfiliadoSimple obtenerDatosAfiliado(int afiliadoID)
+        {
+            AfiliadoSimple afiliado = new AfiliadoSimple();
+            try
+            {
+
+                cmd = new SqlCommand(string.Format("SELECT X.username, nombre, apellido FROM MISSINGNO.Usuario as X JOIN MISSINGNO.Afiliado AS Y ON ( X.username = Y.username)WHERE (afiliado_id =  {0});",
+                     afiliadoID), cn);
+                cmd.ExecuteNonQuery();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    afiliado.username = reader.GetString(0);
+                    afiliado.nombre = reader.GetString(1);
+                    afiliado.apellido = reader.GetString(2);
+                }
+                reader.Close();
+                return afiliado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener datos de usuario: " + ex.ToString());
+                return afiliado;
+            }
+
+        }
+
+        public void modificarAfiliado(string username, string tipoDocumento, string numDocumento, string contraseña, string nombre, string apellido, DateTime fechaNacimiento, string sexo, string direccion, string email, string telefono, string estadoCivil, string planMedico)
+
+        {
+            
+            int doc = Convert.ToInt32(numDocumento);
+            UInt64 tel = Convert.ToUInt64(telefono);
+            string genero = cifrarGenero(sexo);
+            int idPlan = obtenerPlanId(planMedico);
+            DateTime fecha = new DateTime(2000, 11, 11);
+            try
+            {
+                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Usuario SET doc_tipo='{0}', doc_nro={1}, contrasenia = '{2}', nombre= '{3}', apellido='{4}', fec_nac='{5}', sexo='{6}', domicilio='{7}', mail= '{8}', telefono = {9} WHERE username='{10}'",
+                    tipoDocumento, doc,contraseña, nombre, apellido, fecha, genero, direccion, email, tel, username), cn);  
+                //"DNI", 39064509, "asdasd", "afi3", "afi", fecha, "H", "casa", "asasdsa", 01146969696969, "afi"),cn);
+                    cmd.ExecuteNonQuery();
+                    cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Afiliado SET plan_id={0}, afiliado_estado_civil='{1}' WHERE username='{2}'",
+                    idPlan, estadoCivil, username), cn);
+                cmd.ExecuteNonQuery();
+                  }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar usuario: " + ex.ToString());
+
+  
+            }
     }
 }
+}
+                    

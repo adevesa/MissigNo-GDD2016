@@ -81,7 +81,7 @@ namespace ClinicaFrba.Abm_Afiliado
              }
               else
              {
-                 if(!conexion.existeUsuario(textoUsername.Text))
+                 if(conexion.existeUsuario(textoUsername.Text))
                 {
                 List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
                   //  List<string> lista = new List<string>();

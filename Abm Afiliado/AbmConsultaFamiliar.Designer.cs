@@ -31,7 +31,6 @@
             this.botonConfirmar = new System.Windows.Forms.Button();
             this.eleccionSexo = new System.Windows.Forms.ComboBox();
             this.butonAgregar = new System.Windows.Forms.Button();
-            this.botonVolver = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvFamiliares = new System.Windows.Forms.DataGridView();
@@ -44,7 +43,7 @@
             this.botonConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonConfirmar.ForeColor = System.Drawing.Color.Black;
-            this.botonConfirmar.Location = new System.Drawing.Point(487, 467);
+            this.botonConfirmar.Location = new System.Drawing.Point(625, 307);
             this.botonConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.botonConfirmar.Name = "botonConfirmar";
             this.botonConfirmar.Size = new System.Drawing.Size(109, 46);
@@ -71,7 +70,7 @@
             this.butonAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butonAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.butonAgregar.ForeColor = System.Drawing.Color.Black;
-            this.butonAgregar.Location = new System.Drawing.Point(625, 213);
+            this.butonAgregar.Location = new System.Drawing.Point(625, 170);
             this.butonAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.butonAgregar.Name = "butonAgregar";
             this.butonAgregar.Size = new System.Drawing.Size(109, 46);
@@ -79,20 +78,6 @@
             this.butonAgregar.Text = "Agregar";
             this.butonAgregar.UseVisualStyleBackColor = true;
             this.butonAgregar.Click += new System.EventHandler(this.butonAgregar_Click);
-            // 
-            // botonVolver
-            // 
-            this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.botonVolver.ForeColor = System.Drawing.Color.Black;
-            this.botonVolver.Location = new System.Drawing.Point(248, 467);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(109, 46);
-            this.botonVolver.TabIndex = 89;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // label4
             // 
@@ -114,7 +99,6 @@
             this.panel1.Controls.Add(this.dgvFamiliares);
             this.panel1.Controls.Add(this.botonConfirmar);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.botonVolver);
             this.panel1.Controls.Add(this.butonAgregar);
             this.panel1.Location = new System.Drawing.Point(1, 12);
             this.panel1.Name = "panel1";
@@ -154,7 +138,6 @@
         private System.Windows.Forms.Button botonConfirmar;
         private System.Windows.Forms.ComboBox eleccionSexo;
         private System.Windows.Forms.Button butonAgregar;
-        private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.DataGridView dgvFamiliares;

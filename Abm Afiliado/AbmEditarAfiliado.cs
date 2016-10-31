@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.Abm_Afiliado
 {
+    
     public partial class AbmCrearAfiliado2 : Form
     {
+        AfiliadoCompleto afiliado = new AfiliadoCompleto();
+        BDComun conexion = new BDComun();
+        public int contador = 0;
+        public string plan;
+
         public AbmCrearAfiliado2()
         {
             InitializeComponent();
@@ -27,6 +33,8 @@ namespace ClinicaFrba.Abm_Afiliado
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
+
+            conexion.recuperarPlanes(planMedico, plan);
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -39,12 +47,37 @@ namespace ClinicaFrba.Abm_Afiliado
 
         }
 
+        public bool errores_de_registro()
+        {
+            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoDireccion.Text.Length == 0 || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length == 0 || textoUsername.Text.Length == 0);
+
+        }
+
         private void BotonConfirmar2_Click(object sender, EventArgs e)
         {
-            AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
-            this.Hide();
-            abmAfiliado.ShowDialog();
-            this.Close();
+            if (errores_de_registro())
+            {
+                MessageBox.Show("Faltan completar datos");
+            }
+            else
+            {
+                if (conexion.existeUsuario(textoUsername.Text))
+                {
+                    List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
+                      //List<string> lista = new List<string>();
+                    conexion.modificarAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text);
+                    AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
+                    MessageBox.Show("Usuario modificado exitosamente");
+                    this.Hide();
+                    abmAfiliado.ShowDialog();
+                    this.Close();
+                }
+                else MessageBox.Show("Usuario inexistente");
+            }
+            
+            
+            
+ 
            
         }
 
@@ -59,16 +92,43 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void butonAgregar_Click(object sender, EventArgs e)
         {
-            //List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
-            //List<string> lista = new List<string>();
-            //AgregarFamiliar agregarFamiliar = new AgregarFamiliar(this);
-            //agregarFamiliar.ShowDialog();
+            List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
+     if(contador != 0){
+            int tam = afiliado.hijos.Count();
+            if (tam != 0){
+            int i;
+            for(i = 0; tam>i; i++)  {
+               AfiliadoSimple datosAfiliado =  conexion.obtenerDatosAfiliado(afiliado.hijos[i]);
+               lista.Add(datosAfiliado);
+                }
+            }
+     
+            AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar(lista, textoUsername.Text, textoDireccion.Text);
+            this.Hide();
+            abmConsulta.ShowDialog();
+            this.Close();
+     }
+     else MessageBox.Show("Primero debes buscar un usuario");
        
         }
 
         private void botonBuscar_Click(object sender, EventArgs e)
         {
-            //conexion.buscarDatosDeAfiliado(textoUsername.
+            if((textoUsername.Text).Length != 0){
+                if(conexion.existeUsuario(textoUsername.Text)){
+                    afiliado = conexion.obtenerDatosAfiliado(textoUsername.Text);
+                    textoTipoDocumento.Text = afiliado.doc_tipo;
+                    textoDocumento.Text =Convert.ToString(afiliado.doc_nro);
+                    textoDireccion.Text = afiliado.domicilio;
+                    textoNombre.Text = afiliado.nombre;
+                    textoApellido.Text = afiliado.apellido;
+                    textoTelefono.Text = Convert.ToString(afiliado.telefono);
+                    textoEmail.Text = afiliado.mail;
+                    contador ++;
+                }
+                else MessageBox.Show("Usuario inexistente");
+            }
+            else MessageBox.Show("Debes introducir un nombre de usuario");
         }
     }
 }

@@ -562,6 +562,36 @@ namespace ClinicaFrba
                return especialidades;
            }
         }
+
+       /*  public List<Palabra> obtenerProfesionalesPorEspecialidad(string especialidad)  
+        {
+            List<Palabra> especialidades = new List<Palabra>();
+           
+           try
+              {
+                  cmd = new SqlCommand(string.Format("SELECT distinct (SELECT username FROM MISSINGNO.Profesional WHERE profesional_id= 6) FROM MISSINGNO.Especialidad_de_profesional WHERE especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{0}')",
+                      especialidad), cn);
+                 cmd.ExecuteNonQuery();
+                 SqlDataReader reader = cmd.ExecuteReader();
+                 while (reader.Read())
+                 {
+                     Palabra esp = new Palabra();
+                     esp.unElemento = reader.GetString(0);
+                     especialidades.Add(esp);
+
+                 }
+                 reader.Close();
+                 return especialidades;
+              }
+           catch (Exception ex)
+           {
+               MessageBox.Show("Error al obtener especialidades: " + ex.ToString());
+               return especialidades;
+           }
+        }
+
+*/
+
 }
 }
                     

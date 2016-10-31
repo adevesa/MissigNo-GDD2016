@@ -33,7 +33,7 @@
             this.botonFiltrar = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textoIDUsuario = new System.Windows.Forms.TextBox();
+            this.textoUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -47,7 +47,7 @@
             this.panel1.Controls.Add(this.botonFiltrar);
             this.panel1.Controls.Add(this.botonVolver);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textoIDUsuario);
+            this.panel1.Controls.Add(this.textoUsername);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(5, 2);
@@ -62,6 +62,8 @@
             this.dgvEspecialidades.Name = "dgvEspecialidades";
             this.dgvEspecialidades.Size = new System.Drawing.Size(240, 294);
             this.dgvEspecialidades.TabIndex = 71;
+            this.dgvEspecialidades.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEspecialidades_CellClick);
+            this.dgvEspecialidades.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvEspecialidades_MouseClick);
             // 
             // botonFiltrar
             // 
@@ -104,14 +106,14 @@
             this.label4.Text = "Registrar llegada";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textoIDUsuario
+            // textoUsername
             // 
-            this.textoIDUsuario.BackColor = System.Drawing.Color.White;
-            this.textoIDUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoIDUsuario.Location = new System.Drawing.Point(54, 158);
-            this.textoIDUsuario.Name = "textoIDUsuario";
-            this.textoIDUsuario.Size = new System.Drawing.Size(270, 40);
-            this.textoIDUsuario.TabIndex = 62;
+            this.textoUsername.BackColor = System.Drawing.Color.White;
+            this.textoUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoUsername.Location = new System.Drawing.Point(54, 158);
+            this.textoUsername.Name = "textoUsername";
+            this.textoUsername.Size = new System.Drawing.Size(270, 40);
+            this.textoUsername.TabIndex = 62;
             // 
             // label2
             // 
@@ -163,7 +165,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textoIDUsuario;
+        private System.Windows.Forms.TextBox textoUsername;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button botonVolver;

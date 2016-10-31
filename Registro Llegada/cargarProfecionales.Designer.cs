@@ -30,8 +30,8 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.botonAceptar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvProfecionales = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProfecionales)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -60,20 +60,20 @@
             this.botonAceptar.Text = "Aceptar";
             this.botonAceptar.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvProfecionales
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(56, 96);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(317, 366);
-            this.dataGridView1.TabIndex = 72;
+            this.dgvProfecionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProfecionales.Location = new System.Drawing.Point(56, 96);
+            this.dgvProfecionales.Name = "dgvProfecionales";
+            this.dgvProfecionales.Size = new System.Drawing.Size(317, 366);
+            this.dgvProfecionales.TabIndex = 72;
             // 
             // cargarProfecionales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 566);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvProfecionales);
             this.Controls.Add(this.botonAceptar);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -81,7 +81,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "cargarProfecionales";
             this.Load += new System.EventHandler(this.cargarProfecionales_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProfecionales)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,6 +91,6 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button botonAceptar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvProfecionales;
     }
 }

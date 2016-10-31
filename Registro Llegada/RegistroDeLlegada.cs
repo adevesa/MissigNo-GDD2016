@@ -14,7 +14,7 @@ namespace ClinicaFrba.Registro_Llegada
     {
          List<Palabra> listaEspecialidades = new List<Palabra>();
           BDComun conexion = new BDComun();
-
+          Palabra especialidad = new Palabra();
 
 
         public RegistroDeLlegada()
@@ -65,8 +65,24 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void botonFiltrar_Click(object sender, EventArgs e)
         {
-            //cargarProfecionales amb = new cargarProfecionales(dgvEspecialidades.AccessibilityObject);
+            //if(especialidad.unElemento.Length != 0){
+            cargarProfecionales abm = new cargarProfecionales(especialidad, textoUsername.Text);
+            abm.ShowDialog();
+           // }
+          //  else MessageBox.Show("Seleccione especialidad");
 
+        }
+
+        private void dgvEspecialidades_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void dgvEspecialidades_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int posicion = dgvEspecialidades.CurrentRow.Index;
+            especialidad.unElemento = Convert.ToString( dgvEspecialidades[0, posicion].Value);
+ 
         }
     }
 }

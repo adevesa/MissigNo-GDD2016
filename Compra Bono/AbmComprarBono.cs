@@ -12,8 +12,12 @@ namespace ClinicaFrba.Compra_Bono
 {
     public partial class AbmComprarBono : Form
     {
-        public AbmComprarBono()
+        BDComun conexion = new BDComun();
+        private String username;
+
+        public AbmComprarBono(String usernameAfiliado)
         {
+            this.username = usernameAfiliado;
             InitializeComponent();
         }
 
@@ -32,8 +36,39 @@ namespace ClinicaFrba.Compra_Bono
 
         }
 
+        private void textoCantidadesDeBonos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        public bool errores_de_registro()
+        {
+            return ((textoCantidadDeBonos.Text.Length == 0) || (textoCantidadDeBonos.Text == "Ingrese un número") || Convert.ToInt32(textoCantidadDeBonos.Text) <= 0);
+        }
+
         private void botonConfirmar_Click(object sender, EventArgs e)
         {
+            if (errores_de_registro())
+            {
+                MessageBox.Show("Datos incorrectos");
+            }
+            else
+            {
+                conexion.comprarBonos(Convert.ToInt32(textoCantidadDeBonos.Text), username);
+
+            }
             this.Close();
         }
     }

@@ -8,18 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ClinicaFrba.Pedir_Turno
+namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class AbmElegirHorario : Form
     {
-        public AbmElegirHorario()
+        private String usr;
+        public AbmElegirHorario(String username)
         {
+            this.usr = username;
             InitializeComponent();
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
+            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado(usr);
             this.Hide();
             abmRolAfiliado.ShowDialog();
             this.Close();
@@ -38,13 +40,18 @@ namespace ClinicaFrba.Pedir_Turno
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            AbmPedirTurno abmPedirTurno = new AbmPedirTurno();
+            AbmPedirTurno abmPedirTurno = new AbmPedirTurno(usr);
             this.Hide();
             abmPedirTurno.ShowDialog();
             this.Close();
         }
 
         private void listaDeHorarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

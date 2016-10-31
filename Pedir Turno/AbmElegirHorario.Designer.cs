@@ -1,4 +1,4 @@
-﻿namespace ClinicaFrba.Pedir_Turno
+﻿namespace ClinicaFrba.Cancelar_Atencion
 {
     partial class AbmElegirHorario
     {
@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HorarioDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HorarioHasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.botonVolver = new System.Windows.Forms.Button();
             this.botonAceptar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.BotonFiltrar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HorarioDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HorarioHasta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +59,47 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(779, 558);
             this.panel1.TabIndex = 1;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Dia,
+            this.HorarioDesde,
+            this.HorarioHasta});
+            this.dataGridView1.Location = new System.Drawing.Point(435, 176);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(341, 311);
+            this.dataGridView1.TabIndex = 53;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Día";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            // 
+            // HorarioDesde
+            // 
+            this.HorarioDesde.HeaderText = "Desde";
+            this.HorarioDesde.Name = "HorarioDesde";
+            this.HorarioDesde.ReadOnly = true;
+            // 
+            // HorarioHasta
+            // 
+            this.HorarioHasta.HeaderText = "Hasta";
+            this.HorarioHasta.Name = "HorarioHasta";
+            this.HorarioHasta.ReadOnly = true;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(2, 2);
+            this.monthCalendar1.Location = new System.Drawing.Point(17, 176);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 52;
             // 
             // botonVolver
             // 
@@ -139,46 +180,6 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "Pedido de Turno";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.CalendarDimensions = new System.Drawing.Size(2, 2);
-            this.monthCalendar1.Location = new System.Drawing.Point(17, 176);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 52;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Dia,
-            this.HorarioDesde,
-            this.HorarioHasta});
-            this.dataGridView1.Location = new System.Drawing.Point(435, 176);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(341, 311);
-            this.dataGridView1.TabIndex = 53;
-            // 
-            // Dia
-            // 
-            this.Dia.HeaderText = "Día";
-            this.Dia.Name = "Dia";
-            this.Dia.ReadOnly = true;
-            // 
-            // HorarioDesde
-            // 
-            this.HorarioDesde.HeaderText = "Desde";
-            this.HorarioDesde.Name = "HorarioDesde";
-            this.HorarioDesde.ReadOnly = true;
-            // 
-            // HorarioHasta
-            // 
-            this.HorarioHasta.HeaderText = "Hasta";
-            this.HorarioHasta.Name = "HorarioHasta";
-            this.HorarioHasta.ReadOnly = true;
             // 
             // AbmElegirHorario
             // 

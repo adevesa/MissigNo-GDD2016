@@ -1,4 +1,4 @@
-﻿namespace ClinicaFrba.Pedir_Turno
+﻿namespace ClinicaFrba.Cancelar_Atencion
 {
     partial class AbmPedirTurno
     {

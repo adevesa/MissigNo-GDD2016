@@ -437,7 +437,6 @@ namespace ClinicaFrba
 
         //----------------------------CONEXIONES PARA EDITAR AFILIADO
 
-<<<<<<< HEAD
         public AfiliadoCompleto obtenerDatosAfiliadoCompleto(string username)
              {
               AfiliadoCompleto afiliado = new AfiliadoCompleto();
@@ -446,17 +445,7 @@ namespace ClinicaFrba
               cmd = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono, afiliado_estado_civil FROM MISSINGNO.Usuario as X , MISSINGNO.Afiliado AS Y WHERE (Y.username = '{0}' AND X.username = '{0}')",
                    username), cn);
                //SqlCommand comando = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono FROM MISSINGNO.Usuario WHERE username = '{0}'",
-=======
-        public AfiliadoCompleto obtenerDatosAfiliado(string username)
-        {
-            AfiliadoCompleto afiliado = new AfiliadoCompleto();
-            try
-            {
-                cmd = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono, afiliado_estado_civil FROM MISSINGNO.Usuario as X , MISSINGNO.Afiliado AS Y WHERE (Y.username = '{0}' AND X.username = '{0}')",
-                     username), cn);
-                //SqlCommand comando = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono FROM MISSINGNO.Usuario WHERE username = '{0}'",
->>>>>>> origin/opcion2
-                //  username), cn);
+                 //  username), cn);
                 cmd.ExecuteNonQuery();
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -689,35 +678,7 @@ namespace ClinicaFrba
 
         }
 
-        /*  public List<Palabra> obtenerProfesionalesPorEspecialidad(string especialidad)  
-         {
-             List<Palabra> especialidades = new List<Palabra>();
-           
-            try
-               {
-                   cmd = new SqlCommand(string.Format("SELECT distinct (SELECT username FROM MISSINGNO.Profesional WHERE profesional_id= 6) FROM MISSINGNO.Especialidad_de_profesional WHERE especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{0}')",
-                       especialidad), cn);
-                  cmd.ExecuteNonQuery();
-                  SqlDataReader reader = cmd.ExecuteReader();
-                  while (reader.Read())
-                  {
-                      Palabra esp = new Palabra();
-                      esp.unElemento = reader.GetString(0);
-                      especialidades.Add(esp);
-
-                  }
-                  reader.Close();
-                  return especialidades;
-               }
-<<<<<<< HEAD
-           catch (Exception ex)
-           {
-               MessageBox.Show("Error al obtener especialidades: " + ex.ToString());
-               return especialidades;
-           }
-        }
-
-        public List<Palabra> obtenerProfesionalesPorEspecialidad(string especialidad)  
+    public List<Palabra> obtenerProfesionalesPorEspecialidad(string especialidad)  
         {
             List<Palabra> especialidades = new List<Palabra>();
            
@@ -785,16 +746,6 @@ namespace ClinicaFrba
                MessageBox.Show("Error al generar consulta: " + ex.ToString());
            }
         }
-=======
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener especialidades: " + ex.ToString());
-                return especialidades;
-            }
-         }
-
- */
 
     }
->>>>>>> origin/opcion2
 }

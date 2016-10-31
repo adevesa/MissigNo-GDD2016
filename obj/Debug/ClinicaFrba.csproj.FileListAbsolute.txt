@@ -27,15 +27,12 @@ C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorr
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Compra_Bono.AbmComprarBono.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Compra_Bono.ComprarBonoDesdeAdministrador.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.AbmListados.resources
-C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Pedir_Turno.AbmElegirHorario.resources
-C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Pedir_Turno.AbmPedirTurno.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.AbmAgenda.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.RegistroDeLlegada.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Resultado.AbmRegistroResultado.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.AbmRol.AbmRolAdministrador.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.AbmRol.AbmRolAfiliado.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.AbmRol.AbmRolProfesional.resources
-C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Pedir_Turno.AbmCancelarTurno.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmAdministrarAfiliado.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.AbmListado2.resources
@@ -53,3 +50,6 @@ C:\Users\Juan\Documents\UTN\3er año\Gestion de datos\MissigNo-DDS2016\obj\Debug
 C:\Users\Juan\Documents\UTN\3er año\Gestion de datos\MissigNo-DDS2016\obj\Debug\ClinicaFrba.pdb
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.cargarProfesionales.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.cargarTurnos.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmElegirHorario.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmPedirTurno.resources

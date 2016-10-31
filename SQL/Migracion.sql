@@ -305,7 +305,6 @@ DEALLOCATE cursorMedicos
 
 -- MIGRACION DE ESPECIALIDAD CON PROFESIONAL.
 DBCC CHECKIDENT ('MISSINGNO.Especialidad_de_profesional',RESEED,0)
-
 INSERT INTO MISSINGNO.Especialidad_de_profesional(especialidad_id, profesional_id)
 SELECT DISTINCT E.especialidad_id, P.profesional_id
 from gd_esquema.Maestra, MISSINGNO.Profesional P, MISSINGNO.Especialidad E
@@ -326,6 +325,7 @@ and P.plan_id = A.plan_id
 
 /* MIGRACION DE BONOS */ 
 
+SET IDENTITY_INSERT MISSINGNO.Bono ON
 INSERT INTO MISSINGNO.Bono(bono_id, plan_id, afiliado_id, compra_bono_id, bono_estado, bono_precio)
 SELECT DISTINCT Bono_Consulta_Numero, C.plan_id, C.afiliado_id, C.compra_bono_id, 0, Plan_Med_Precio_Bono_Consulta
 	FROM gd_esquema.Maestra, MISSINGNO.Compra_bono C, MISSINGNO.Afiliado A, MISSINGNO.Planes P
@@ -335,6 +335,7 @@ SELECT DISTINCT Bono_Consulta_Numero, C.plan_id, C.afiliado_id, C.compra_bono_id
 	and A.username = Paciente_Mail 
 	and P.plan_id = C.plan_id 
 	and C.fecha_compra = Compra_Bono_Fecha
+SET IDENTITY_INSERT MISSINGNO.Bono OFF
 	
 /* MIGRACION DE TURNOS */
 
@@ -372,7 +373,7 @@ SELECT * FROM MISSINGNO.Compra_bono
 SELECT * FROM MISSINGNO.Consulta_medica
 SELECT * FROM MISSINGNO.Dia
 SELECT * FROM MISSINGNO.Especialidad
-SELECT * FROM MISSINGNO.Especialidad_de_profesional
+SELECT * FROM MISSINGNO.Especialidad_de_profesional A1, MISSINGNO.Especialidad A2, Missingno.profesional A3 where A1.PROFESIONAL_ID= A3.PROFESIONAL_ID AND A1.ESPECIALIDAD_ID = A2.ESPECIALIDAD_ID ORDER BY A3.USERNAME
 SELECT * FROM MISSINGNO.Funcionalidad
 SELECT * FROM MISSINGNO.Funcionalidad_de_rol
 SELECT * FROM MISSINGNO.Planes

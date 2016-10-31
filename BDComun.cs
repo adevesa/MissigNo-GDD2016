@@ -431,7 +431,7 @@ namespace ClinicaFrba
 
         //----------------------------CONEXIONES PARA EDITAR AFILIADO
 
-        public AfiliadoCompleto obtenerDatosAfiliado(string username)
+        public AfiliadoCompleto obtenerDatosAfiliadoCompleto(string username)
              {
               AfiliadoCompleto afiliado = new AfiliadoCompleto();
            try
@@ -484,7 +484,7 @@ namespace ClinicaFrba
          }
 
 
-        public AfiliadoSimple obtenerDatosAfiliado(int afiliadoID)
+        public AfiliadoSimple obtenerDatosAfiliadoSimple(int afiliadoID)
         {
             AfiliadoSimple afiliado = new AfiliadoSimple();
             try
@@ -563,13 +563,13 @@ namespace ClinicaFrba
            }
         }
 
-       /*  public List<Palabra> obtenerProfesionalesPorEspecialidad(string especialidad)  
+        public List<Palabra> obtenerProfesionalesPorEspecialidad(string especialidad)  
         {
             List<Palabra> especialidades = new List<Palabra>();
            
            try
               {
-                  cmd = new SqlCommand(string.Format("SELECT distinct (SELECT username FROM MISSINGNO.Profesional WHERE profesional_id= 6) FROM MISSINGNO.Especialidad_de_profesional WHERE especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{0}')",
+                  cmd = new SqlCommand(string.Format("SELECT P.username FROM MISSINGNO.Profesional AS P, MISSINGNO.Especialidad_de_profesional AS EP WHERE (P.profesional_id = EP.profesional_id AND EP.especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{0}'))",
                       especialidad), cn);
                  cmd.ExecuteNonQuery();
                  SqlDataReader reader = cmd.ExecuteReader();
@@ -590,8 +590,47 @@ namespace ClinicaFrba
            }
         }
 
-*/
+        
+        public List<tipoTurno> obtenerTurnos(string usernameAfi, string usernameProf){
+            List<tipoTurno> turnos = new List<tipoTurno>();
+           
+           try
+              {
+                  cmd = new SqlCommand(string.Format("SELECT T.turno_id, T.fecha FROM MISSINGNO.Turno AS T, MISSINGNO.BONO AS B  WHERE T.profesional_id= (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}' ) AND T.bono_id = B.bono_id AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username= '{1}')",
+                      usernameAfi, usernameProf), cn);
+                  cmd.ExecuteNonQuery();
+                  SqlDataReader reader = cmd.ExecuteReader();
+                  while (reader.Read())
+                  {
+                      tipoTurno turno = new tipoTurno();
+                      turno.idTurno = reader.GetInt32(0);
+                      turno.fechaTurno = reader.GetDateTime(1);
+                      turnos.Add(turno);
 
+                  }
+                  reader.Close();
+                  return turnos;
+              }
+           catch (Exception ex)
+           {
+               MessageBox.Show("Error al obtener turnos: " + ex.ToString());
+               return turnos;
+           }
+        }
+        public void generarConsulta(string UsernameAfi, string usernameProf, int idTurno, DateTime fechaTurno)
+        {
+
+             try
+              {
+                  cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Consulta_medica (profesional_id, afiliado_id, agenda_id, turno_id, confirmacion_de_atencion, consulta_horario) VALUES ((SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{1}'),	(SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username = '{0}'), (SELECT agenda_id FROM MISSINGNO.Agenda WHERE profesional_id=(SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{1}')), {2},0, NULL)",
+                      UsernameAfi, usernameProf, idTurno), cn);
+                  cmd.ExecuteNonQuery();
+              }
+         catch (Exception ex)
+           {
+               MessageBox.Show("Error al generar consulta: " + ex.ToString());
+           }
+        }
 }
 }
                     

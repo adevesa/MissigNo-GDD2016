@@ -231,11 +231,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registro Llegada\cargarProfecionales.cs">
+    <Compile Include="Registro Llegada\cargarProfesionales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Llegada\cargarProfecionales.Designer.cs">
-      <DependentUpon>cargarProfecionales.cs</DependentUpon>
+    <Compile Include="Registro Llegada\cargarProfesionales.Designer.cs">
+      <DependentUpon>cargarProfesionales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro Llegada\cargarTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Llegada\cargarTurnos.Designer.cs">
+      <DependentUpon>cargarTurnos.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro Llegada\RegistroDeLlegada.cs">
       <SubType>Form</SubType>
@@ -249,6 +255,7 @@
     <Compile Include="Registro Resultado\AbmRegistroResultado.Designer.cs">
       <DependentUpon>AbmRegistroResultado.cs</DependentUpon>
     </Compile>
+    <Compile Include="tipoTurno.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioDAL.cs" />
     <EmbeddedResource Include="Abm Afiliado\AbmAfiliado.resx">
@@ -333,8 +340,11 @@
     <EmbeddedResource Include="Registrar Agenta Medico\AbmAgenda.resx">
       <DependentUpon>AbmAgenda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registro Llegada\cargarProfecionales.resx">
-      <DependentUpon>cargarProfecionales.cs</DependentUpon>
+    <EmbeddedResource Include="Registro Llegada\cargarProfesionales.resx">
+      <DependentUpon>cargarProfesionales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Llegada\cargarTurnos.resx">
+      <DependentUpon>cargarTurnos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Llegada\RegistroDeLlegada.resx">
       <DependentUpon>RegistroDeLlegada.cs</DependentUpon>

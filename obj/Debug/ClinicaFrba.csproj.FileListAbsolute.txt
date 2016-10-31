@@ -51,4 +51,5 @@ C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Login.frm_login.reso
 C:\Users\Juan\Documents\UTN\3er año\Gestion de datos\MissigNo-DDS2016\bin\Debug\ClinicaFrba.exe.config
 C:\Users\Juan\Documents\UTN\3er año\Gestion de datos\MissigNo-DDS2016\obj\Debug\ClinicaFrba.exe
 C:\Users\Juan\Documents\UTN\3er año\Gestion de datos\MissigNo-DDS2016\obj\Debug\ClinicaFrba.pdb
-C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.cargarProfecionales.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.cargarProfesionales.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.cargarTurnos.resources

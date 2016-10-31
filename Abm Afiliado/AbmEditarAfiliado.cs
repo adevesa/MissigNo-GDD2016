@@ -98,7 +98,7 @@ namespace ClinicaFrba.Abm_Afiliado
             if (tam != 0){
             int i;
             for(i = 0; tam>i; i++)  {
-               AfiliadoSimple datosAfiliado =  conexion.obtenerDatosAfiliado(afiliado.hijos[i]);
+               AfiliadoSimple datosAfiliado =  conexion.obtenerDatosAfiliadoSimple(afiliado.hijos[i]);
                lista.Add(datosAfiliado);
                 }
             }
@@ -116,7 +116,7 @@ namespace ClinicaFrba.Abm_Afiliado
         {
             if((textoUsername.Text).Length != 0){
                 if(conexion.existeUsuario(textoUsername.Text)){
-                    afiliado = conexion.obtenerDatosAfiliado(textoUsername.Text);
+                    afiliado = conexion.obtenerDatosAfiliadoCompleto(textoUsername.Text);
                     textoTipoDocumento.Text = afiliado.doc_tipo;
                     textoDocumento.Text =Convert.ToString(afiliado.doc_nro);
                     textoDireccion.Text = afiliado.domicilio;

@@ -182,6 +182,8 @@ namespace ClinicaFrba
 
 
 
+
+
         public int obtenerPlanId(string planDescripcion){
              try{
                  int id = new int();
@@ -272,8 +274,103 @@ namespace ClinicaFrba
 
         }
 
+        public int obtenerTurnoId(int consultaMedica)
+        {
+            try
+            {
+                int id = new int();
+                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Consulta_medica WHERE consulta_id = {0}",
+                     consultaMedica), cn);
+                cmd.ExecuteNonQuery();
 
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+                reader.Close();
+                return id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener turno ID: " + ex.ToString());
+                return -1;
+            }
 
+        }
+
+        public void cancelarConsultaMedica(int numeroConsulta, string tipoCancelacion, string motivoCancelacion)
+        {
+            try
+            {
+                int numeroTurno = obtenerTurnoId(numeroConsulta);
+
+                SqlCommand comando = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Cancelacion_Turno(turno_id, cancelacion_motivo, cancelacion_tipo, cancelacion_fecha) VALUES ({0},'{1}','{2}',getDate())",
+                    numeroTurno, tipoCancelacion, motivoCancelacion), cn);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cancelar Consulta Medica. Error: " + ex.ToString());
+            }
+        }
+
+        public bool consultaYaCancelada(int consulta_id)
+        {
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Cancelacion_Turno C, MISSINGNO.Consulta_medica CO  WHERE C.turno_id = CO.turno_id and CO.consulta_id = {0}",
+                    consulta_id), cn);
+                cmd.ExecuteNonQuery();
+                return ((Int32)cmd.ExecuteScalar() >= 1);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool chequearConsultaMedica(int consulta_id, string usernameProfesional)
+        {
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Consulta_medica C, MISSINGNO.Profesional P WHERE consulta_id= '{0}' and P.profesional_id = C.profesional_id and P.username = '{1}'", 
+                    consulta_id, usernameProfesional), cn);
+                cmd.ExecuteNonQuery();
+                return ((Int32)cmd.ExecuteScalar() >= 1);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+        /*
+        public bool chequearConsultaMedica(int consulta_id, string usernameProfesional)
+        {
+            try
+            {  
+                cmd = new SqlCommand(string.Format("SELECT consulta_id FROM MISSINGNO.Consulta_medica C, MISSINGNO.Profesional P WHERE consulta_id= '{0}' and P.profesional_id = C.profesional_id and P.username = '{1}'",
+                     consulta_id, usernameProfesional), cn);
+                cmd.ExecuteNonQuery();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    reader.GetInt32(0);
+                }
+                reader.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la ID Consulta, Error: " + ex.ToString());
+                return bool;
+            }
+
+        }
+        */
 
 
         public void borrarAfiliado(string username)

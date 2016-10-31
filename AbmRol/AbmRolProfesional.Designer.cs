@@ -165,6 +165,7 @@
             this.Usuario.Size = new System.Drawing.Size(64, 20);
             this.Usuario.TabIndex = 1;
             this.Usuario.Text = "Usuario";
+            this.Usuario.Click += new System.EventHandler(this.Usuario_Click);
             // 
             // Hora
             // 

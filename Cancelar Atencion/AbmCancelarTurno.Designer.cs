@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textoMotivo = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tipoCancelacion = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // botonConfirmar
@@ -59,6 +59,7 @@
             this.textoIDTurno.Size = new System.Drawing.Size(491, 47);
             this.textoIDTurno.TabIndex = 64;
             this.textoIDTurno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textoIDTurno.TextChanged += new System.EventHandler(this.textoIDTurno_TextChanged);
             // 
             // label1
             // 
@@ -97,16 +98,16 @@
             this.textoMotivo.Text = "Escriba el motivo...";
             this.textoMotivo.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // comboBox1
+            // tipoCancelacion
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(40, 165);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(491, 33);
-            this.comboBox1.TabIndex = 71;
-            this.comboBox1.Text = "Tipo de cancelación";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.tipoCancelacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipoCancelacion.FormattingEnabled = true;
+            this.tipoCancelacion.Location = new System.Drawing.Point(40, 165);
+            this.tipoCancelacion.Name = "tipoCancelacion";
+            this.tipoCancelacion.Size = new System.Drawing.Size(491, 33);
+            this.tipoCancelacion.TabIndex = 71;
+            this.tipoCancelacion.Text = "Tipo de cancelación";
+            this.tipoCancelacion.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // AbmCancelarTurno
             // 
@@ -114,7 +115,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(584, 456);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.tipoCancelacion);
             this.Controls.Add(this.textoMotivo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.botonConfirmar);
@@ -137,6 +138,6 @@
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textoMotivo;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox tipoCancelacion;
     }
 }

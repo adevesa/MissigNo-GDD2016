@@ -12,9 +12,11 @@ namespace ClinicaFrba.AbmRol
 {
     public partial class AbmRolAfiliado : Form
     {
-        private String usernameProfesional;
-        public AbmRolAfiliado()
+        private String usernameAfiliado;
+
+        public AbmRolAfiliado(String username)
         {
+            this.usernameAfiliado = username;
             InitializeComponent();
         }
 
@@ -58,20 +60,20 @@ namespace ClinicaFrba.AbmRol
 
         private void botonCancelarTurno_Click(object sender, EventArgs e)
         {
-            ClinicaFrba.Pedir_Turno.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Pedir_Turno.AbmCancelarTurno(usernameProfesional);
+            ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno(usernameAfiliado);
             abmCancelarTurno.ShowDialog();
 
         }
 
         private void botonModificarAfiliado_Click(object sender, EventArgs e)
         {
-            ClinicaFrba.Compra_Bono.AbmComprarBono abmComprarBono = new ClinicaFrba.Compra_Bono.AbmComprarBono();
+            ClinicaFrba.Compra_Bono.AbmComprarBono abmComprarBono = new ClinicaFrba.Compra_Bono.AbmComprarBono(usernameAfiliado);
             abmComprarBono.ShowDialog();
         }
 
         private void botonPedirTurno_Click(object sender, EventArgs e)
         {
-            Pedir_Turno.AbmPedirTurno abmPedirTurno = new Pedir_Turno.AbmPedirTurno();
+            Cancelar_Atencion.AbmPedirTurno abmPedirTurno = new Cancelar_Atencion.AbmPedirTurno(usernameAfiliado);
             this.Hide();
             abmPedirTurno.ShowDialog();
             this.Close();
@@ -90,6 +92,11 @@ namespace ClinicaFrba.AbmRol
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

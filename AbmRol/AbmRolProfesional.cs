@@ -58,7 +58,7 @@ namespace ClinicaFrba.AbmRol
 
         private void botonCrearAfiliado_Click(object sender, EventArgs e)
         {
-            ClinicaFrba.Pedir_Turno.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Pedir_Turno.AbmCancelarTurno(Program.usuario);
+            ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno(Program.usuario);
             abmCancelarTurno.ShowDialog();
         }
 

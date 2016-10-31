@@ -534,10 +534,34 @@ namespace ClinicaFrba
             catch (Exception ex)
             {
                 MessageBox.Show("Error al modificar usuario: " + ex.ToString());
-
-  
             }
     }
+
+        public List<Palabra> obtenerEspecialidades()  
+        {
+            List<Palabra> especialidades = new List<Palabra>();
+           
+           try
+              {
+                  cmd = new SqlCommand("SELECT especialidad_descripcion FROM MISSINGNO.Especialidad", cn);
+                  cmd.ExecuteNonQuery();
+                  SqlDataReader reader = cmd.ExecuteReader();
+                  while (reader.Read())
+                  {
+                      Palabra especialidad = new Palabra();
+                      especialidad.unElemento = reader.GetString(0);
+                      especialidades.Add(especialidad);
+      
+                  }
+                  reader.Close(); 
+                  return especialidades;
+               }
+           catch (Exception ex)
+           {
+               MessageBox.Show("Error al obtener especialidades: " + ex.ToString());
+               return especialidades;
+           }
+        }
 }
 }
                     

@@ -130,5 +130,59 @@ namespace ClinicaFrba.Abm_Afiliado
             }
             else MessageBox.Show("Debes introducir un nombre de usuario");
         }
+
+        private void textoTelefono_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textoTelefono_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public bool isCaracterValido(Char c)
+        {
+            if ((c >= '0' && c <= '9'))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void textoTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+
+    }
+
+        private void textoDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+
+        }
+
     }
 }

@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textoEmail = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textoContraseña = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.eleccionSexo = new System.Windows.Forms.ComboBox();
+            this.estadoCivil = new System.Windows.Forms.ComboBox();
+            this.planMedico = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textoTipoDocumento = new System.Windows.Forms.TextBox();
             this.textoDocumento = new System.Windows.Forms.TextBox();
@@ -51,14 +59,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textoNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.eleccionSexo = new System.Windows.Forms.ComboBox();
-            this.estadoCivil = new System.Windows.Forms.ComboBox();
-            this.planMedico = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textoContraseña = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textoEmail = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +101,105 @@
             this.panel1.Size = new System.Drawing.Size(862, 639);
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(457, 412);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(74, 29);
+            this.label13.TabIndex = 107;
+            this.label13.Text = "Email";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textoEmail
+            // 
+            this.textoEmail.BackColor = System.Drawing.Color.White;
+            this.textoEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoEmail.Location = new System.Drawing.Point(587, 414);
+            this.textoEmail.Name = "textoEmail";
+            this.textoEmail.Size = new System.Drawing.Size(233, 28);
+            this.textoEmail.TabIndex = 106;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(28, 412);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(136, 29);
+            this.label9.TabIndex = 105;
+            this.label9.Text = "Contraseña";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textoContraseña
+            // 
+            this.textoContraseña.BackColor = System.Drawing.Color.White;
+            this.textoContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoContraseña.Location = new System.Drawing.Point(191, 414);
+            this.textoContraseña.Name = "textoContraseña";
+            this.textoContraseña.Size = new System.Drawing.Size(218, 28);
+            this.textoContraseña.TabIndex = 104;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(457, 350);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 29);
+            this.label4.TabIndex = 103;
+            this.label4.Text = "Sexo";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // eleccionSexo
+            // 
+            this.eleccionSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.eleccionSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eleccionSexo.FormattingEnabled = true;
+            this.eleccionSexo.Items.AddRange(new object[] {
+            "Hombre",
+            "Mujer"});
+            this.eleccionSexo.Location = new System.Drawing.Point(595, 358);
+            this.eleccionSexo.Name = "eleccionSexo";
+            this.eleccionSexo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.eleccionSexo.Size = new System.Drawing.Size(225, 26);
+            this.eleccionSexo.TabIndex = 102;
+            // 
+            // estadoCivil
+            // 
+            this.estadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.estadoCivil.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estadoCivil.FormattingEnabled = true;
+            this.estadoCivil.Items.AddRange(new object[] {
+            "Soltero/a",
+            "Casado/a",
+            "Viudo/a",
+            "Concubinato",
+            "Divorciado/a"});
+            this.estadoCivil.Location = new System.Drawing.Point(184, 355);
+            this.estadoCivil.Name = "estadoCivil";
+            this.estadoCivil.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.estadoCivil.Size = new System.Drawing.Size(225, 26);
+            this.estadoCivil.TabIndex = 101;
+            // 
+            // planMedico
+            // 
+            this.planMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.planMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.planMedico.FormattingEnabled = true;
+            this.planMedico.Location = new System.Drawing.Point(595, 295);
+            this.planMedico.Name = "planMedico";
+            this.planMedico.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.planMedico.Size = new System.Drawing.Size(225, 26);
+            this.planMedico.TabIndex = 100;
             // 
             // label12
             // 
@@ -212,6 +311,9 @@
             this.textoTelefono.Name = "textoTelefono";
             this.textoTelefono.Size = new System.Drawing.Size(250, 28);
             this.textoTelefono.TabIndex = 41;
+            this.textoTelefono.Click += new System.EventHandler(this.textoTelefono_Click);
+            this.textoTelefono.TextChanged += new System.EventHandler(this.textoTelefono_TextChanged);
+            this.textoTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textoTelefono_KeyPress);
             // 
             // label10
             // 
@@ -358,105 +460,6 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Username de \r\nafiliado a editar";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // eleccionSexo
-            // 
-            this.eleccionSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.eleccionSexo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eleccionSexo.FormattingEnabled = true;
-            this.eleccionSexo.Items.AddRange(new object[] {
-            "Hombre",
-            "Mujer"});
-            this.eleccionSexo.Location = new System.Drawing.Point(595, 358);
-            this.eleccionSexo.Name = "eleccionSexo";
-            this.eleccionSexo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.eleccionSexo.Size = new System.Drawing.Size(225, 26);
-            this.eleccionSexo.TabIndex = 102;
-            // 
-            // estadoCivil
-            // 
-            this.estadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.estadoCivil.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estadoCivil.FormattingEnabled = true;
-            this.estadoCivil.Items.AddRange(new object[] {
-            "Soltero/a",
-            "Casado/a",
-            "Viudo/a",
-            "Concubinato",
-            "Divorciado/a"});
-            this.estadoCivil.Location = new System.Drawing.Point(184, 355);
-            this.estadoCivil.Name = "estadoCivil";
-            this.estadoCivil.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.estadoCivil.Size = new System.Drawing.Size(225, 26);
-            this.estadoCivil.TabIndex = 101;
-            // 
-            // planMedico
-            // 
-            this.planMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.planMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.planMedico.FormattingEnabled = true;
-            this.planMedico.Location = new System.Drawing.Point(595, 295);
-            this.planMedico.Name = "planMedico";
-            this.planMedico.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.planMedico.Size = new System.Drawing.Size(225, 26);
-            this.planMedico.TabIndex = 100;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(457, 350);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 29);
-            this.label4.TabIndex = 103;
-            this.label4.Text = "Sexo";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textoContraseña
-            // 
-            this.textoContraseña.BackColor = System.Drawing.Color.White;
-            this.textoContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoContraseña.Location = new System.Drawing.Point(191, 414);
-            this.textoContraseña.Name = "textoContraseña";
-            this.textoContraseña.Size = new System.Drawing.Size(218, 28);
-            this.textoContraseña.TabIndex = 104;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(28, 412);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(136, 29);
-            this.label9.TabIndex = 105;
-            this.label9.Text = "Contraseña";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textoEmail
-            // 
-            this.textoEmail.BackColor = System.Drawing.Color.White;
-            this.textoEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoEmail.Location = new System.Drawing.Point(587, 414);
-            this.textoEmail.Name = "textoEmail";
-            this.textoEmail.Size = new System.Drawing.Size(233, 28);
-            this.textoEmail.TabIndex = 106;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(457, 412);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(74, 29);
-            this.label13.TabIndex = 107;
-            this.label13.Text = "Email";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AbmCrearAfiliado2
             // 

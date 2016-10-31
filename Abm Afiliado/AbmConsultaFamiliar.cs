@@ -75,5 +75,10 @@ namespace ClinicaFrba.Abm_Afiliado
             else
                 MessageBox.Show("debe de seleccionar un afiliado");
         }
+
+        private void dgvFamiliares_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

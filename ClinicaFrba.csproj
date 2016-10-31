@@ -153,6 +153,7 @@
     <Compile Include="Compra Bono\ComprarBonoDesdeAdministrador.Designer.cs">
       <DependentUpon>ComprarBonoDesdeAdministrador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Palabra.cs" />
     <Compile Include="Listados\AbmListado2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +231,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registro Llegada\cargarProfecionales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Llegada\cargarProfecionales.Designer.cs">
+      <DependentUpon>cargarProfecionales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registro Llegada\RegistroDeLlegada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,6 +332,9 @@
     </Compile>
     <EmbeddedResource Include="Registrar Agenta Medico\AbmAgenda.resx">
       <DependentUpon>AbmAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Llegada\cargarProfecionales.resx">
+      <DependentUpon>cargarProfecionales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Llegada\RegistroDeLlegada.resx">
       <DependentUpon>RegistroDeLlegada.cs</DependentUpon>

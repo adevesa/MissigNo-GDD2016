@@ -12,6 +12,11 @@ namespace ClinicaFrba.Registro_Llegada
 {
     public partial class RegistroDeLlegada : Form
     {
+         List<Palabra> listaEspecialidades = new List<Palabra>();
+          BDComun conexion = new BDComun();
+
+
+
         public RegistroDeLlegada()
         {
             InitializeComponent();
@@ -27,6 +32,9 @@ namespace ClinicaFrba.Registro_Llegada
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
+
+            listaEspecialidades = conexion.obtenerEspecialidades();
+            dgvEspecialidades.DataSource = listaEspecialidades;
         }
 
         private void BotonConfirmar2_Click(object sender, EventArgs e)
@@ -47,6 +55,17 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void label2_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void botonFiltrar_Click(object sender, EventArgs e)
+        {
+            //cargarProfecionales amb = new cargarProfecionales(dgvEspecialidades.AccessibilityObject);
 
         }
     }

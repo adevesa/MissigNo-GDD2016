@@ -112,6 +112,7 @@
             this.dgvFamiliares.Name = "dgvFamiliares";
             this.dgvFamiliares.Size = new System.Drawing.Size(546, 272);
             this.dgvFamiliares.TabIndex = 96;
+            this.dgvFamiliares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFamiliares_CellContentClick);
             // 
             // AbmConsultaFamiliar
             // 

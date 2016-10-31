@@ -190,7 +190,7 @@ GO
 	create table MISSINGNO.Usuario (
 		username varchar(50) primary key,
 		doc_tipo varchar(10),
-		doc_nro numeric(18,0),
+		doc_nro bigint,
 		contrasenia nvarchar(30),
 		nombre varchar(20),
 		apellido varchar(20),
@@ -288,7 +288,7 @@ GO
 	-- TABLA BONO
 
 	create table MISSINGNO.Bono(
-		bono_id int primary key,
+		bono_id int primary key identity,
 		plan_id int not null,
 		afiliado_id int not null,
 		compra_bono_id int not null,

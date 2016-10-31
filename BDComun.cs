@@ -435,6 +435,50 @@ namespace ClinicaFrba
         }
 
 
+        public void recuperarEspecialidadesDelProf(string profesional, ComboBox especialidades)
+             {
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT E.especialidad_descripcion FROM MISSINGNO.Especialidad AS E, MISSINGNO.Especialidad_de_profesional AS EP WHERE (E.especialidad_id = EP.especialidad_id AND EP.profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}'))",
+                    profesional),cn);
+                  cmd.ExecuteNonQuery();
+                  SqlDataReader reader = cmd.ExecuteReader();
+                  if (reader.HasRows)
+                  {
+                      while (reader.Read())
+                      {
+                          //agrego los roles al combobox
+                          especialidades.Items.Add(reader.GetString(0));
+                      }
+
+                      //si hay un solo rol para el usuario
+                      if (especialidades.Items.Count == 1)
+                      {
+                          //ya tiene un rol
+                          string especialidad = especialidades.GetItemText(especialidades.Items[0]);
+                      }
+                      else
+                      {
+                          //el combobox muestra el primer rol por default
+                          especialidades.SelectedIndex = 0;
+                      }
+
+                      reader.Close();
+
+                  }
+
+                  reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar especialidades" + ex.ToString());
+
+            }
+             }
+
+
+
         //----------------------------CONEXIONES PARA EDITAR AFILIADO
 
         public AfiliadoCompleto obtenerDatosAfiliadoCompleto(string username)

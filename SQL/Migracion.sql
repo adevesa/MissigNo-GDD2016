@@ -13,6 +13,8 @@ DELETE FROM MISSINGNO.Administrativo;
 DBCC CHECKIDENT ('MISSINGNO.Administrativo', RESEED, 0)
 GO
 DELETE FROM MISSINGNO.Especialidad_de_profesional;
+DBCC CHECKIDENT ('MISSINGNO.Especialidad_de_profesional',RESEED,0)
+GO
 DELETE FROM MISSINGNO.Planes
 DBCC CHECKIDENT ('MISSINGNO.Planes',RESEED,0)
 GO
@@ -169,12 +171,25 @@ SET IDENTITY_INSERT MISSINGNO.Administrativo ON
 INSERT INTO MISSINGNO.Administrativo(admin_id,username) VALUES(1,'admin')
 SET IDENTITY_INSERT MISSINGNO.Administrativo OFF
 
+SET IDENTITY_INSERT MISSINGNO.Tipo_especialidad ON
+INSERT INTO MISSINGNO.Tipo_especialidad(tipo_especialidad_id,tipo_especialidad_desc) VALUES(-1,'MIGRADO')
+SET IDENTITY_INSERT MISSINGNO.Tipo_especialidad OFF
+
+SET IDENTITY_INSERT MISSINGNO.Especialidad ON
+INSERT INTO MISSINGNO.Especialidad(especialidad_id,especialidad_descripcion,tipo_especialidad_id) VALUES(-1,'MIGRADO',-1)
+SET IDENTITY_INSERT MISSINGNO.Especialidad OFF
+
 SET IDENTITY_INSERT MISSINGNO.Profesional ON
 INSERT INTO MISSINGNO.Profesional(profesional_id,username,profesional_matricula) VALUES(-1,'MIGRADO',-1)
 SET IDENTITY_INSERT MISSINGNO.Profesional OFF
 
+SET IDENTITY_INSERT MISSINGNO.Especialidad_de_profesional ON
+INSERT INTO MISSINGNO.Especialidad_de_profesional(prof_esp_id,especialidad_id,profesional_id) VALUES(-1,-1,-1)
+SET IDENTITY_INSERT MISSINGNO.Especialidad_de_profesional OFF
+
+
 SET IDENTITY_INSERT MISSINGNO.Agenda ON
-INSERT INTO MISSINGNO.Agenda(agenda_id,profesional_id,agenda_inicio,agenda_fin) VALUES(-1,-1,getdate(),getdate()) -- Valor migrado
+INSERT INTO MISSINGNO.Agenda(agenda_id,prof_esp_id,agenda_inicio,agenda_fin) VALUES(-1,-1,getdate(),getdate()) -- Valor migrado
 SET IDENTITY_INSERT MISSINGNO.Agenda OFF
 
 
@@ -289,12 +304,14 @@ CLOSE cursorMedicos
 DEALLOCATE cursorMedicos
 
 -- MIGRACION DE ESPECIALIDAD CON PROFESIONAL.
+DBCC CHECKIDENT ('MISSINGNO.Especialidad_de_profesional',RESEED,0)
 
 INSERT INTO MISSINGNO.Especialidad_de_profesional(especialidad_id, profesional_id)
 SELECT DISTINCT E.especialidad_id, P.profesional_id
 from gd_esquema.Maestra, MISSINGNO.Profesional P, MISSINGNO.Especialidad E
 where P.username = Medico_Mail and
 	  E.especialidad_id = Especialidad_Codigo
+
 
 /* MIGRACION DE COMPRA DE BONOS*/
 

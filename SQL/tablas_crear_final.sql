@@ -36,7 +36,7 @@ alter table MISSINGNO.Profesional
   -- TABLA AGENDA
   
 alter table MISSINGNO.Agenda
-	drop constraint FK_Agenda_profesional_id;
+	drop constraint FK_Agenda_prof_esp_id;
 
   -- TABLA CANCELACION_TURNO
   
@@ -218,7 +218,7 @@ GO
 
 	create table MISSINGNO.Agenda(
 		agenda_id int primary key identity,
-		profesional_id int not null,
+		prof_esp_id int not null,
 		agenda_inicio datetime,
 		agenda_fin datetime)
 
@@ -245,6 +245,7 @@ GO
 	-- TABLA ESPECIALIDAD_DE_PROFESIONAL
 
 	create table MISSINGNO.Especialidad_de_profesional(
+		prof_esp_id int primary key identity,
 		especialidad_id int not null,
 		profesional_id int not null)
 
@@ -401,7 +402,7 @@ alter table MISSINGNO.Administrativo
 	-- TABLA AGENDA
 
 alter table MISSINGNO.Agenda
-	add constraint FK_Agenda_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
+	add constraint FK_Agenda_prof_esp_id foreign key (prof_esp_id) references MISSINGNO.Especialidad_de_profesional(prof_esp_id);
 	
 	-- TABLA TURNO
 

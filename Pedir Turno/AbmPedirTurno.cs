@@ -13,9 +13,9 @@ namespace ClinicaFrba.Cancelar_Atencion
     public partial class AbmPedirTurno : Form
     {
         private String usr;
-        public AbmPedirTurno(String username)
+        public AbmPedirTurno()
         {
-            this.usr = username;
+            this.usr = Program.usuario;
             InitializeComponent();
         }
 
@@ -33,7 +33,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            AbmElegirHorario abmElegirHorario = new AbmElegirHorario(usr);
+            AbmElegirHorario abmElegirHorario = new AbmElegirHorario();
             this.Hide();
             abmElegirHorario.ShowDialog();
             this.Close();
@@ -41,7 +41,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado(usr);
+            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
             this.Hide();
             abmRolAfiliado.ShowDialog();
             this.Close();
@@ -53,6 +53,11 @@ namespace ClinicaFrba.Cancelar_Atencion
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

@@ -256,12 +256,13 @@ GO
 		profesional_id int not null,
 		bono_id int not null,
 		fecha datetime not null,
-		horario time not null)
+		horario time not null,
+		en_uso bit not null)
 
 	-- TABLA DIA
 
 	create table MISSINGNO.Dia(
-		dia_id int primary key,
+		dia_id int primary key identity,
 		agenda_id int,
 		horario_desde time,
 		horario_hasta time,

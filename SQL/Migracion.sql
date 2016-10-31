@@ -340,8 +340,8 @@ SET IDENTITY_INSERT MISSINGNO.Bono OFF
 /* MIGRACION DE TURNOS */
 
 SET IDENTITY_INSERT MISSINGNO.Turno ON
-INSERT INTO MISSINGNO.Turno(turno_id, profesional_id, bono_id, fecha, horario)
-SELECT DISTINCT Turno_Numero, P.profesional_id, Bono_Consulta_Numero,Turno_fecha,cast(Turno_Fecha as time)
+INSERT INTO MISSINGNO.Turno(turno_id, profesional_id, bono_id, fecha, horario, en_uso)
+SELECT DISTINCT Turno_Numero, P.profesional_id, Bono_Consulta_Numero,Turno_fecha,cast(Turno_Fecha as time), 1
 FROM gd_esquema.Maestra, MISSINGNO.Profesional P, MISSINGNO.Bono B
 WHERE Turno_Numero IS NOT NULL 
 and Bono_Consulta_Numero IS NOT NULL
@@ -361,6 +361,14 @@ and A.username = Paciente_Mail
 
 /* PRUEBAS
 
+DELETE FROM MISSINGNO.Dia 
+Delete from MISSINGNO.Agenda where agenda_id = 2;
+
+SELECT prof_esp_id MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Profesional P, MISSINGNO.Especialidad E where EP.profesional_id = P.profesional_id AND P.username = 'faustino_Gallardo@gmail.com' AND EP.especialidad_id = E.especialidad_id AND E.especialidad_descripcion = 'Angiología y Cirugía Vascular'
+
+SELECT count(*) FROM MISSINGNO.Agenda A ,MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Profesional P, MISSINGNO.Especialidad E where EP.profesional_id = P.profesional_id AND P.username = 'faustino_Gallardo@gmail.com'  AND EP.especialidad_id = E.especialidad_id AND E.especialidad_descripcion = 'Angiología y Cirugía Vascular' AND A.prof_esp_id = EP.prof_esp_id
+
+
 SELECT * FROM MISSINGNO.Administrativo
 SELECT * FROM MISSINGNO.Afiliado
 SELECT * FROM MISSINGNO.Afiliado_historial
@@ -370,7 +378,7 @@ SELECT * FROM MISSINGNO.Cancelacion_turno
 SELECT * FROM MISSINGNO.Compra_bono
 SELECT * FROM MISSINGNO.Consulta_medica
 SELECT * FROM MISSINGNO.Dia
-SELECT * FROM MISSINGNO.Especialidad
+SELECT * FROM MISSINGNO.Especialidad_de_profesional
 SELECT * FROM MISSINGNO.Especialidad_de_profesional A1, MISSINGNO.Especialidad A2, Missingno.profesional A3 where A1.PROFESIONAL_ID= A3.PROFESIONAL_ID AND A1.ESPECIALIDAD_ID = A2.ESPECIALIDAD_ID ORDER BY A3.USERNAME
 SELECT * FROM MISSINGNO.Funcionalidad
 SELECT * FROM MISSINGNO.Funcionalidad_de_rol

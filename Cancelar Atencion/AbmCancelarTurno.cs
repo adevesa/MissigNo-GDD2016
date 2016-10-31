@@ -15,9 +15,9 @@ namespace ClinicaFrba.Cancelar_Atencion
         BDComun conexion = new BDComun();
         private String username;
 
-         public AbmCancelarTurno(String usernameProfesional)
+         public AbmCancelarTurno()
         {
-            this.username = usernameProfesional;
+            this.username = Program.usuario;
             InitializeComponent();
         }
 

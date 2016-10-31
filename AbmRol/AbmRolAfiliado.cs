@@ -14,9 +14,9 @@ namespace ClinicaFrba.AbmRol
     {
         private String usernameAfiliado;
 
-        public AbmRolAfiliado(String username)
+        public AbmRolAfiliado()
         {
-            this.usernameAfiliado = username;
+            this.usernameAfiliado = Program.usuario;
             InitializeComponent();
         }
 
@@ -60,20 +60,20 @@ namespace ClinicaFrba.AbmRol
 
         private void botonCancelarTurno_Click(object sender, EventArgs e)
         {
-            ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno(usernameAfiliado);
+            ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno();
             abmCancelarTurno.ShowDialog();
 
         }
 
         private void botonModificarAfiliado_Click(object sender, EventArgs e)
         {
-            ClinicaFrba.Compra_Bono.AbmComprarBono abmComprarBono = new ClinicaFrba.Compra_Bono.AbmComprarBono(usernameAfiliado);
+            ClinicaFrba.Compra_Bono.AbmComprarBono abmComprarBono = new ClinicaFrba.Compra_Bono.AbmComprarBono();
             abmComprarBono.ShowDialog();
         }
 
         private void botonPedirTurno_Click(object sender, EventArgs e)
         {
-            Cancelar_Atencion.AbmPedirTurno abmPedirTurno = new Cancelar_Atencion.AbmPedirTurno(usernameAfiliado);
+            Cancelar_Atencion.AbmPedirTurno abmPedirTurno = new Cancelar_Atencion.AbmPedirTurno();
             this.Hide();
             abmPedirTurno.ShowDialog();
             this.Close();

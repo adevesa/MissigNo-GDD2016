@@ -13,15 +13,15 @@ namespace ClinicaFrba.Cancelar_Atencion
     public partial class AbmElegirHorario : Form
     {
         private String usr;
-        public AbmElegirHorario(String username)
+        public AbmElegirHorario()
         {
-            this.usr = username;
+            this.usr = Program.usuario;
             InitializeComponent();
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado(usr);
+            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
             this.Hide();
             abmRolAfiliado.ShowDialog();
             this.Close();
@@ -40,7 +40,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            AbmPedirTurno abmPedirTurno = new AbmPedirTurno(usr);
+            AbmPedirTurno abmPedirTurno = new AbmPedirTurno();
             this.Hide();
             abmPedirTurno.ShowDialog();
             this.Close();

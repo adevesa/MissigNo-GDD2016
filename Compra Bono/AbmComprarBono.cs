@@ -15,9 +15,9 @@ namespace ClinicaFrba.Compra_Bono
         BDComun conexion = new BDComun();
         private String username;
 
-        public AbmComprarBono(String usernameAfiliado)
+        public AbmComprarBono()
         {
-            this.username = usernameAfiliado;
+            this.username = Program.usuario;
             InitializeComponent();
         }
 

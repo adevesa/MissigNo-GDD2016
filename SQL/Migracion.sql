@@ -352,14 +352,12 @@ SET IDENTITY_INSERT MISSINGNO.Turno OFF
 /* MIGRACION DE CONSULTAS MEDICAS */
 
 INSERT INTO MISSINGNO.Consulta_medica(turno_id, sintoma, diagnostico, profesional_id, afiliado_id, agenda_id, consulta_horario, confirmacion_de_atencion)
-SELECT Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades,P.profesional_id,A.afiliado_id, -1, cast(Turno_Fecha as time),1
+SELECT Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades,P.profesional_id,A.afiliado_id, -1, cast(Turno_Fecha as time),'SI'
 FROM gd_esquema.Maestra, MISSINGNO.Turno T, MISSINGNO.Profesional P, MISSINGNO.Afiliado A
 WHERE Consulta_Sintomas IS NOT NULL
 and Turno_Numero = T.turno_id
 and P.username = Medico_Mail
 and A.username = Paciente_Mail
-
-
 
 /* PRUEBAS
 

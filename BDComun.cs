@@ -47,20 +47,6 @@ namespace ClinicaFrba
 
         public bool existeUsuario(string usuario)
         {
-<<<<<<< HEAD
-          try
-              {
-              cmd = new SqlCommand(string.Format("SELECT COUNT(*) FROM MISSINGNO.Usuario WHERE username='{0}'", usuario), cn);
-              cmd.ExecuteNonQuery();
-              return ((Int32)cmd.ExecuteScalar() >= 1);
-              }
-              catch(Exception ex)
-              {
-    
-                 return false;
-              }
-             
-=======
             try
             {
                 cmd = new SqlCommand(string.Format("SELECT COUNT(*) FROM MISSINGNO.Usuario WHERE username='{0}'", usuario), cn);
@@ -73,7 +59,6 @@ namespace ClinicaFrba
                 return false;
             }
 
->>>>>>> refs/remotes/origin/agusDevbranch
         }
 
         public bool contraseñaCorrecta(string usuario, string contraseña)
@@ -197,18 +182,6 @@ namespace ClinicaFrba
 
 
 
-<<<<<<< HEAD
-        public int obtenerPlanId(string planDescripcion){
-             try{
-                 int id = new int();
-                 cmd = new SqlCommand(string.Format("SELECT plan_id FROM MISSINGNO.Planes WHERE plan_descripcion= '{0}'",
-                      planDescripcion), cn);
-                  cmd.ExecuteNonQuery();
-                 
-                  SqlDataReader reader = cmd.ExecuteReader();
-                  while (reader.Read())
-                  {
-=======
         public int obtenerPlanId(string planDescripcion)
         {
             try
@@ -221,7 +194,6 @@ namespace ClinicaFrba
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
->>>>>>> refs/remotes/origin/agusDevbranch
                     id = reader.GetInt32(0);
                 }
                 reader.Close();
@@ -408,16 +380,10 @@ namespace ClinicaFrba
 
         public void borrarAfiliado(string username)
         {
-<<<<<<< HEAD
-            try{
-                cmd = new SqlCommand(string.Format("Delete from MISSINGNO.Rol_de_Usuario where (username ='{0}' AND rol_id = 3); Delete From MISSINGNO.Afiliado where username='{0}'", username));
-            cmd.ExecuteNonQuery();
-=======
             try
             {
                 cmd = new SqlCommand(string.Format("Delete from MISSINGNO.Rol_de_Usuario where (username ='{0}' AND rol_id = 3); Delete From MISSINGNO.Afiliado where username='{0}'", username));
                 cmd.ExecuteNonQuery();
->>>>>>> refs/remotes/origin/agusDevbranch
             }
             catch (Exception ex)
             {
@@ -602,34 +568,6 @@ namespace ClinicaFrba
             }
         }
 
-        /*  public List<Palabra> obtenerProfesionalesPorEspecialidad(string especialidad)  
-         {
-             List<Palabra> especialidades = new List<Palabra>();
-           
-            try
-               {
-                   cmd = new SqlCommand(string.Format("SELECT distinct (SELECT username FROM MISSINGNO.Profesional WHERE profesional_id= 6) FROM MISSINGNO.Especialidad_de_profesional WHERE especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{0}')",
-                       especialidad), cn);
-                  cmd.ExecuteNonQuery();
-                  SqlDataReader reader = cmd.ExecuteReader();
-                  while (reader.Read())
-                  {
-                      Palabra esp = new Palabra();
-                      esp.unElemento = reader.GetString(0);
-                      especialidades.Add(esp);
-
-                  }
-                  reader.Close();
-                  return especialidades;
-               }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener especialidades: " + ex.ToString());
-                return especialidades;
-            }
-         }
-
- */
         public int obtenerPlanIdDeAfiliado(String username)
         {
             int id = new int();
@@ -740,170 +678,34 @@ namespace ClinicaFrba
 
         }
 
-
-        //----------------------------CONEXIONES PARA EDITAR AFILIADO
-
-        public AfiliadoCompleto obtenerDatosAfiliado(string username)
-             {
-              AfiliadoCompleto afiliado = new AfiliadoCompleto();
-           try
-              {
-              cmd = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono, afiliado_estado_civil FROM MISSINGNO.Usuario as X , MISSINGNO.Afiliado AS Y WHERE (Y.username = '{0}' AND X.username = '{0}')",
-                   username), cn);
-               //SqlCommand comando = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono FROM MISSINGNO.Usuario WHERE username = '{0}'",
-                //  username), cn);
-               cmd.ExecuteNonQuery();
-
-               SqlDataReader reader = cmd.ExecuteReader();
-               while (reader.Read())
-               {
-                   afiliado.doc_tipo = reader.GetString(0);
-                   afiliado.doc_nro = reader.GetInt64(1);
-                   afiliado.nombre = reader.GetString(2);
-                   afiliado.apellido = reader.GetString(3);
-                   afiliado.fec_nac = reader.GetDateTime(4);
-                   afiliado.sexo = reader.GetString(5);
-                   afiliado.domicilio = reader.GetString(6);
-                   afiliado.mail = reader.GetString(7);
-                   afiliado.telefono = reader.GetInt64(8);
-                   afiliado.afiliado_estado_civil = reader.GetString(9);
-               }
-               reader.Close();
-               List<int> listaID = new List<int>();
-               Int32 id = new Int32();
-               int idAfiliado = this.obtenerAfiliadoId(username);
-               cmd = new SqlCommand(string.Format("SELECT afiliado_id FROM  MISSINGNO.Afiliado WHERE afiliado_encargado = {0}",
-                   idAfiliado), cn);
-               cmd.ExecuteNonQuery();
-               SqlDataReader reader2 = cmd.ExecuteReader();
-
-               while (reader2.Read())
-                   {
-                    id =reader2.GetInt32(0);
-                    listaID.Add(id);
-                   }
-              
-               reader2.Close();
-               afiliado.hijos = listaID;
-               return afiliado;
-
-              }
-           catch (Exception ex)
-           {
-               MessageBox.Show("Error al buscar datos: " + ex.ToString());
-               return afiliado;
-           }
-         }
-
-
-        public AfiliadoSimple obtenerDatosAfiliado(int afiliadoID)
-        {
-            AfiliadoSimple afiliado = new AfiliadoSimple();
-            try
-            {
-
-                cmd = new SqlCommand(string.Format("SELECT X.username, nombre, apellido FROM MISSINGNO.Usuario as X JOIN MISSINGNO.Afiliado AS Y ON ( X.username = Y.username)WHERE (afiliado_id =  {0});",
-                     afiliadoID), cn);
-                cmd.ExecuteNonQuery();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    afiliado.username = reader.GetString(0);
-                    afiliado.nombre = reader.GetString(1);
-                    afiliado.apellido = reader.GetString(2);
-                }
-                reader.Close();
-                return afiliado;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener datos de usuario: " + ex.ToString());
-                return afiliado;
-            }
-
-        }
-
-        public void modificarAfiliado(string username, string tipoDocumento, string numDocumento, string contraseña, string nombre, string apellido, DateTime fechaNacimiento, string sexo, string direccion, string email, string telefono, string estadoCivil, string planMedico)
-
-        {
-            
-            int doc = Convert.ToInt32(numDocumento);
-            UInt64 tel = Convert.ToUInt64(telefono);
-            string genero = cifrarGenero(sexo);
-            int idPlan = obtenerPlanId(planMedico);
-            DateTime fecha = new DateTime(2000, 11, 11);
-            try
-            {
-                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Usuario SET doc_tipo='{0}', doc_nro={1}, contrasenia = '{2}', nombre= '{3}', apellido='{4}', fec_nac='{5}', sexo='{6}', domicilio='{7}', mail= '{8}', telefono = {9} WHERE username='{10}'",
-                    tipoDocumento, doc,contraseña, nombre, apellido, fecha, genero, direccion, email, tel, username), cn);  
-                //"DNI", 39064509, "asdasd", "afi3", "afi", fecha, "H", "casa", "asasdsa", 01146969696969, "afi"),cn);
-                    cmd.ExecuteNonQuery();
-                    cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Afiliado SET plan_id={0}, afiliado_estado_civil='{1}' WHERE username='{2}'",
-                    idPlan, estadoCivil, username), cn);
-                cmd.ExecuteNonQuery();
-                  }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al modificar usuario: " + ex.ToString());
-            }
-    }
-
-        public List<Palabra> obtenerEspecialidades()  
-        {
-            List<Palabra> especialidades = new List<Palabra>();
+        /*  public List<Palabra> obtenerProfesionalesPorEspecialidad(string especialidad)  
+         {
+             List<Palabra> especialidades = new List<Palabra>();
            
-           try
-              {
-                  cmd = new SqlCommand("SELECT especialidad_descripcion FROM MISSINGNO.Especialidad", cn);
+            try
+               {
+                   cmd = new SqlCommand(string.Format("SELECT distinct (SELECT username FROM MISSINGNO.Profesional WHERE profesional_id= 6) FROM MISSINGNO.Especialidad_de_profesional WHERE especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{0}')",
+                       especialidad), cn);
                   cmd.ExecuteNonQuery();
                   SqlDataReader reader = cmd.ExecuteReader();
                   while (reader.Read())
                   {
-                      Palabra especialidad = new Palabra();
-                      especialidad.unElemento = reader.GetString(0);
-                      especialidades.Add(especialidad);
-      
+                      Palabra esp = new Palabra();
+                      esp.unElemento = reader.GetString(0);
+                      especialidades.Add(esp);
+
                   }
-                  reader.Close(); 
+                  reader.Close();
                   return especialidades;
                }
-           catch (Exception ex)
-           {
-               MessageBox.Show("Error al obtener especialidades: " + ex.ToString());
-               return especialidades;
-           }
-        }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener especialidades: " + ex.ToString());
+                return especialidades;
+            }
+         }
 
-       /*  public List<Palabra> obtenerProfesionalesPorEspecialidad(string especialidad)  
-        {
-            List<Palabra> especialidades = new List<Palabra>();
-           
-           try
-              {
-                  cmd = new SqlCommand(string.Format("SELECT distinct (SELECT username FROM MISSINGNO.Profesional WHERE profesional_id= 6) FROM MISSINGNO.Especialidad_de_profesional WHERE especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{0}')",
-                      especialidad), cn);
-                 cmd.ExecuteNonQuery();
-                 SqlDataReader reader = cmd.ExecuteReader();
-                 while (reader.Read())
-                 {
-                     Palabra esp = new Palabra();
-                     esp.unElemento = reader.GetString(0);
-                     especialidades.Add(esp);
+ */
 
-                 }
-                 reader.Close();
-                 return especialidades;
-              }
-           catch (Exception ex)
-           {
-               MessageBox.Show("Error al obtener especialidades: " + ex.ToString());
-               return especialidades;
-           }
-        }
-
-*/
-
+    }
 }
-}
-                    

@@ -12,14 +12,9 @@ namespace ClinicaFrba.AbmRol
 {
     public partial class AbmRolAfiliado : Form
     {
-<<<<<<< HEAD
-        private String usernameProfesional;
-        public AbmRolAfiliado()
-=======
         private String usernameAfiliado;
 
         public AbmRolAfiliado(String username)
->>>>>>> refs/remotes/origin/agusDevbranch
         {
             this.usernameAfiliado = username;
             InitializeComponent();
@@ -65,11 +60,7 @@ namespace ClinicaFrba.AbmRol
 
         private void botonCancelarTurno_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            ClinicaFrba.Pedir_Turno.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Pedir_Turno.AbmCancelarTurno(usernameProfesional);
-=======
             ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno(usernameAfiliado);
->>>>>>> refs/remotes/origin/agusDevbranch
             abmCancelarTurno.ShowDialog();
 
         }

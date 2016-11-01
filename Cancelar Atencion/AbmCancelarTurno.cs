@@ -39,7 +39,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void Cancelar_Turno_Load(object sender, EventArgs e)
         {
-
+            conexion.turnosSinUsar(Program.usuario, textoIDTurno);
         }
 
         private void botonConfirmar_Click(object sender, EventArgs e)

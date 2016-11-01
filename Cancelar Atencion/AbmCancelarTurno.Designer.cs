@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.botonConfirmar = new System.Windows.Forms.Button();
-            this.textoIDTurno = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textoMotivo = new System.Windows.Forms.TextBox();
-            this.tipoCancelacion = new System.Windows.Forms.ComboBox();
+            this.textoIDTurno = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tipoCancelacion = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // botonConfirmar
@@ -50,28 +51,17 @@
             this.botonConfirmar.UseVisualStyleBackColor = true;
             this.botonConfirmar.Click += new System.EventHandler(this.botonConfirmar_Click);
             // 
-            // textoIDTurno
-            // 
-            this.textoIDTurno.BackColor = System.Drawing.Color.White;
-            this.textoIDTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoIDTurno.Location = new System.Drawing.Point(40, 79);
-            this.textoIDTurno.Name = "textoIDTurno";
-            this.textoIDTurno.Size = new System.Drawing.Size(491, 47);
-            this.textoIDTurno.TabIndex = 64;
-            this.textoIDTurno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textoIDTurno.TextChanged += new System.EventHandler(this.textoIDTurno_TextChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(33, 24);
+            this.label1.Location = new System.Drawing.Point(126, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(455, 41);
+            this.label1.Size = new System.Drawing.Size(303, 37);
             this.label1.TabIndex = 63;
-            this.label1.Text = "N° Consulta médica a cancelar";
+            this.label1.Text = "N° Turno a cancelar";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -79,11 +69,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(36, 238);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 29);
+            this.label2.Size = new System.Drawing.Size(84, 29);
             this.label2.TabIndex = 68;
             this.label2.Text = "Motivo";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -98,16 +88,37 @@
             this.textoMotivo.Text = "Escriba el motivo...";
             this.textoMotivo.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
+            // textoIDTurno
+            // 
+            this.textoIDTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.textoIDTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoIDTurno.FormattingEnabled = true;
+            this.textoIDTurno.Location = new System.Drawing.Point(131, 74);
+            this.textoIDTurno.Name = "textoIDTurno";
+            this.textoIDTurno.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textoIDTurno.Size = new System.Drawing.Size(298, 37);
+            this.textoIDTurno.TabIndex = 98;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(36, 142);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(231, 29);
+            this.label3.TabIndex = 99;
+            this.label3.Text = "Tipo de cancelación";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tipoCancelacion
             // 
-            this.tipoCancelacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipoCancelacion.FormattingEnabled = true;
-            this.tipoCancelacion.Location = new System.Drawing.Point(40, 165);
+            this.tipoCancelacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipoCancelacion.Location = new System.Drawing.Point(41, 174);
             this.tipoCancelacion.Name = "tipoCancelacion";
-            this.tipoCancelacion.Size = new System.Drawing.Size(491, 33);
-            this.tipoCancelacion.TabIndex = 71;
-            this.tipoCancelacion.Text = "Tipo de cancelación";
-            this.tipoCancelacion.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.tipoCancelacion.Size = new System.Drawing.Size(473, 47);
+            this.tipoCancelacion.TabIndex = 100;
             // 
             // AbmCancelarTurno
             // 
@@ -116,10 +127,11 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(584, 456);
             this.Controls.Add(this.tipoCancelacion);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textoIDTurno);
             this.Controls.Add(this.textoMotivo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.botonConfirmar);
-            this.Controls.Add(this.textoIDTurno);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AbmCancelarTurno";
@@ -134,10 +146,11 @@
         #endregion
 
         private System.Windows.Forms.Button botonConfirmar;
-        private System.Windows.Forms.TextBox textoIDTurno;
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textoMotivo;
-        private System.Windows.Forms.ComboBox tipoCancelacion;
+        private System.Windows.Forms.ComboBox textoIDTurno;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tipoCancelacion;
     }
 }

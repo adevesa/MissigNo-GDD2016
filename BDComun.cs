@@ -435,7 +435,7 @@ namespace ClinicaFrba
         }
 
 
-        public void recuperarEspecialidadesDelProf(string profesional, ComboBox especialidades)
+        public void recuperarEnComboBox(string profesional, ComboBox especialidades)
              {
             try
             {
@@ -966,5 +966,49 @@ namespace ClinicaFrba
                 MessageBox.Show("Error al modificar consulta: " + ex.ToString());
                 }
             }
+
+        public void turnosSinUsar (string profesional, ComboBox idTurno) {
+            List<string> turnos = new List<string>(); 
+            try
+                 {
+                     cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE (profesional_id = (SELECT profesional_id FROM  MISSINGNO.Profesional WHERE username='{0}') AND en_uso = 0)",
+                        profesional), cn);
+                     
+                     SqlDataReader reader = cmd.ExecuteReader();
+                         if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        //agrego los roles al combobox
+                        idTurno.Items.Add(reader.GetString(0));
+                    }
+
+                    //si hay un solo rol para el usuario
+                    if (idTurno.Items.Count == 1)
+                    {
+                        //ya tiene un rol
+                        string turno;
+                        turno = idTurno.GetItemText(idTurno.Items[0]);
+                    }
+                    else
+                    {
+                        //el combobox muestra el primer rol por default
+                        idTurno.SelectedIndex = 0;
+                    }
+
+                    reader.Close();
+
+                }
+
+                reader.Close();
+                 }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Error al cargar turnos: " + ex.ToString());
+             }
+        }
+
+
+
     }
 }

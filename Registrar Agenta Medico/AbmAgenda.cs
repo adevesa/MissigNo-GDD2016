@@ -66,7 +66,7 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
 
-            conexion.recuperarEspecialidadesDelProf(Program.usuario, textoEspecialidad);
+            conexion.recuperarEnComboBox(Program.usuario, textoEspecialidad);
 
         }
 

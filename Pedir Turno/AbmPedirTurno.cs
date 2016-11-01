@@ -12,10 +12,13 @@ namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class AbmPedirTurno : Form
     {
-        private String usr;
-        public AbmPedirTurno(String username)
+        BDComun conexion = new BDComun();
+        List<Palabra> listaEspecialidades = new List<Palabra>();
+        Palabra especialidad = new Palabra();
+
+        public AbmPedirTurno()
         {
-            this.usr = username;
+
             InitializeComponent();
         }
 
@@ -29,19 +32,23 @@ namespace ClinicaFrba.Cancelar_Atencion
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
+
+            listaEspecialidades = conexion.obtenerEspecialidades();
+            dgvEspecialidades.DataSource = listaEspecialidades;
+
+
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            AbmElegirHorario abmElegirHorario = new AbmElegirHorario(usr);
-            this.Hide();
-            abmElegirHorario.ShowDialog();
-            this.Close();
+ 
+            ClinicaFrba.Registro_Llegada.cargarProfesionales abm = new ClinicaFrba.Registro_Llegada.cargarProfesionales(especialidad, Program.usuario, 1);
+            abm.ShowDialog();
         }
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado(usr);
+            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
             this.Hide();
             abmRolAfiliado.ShowDialog();
             this.Close();
@@ -55,6 +62,17 @@ namespace ClinicaFrba.Cancelar_Atencion
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BotonFiltrar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvEspecialidades_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int posicion = dgvEspecialidades.CurrentRow.Index;
+            especialidad.unElemento = Convert.ToString(dgvEspecialidades[0, posicion].Value);
         }
     }
 }

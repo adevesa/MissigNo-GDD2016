@@ -66,7 +66,7 @@ namespace ClinicaFrba.Registro_Llegada
         private void botonFiltrar_Click(object sender, EventArgs e)
         {
             if(textoUsername.TextLength != 0){
-            cargarProfesionales abm = new cargarProfesionales(especialidad, textoUsername.Text);
+            cargarProfesionales abm = new cargarProfesionales(especialidad, textoUsername.Text, 0);
             abm.ShowDialog();
            }
             else MessageBox.Show("Introduzca un afiliado");

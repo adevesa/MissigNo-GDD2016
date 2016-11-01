@@ -14,9 +14,8 @@ namespace ClinicaFrba.AbmRol
     {
         private String usernameAfiliado;
 
-        public AbmRolAfiliado(String username)
+        public AbmRolAfiliado()
         {
-            this.usernameAfiliado = username;
             InitializeComponent();
         }
 
@@ -73,7 +72,7 @@ namespace ClinicaFrba.AbmRol
 
         private void botonPedirTurno_Click(object sender, EventArgs e)
         {
-            Cancelar_Atencion.AbmPedirTurno abmPedirTurno = new Cancelar_Atencion.AbmPedirTurno(usernameAfiliado);
+            Cancelar_Atencion.AbmPedirTurno abmPedirTurno = new Cancelar_Atencion.AbmPedirTurno();
             this.Hide();
             abmPedirTurno.ShowDialog();
             this.Close();

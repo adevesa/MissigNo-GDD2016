@@ -12,16 +12,23 @@ namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class AbmElegirHorario : Form
     {
-        private String usr;
-        public AbmElegirHorario(String username)
+        BDComun conexion = new BDComun();
+        Palabra especialidad = new Palabra();
+        Palabra profesional = new Palabra();
+        List<int> listaDeHorarios = new List<int>();
+
+        string dia;
+
+        public AbmElegirHorario(Palabra afi, Palabra esp)
         {
-            this.usr = username;
+            this.especialidad = esp;
+            this.profesional = afi;
             InitializeComponent();
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado(usr);
+            AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
             this.Hide();
             abmRolAfiliado.ShowDialog();
             this.Close();
@@ -40,9 +47,9 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-            AbmPedirTurno abmPedirTurno = new AbmPedirTurno(usr);
-            this.Hide();
-            abmPedirTurno.ShowDialog();
+           // AbmPedirTurno abmPedirTurno = new AbmPedirTurno();
+           // this.Hide();
+           // abmPedirTurno.ShowDialog();
             this.Close();
         }
 
@@ -55,5 +62,43 @@ namespace ClinicaFrba.Cancelar_Atencion
         {
 
         }
+
+
+        private void BotonFiltrar_Click(object sender, EventArgs e)
+        {
+            dia = calendario.SelectionStart.DayOfWeek.ToString();
+            int desde = conexion.desdeDia(profesional.unElemento, dia);
+            int hasta = conexion.hastaDia(profesional.unElemento, dia);
+            dgvHorarios.DataSource = calcularTurnos2(10, 20);
+
+        }
+
+        public List<int> calcularTurnos(int desde, int hasta)
+        {
+        List<int> lista = new List<int>();
+        int i;
+        for(i = desde; hasta>i; i++){
+            lista.Add(i);
+            }
+        return lista;
+        }
+
+
+        public List<Palabra> calcularTurnos2(int desde, int hasta)
+        {
+            List<Palabra> lista = new List<Palabra>();
+            int i;
+            for (i = desde; hasta > i; i++)
+            {
+                Palabra horario = new Palabra();
+                string D = Convert.ToString(i);
+                string H = Convert.ToString(i+1);
+                horario.unElemento = "desde: " + D + "hs, hasta: " + H + "hs";
+                lista.Add(horario);
+            }
+            return lista;
+        }
+
+
     }
 }

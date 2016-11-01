@@ -26,7 +26,7 @@ namespace ClinicaFrba.Login
         {
             if (roles.Text == "Afiliado")
             {
-                AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado(usr);
+                AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
                 this.Hide();
                 abmRolAfiliado.ShowDialog();
                 this.Close();

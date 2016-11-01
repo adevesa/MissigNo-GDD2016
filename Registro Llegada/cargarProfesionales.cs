@@ -16,11 +16,13 @@ namespace ClinicaFrba.Registro_Llegada
         List<Palabra> profecionales = new List<Palabra>();
         Palabra especialidad = new Palabra();
         Palabra profesional = new Palabra();
+        int indicador;
         string afiliadoUsername;
-        public cargarProfesionales(Palabra especialidad, string username)
+        public cargarProfesionales(Palabra especialidad, string username, int indicador)
         {
             this.especialidad = especialidad;
             this.afiliadoUsername = username;
+            this.indicador = indicador;
         
             InitializeComponent();
         }
@@ -38,10 +40,23 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            cargarTurnos abm = new cargarTurnos(profesional, afiliadoUsername);
-            this.Hide();
+            if(indicador == 0)
+            {
+            cargarTurnos abm = new cargarTurnos(profesional, afiliadoUsername, especialidad);
+
+            //this.Hide();
             abm.ShowDialog();
             this.Close();
+            }
+            else
+            {
+                ClinicaFrba.Cancelar_Atencion.AbmElegirHorario abm = new ClinicaFrba.Cancelar_Atencion.AbmElegirHorario(profesional, especialidad);
+
+                //this.Hide();
+                abm.ShowDialog();
+                this.Close();
+            }
+
         }
 
         private void dgvProfecionales_CellContentClick(object sender, DataGridViewCellEventArgs e)

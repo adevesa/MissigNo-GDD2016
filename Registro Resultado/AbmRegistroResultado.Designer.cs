@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -45,7 +46,6 @@
             this.botonHombre = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,6 +74,14 @@
             this.panel1.Size = new System.Drawing.Size(693, 612);
             this.panel1.TabIndex = 0;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(143, 140);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(337, 27);
+            this.dateTimePicker1.TabIndex = 125;
+            // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -86,11 +94,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(307, 187);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(173, 37);
+            this.label4.Size = new System.Drawing.Size(171, 33);
             this.label4.TabIndex = 123;
             this.label4.Text = "N° Consulta";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -127,11 +135,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(10, 446);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(171, 37);
+            this.label6.Size = new System.Drawing.Size(168, 33);
             this.label6.TabIndex = 119;
             this.label6.Text = "Diagnóstico";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -140,7 +148,7 @@
             // botonVolver
             // 
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 20.25F);
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
             this.botonVolver.Location = new System.Drawing.Point(541, 560);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
@@ -154,7 +162,7 @@
             // BotonConfirmar2
             // 
             this.BotonConfirmar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BotonConfirmar2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonConfirmar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotonConfirmar2.ForeColor = System.Drawing.Color.Black;
             this.BotonConfirmar2.Location = new System.Drawing.Point(541, 487);
             this.BotonConfirmar2.Margin = new System.Windows.Forms.Padding(2);
@@ -168,7 +176,7 @@
             // butonAgregar
             // 
             this.butonAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.butonAgregar.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butonAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.butonAgregar.ForeColor = System.Drawing.Color.Black;
             this.butonAgregar.Location = new System.Drawing.Point(561, 249);
             this.butonAgregar.Margin = new System.Windows.Forms.Padding(2);
@@ -186,18 +194,18 @@
             this.listaDeSintomas.Location = new System.Drawing.Point(16, 306);
             this.listaDeSintomas.Margin = new System.Windows.Forms.Padding(2);
             this.listaDeSintomas.Name = "listaDeSintomas";
-            this.listaDeSintomas.Size = new System.Drawing.Size(678, 124);
+            this.listaDeSintomas.Size = new System.Drawing.Size(675, 124);
             this.listaDeSintomas.TabIndex = 82;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(10, 187);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 37);
+            this.label3.Size = new System.Drawing.Size(78, 33);
             this.label3.TabIndex = 66;
             this.label3.Text = "Hora";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -206,11 +214,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(10, 132);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 37);
+            this.label2.Size = new System.Drawing.Size(96, 33);
             this.label2.TabIndex = 65;
             this.label2.Text = "Fecha";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -218,10 +226,10 @@
             // botonMujer
             // 
             this.botonMujer.AutoSize = true;
-            this.botonMujer.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 18F);
+            this.botonMujer.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.botonMujer.Location = new System.Drawing.Point(380, 82);
             this.botonMujer.Name = "botonMujer";
-            this.botonMujer.Size = new System.Drawing.Size(64, 34);
+            this.botonMujer.Size = new System.Drawing.Size(63, 33);
             this.botonMujer.TabIndex = 64;
             this.botonMujer.TabStop = true;
             this.botonMujer.Text = "No";
@@ -230,10 +238,10 @@
             // botonHombre
             // 
             this.botonHombre.AutoSize = true;
-            this.botonHombre.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonHombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonHombre.Location = new System.Drawing.Point(284, 82);
             this.botonHombre.Name = "botonHombre";
-            this.botonHombre.Size = new System.Drawing.Size(49, 34);
+            this.botonHombre.Size = new System.Drawing.Size(53, 33);
             this.botonHombre.TabIndex = 63;
             this.botonHombre.TabStop = true;
             this.botonHombre.Text = "Si";
@@ -243,11 +251,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(9, 79);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(228, 37);
+            this.label9.Size = new System.Drawing.Size(231, 33);
             this.label9.TabIndex = 62;
             this.label9.Text = "Consulta exitosa";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -256,22 +264,14 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(3, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(345, 47);
+            this.label1.Size = new System.Drawing.Size(352, 42);
             this.label1.TabIndex = 61;
             this.label1.Text = "Registrar resultados";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(143, 140);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(337, 27);
-            this.dateTimePicker1.TabIndex = 125;
             // 
             // AbmRegistroResultado
             // 

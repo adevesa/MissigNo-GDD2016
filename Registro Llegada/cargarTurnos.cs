@@ -17,9 +17,11 @@ namespace ClinicaFrba.Registro_Llegada
         tipoTurno unTurno = new tipoTurno();
         //Palabra especialidad = new Palabra();
         Palabra profesional = new Palabra();
+        Palabra especialidad = new Palabra();
         string afiliadoUsername;
-        public cargarTurnos(Palabra profesional, string afiliado)
+        public cargarTurnos(Palabra profesional, string afiliado, Palabra especialidad)
         {
+            this.especialidad = especialidad;
             this.profesional = profesional;
             this.afiliadoUsername = afiliado;
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            conexion.generarConsulta(afiliadoUsername, profesional.unElemento, unTurno.idTurno, unTurno.fechaTurno);
+            conexion.generarConsulta(afiliadoUsername,especialidad.unElemento, profesional.unElemento, unTurno.idTurno, unTurno.fechaTurno);
             this.Close();
         }
 

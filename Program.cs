@@ -30,9 +30,10 @@ namespace ClinicaFrba
                 //List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
                 //ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar login = new ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar(lista, "afi", "mi casa");
                 //ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado2 login = new ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado2();
-                //ClinicaFrba.Registro_Llegada.RegistroDeLlegada login = new ClinicaFrba.Registro_Llegada.RegistroDeLlegada();
+               // ClinicaFrba.Registro_Llegada.RegistroDeLlegada login = new ClinicaFrba.Registro_Llegada.RegistroDeLlegada();
+                ClinicaFrba.Cancelar_Atencion.AbmPedirTurno login = new ClinicaFrba.Cancelar_Atencion.AbmPedirTurno();
 
-                ClinicaFrba.Login.frm_login login = new ClinicaFrba.Login.frm_login();
+                //ClinicaFrba.Login.frm_login login = new ClinicaFrba.Login.frm_login();
                 Application.Run(login);
 
         }

@@ -776,19 +776,75 @@ namespace ClinicaFrba
                return turnos;
            }
         }
-        public void generarConsulta(string UsernameAfi, string usernameProf, int idTurno, DateTime fechaTurno)
+        public void generarConsulta(string UsernameAfi, string especialidad, string usernameProf, int idTurno, DateTime fechaTurno)
         {
 
              try
               {
-                  cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Consulta_medica (profesional_id, afiliado_id, agenda_id, turno_id, confirmacion_de_atencion, consulta_horario) VALUES ((SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{1}'),	(SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username = '{0}'), (SELECT agenda_id FROM MISSINGNO.Agenda WHERE profesional_id=(SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{1}')), {2},0, NULL)",
-                      UsernameAfi, usernameProf, idTurno), cn);
+                  cmd = new SqlCommand(string.Format(" INSERT INTO MISSINGNO.Consulta_medica (profesional_id, afiliado_id, agenda_id, turno_id, confirmacion_de_atencion, consulta_horario) VALUES ((SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{1}'), (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username = '{0}'),	(SELECT agenda_id FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional 	WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{1}')	 AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{2}')))), {3}, 'NO', NULL)",
+                 UsernameAfi, usernameProf, especialidad ,idTurno), cn);
                   cmd.ExecuteNonQuery();
               }
          catch (Exception ex)
            {
                MessageBox.Show("Error al generar consulta: " + ex.ToString());
            }
+        }
+
+       
+        
+        
+        
+        
+        
+        public int desdeDia(string profesional, string dia)
+             {
+                 int horario= new int();
+             try
+              {
+                  cmd = new SqlCommand(string.Format("SELECT D.horario_desde FROM MISSINGNO.Dia AS D, MISSINGNO.Agenda AS A, MISSINGNO.Especialidad_de_profesional AS EP WHERE (D.agenda_id = A.agenda_id AND A.prof_esp_id = EP.prof_esp_id AND D.desc_dia = '{1}' AND EP.profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}'))",
+                      profesional, dia),cn);
+                      cmd.ExecuteNonQuery();
+                      return horario;
+                      SqlDataReader reader = cmd.ExecuteReader();
+                      while (reader.Read())
+                      {
+                         horario = reader.GetInt32(0);
+                      }
+                      reader.Close();
+                      return horario;
+
+              }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Error en desdeDia: " + ex.ToString());
+                 return horario;
+             }
+             }
+
+        public int hastaDia(string profesional, string dia)
+        {
+            int horario = new int();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT D.horario_hasta FROM MISSINGNO.Dia AS D, MISSINGNO.Agenda AS A, MISSINGNO.Especialidad_de_profesional AS EP WHERE (D.agenda_id = A.agenda_id AND A.prof_esp_id = EP.prof_esp_id AND D.desc_dia = '{1}' AND EP.profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}'))",
+                    profesional, dia), cn);
+                cmd.ExecuteNonQuery();
+                return horario;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    horario = reader.GetInt32(0);
+                }
+                reader.Close();
+                return horario;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en desdeDia: " + ex.ToString());
+                return horario;
+            }
         }
 
     }

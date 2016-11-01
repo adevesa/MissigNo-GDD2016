@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.semestre = new System.Windows.Forms.ComboBox();
-            this.top5 = new System.Windows.Forms.ComboBox();
+            this.cmbSemestre = new System.Windows.Forms.ComboBox();
+            this.cmbTop5 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.botonVolver = new System.Windows.Forms.Button();
-            this.BotonBuscar = new System.Windows.Forms.Button();
-            this.AnioDeBaja = new System.Windows.Forms.NumericUpDown();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.npckAnio = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AnioDeBaja)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.npckAnio)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.semestre);
-            this.panel1.Controls.Add(this.top5);
+            this.panel1.Controls.Add(this.cmbSemestre);
+            this.panel1.Controls.Add(this.cmbTop5);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.botonVolver);
-            this.panel1.Controls.Add(this.BotonBuscar);
-            this.panel1.Controls.Add(this.AnioDeBaja);
+            this.panel1.Controls.Add(this.btnVolver);
+            this.panel1.Controls.Add(this.btnBuscar);
+            this.panel1.Controls.Add(this.npckAnio);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label1);
@@ -59,96 +59,97 @@
             this.panel1.Size = new System.Drawing.Size(422, 553);
             this.panel1.TabIndex = 1;
             // 
-            // semestre
+            // cmbSemestre
             // 
-            this.semestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.semestre.FormattingEnabled = true;
-            this.semestre.Items.AddRange(new object[] {
-            "Primer semestr",
+            this.cmbSemestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSemestre.FormattingEnabled = true;
+            this.cmbSemestre.Items.AddRange(new object[] {
+            "Primer semestre",
             "Segundo semestre"});
-            this.semestre.Location = new System.Drawing.Point(60, 345);
-            this.semestre.Margin = new System.Windows.Forms.Padding(2);
-            this.semestre.Name = "semestre";
-            this.semestre.Size = new System.Drawing.Size(159, 40);
-            this.semestre.TabIndex = 120;
-            this.semestre.Text = "Elija uno";
+            this.cmbSemestre.Location = new System.Drawing.Point(60, 345);
+            this.cmbSemestre.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbSemestre.Name = "cmbSemestre";
+            this.cmbSemestre.Size = new System.Drawing.Size(159, 40);
+            this.cmbSemestre.TabIndex = 120;
+            this.cmbSemestre.Text = "Elija uno";
             // 
-            // top5
+            // cmbTop5
             // 
-            this.top5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.top5.FormattingEnabled = true;
-            this.top5.Items.AddRange(new object[] {
+            this.cmbTop5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTop5.FormattingEnabled = true;
+            this.cmbTop5.Items.AddRange(new object[] {
             "Especialidades con mas cancelaciones",
             "Profesionales más consultados",
             "Profesionales más perezosos",
-            "Afiliado con màs bonos comprados",
+            "Afiliado con más bonos comprados",
             "Especialidades con mas consultas"});
-            this.top5.Location = new System.Drawing.Point(60, 159);
-            this.top5.Margin = new System.Windows.Forms.Padding(2);
-            this.top5.Name = "top5";
-            this.top5.Size = new System.Drawing.Size(316, 33);
-            this.top5.TabIndex = 119;
-            this.top5.Text = "Elija uno";
+            this.cmbTop5.Location = new System.Drawing.Point(60, 159);
+            this.cmbTop5.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbTop5.Name = "cmbTop5";
+            this.cmbTop5.Size = new System.Drawing.Size(316, 33);
+            this.cmbTop5.TabIndex = 119;
+            this.cmbTop5.Text = "Elija uno";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(53, 306);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 37);
+            this.label3.Size = new System.Drawing.Size(140, 33);
             this.label3.TabIndex = 118;
             this.label3.Text = "Semestre";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // botonVolver
+            // btnVolver
             // 
-            this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
-            this.botonVolver.ForeColor = System.Drawing.Color.Black;
-            this.botonVolver.Location = new System.Drawing.Point(252, 436);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(153, 52);
-            this.botonVolver.TabIndex = 117;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = true;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
+            this.btnVolver.ForeColor = System.Drawing.Color.Black;
+            this.btnVolver.Location = new System.Drawing.Point(252, 436);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(153, 52);
+            this.btnVolver.TabIndex = 117;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // BotonBuscar
+            // btnBuscar
             // 
-            this.BotonBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BotonBuscar.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
-            this.BotonBuscar.ForeColor = System.Drawing.Color.Black;
-            this.BotonBuscar.Location = new System.Drawing.Point(60, 436);
-            this.BotonBuscar.Margin = new System.Windows.Forms.Padding(2);
-            this.BotonBuscar.Name = "BotonBuscar";
-            this.BotonBuscar.Size = new System.Drawing.Size(153, 52);
-            this.BotonBuscar.TabIndex = 116;
-            this.BotonBuscar.Text = "Buscar";
-            this.BotonBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
+            this.btnBuscar.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscar.Location = new System.Drawing.Point(60, 436);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(153, 52);
+            this.btnBuscar.TabIndex = 116;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // AnioDeBaja
+            // npckAnio
             // 
-            this.AnioDeBaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AnioDeBaja.Location = new System.Drawing.Point(61, 250);
-            this.AnioDeBaja.Margin = new System.Windows.Forms.Padding(2);
-            this.AnioDeBaja.Maximum = new decimal(new int[] {
-            2100,
+            this.npckAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.npckAnio.Location = new System.Drawing.Point(61, 250);
+            this.npckAnio.Margin = new System.Windows.Forms.Padding(2);
+            this.npckAnio.Maximum = new decimal(new int[] {
+            2016,
             0,
             0,
             0});
-            this.AnioDeBaja.Minimum = new decimal(new int[] {
-            1900,
+            this.npckAnio.Minimum = new decimal(new int[] {
+            1990,
             0,
             0,
             0});
-            this.AnioDeBaja.Name = "AnioDeBaja";
-            this.AnioDeBaja.Size = new System.Drawing.Size(158, 38);
-            this.AnioDeBaja.TabIndex = 71;
-            this.AnioDeBaja.Value = new decimal(new int[] {
+            this.npckAnio.Name = "npckAnio";
+            this.npckAnio.Size = new System.Drawing.Size(158, 38);
+            this.npckAnio.TabIndex = 71;
+            this.npckAnio.Value = new decimal(new int[] {
             2016,
             0,
             0,
@@ -158,11 +159,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(54, 211);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 37);
+            this.label2.Size = new System.Drawing.Size(66, 33);
             this.label2.TabIndex = 65;
             this.label2.Text = "Año";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,11 +172,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(53, 120);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(172, 37);
+            this.label9.Size = new System.Drawing.Size(172, 33);
             this.label9.TabIndex = 62;
             this.label9.Text = "Elegir Top 5";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -208,7 +209,7 @@
             this.Load += new System.EventHandler(this.AbmListados_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AnioDeBaja)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.npckAnio)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,13 +218,13 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button botonVolver;
-        private System.Windows.Forms.Button BotonBuscar;
-        private System.Windows.Forms.NumericUpDown AnioDeBaja;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.NumericUpDown npckAnio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox top5;
-        private System.Windows.Forms.ComboBox semestre;
+        private System.Windows.Forms.ComboBox cmbTop5;
+        private System.Windows.Forms.ComboBox cmbSemestre;
     }
 }

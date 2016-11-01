@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.botonVolver = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Especialidad_cancelacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero_consultas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.txtSemestre = new System.Windows.Forms.TextBox();
+            this.txtAnio = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // botonVolver
@@ -40,63 +42,92 @@
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
-            this.botonVolver.Location = new System.Drawing.Point(216, 203);
+            this.botonVolver.Location = new System.Drawing.Point(274, 336);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(153, 52);
             this.botonVolver.TabIndex = 122;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Especialidad_cancelacion,
-            this.Numero_consultas});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(543, 186);
-            this.dataGridView1.TabIndex = 121;
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(72, 105);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.Size = new System.Drawing.Size(543, 186);
+            this.dataGridView.TabIndex = 121;
             // 
-            // Especialidad_cancelacion
+            // txtSemestre
             // 
-            this.Especialidad_cancelacion.HeaderText = "Especialidad";
-            this.Especialidad_cancelacion.Name = "Especialidad_cancelacion";
-            this.Especialidad_cancelacion.ReadOnly = true;
-            this.Especialidad_cancelacion.Width = 300;
+            this.txtSemestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSemestre.Location = new System.Drawing.Point(412, 29);
+            this.txtSemestre.Name = "txtSemestre";
+            this.txtSemestre.ReadOnly = true;
+            this.txtSemestre.Size = new System.Drawing.Size(203, 24);
+            this.txtSemestre.TabIndex = 132;
             // 
-            // Numero_consultas
+            // txtAnio
             // 
-            this.Numero_consultas.HeaderText = "Numero de consultas utilizados";
-            this.Numero_consultas.Name = "Numero_consultas";
-            this.Numero_consultas.ReadOnly = true;
-            this.Numero_consultas.Width = 200;
+            this.txtAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnio.Location = new System.Drawing.Point(158, 30);
+            this.txtAnio.Name = "txtAnio";
+            this.txtAnio.ReadOnly = true;
+            this.txtAnio.Size = new System.Drawing.Size(100, 24);
+            this.txtAnio.TabIndex = 131;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(292, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 25);
+            this.label2.TabIndex = 130;
+            this.label2.Text = "Semestre:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(98, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 25);
+            this.label1.TabIndex = 129;
+            this.label1.Text = "Año:";
             // 
             // top5_especialidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 263);
+            this.ClientSize = new System.Drawing.Size(695, 443);
+            this.Controls.Add(this.txtSemestre);
+            this.Controls.Add(this.txtAnio);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.botonVolver);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "top5_especialidades";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinica FRBA-Top 5 Especialidades";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button botonVolver;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Especialidad_cancelacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Numero_consultas;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.TextBox txtSemestre;
+        private System.Windows.Forms.TextBox txtAnio;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

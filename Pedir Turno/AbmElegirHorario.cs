@@ -66,10 +66,14 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void BotonFiltrar_Click(object sender, EventArgs e)
         {
+            /*
             dia = calendario.SelectionStart.DayOfWeek.ToString();
             int desde = conexion.desdeDia(profesional.unElemento, dia);
             int hasta = conexion.hastaDia(profesional.unElemento, dia);
             dgvHorarios.DataSource = calcularTurnos2(10, 20);
+            */
+
+            conexion.turnosEnFecha(Convert.ToDateTime("02-11-2016"), "faustino_Gallardo@gmail.com", "Angiología y Cirugía Vascular");
 
         }
 
@@ -97,6 +101,11 @@ namespace ClinicaFrba.Cancelar_Atencion
                 lista.Add(horario);
             }
             return lista;
+        }
+
+        private void calendario_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
         }
 
 

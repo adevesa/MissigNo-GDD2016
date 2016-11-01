@@ -55,19 +55,19 @@ namespace ClinicaFrba.Cancelar_Atencion
             {
                 MessageBox.Show("Faltan completar datos");
             }
-            else 
-                {       
-                if(conexion.consultaYaCancelada(Convert.ToInt32(textoIDTurno.Text)))
-                    {
-                    MessageBox.Show("Ya esta cancelada el turno");
-                    }
+            else
+            {
+                if (conexion.turnoYaCancelado(Convert.ToInt32(textoIDTurno.Text)))
+                {
+                    MessageBox.Show("Ya esta cancelado el turno");
+                }
                 else
-                    {
-                    conexion.cancelarConsultaMedica(Convert.ToInt32(textoIDTurno.Text), textoMotivo.Text, tipoCancelacion.Text);
-                    MessageBox.Show("Turno cancelado con éxito");
-                    }
-            this.Close();
-             }
+                {
+                    conexion.cancelarTurno(Convert.ToInt32(textoIDTurno.Text), textoMotivo.Text, tipoCancelacion.Text);
+                    MessageBox.Show("Consulta eliminada con éxito");
+                }
+                this.Close();
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

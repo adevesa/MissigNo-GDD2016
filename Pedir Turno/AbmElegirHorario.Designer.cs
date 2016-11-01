@@ -73,8 +73,10 @@
             // 
             this.calendario.CalendarDimensions = new System.Drawing.Size(2, 2);
             this.calendario.Location = new System.Drawing.Point(17, 176);
+            this.calendario.MaxSelectionCount = 1;
             this.calendario.Name = "calendario";
             this.calendario.TabIndex = 52;
+            this.calendario.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.calendario_DateChanged);
             // 
             // botonVolver
             // 

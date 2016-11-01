@@ -333,7 +333,7 @@ GO
 		cancelacion_id int primary key identity,
 		turno_id int not null,
 		cancelacion_motivo varchar(140),
-		cancelacion_tipo4 varchar(20),
+		cancelacion_tipo varchar(20),
 		cancelacion_fecha datetime)
 
 	-- TABLA ADMINISTRATIVO

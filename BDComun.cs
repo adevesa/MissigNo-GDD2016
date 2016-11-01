@@ -303,28 +303,26 @@ namespace ClinicaFrba
 
         }
 
-        public void cancelarConsultaMedica(int numeroConsulta, string tipoCancelacion, string motivoCancelacion)
+        public void cancelarTurno(int numeroTurno, string tipoCancelacion, string motivoCancelacion)
         {
             try
             {
-                int numeroTurno = obtenerTurnoId(numeroConsulta);
-
                 SqlCommand comando = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Cancelacion_Turno(turno_id, cancelacion_motivo, cancelacion_tipo, cancelacion_fecha) VALUES ({0},'{1}','{2}',getDate())",
                     numeroTurno, tipoCancelacion, motivoCancelacion), cn);
                 comando.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo cancelar Consulta Medica. Error: " + ex.ToString());
+                MessageBox.Show("No se pudo cancelar Turno. Error: " + ex.ToString());
             }
         }
 
-        public bool consultaYaCancelada(int consulta_id)
+        public bool turnoYaCancelado(int turno_id)
         {
             try
             {
-                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Cancelacion_Turno C, MISSINGNO.Consulta_medica CO  WHERE C.turno_id = CO.turno_id and CO.consulta_id = {0}",
-                    consulta_id), cn);
+                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Cancelacion_Turno C, MISSINGNO.Turno T WHERE C.turno_id = T.turno_id and T.turno_id = {0}",
+                    turno_id), cn);
                 cmd.ExecuteNonQuery();
                 return ((Int32)cmd.ExecuteScalar() >= 1);
             }
@@ -332,22 +330,6 @@ namespace ClinicaFrba
             {
                 return false;
             }
-        }
-
-        public bool chequearConsultaMedica(int consulta_id, string usernameProfesional)
-        {
-            try
-            {
-                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Consulta_medica C, MISSINGNO.Profesional P WHERE consulta_id= '{0}' and P.profesional_id = C.profesional_id and P.username = '{1}'",
-                    consulta_id, usernameProfesional), cn);
-                cmd.ExecuteNonQuery();
-                return ((Int32)cmd.ExecuteScalar() >= 1);
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-
         }
 
         /*
@@ -1055,6 +1037,125 @@ namespace ClinicaFrba
             }
         }
 
+        public int obtenerAgendaId(String username, String especialidad)
+        {
+            try
+            {
+                int prof_esp_id = conseguirIdporUsernameYespecialidad(username, especialidad);
+                int id = new int();
+                cmd = new SqlCommand(string.Format("Select agenda_id from MISSINGNO.Agenda where prof_esp_id = {0}",
+                    prof_esp_id), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+                reader.Close();
+                return id;
+            }
+            catch (Exception ex)
+            {
+                TimeSpan horario2 = new TimeSpan();
+                MessageBox.Show("Error al agenda ID: " + ex.ToString());
+                return -1;
+            }
+        }
+
+        /*
+        public void verTurnos(string Dia, String username, String especialidad)
+        {
+            int agendaId = obtenerAgendaId(username, especialidad);
+            List<TimeSpan> Turnos = turnoEntreHorario(Dia, agendaId);
+            for (int x = 0; x < Turnos.Count; x++)
+            {
+                MessageBox.Show(Convert.ToString(Turnos[x]));
+            }
+        }
+         */
+
+        public String traductorDiaDeLaSemana(String dia)
+        {
+            switch(dia)
+            {
+                case ("Monday"): return "Lunes";
+                case ("Tuesday"): return "Martes";
+                case ("Wednesday"): return "Miercoles";
+                case ("Thursday"): return "Jueves";
+                case ("Friday"): return "Viernes";
+                case ("Saturday"): return "Sabado";
+                case ("Sunday"): return "Domingo";
+                default: return "Nada";
+            }
+
+        }
+
+        public List<TimeSpan> turnosEnFecha(DateTime fecha, String username, String especialidad)
+        {
+          int agendaId = obtenerAgendaId(username,especialidad);
+          MessageBox.Show(traductorDiaDeLaSemana(Convert.ToString(fecha.DayOfWeek)));
+          return(turnoEntreHorario(traductorDiaDeLaSemana(Convert.ToString(fecha.DayOfWeek)), agendaId));
+        }
+
+        
+        public List<TimeSpan> turnoEntreHorario(string Dia, int agendaId)
+        {
+            List<TimeSpan> Turnos = new List<TimeSpan>();
+            TimeSpan horario_Desde = horarioDesde(Dia, agendaId);
+            TimeSpan horario_Hasta = horarioHasta(Dia, agendaId);
+            TimeSpan horario_progresivo = new TimeSpan();
+            TimeSpan treinta_minutos = new TimeSpan(00,30,00);
+            for (horario_progresivo = horario_Desde; horario_progresivo <= horario_Hasta; horario_progresivo += treinta_minutos)
+            {
+                Turnos.Add(horario_progresivo);
+            }
+            return Turnos;
+        }
+
+        public TimeSpan horarioDesde(string Dia, int agendaId)
+        {
+            try
+            {
+                TimeSpan horario = new TimeSpan();
+                cmd = new SqlCommand(string.Format("SELECT horario_desde FROM MISSINGNO.Dia D,MISSINGNO.Agenda A WHERE D.desc_dia = '{0}' AND A.Agenda_id = {1} AND A.agenda_id = D.agenda_id",
+                   Dia, agendaId), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    horario = reader.GetTimeSpan(0);
+                }
+                reader.Close();
+                return horario;
+            }
+            catch (Exception ex)
+            {
+                TimeSpan horario2 = new TimeSpan();
+                MessageBox.Show("Error al conseguir horario Desde: " + ex.ToString());
+                return horario2;
+            }
+        }
+
+        public TimeSpan horarioHasta(string Dia, int agendaId)
+        {
+            try
+            {
+                TimeSpan horario = new TimeSpan();
+                cmd = new SqlCommand(string.Format("SELECT horario_hasta FROM MISSINGNO.Dia D,MISSINGNO.Agenda A WHERE D.desc_dia = '{0}' AND A.Agenda_id = {1} AND A.agenda_id = D.agenda_id",
+                   Dia, agendaId), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    horario = reader.GetTimeSpan(0);
+                }
+                reader.Close();
+                return horario;
+            }
+            catch (Exception ex)
+            {
+                TimeSpan horario2 = new TimeSpan();
+                MessageBox.Show("Error al conseguir horario Hasta: " + ex.ToString());
+                return horario2;
+            }
+        }
 
     }
 }

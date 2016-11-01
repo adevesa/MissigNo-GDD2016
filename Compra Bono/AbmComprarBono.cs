@@ -66,10 +66,25 @@ namespace ClinicaFrba.Compra_Bono
             }
             else
             {
-                conexion.comprarBonos(Convert.ToInt32(textoCantidadDeBonos.Text), username);
-
+                if (boxUsuario.Text == "Ingrese un username")
+                {
+                    conexion.comprarBonos(Convert.ToInt32(textoCantidadDeBonos.Text), username);
+                }
+                else if (conexion.esAfiliado(boxUsuario.Text))
+                {
+                    conexion.comprarBonos(Convert.ToInt32(textoCantidadDeBonos.Text), boxUsuario.Text);
+                }
+                else
+                {
+                    MessageBox.Show("No existe afiliado con ese username");
+                }
             }
             this.Close();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

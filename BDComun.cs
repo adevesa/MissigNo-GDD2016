@@ -874,6 +874,27 @@ namespace ClinicaFrba
             }
         }
 
+        public bool esAfiliado(String username)
+        {
+            try
+            {
+                int id = new int();
+                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Afiliado where username = '{0}'",
+                    username), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+                reader.Close();
+                return (id > 0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conseguir afiliado: " + ex.ToString());
+                return false;
+            }
+        }
 
 
     }

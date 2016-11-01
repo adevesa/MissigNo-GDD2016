@@ -952,6 +952,19 @@ namespace ClinicaFrba
             }
         }
 
-
+        public void modificarConsulta(string idConsulta, string diagnostico, string sintoma)//, string estado)
+            {
+                int id = Convert.ToInt32(idConsulta);
+            try
+                 {
+                     cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Consulta_medica SET diagnostico='{0}', sintoma='{1}', confirmacion_de_atencion={1} WHERE consulta_id='{3}'",
+                    diagnostico, sintoma, 1, id), cn);
+                     cmd.ExecuteNonQuery();
+                 }
+            catch (Exception ex)
+                {
+                MessageBox.Show("Error al modificar consulta: " + ex.ToString());
+                }
+            }
     }
 }

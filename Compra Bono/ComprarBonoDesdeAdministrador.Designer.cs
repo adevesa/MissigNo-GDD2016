@@ -30,11 +30,11 @@
         {
             this.botonConfirmar = new System.Windows.Forms.Button();
             this.textoCantidadDeBonos = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.boxUserAfiliado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.botonVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // botonConfirmar
@@ -60,16 +60,19 @@
             this.textoCantidadDeBonos.Size = new System.Drawing.Size(192, 38);
             this.textoCantidadDeBonos.TabIndex = 67;
             this.textoCantidadDeBonos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textoCantidadDeBonos.TextChanged += new System.EventHandler(this.textoCantidadDeBonos_TextChanged);
+            this.textoCantidadDeBonos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textoCantidadesDeBonos_KeyPress);
             // 
-            // textBox1
+            // boxUserAfiliado
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(299, 92);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(273, 38);
-            this.textBox1.TabIndex = 69;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.boxUserAfiliado.BackColor = System.Drawing.Color.White;
+            this.boxUserAfiliado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxUserAfiliado.Location = new System.Drawing.Point(299, 92);
+            this.boxUserAfiliado.Name = "boxUserAfiliado";
+            this.boxUserAfiliado.Size = new System.Drawing.Size(273, 38);
+            this.boxUserAfiliado.TabIndex = 69;
+            this.boxUserAfiliado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.boxUserAfiliado.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -92,9 +95,9 @@
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(12, 89);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(218, 41);
+            this.label8.Size = new System.Drawing.Size(279, 41);
             this.label8.TabIndex = 70;
-            this.label8.Text = "N° de Afiliado";
+            this.label8.Text = "Username Afiliado";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -110,18 +113,19 @@
             this.label2.Text = "Cantidad de Bonos";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // botonVolver
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 18F);
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(316, 284);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 50);
-            this.button1.TabIndex = 72;
-            this.button1.Text = "Volver";
-            this.button1.UseVisualStyleBackColor = true;
+            this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 18F);
+            this.botonVolver.ForeColor = System.Drawing.Color.Black;
+            this.botonVolver.Location = new System.Drawing.Point(316, 284);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(141, 50);
+            this.botonVolver.TabIndex = 72;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.button1_Click);
             // 
             // ComprarBonoDesdeAdministrador
             // 
@@ -129,10 +133,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(584, 366);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.boxUserAfiliado);
             this.Controls.Add(this.botonConfirmar);
             this.Controls.Add(this.textoCantidadDeBonos);
             this.Controls.Add(this.label1);
@@ -149,10 +153,10 @@
 
         private System.Windows.Forms.Button botonConfirmar;
         private System.Windows.Forms.TextBox textoCantidadDeBonos;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox boxUserAfiliado;
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button botonVolver;
     }
 }

@@ -12,8 +12,11 @@ namespace ClinicaFrba.AbmRol
 {
     public partial class AbmRolProfesional : Form
     {
+        String usernameProfesional;
+
         public AbmRolProfesional()
         {
+            this.usernameProfesional = Program.usuario;
             InitializeComponent();
         }
 
@@ -58,7 +61,7 @@ namespace ClinicaFrba.AbmRol
 
         private void botonCrearAfiliado_Click(object sender, EventArgs e)
         {
-            ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno(Program.usuario);
+            ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno();
             abmCancelarTurno.ShowDialog();
         }
 

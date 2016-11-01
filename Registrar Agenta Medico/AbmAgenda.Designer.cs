@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.botonMartes = new System.Windows.Forms.RadioButton();
-            this.botonLunes = new System.Windows.Forms.RadioButton();
-            this.botonMiercoles = new System.Windows.Forms.RadioButton();
-            this.botonJueves = new System.Windows.Forms.RadioButton();
-            this.botonViernes = new System.Windows.Forms.RadioButton();
-            this.botonSabado = new System.Windows.Forms.RadioButton();
-            this.botonDomingo = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -86,10 +79,17 @@
             this.BotonConfirmar2 = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textoEspecialidad = new System.Windows.Forms.ComboBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textoEspecialidad = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.botonLunes = new System.Windows.Forms.CheckBox();
+            this.botonMartes = new System.Windows.Forms.CheckBox();
+            this.botonMiercoles = new System.Windows.Forms.CheckBox();
+            this.botonJueves = new System.Windows.Forms.CheckBox();
+            this.botonViernes = new System.Windows.Forms.CheckBox();
+            this.botonSabado = new System.Windows.Forms.CheckBox();
+            this.botonDomingo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.desdeLunes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hastaLunes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.desdeMartes)).BeginInit();
@@ -120,104 +120,6 @@
             this.label1.Text = "Crear Agenda";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // botonMartes
-            // 
-            this.botonMartes.AutoSize = true;
-            this.botonMartes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonMartes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.botonMartes.Location = new System.Drawing.Point(119, 322);
-            this.botonMartes.Name = "botonMartes";
-            this.botonMartes.Size = new System.Drawing.Size(115, 35);
-            this.botonMartes.TabIndex = 30;
-            this.botonMartes.TabStop = true;
-            this.botonMartes.Text = "Martes";
-            this.botonMartes.UseVisualStyleBackColor = true;
-            this.botonMartes.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // botonLunes
-            // 
-            this.botonLunes.AutoSize = true;
-            this.botonLunes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonLunes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonLunes.Location = new System.Drawing.Point(118, 262);
-            this.botonLunes.Name = "botonLunes";
-            this.botonLunes.Size = new System.Drawing.Size(106, 35);
-            this.botonLunes.TabIndex = 30;
-            this.botonLunes.TabStop = true;
-            this.botonLunes.Text = "Lunes";
-            this.botonLunes.UseVisualStyleBackColor = true;
-            this.botonLunes.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // botonMiercoles
-            // 
-            this.botonMiercoles.AutoSize = true;
-            this.botonMiercoles.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonMiercoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.botonMiercoles.Location = new System.Drawing.Point(119, 384);
-            this.botonMiercoles.Name = "botonMiercoles";
-            this.botonMiercoles.Size = new System.Drawing.Size(148, 35);
-            this.botonMiercoles.TabIndex = 31;
-            this.botonMiercoles.TabStop = true;
-            this.botonMiercoles.Text = "Miércoles";
-            this.botonMiercoles.UseVisualStyleBackColor = true;
-            this.botonMiercoles.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
-            // botonJueves
-            // 
-            this.botonJueves.AutoSize = true;
-            this.botonJueves.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonJueves.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.botonJueves.Location = new System.Drawing.Point(119, 446);
-            this.botonJueves.Name = "botonJueves";
-            this.botonJueves.Size = new System.Drawing.Size(119, 35);
-            this.botonJueves.TabIndex = 32;
-            this.botonJueves.TabStop = true;
-            this.botonJueves.Text = "Jueves";
-            this.botonJueves.UseVisualStyleBackColor = true;
-            this.botonJueves.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
-            // botonViernes
-            // 
-            this.botonViernes.AutoSize = true;
-            this.botonViernes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonViernes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.botonViernes.Location = new System.Drawing.Point(119, 514);
-            this.botonViernes.Name = "botonViernes";
-            this.botonViernes.Size = new System.Drawing.Size(124, 35);
-            this.botonViernes.TabIndex = 33;
-            this.botonViernes.TabStop = true;
-            this.botonViernes.Text = "Viernes";
-            this.botonViernes.UseVisualStyleBackColor = true;
-            this.botonViernes.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
-            // 
-            // botonSabado
-            // 
-            this.botonSabado.AutoSize = true;
-            this.botonSabado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonSabado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.botonSabado.Location = new System.Drawing.Point(118, 573);
-            this.botonSabado.Name = "botonSabado";
-            this.botonSabado.Size = new System.Drawing.Size(125, 35);
-            this.botonSabado.TabIndex = 34;
-            this.botonSabado.TabStop = true;
-            this.botonSabado.Text = "Sábado";
-            this.botonSabado.UseVisualStyleBackColor = true;
-            this.botonSabado.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
-            // 
-            // botonDomingo
-            // 
-            this.botonDomingo.AutoSize = true;
-            this.botonDomingo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonDomingo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.botonDomingo.Location = new System.Drawing.Point(119, 633);
-            this.botonDomingo.Name = "botonDomingo";
-            this.botonDomingo.Size = new System.Drawing.Size(140, 35);
-            this.botonDomingo.TabIndex = 35;
-            this.botonDomingo.TabStop = true;
-            this.botonDomingo.Text = "Domingo";
-            this.botonDomingo.UseVisualStyleBackColor = true;
-            this.botonDomingo.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -238,7 +140,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(452, 172);
+            this.label6.Location = new System.Drawing.Point(453, 163);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 29);
             this.label6.TabIndex = 68;
@@ -282,6 +184,7 @@
             0,
             0,
             0});
+            this.desdeLunes.ValueChanged += new System.EventHandler(this.desdeLunes_ValueChanged);
             // 
             // hastaLunes
             // 
@@ -306,6 +209,7 @@
             0,
             0,
             0});
+            this.hastaLunes.ValueChanged += new System.EventHandler(this.hastaLunes_ValueChanged);
             // 
             // label9
             // 
@@ -382,6 +286,7 @@
             0,
             0,
             0});
+            this.desdeMartes.ValueChanged += new System.EventHandler(this.desdeMartes_ValueChanged);
             // 
             // hastaMartes
             // 
@@ -406,6 +311,7 @@
             0,
             0,
             0});
+            this.hastaMartes.ValueChanged += new System.EventHandler(this.hastaMartes_ValueChanged);
             // 
             // label16
             // 
@@ -482,6 +388,7 @@
             0,
             0,
             0});
+            this.desdeMiercoles.ValueChanged += new System.EventHandler(this.desdeMiercoles_ValueChanged);
             // 
             // hastaMiercoles
             // 
@@ -506,6 +413,7 @@
             0,
             0,
             0});
+            this.hastaMiercoles.ValueChanged += new System.EventHandler(this.hastaMiercoles_ValueChanged);
             // 
             // label20
             // 
@@ -582,6 +490,7 @@
             0,
             0,
             0});
+            this.desdeJueves.ValueChanged += new System.EventHandler(this.desdeJueves_ValueChanged);
             // 
             // hastaJueves
             // 
@@ -606,6 +515,7 @@
             0,
             0,
             0});
+            this.hastaJueves.ValueChanged += new System.EventHandler(this.hastaJueves_ValueChanged);
             // 
             // label24
             // 
@@ -682,6 +592,7 @@
             0,
             0,
             0});
+            this.desdeViernes.ValueChanged += new System.EventHandler(this.desdeViernes_ValueChanged);
             // 
             // HastaViernes
             // 
@@ -706,6 +617,7 @@
             0,
             0,
             0});
+            this.HastaViernes.ValueChanged += new System.EventHandler(this.HastaViernes_ValueChanged);
             // 
             // label28
             // 
@@ -782,6 +694,7 @@
             0,
             0,
             0});
+            this.desdeSabado.ValueChanged += new System.EventHandler(this.desdeSabado_ValueChanged);
             // 
             // hastaSabado
             // 
@@ -806,6 +719,7 @@
             0,
             0,
             0});
+            this.hastaSabado.ValueChanged += new System.EventHandler(this.hastaSabado_ValueChanged);
             // 
             // label32
             // 
@@ -882,6 +796,7 @@
             0,
             0,
             0});
+            this.desdeDomingo.ValueChanged += new System.EventHandler(this.desdeDomingo_ValueChanged);
             // 
             // hastaDomingo
             // 
@@ -906,6 +821,7 @@
             0,
             0,
             0});
+            this.hastaDomingo.ValueChanged += new System.EventHandler(this.hastaDomingo_ValueChanged);
             // 
             // label36
             // 
@@ -1016,6 +932,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.botonDomingo);
+            this.panel1.Controls.Add(this.botonSabado);
+            this.panel1.Controls.Add(this.botonViernes);
+            this.panel1.Controls.Add(this.botonJueves);
+            this.panel1.Controls.Add(this.botonMiercoles);
+            this.panel1.Controls.Add(this.botonMartes);
+            this.panel1.Controls.Add(this.botonLunes);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.textoEspecialidad);
             this.panel1.Controls.Add(this.dateTimePicker2);
@@ -1069,45 +992,12 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.botonDomingo);
-            this.panel1.Controls.Add(this.botonSabado);
-            this.panel1.Controls.Add(this.botonViernes);
-            this.panel1.Controls.Add(this.botonJueves);
-            this.panel1.Controls.Add(this.botonMiercoles);
-            this.panel1.Controls.Add(this.botonLunes);
-            this.panel1.Controls.Add(this.botonMartes);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 763);
             this.panel1.TabIndex = 76;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(552, 172);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(217, 20);
-            this.dateTimePicker2.TabIndex = 116;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(168, 172);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(217, 20);
-            this.dateTimePicker1.TabIndex = 86;
-            // 
-            // textoEspecialidad
-            // 
-            this.textoEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.textoEspecialidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoEspecialidad.FormattingEnabled = true;
-            this.textoEspecialidad.Location = new System.Drawing.Point(516, 55);
-            this.textoEspecialidad.Name = "textoEspecialidad";
-            this.textoEspecialidad.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textoEspecialidad.Size = new System.Drawing.Size(225, 26);
-            this.textoEspecialidad.TabIndex = 117;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label4
             // 
@@ -1121,6 +1011,114 @@
             this.label4.TabIndex = 118;
             this.label4.Text = "Especialidad";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textoEspecialidad
+            // 
+            this.textoEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.textoEspecialidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoEspecialidad.FormattingEnabled = true;
+            this.textoEspecialidad.Location = new System.Drawing.Point(516, 55);
+            this.textoEspecialidad.Name = "textoEspecialidad";
+            this.textoEspecialidad.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textoEspecialidad.Size = new System.Drawing.Size(225, 26);
+            this.textoEspecialidad.TabIndex = 117;
+            this.textoEspecialidad.SelectedIndexChanged += new System.EventHandler(this.textoEspecialidad_SelectedIndexChanged);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(552, 172);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(217, 20);
+            this.dateTimePicker2.TabIndex = 116;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(168, 172);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(217, 20);
+            this.dateTimePicker1.TabIndex = 86;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // botonLunes
+            // 
+            this.botonLunes.AutoSize = true;
+            this.botonLunes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.botonLunes.Location = new System.Drawing.Point(119, 262);
+            this.botonLunes.Name = "botonLunes";
+            this.botonLunes.Size = new System.Drawing.Size(107, 35);
+            this.botonLunes.TabIndex = 119;
+            this.botonLunes.Text = "Lunes";
+            this.botonLunes.UseVisualStyleBackColor = true;
+            this.botonLunes.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // botonMartes
+            // 
+            this.botonMartes.AutoSize = true;
+            this.botonMartes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.botonMartes.Location = new System.Drawing.Point(118, 322);
+            this.botonMartes.Name = "botonMartes";
+            this.botonMartes.Size = new System.Drawing.Size(116, 35);
+            this.botonMartes.TabIndex = 120;
+            this.botonMartes.Text = "Martes";
+            this.botonMartes.UseVisualStyleBackColor = true;
+            // 
+            // botonMiercoles
+            // 
+            this.botonMiercoles.AutoSize = true;
+            this.botonMiercoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.botonMiercoles.Location = new System.Drawing.Point(118, 381);
+            this.botonMiercoles.Name = "botonMiercoles";
+            this.botonMiercoles.Size = new System.Drawing.Size(149, 35);
+            this.botonMiercoles.TabIndex = 121;
+            this.botonMiercoles.Text = "Miércoles";
+            this.botonMiercoles.UseVisualStyleBackColor = true;
+            // 
+            // botonJueves
+            // 
+            this.botonJueves.AutoSize = true;
+            this.botonJueves.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.botonJueves.Location = new System.Drawing.Point(119, 443);
+            this.botonJueves.Name = "botonJueves";
+            this.botonJueves.Size = new System.Drawing.Size(120, 35);
+            this.botonJueves.TabIndex = 122;
+            this.botonJueves.Text = "Jueves";
+            this.botonJueves.UseVisualStyleBackColor = true;
+            // 
+            // botonViernes
+            // 
+            this.botonViernes.AutoSize = true;
+            this.botonViernes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.botonViernes.Location = new System.Drawing.Point(119, 508);
+            this.botonViernes.Name = "botonViernes";
+            this.botonViernes.Size = new System.Drawing.Size(125, 35);
+            this.botonViernes.TabIndex = 123;
+            this.botonViernes.Text = "Viernes";
+            this.botonViernes.UseVisualStyleBackColor = true;
+            // 
+            // botonSabado
+            // 
+            this.botonSabado.AutoSize = true;
+            this.botonSabado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.botonSabado.Location = new System.Drawing.Point(118, 570);
+            this.botonSabado.Name = "botonSabado";
+            this.botonSabado.Size = new System.Drawing.Size(126, 35);
+            this.botonSabado.TabIndex = 124;
+            this.botonSabado.Text = "Sábado";
+            this.botonSabado.UseVisualStyleBackColor = true;
+            // 
+            // botonDomingo
+            // 
+            this.botonDomingo.AutoSize = true;
+            this.botonDomingo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.botonDomingo.Location = new System.Drawing.Point(118, 630);
+            this.botonDomingo.Name = "botonDomingo";
+            this.botonDomingo.Size = new System.Drawing.Size(141, 35);
+            this.botonDomingo.TabIndex = 125;
+            this.botonDomingo.Text = "Domingo";
+            this.botonDomingo.UseVisualStyleBackColor = true;
             // 
             // AbmAgenda
             // 
@@ -1157,13 +1155,6 @@
         #endregion
 
         public System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton botonMartes;
-        private System.Windows.Forms.RadioButton botonLunes;
-        private System.Windows.Forms.RadioButton botonMiercoles;
-        private System.Windows.Forms.RadioButton botonJueves;
-        private System.Windows.Forms.RadioButton botonViernes;
-        private System.Windows.Forms.RadioButton botonSabado;
-        private System.Windows.Forms.RadioButton botonDomingo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -1218,6 +1209,13 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox textoEspecialidad;
+        private System.Windows.Forms.CheckBox botonLunes;
+        private System.Windows.Forms.CheckBox botonDomingo;
+        private System.Windows.Forms.CheckBox botonSabado;
+        private System.Windows.Forms.CheckBox botonViernes;
+        private System.Windows.Forms.CheckBox botonJueves;
+        private System.Windows.Forms.CheckBox botonMiercoles;
+        private System.Windows.Forms.CheckBox botonMartes;
 
     }
 }

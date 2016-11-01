@@ -791,6 +791,7 @@ namespace ClinicaFrba
            }
         }
 
+<<<<<<< HEAD
        
         
         
@@ -847,5 +848,113 @@ namespace ClinicaFrba
             }
         }
 
+=======
+        public void generarDia(string dia, string horaInicio, string horaFin, int agendaId)
+        {
+            try
+            {
+                cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Dia(agenda_id,horario_desde,horario_hasta,desc_dia) VALUES ({0},cast('{1}' as time), cast('{2}' as time),'{3}')",
+                    agendaId, horaInicio, horaFin, dia), cn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear dia: " + ex.ToString());
+            }
+        }
+
+        public int conseguirIdporUsernameYespecialidad(String username, String especialidad)
+        {
+            try
+            {   int id = new int();
+                cmd = new SqlCommand(string.Format("SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Profesional P, MISSINGNO.Especialidad E where EP.profesional_id = P.profesional_id AND P.username = '{0}' AND EP.especialidad_id = E.especialidad_id AND E.especialidad_descripcion = '{1}'",
+                    username, especialidad), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+                reader.Close();
+                return id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conseguir prof_esp_id: " + ex.ToString());
+                return -1;
+            }
+        }
+
+
+        public int generarAgenda(String username, DateTime fecha_inicio, DateTime fecha_fin, String especialidad)
+        {
+            try
+            {
+                int agendaId = new int();
+                int profEspId = new int();
+                profEspId = conseguirIdporUsernameYespecialidad(username, especialidad);
+                cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Agenda(prof_esp_id,agenda_inicio,agenda_fin) OUTPUT inserted.agenda_id VALUES ({0},'{1}','{2}')",
+                    profEspId, fecha_inicio, fecha_fin), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    agendaId = reader.GetInt32(0);
+                }
+                reader.Close();
+                return agendaId;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear agenda: " + ex.ToString());
+                return -1;
+            }
+
+        }
+
+        public bool yaExisteAgenda(String username, String especialidad)
+        {
+            try
+            {
+                int id = new int();
+                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Agenda A ,MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Profesional P, MISSINGNO.Especialidad E where EP.profesional_id = P.profesional_id AND P.username = '{0}'  AND EP.especialidad_id = E.especialidad_id AND E.especialidad_descripcion = '{1}' AND A.prof_esp_id = EP.prof_esp_id",
+                username, especialidad),cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+                reader.Close();
+                return (id>0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conseguir prof_esp_id: " + ex.ToString());
+                return false;
+            }
+        }
+
+        public bool esAfiliado(String username)
+        {
+            try
+            {
+                int id = new int();
+                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Afiliado where username = '{0}'",
+                    username), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+                reader.Close();
+                return (id > 0);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conseguir afiliado: " + ex.ToString());
+                return false;
+            }
+        }
+
+
+>>>>>>> origin/opcion2
     }
 }

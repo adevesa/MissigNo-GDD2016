@@ -40,7 +40,7 @@
             // botonConfirmar
             // 
             this.botonConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonConfirmar.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonConfirmar.ForeColor = System.Drawing.Color.Black;
             this.botonConfirmar.Location = new System.Drawing.Point(110, 284);
             this.botonConfirmar.Margin = new System.Windows.Forms.Padding(2);
@@ -78,11 +78,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(380, 41);
+            this.label1.Size = new System.Drawing.Size(378, 37);
             this.label1.TabIndex = 66;
             this.label1.Text = "Comprar bonos a afiliado";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -91,11 +91,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(12, 89);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(279, 41);
+            this.label8.Size = new System.Drawing.Size(279, 37);
             this.label8.TabIndex = 70;
             this.label8.Text = "Username Afiliado";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -104,11 +104,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 24F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(12, 186);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(290, 41);
+            this.label2.Size = new System.Drawing.Size(290, 37);
             this.label2.TabIndex = 71;
             this.label2.Text = "Cantidad de Bonos";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -116,7 +116,7 @@
             // botonVolver
             // 
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 18F);
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
             this.botonVolver.Location = new System.Drawing.Point(316, 284);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
@@ -144,6 +144,7 @@
             this.Name = "ComprarBonoDesdeAdministrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinica FRBA- Compra Bonos";
+            this.Load += new System.EventHandler(this.ComprarBonoDesdeAdministrador_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

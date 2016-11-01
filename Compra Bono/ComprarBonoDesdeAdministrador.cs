@@ -79,5 +79,10 @@ namespace ClinicaFrba.Compra_Bono
             adminpantalla.ShowDialog();
             this.Close();
         }
+
+        private void ComprarBonoDesdeAdministrador_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

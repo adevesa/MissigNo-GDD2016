@@ -59,7 +59,7 @@ namespace ClinicaFrba.AbmRol
 
         private void botonCancelarTurno_Click(object sender, EventArgs e)
         {
-            ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno();
+            ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno(0);
             abmCancelarTurno.ShowDialog();
 
         }

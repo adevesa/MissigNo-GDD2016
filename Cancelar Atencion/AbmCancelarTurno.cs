@@ -14,9 +14,11 @@ namespace ClinicaFrba.Cancelar_Atencion
     {
         BDComun conexion = new BDComun();
         private String username;
+        int indicador = new int();
 
-         public AbmCancelarTurno()
+         public AbmCancelarTurno(int indicador)
         {
+            this.indicador = indicador;
             this.username = Program.usuario;
             InitializeComponent();
         }
@@ -39,7 +41,11 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void Cancelar_Turno_Load(object sender, EventArgs e)
         {
-            conexion.turnosSinUsar(Program.usuario, textoIDTurno);
+            if (indicador == 1)
+            {
+                conexion.turnosSinUsarProf(Program.usuario, textoIDTurno);
+            }
+            else conexion.turnosSinUsarAfi(Program.usuario, textoIDTurno);
         }
 
         private void botonConfirmar_Click(object sender, EventArgs e)
@@ -49,20 +55,19 @@ namespace ClinicaFrba.Cancelar_Atencion
             {
                 MessageBox.Show("Faltan completar datos");
             }
-            else if (!conexion.chequearConsultaMedica(Convert.ToInt32(textoIDTurno.Text), username))
-            {
-                MessageBox.Show("No existe consulta asociada a ese profesional");
-            }
-            else if(conexion.consultaYaCancelada(Convert.ToInt32(textoIDTurno.Text)))
-            {
-                MessageBox.Show("Ya esta cancelada la consulta");
-            }
-            else
-            {
-                conexion.cancelarConsultaMedica(Convert.ToInt32(textoIDTurno.Text), textoMotivo.Text, tipoCancelacion.Text);
-                MessageBox.Show("Consulta eliminada con éxito");
-            }
+            else 
+                {       
+                if(conexion.consultaYaCancelada(Convert.ToInt32(textoIDTurno.Text)))
+                    {
+                    MessageBox.Show("Ya esta cancelada el turno");
+                    }
+                else
+                    {
+                    conexion.cancelarConsultaMedica(Convert.ToInt32(textoIDTurno.Text), textoMotivo.Text, tipoCancelacion.Text);
+                    MessageBox.Show("Turno cancelado con éxito");
+                    }
             this.Close();
+             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -26,5 +26,10 @@ namespace ClinicaFrba.Listados
         {
 
         }
+
+        private void AbmListado2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

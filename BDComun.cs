@@ -967,7 +967,7 @@ namespace ClinicaFrba
                 }
             }
 
-        public void turnosSinUsar (string profesional, ComboBox idTurno) {
+        public void turnosSinUsarProf (string profesional, ComboBox idTurno) {
             List<string> turnos = new List<string>(); 
             try
                  {
@@ -1008,6 +1008,47 @@ namespace ClinicaFrba
              }
         }
 
+        public void turnosSinUsarAfi(string afiliado, ComboBox idTurno)
+        {
+            List<string> turnos = new List<string>();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT T.turno_id FROM MISSINGNO.Turno AS T, MISSINGNO.Bono AS B WHERE (en_uso = 0 AND T.bono_id = B.bono_estado AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username ='{0}' ))",
+                   afiliado), cn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        //agrego los roles al combobox
+                        idTurno.Items.Add(reader.GetString(0));
+                    }
+
+                    //si hay un solo rol para el usuario
+                    if (idTurno.Items.Count == 1)
+                    {
+                        //ya tiene un rol
+                        string turno;
+                        turno = idTurno.GetItemText(idTurno.Items[0]);
+                    }
+                    else
+                    {
+                        //el combobox muestra el primer rol por default
+                        idTurno.SelectedIndex = 0;
+                    }
+
+                    reader.Close();
+
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar turnos: " + ex.ToString());
+            }
+        }
 
 
     }

@@ -92,7 +92,7 @@ namespace ClinicaFrba.Listados
            */
 
             //a cargar el datagrid
-            cargarDatagrid(conslt);
+           // cargarDatagrid(conslt);
 
             //edito nombre de columnas del datagrid
             dataGridView.Columns[0].HeaderText = "Plan";

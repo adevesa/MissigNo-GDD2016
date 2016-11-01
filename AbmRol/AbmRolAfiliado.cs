@@ -59,14 +59,14 @@ namespace ClinicaFrba.AbmRol
 
         private void botonCancelarTurno_Click(object sender, EventArgs e)
         {
-            ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno(usernameAfiliado);
+            ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno abmCancelarTurno = new ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno();
             abmCancelarTurno.ShowDialog();
 
         }
 
         private void botonModificarAfiliado_Click(object sender, EventArgs e)
         {
-            ClinicaFrba.Compra_Bono.AbmComprarBono abmComprarBono = new ClinicaFrba.Compra_Bono.AbmComprarBono(usernameAfiliado);
+            ClinicaFrba.Compra_Bono.AbmComprarBono abmComprarBono = new ClinicaFrba.Compra_Bono.AbmComprarBono();
             abmComprarBono.ShowDialog();
         }
 

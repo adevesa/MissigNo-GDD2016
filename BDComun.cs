@@ -791,9 +791,7 @@ namespace ClinicaFrba
            }
         }
 
-<<<<<<< HEAD
-       
-        
+
         
         
         
@@ -848,7 +846,7 @@ namespace ClinicaFrba
             }
         }
 
-=======
+
         public void generarDia(string dia, string horaInicio, string horaFin, int agendaId)
         {
             try
@@ -955,6 +953,5 @@ namespace ClinicaFrba
         }
 
 
->>>>>>> origin/opcion2
     }
 }

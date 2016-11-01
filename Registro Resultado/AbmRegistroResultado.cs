@@ -25,8 +25,8 @@ namespace ClinicaFrba.Registro_Resultado
         }
 
         public string check(){
-            if (opcionSi.Checked) return "Si";
-            else return "No";
+            if (opcionSi.Checked) return "SI";
+            else return "NO";
         }
 
 
@@ -34,7 +34,7 @@ namespace ClinicaFrba.Registro_Resultado
         {
             if(!errores_de_consulta()){
                 if(! (textoDiagnostico.TextLength >140)){
-                    conexion.modificarConsulta(textoConsulta.Text, textoDiagnostico.Text, textoSintoma.Text);//, check());
+                    conexion.modificarConsulta(textoConsulta.Text, textoDiagnostico.Text, textoSintoma.Text, check());
             AbmRol.AbmRolProfesional abmRolProfesional = new AbmRol.AbmRolProfesional();
             this.Hide();
             abmRolProfesional.ShowDialog();
@@ -63,6 +63,7 @@ namespace ClinicaFrba.Registro_Resultado
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
+    
 
         }
 

@@ -867,6 +867,7 @@ namespace ClinicaFrba
             {   int id = new int();
                 cmd = new SqlCommand(string.Format("SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Profesional P, MISSINGNO.Especialidad E where EP.profesional_id = P.profesional_id AND P.username = '{0}' AND EP.especialidad_id = E.especialidad_id AND E.especialidad_descripcion = '{1}'",
                     username, especialidad), cn);
+                cmd.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -892,6 +893,7 @@ namespace ClinicaFrba
                 profEspId = conseguirIdporUsernameYespecialidad(username, especialidad);
                 cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Agenda(prof_esp_id,agenda_inicio,agenda_fin) OUTPUT inserted.agenda_id VALUES ({0},'{1}','{2}')",
                     profEspId, fecha_inicio, fecha_fin), cn);
+                cmd.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -915,6 +917,7 @@ namespace ClinicaFrba
                 int id = new int();
                 cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Agenda A ,MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Profesional P, MISSINGNO.Especialidad E where EP.profesional_id = P.profesional_id AND P.username = '{0}'  AND EP.especialidad_id = E.especialidad_id AND E.especialidad_descripcion = '{1}' AND A.prof_esp_id = EP.prof_esp_id",
                 username, especialidad),cn);
+                cmd.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -937,6 +940,7 @@ namespace ClinicaFrba
                 int id = new int();
                 cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Afiliado where username = '{0}'",
                     username), cn);
+                cmd.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -973,14 +977,14 @@ namespace ClinicaFrba
                  {
                      cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE (profesional_id = (SELECT profesional_id FROM  MISSINGNO.Profesional WHERE username='{0}') AND en_uso = 0)",
                         profesional), cn);
-                     
+                     cmd.ExecuteNonQuery();
                      SqlDataReader reader = cmd.ExecuteReader();
                          if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
                         //agrego los roles al combobox
-                        idTurno.Items.Add(reader.GetString(0));
+                        idTurno.Items.Add(Convert.ToString(reader.GetInt32(0)));
                     }
 
                     //si hay un solo rol para el usuario
@@ -1013,8 +1017,9 @@ namespace ClinicaFrba
             List<string> turnos = new List<string>();
             try
             {
-                cmd = new SqlCommand(string.Format("SELECT T.turno_id FROM MISSINGNO.Turno AS T, MISSINGNO.Bono AS B WHERE (en_uso = 0 AND T.bono_id = B.bono_estado AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username ='{0}' ))",
+                cmd = new SqlCommand(string.Format("SELECT T.turno_id FROM MISSINGNO.Turno AS T, MISSINGNO.Bono AS B WHERE (en_uso = 0 AND T.bono_id = B.bono_id AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username ='{0}' ))",
                    afiliado), cn);
+                cmd.ExecuteNonQuery();
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -1022,7 +1027,7 @@ namespace ClinicaFrba
                     while (reader.Read())
                     {
                         //agrego los roles al combobox
-                        idTurno.Items.Add(reader.GetString(0));
+                        idTurno.Items.Add(Convert.ToString(reader.GetInt32(0)));
                     }
 
                     //si hay un solo rol para el usuario

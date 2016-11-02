@@ -416,4 +416,17 @@ UPDATE MISSINGNO.Bono SET bono_estado = 1 WHERE bono_id = 95210;
 
 SELECT turno_id FROM MISSINGNO.Turno WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='renzo_Toledo@gmail.com') AND bono_id = 95210 AND fecha = '12/12/16' AND horario = '14:30:00');
 
-*/
+
+
+
+ INSERT INTO MISSINGNO.Consulta_medica (
+ profesional_id, afiliado_id, agenda_id, turno_id, confirmacion_de_atencion, consulta_horario) 
+ VALUES (
+ (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}'), 
+ (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username = '{1}'),	
+ (SELECT agenda_id FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional 	
+ WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}')	 
+ AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{2}')))),
+  202165, 'NO', (SELECT horario FROM MISSINGNO.Turno WHERE turno_id = {3}))
+
+  */

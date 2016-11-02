@@ -101,11 +101,12 @@ namespace ClinicaFrba.Cancelar_Atencion
         }
 
 
-        
-        public List<Time> convertirEnTime(List<TimeSpan> timeSpan){
+        public List<Time> convertirEnTime(List<TimeSpan> timeSpan)
+        {
             List<Time> horarios = new List<Time>();
             int tamaño = timeSpan.Count;
-            for(int i = 0; tamaño > i; i++){
+            for (int i = 0; tamaño > i; i++)
+            {
                 Time horario = new Time();
                 horario.hora = Convert.ToInt32(timeSpan[i].Hours);
                 horario.minuto = Convert.ToInt32(timeSpan[i].Minutes);

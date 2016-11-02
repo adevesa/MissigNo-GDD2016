@@ -317,10 +317,10 @@ GO
 
 	create table MISSINGNO.Consulta_medica(
 		consulta_id int primary key identity,
-		profesional_id int not null,
-		afiliado_id int not null,
-		agenda_id int not null,
-		turno_id int not null,
+		profesional_id int,
+		afiliado_id int,
+		agenda_id int,
+		turno_id int,
 		confirmacion_de_atencion char(2),
 		diagnostico varchar(140),
 		consulta_horario time,

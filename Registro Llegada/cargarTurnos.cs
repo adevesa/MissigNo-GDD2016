@@ -35,7 +35,7 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            conexion.generarConsulta(afiliadoUsername,especialidad.unElemento, profesional.unElemento, unTurno.idTurno, unTurno.fechaTurno);
+            conexion.generarConsulta(afiliadoUsername, especialidad.unElemento, profesional.unElemento, unTurno.idTurno);
             this.Close();
         }
 
@@ -44,6 +44,7 @@ namespace ClinicaFrba.Registro_Llegada
             int posicion = dgvTurnos.CurrentRow.Index;
             unTurno.idTurno = Convert.ToInt32(dgvTurnos[0, posicion].Value);
             unTurno.fechaTurno = Convert.ToDateTime(dgvTurnos[1, posicion].Value);
+            
         }
     }
 }

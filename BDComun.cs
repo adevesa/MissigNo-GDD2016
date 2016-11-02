@@ -734,10 +734,9 @@ namespace ClinicaFrba
         
         public List<tipoTurno> obtenerTurnos(string usernameAfi, string usernameProf){
             List<tipoTurno> turnos = new List<tipoTurno>();
-           
            try
               {
-                  cmd = new SqlCommand(string.Format("SELECT T.turno_id, T.fecha FROM MISSINGNO.Turno AS T, MISSINGNO.BONO AS B  WHERE T.profesional_id= (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}' ) AND T.bono_id = B.bono_id AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username= '{1}')",
+                  cmd = new SqlCommand(string.Format("SELECT T.turno_id, T.fecha, T.horario FROM MISSINGNO.Turno AS T, MISSINGNO.BONO AS B  WHERE T.profesional_id= (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}' ) AND T.bono_id = B.bono_id AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username= '{1}') AND T.en_uso = 0",
                       usernameAfi, usernameProf), cn);
                   cmd.ExecuteNonQuery();
                   SqlDataReader reader = cmd.ExecuteReader();
@@ -746,6 +745,7 @@ namespace ClinicaFrba
                       tipoTurno turno = new tipoTurno();
                       turno.idTurno = reader.GetInt32(0);
                       turno.fechaTurno = reader.GetDateTime(1);
+               
                       turnos.Add(turno);
 
                   }
@@ -758,15 +758,19 @@ namespace ClinicaFrba
                return turnos;
            }
         }
-        public void generarConsulta(string UsernameAfi, string especialidad, string usernameProf, int idTurno, DateTime fechaTurno)
+        public void generarConsulta(string usernameAfi, string especialidad, string usernameProf, int idTurno)
         {
 
              try
               {
-                  cmd = new SqlCommand(string.Format(" INSERT INTO MISSINGNO.Consulta_medica (profesional_id, afiliado_id, agenda_id, turno_id, confirmacion_de_atencion, consulta_horario) VALUES ((SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{1}'), (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username = '{0}'),	(SELECT agenda_id FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional 	WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{1}')	 AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{2}')))), {3}, 'NO', NULL)",
-                 UsernameAfi, usernameProf, especialidad ,idTurno), cn);
+                  cmd = new SqlCommand(string.Format(" INSERT INTO MISSINGNO.Consulta_medica (profesional_id, afiliado_id, agenda_id, turno_id, confirmacion_de_atencion, consulta_horario) VALUES ((SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}'), (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username = '{1}'), (SELECT agenda_id FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}') AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{2}')))), {3}, 'NO', (SELECT horario FROM MISSINGNO.Turno WHERE turno_id = {3}))",
+                 usernameProf, usernameAfi, especialidad ,idTurno), cn);
                   cmd.ExecuteNonQuery();
-              }
+
+                  cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Turno SET en_uso = 1 WHERE turno_id = {0}",
+                      idTurno), cn);
+                cmd.ExecuteNonQuery();
+             }
          catch (Exception ex)
            {
                MessageBox.Show("Error al generar consulta: " + ex.ToString());
@@ -1272,5 +1276,9 @@ namespace ClinicaFrba
                 MessageBox.Show("Error al cargar bonos: " + ex.ToString());
             }
         }
+
+
+
     }
 }
+

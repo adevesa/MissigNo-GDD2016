@@ -33,9 +33,14 @@ namespace ClinicaFrba
                // ClinicaFrba.Registro_Llegada.RegistroDeLlegada login = new ClinicaFrba.Registro_Llegada.RegistroDeLlegada();
                 //ClinicaFrba.Cancelar_Atencion.AbmPedirTurno login = new ClinicaFrba.Cancelar_Atencion.AbmPedirTurno();
                 //ClinicaFrba.Registro_Resultado.AbmRegistroResultado login = new ClinicaFrba.Registro_Resultado.AbmRegistroResultado();
+                Palabra x = new Palabra();
+                Palabra y = new Palabra();
+                y.unElemento = "Neurofisiología Clínica";
+                x.unElemento = "renzo_Toledo@gmail.com";
+        
+                ClinicaFrba.Cancelar_Atencion.AbmElegirHorario login = new ClinicaFrba.Cancelar_Atencion.AbmElegirHorario(x, y, 95210);
 
-
-                ClinicaFrba.Login.frm_login login = new ClinicaFrba.Login.frm_login();
+                //ClinicaFrba.Login.frm_login login = new ClinicaFrba.Login.frm_login();
                 Application.Run(login);
 
         }

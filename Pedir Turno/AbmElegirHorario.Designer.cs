@@ -67,6 +67,7 @@
             this.dgvHorarios.ReadOnly = true;
             this.dgvHorarios.Size = new System.Drawing.Size(282, 311);
             this.dgvHorarios.TabIndex = 53;
+            this.dgvHorarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHorarios_CellClick);
             this.dgvHorarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // calendario

@@ -255,6 +255,7 @@
     <Compile Include="Registro Resultado\AbmRegistroResultado.Designer.cs">
       <DependentUpon>AbmRegistroResultado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Time.cs" />
     <Compile Include="tipoTurno.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UsuarioDAL.cs" />

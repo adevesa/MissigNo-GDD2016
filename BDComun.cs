@@ -1092,7 +1092,7 @@ namespace ClinicaFrba
         public List<TimeSpan> turnosEnFecha(DateTime fecha, String username, String especialidad)
         {
           int agendaId = obtenerAgendaId(username,especialidad);
-          MessageBox.Show(traductorDiaDeLaSemana(Convert.ToString(fecha.DayOfWeek)));
+          //MessageBox.Show(traductorDiaDeLaSemana(Convert.ToString(fecha.DayOfWeek)));
           return(turnoEntreHorario(traductorDiaDeLaSemana(Convert.ToString(fecha.DayOfWeek)), agendaId));
         }
 
@@ -1111,6 +1111,8 @@ namespace ClinicaFrba
             return Turnos;
         }
 
+
+
         public TimeSpan horarioDesde(string Dia, int agendaId)
         {
             try
@@ -1118,6 +1120,7 @@ namespace ClinicaFrba
                 TimeSpan horario = new TimeSpan();
                 cmd = new SqlCommand(string.Format("SELECT horario_desde FROM MISSINGNO.Dia D,MISSINGNO.Agenda A WHERE D.desc_dia = '{0}' AND A.Agenda_id = {1} AND A.agenda_id = D.agenda_id",
                    Dia, agendaId), cn);
+                cmd.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -1141,12 +1144,14 @@ namespace ClinicaFrba
                 TimeSpan horario = new TimeSpan();
                 cmd = new SqlCommand(string.Format("SELECT horario_hasta FROM MISSINGNO.Dia D,MISSINGNO.Agenda A WHERE D.desc_dia = '{0}' AND A.Agenda_id = {1} AND A.agenda_id = D.agenda_id",
                    Dia, agendaId), cn);
+                cmd.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     horario = reader.GetTimeSpan(0);
                 }
                 reader.Close();
+                MessageBox.Show("" + horario);
                 return horario;
             }
             catch (Exception ex)
@@ -1155,7 +1160,117 @@ namespace ClinicaFrba
                 MessageBox.Show("Error al conseguir horario Hasta: " + ex.ToString());
                 return horario2;
             }
-        }
+            }
 
+        public List<TimeSpan> horariosUsados(DateTime Fecha, string profesional)
+        {
+            List<TimeSpan> horarios = new List<TimeSpan>();
+            try
+            {
+                 cmd = new SqlCommand(string.Format("SELECT horario FROM MISSINGNO.Turno WHERE (fecha =   '{0}' AND profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username= '{1}'))",
+                  // "2016-12-12 00:00:00.000", "renzo_Toledo@gmail.com"), cn);
+                Fecha, profesional), cn);
+
+               
+
+                cmd.ExecuteNonQuery();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    TimeSpan horario = new TimeSpan();
+                    horario = reader.GetTimeSpan(0);
+                    horarios.Add(horario);
+                }
+                reader.Close();
+
+                return horarios;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al conseguir horario de los turnos: " + ex.ToString());
+                return horarios;
+            }
+        }
+        
+       public int crearTurno(string userProfesional,int bonoId,DateTime fecha,TimeSpan horario)
+            {
+              int idTurno = new int();
+            try
+            {
+                cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Turno (profesional_id, bono_id, fecha, horario, en_uso) VALUES((SELECT profesional_id FROM MISSINGNO.Profesional WHERE username ='{0}'), {1} ,'{2}', '{3}', 0)",
+                    userProfesional, bonoId, fecha, horario), cn);
+                cmd.ExecuteNonQuery();
+
+                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Bono SET bono_estado = 1 WHERE bono_id = {0}",
+               bonoId), cn);
+                cmd.ExecuteNonQuery();
+
+                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}') AND bono_id = {1} AND fecha = '{2}' AND horario = '{3}')",
+                    userProfesional, bonoId, fecha, horario), cn);
+                cmd.ExecuteNonQuery();
+
+               
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    
+                    idTurno = reader.GetInt32(0);
+                    
+                }
+                reader.Close();
+                return idTurno;
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al crear turno: " + ex.ToString());
+                return idTurno;
+            }
+            }
+
+        public void bonosDeAfiliado(string userAfiliado, ComboBox bonos)
+               {
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT bono_id From MISSINGNO.Bono WHERE (afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username='{0}') AND bono_estado=0)",
+                    userAfiliado), cn);
+                cmd.ExecuteNonQuery();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        //agrego los roles al combobox
+                        bonos.Items.Add(Convert.ToString(reader.GetInt32(0)));
+                    }
+
+                    //si hay un solo rol para el usuario
+                    if (bonos.Items.Count == 1)
+                    {
+                        //ya tiene un rol
+                        string bono;
+                        bono = bonos.GetItemText(bonos.Items[0]);
+                    }
+                    else
+                    {
+                        //el combobox muestra el primer rol por default
+                        bonos.SelectedIndex = 0;
+                    }
+
+                    reader.Close();
+
+                }
+
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar bonos: " + ex.ToString());
+            }
+        }
     }
 }

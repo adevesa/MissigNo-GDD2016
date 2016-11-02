@@ -16,21 +16,27 @@ namespace ClinicaFrba.Cancelar_Atencion
         Palabra especialidad = new Palabra();
         Palabra profesional = new Palabra();
         List<int> listaDeHorarios = new List<int>();
-
+     //   Time horarioElegido = new Time();
+        TimeSpan horarioElegido = new TimeSpan();
+        int bonoId = new int();
         string dia;
+        DateTime fecha = new DateTime();
 
-        public AbmElegirHorario(Palabra afi, Palabra esp)
+        public AbmElegirHorario(Palabra prof, Palabra esp, int bonoId)
         {
+            this.bonoId = bonoId;
             this.especialidad = esp;
-            this.profesional = afi;
+            this.profesional = prof;
             InitializeComponent();
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
+            int idTurno = conexion.crearTurno(profesional.unElemento, bonoId, fecha, horarioElegido);
+            MessageBox.Show("Su número de turno es: " + idTurno);
             AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
-            this.Hide();
-            abmRolAfiliado.ShowDialog();
+            //this.Hide();
+            //abmRolAfiliado.ShowDialog();
             this.Close();
         }
 
@@ -66,16 +72,48 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void BotonFiltrar_Click(object sender, EventArgs e)
         {
-            /*
-            dia = calendario.SelectionStart.DayOfWeek.ToString();
-            int desde = conexion.desdeDia(profesional.unElemento, dia);
-            int hasta = conexion.hastaDia(profesional.unElemento, dia);
-            dgvHorarios.DataSource = calcularTurnos2(10, 20);
-            */
 
-            conexion.turnosEnFecha(Convert.ToDateTime("02-11-2016"), "faustino_Gallardo@gmail.com", "Angiología y Cirugía Vascular");
+            //conexion.turnosEnFecha(Convert.ToDateTime("02-11-2016"), "faustino_Gallardo@gmail.com", "Angiología y Cirugía Vascular");
+           fecha = calendario.SelectionStart.Date;
+           List<TimeSpan> horariosUsados = conexion.horariosUsados(fecha, this.profesional.unElemento);
+           List<TimeSpan> horariosTotales = conexion.turnosEnFecha(fecha, this.profesional.unElemento, this.especialidad.unElemento);
+
+           //dgvHorarios.DataSource = convertirEnTime(horariosTotales);
+           dgvHorarios.DataSource = convertirEnTime(filtrarHorarios(horariosUsados, horariosTotales));
+           
+
 
         }
+
+        public List<TimeSpan> filtrarHorarios(List<TimeSpan> horariosUsados, List<TimeSpan> horariosTotales)
+        {
+            List<TimeSpan> horariosFiltrados = new List<TimeSpan>();
+            int cantidad = horariosTotales.Count();
+            for(int i = 0; cantidad>i ; i++)
+            {
+                TimeSpan horario = horariosTotales[i];
+                if (!horariosUsados.Exists(x => x == horario))
+                {
+                    horariosFiltrados.Add(horario);
+                }
+            }
+            return horariosFiltrados;
+        }
+
+
+        
+        public List<Time> convertirEnTime(List<TimeSpan> timeSpan){
+            List<Time> horarios = new List<Time>();
+            int tamaño = timeSpan.Count;
+            for(int i = 0; tamaño > i; i++){
+                Time horario = new Time();
+                horario.hora = Convert.ToInt32(timeSpan[i].Hours);
+                horario.minuto = Convert.ToInt32(timeSpan[i].Minutes);
+                horarios.Add(horario);
+            }
+            return horarios;
+        }
+        
 
         public List<int> calcularTurnos(int desde, int hasta)
         {
@@ -106,6 +144,13 @@ namespace ClinicaFrba.Cancelar_Atencion
         private void calendario_DateChanged(object sender, DateRangeEventArgs e)
         {
 
+        }
+
+        private void dgvHorarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int posicion = dgvHorarios.CurrentRow.Index;
+            horarioElegido = new TimeSpan(Convert.ToInt32(dgvHorarios[0, posicion].Value), Convert.ToInt32(dgvHorarios[1, posicion].Value), 0);
+           // MessageBox.Show("horario: " + horarioElegido);
         }
 
 

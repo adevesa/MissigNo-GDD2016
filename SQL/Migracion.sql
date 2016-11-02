@@ -385,3 +385,35 @@ SELECT * FROM MISSINGNO.Turno
 SELECT * FROM MISSINGNO.Usuario
 
 */
+/*
+SELECT * FROM MISSINGNO.Usuario WHERE username = 'blandina_Pérez@gmail.com';
+
+
+SELECT * FROM MISSINGNO.Usuario WHERE username = 'renzo_Toledo@gmail.com';
+SELECT * FROM MISSINGNO.Profesional WHERE username = 'renzo_Toledo@gmail.com';
+
+SELECT * FROM MISSINGNO.Especialidad WHERE especialidad_id = 
+(SELECT especialidad_id FROM MISSINGNO.Especialidad_de_profesional WHERE profesional_id = 2);
+
+
+-- profesional, fecha -> horarios
+
+SELECT horario FROM MISSINGNO.Turno 
+WHERE (fecha = '22/12/2016' AND
+ profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='renzo_Toledo@gmail.com'));
+
+ INSERT INTO MISSINGNO.Turno (profesional_id, bono_id, fecha, horario, en_uso) 
+ VALUES(
+	(SELECT profesional_id FROM MISSINGNO.Profesional WHERE username ='renzo_Toledo@gmail.com'),
+	95210 ,'12/12/16', '14:30:00', 0);
+	
+SELECT bono_id From MISSINGNO.Bono WHERE afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username='blandina_Pérez@gmail.com');
+
+
+SELECT horario FROM MISSINGNO.Turno WHERE (fecha =  '2016-12-12 00:00:00.000' AND profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username= 'renzo_Toledo@gmail.com'))
+
+UPDATE MISSINGNO.Bono SET bono_estado = 1 WHERE bono_id = 95210;
+
+SELECT turno_id FROM MISSINGNO.Turno WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='renzo_Toledo@gmail.com') AND bono_id = 95210 AND fecha = '12/12/16' AND horario = '14:30:00');
+
+*/

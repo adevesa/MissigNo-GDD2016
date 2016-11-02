@@ -35,14 +35,14 @@ namespace ClinicaFrba.Cancelar_Atencion
 
             listaEspecialidades = conexion.obtenerEspecialidades();
             dgvEspecialidades.DataSource = listaEspecialidades;
-
+            conexion.bonosDeAfiliado(Program.usuario, bono);
 
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
  
-            ClinicaFrba.Registro_Llegada.cargarProfesionales abm = new ClinicaFrba.Registro_Llegada.cargarProfesionales(especialidad, Program.usuario, 1);
+            ClinicaFrba.Registro_Llegada.cargarProfesionales abm = new ClinicaFrba.Registro_Llegada.cargarProfesionales(especialidad, Program.usuario, Convert.ToInt32(bono.Text), 1);
             abm.ShowDialog();
         }
 

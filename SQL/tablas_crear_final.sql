@@ -199,10 +199,7 @@ GO
 		domicilio varchar(150),
 		mail varchar(40),
 		telefono bigint,
-		unique (doc_nro),
-		intentos_fallidos int not null default 0,
-		usuario_habilitado bit default 0,
-		usuario_baja_logica bit default 0))
+		unique (doc_nro))
 
 	-- TABLA ROL_DE_USUARIO
 

@@ -102,7 +102,7 @@ namespace ClinicaFrba.Listados
            
 
             //a cargar el datagrid
-            cargarDatagrid(conslt);
+            //cargarDatagrid(conslt);
 
             //edito nombre de columnas del datagrid
             dataGridView.Columns[0].HeaderText = "Nombre";
@@ -172,6 +172,11 @@ namespace ClinicaFrba.Listados
             this.Hide();
             frmAbmListados.ShowDialog();
             this.Close();
+        }
+
+        private void top5_consultados_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

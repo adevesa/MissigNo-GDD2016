@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cmbSemestre = new System.Windows.Forms.ComboBox();
-            this.cmbTop5 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -38,6 +36,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmbTop5 = new System.Windows.Forms.ComboBox();
+            this.cmbSemestre = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.npckAnio)).BeginInit();
             this.SuspendLayout();
@@ -59,37 +59,6 @@
             this.panel1.Size = new System.Drawing.Size(422, 553);
             this.panel1.TabIndex = 1;
             // 
-            // cmbSemestre
-            // 
-            this.cmbSemestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbSemestre.FormattingEnabled = true;
-            this.cmbSemestre.Items.AddRange(new object[] {
-            "Primer semestre",
-            "Segundo semestre"});
-            this.cmbSemestre.Location = new System.Drawing.Point(60, 345);
-            this.cmbSemestre.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbSemestre.Name = "cmbSemestre";
-            this.cmbSemestre.Size = new System.Drawing.Size(159, 40);
-            this.cmbSemestre.TabIndex = 120;
-            this.cmbSemestre.Text = "Elija uno";
-            // 
-            // cmbTop5
-            // 
-            this.cmbTop5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTop5.FormattingEnabled = true;
-            this.cmbTop5.Items.AddRange(new object[] {
-            "Especialidades con más cancelaciones",
-            "Profesionales más consultados",
-            "Profesionales más perezosos",
-            "Afiliado con más bonos comprados",
-            "Especialidades con más consultas"});
-            this.cmbTop5.Location = new System.Drawing.Point(60, 159);
-            this.cmbTop5.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbTop5.Name = "cmbTop5";
-            this.cmbTop5.Size = new System.Drawing.Size(316, 33);
-            this.cmbTop5.TabIndex = 119;
-            this.cmbTop5.Text = "Elija uno";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -108,7 +77,7 @@
             this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.btnVolver.ForeColor = System.Drawing.Color.Black;
-            this.btnVolver.Location = new System.Drawing.Point(252, 436);
+            this.btnVolver.Location = new System.Drawing.Point(47, 461);
             this.btnVolver.Margin = new System.Windows.Forms.Padding(2);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(153, 52);
@@ -122,7 +91,7 @@
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.btnBuscar.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscar.Location = new System.Drawing.Point(60, 436);
+            this.btnBuscar.Location = new System.Drawing.Point(222, 461);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(153, 52);
@@ -193,6 +162,37 @@
             this.label1.TabIndex = 61;
             this.label1.Text = "Registros";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cmbTop5
+            // 
+            this.cmbTop5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTop5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTop5.FormattingEnabled = true;
+            this.cmbTop5.Items.AddRange(new object[] {
+            "Especialidades con más cancelaciones",
+            "Profesionales más consultados",
+            "Profesionales más perezosos",
+            "Afiliado con más bonos comprados",
+            "Especialidades con más consultas"});
+            this.cmbTop5.Location = new System.Drawing.Point(59, 165);
+            this.cmbTop5.Name = "cmbTop5";
+            this.cmbTop5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmbTop5.Size = new System.Drawing.Size(316, 32);
+            this.cmbTop5.TabIndex = 98;
+            // 
+            // cmbSemestre
+            // 
+            this.cmbSemestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSemestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSemestre.FormattingEnabled = true;
+            this.cmbSemestre.Items.AddRange(new object[] {
+            "Primer semestre",
+            "Segundo semestre"});
+            this.cmbSemestre.Location = new System.Drawing.Point(61, 352);
+            this.cmbSemestre.Name = "cmbSemestre";
+            this.cmbSemestre.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmbSemestre.Size = new System.Drawing.Size(316, 32);
+            this.cmbSemestre.TabIndex = 121;
             // 
             // AbmListados
             // 

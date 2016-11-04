@@ -156,6 +156,7 @@
             this.Name = "top5_consultados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinica FRBA-Top 5 Consultas";
+            this.Load += new System.EventHandler(this.top5_consultados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -61,6 +61,43 @@ namespace ClinicaFrba
 
         }
 
+        public bool dniEnUso(string dni)
+        {
+            int doc = Convert.ToInt32(dni);
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT COUNT(*) FROM MISSINGNO.Usuario WHERE doc_nro={0}", doc), cn);
+                cmd.ExecuteNonQuery();
+                return ((Int32)cmd.ExecuteScalar() >= 1);
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+        }
+
+                public bool dniEnUsoCondicionado(string dni, string usuario)
+        {
+            int doc = Convert.ToInt32(dni);
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT COUNT(*) FROM MISSINGNO.Usuario WHERE doc_nro={0} AND username !='{1}'", doc, usuario), cn);
+                cmd.ExecuteNonQuery();
+                return ((Int32)cmd.ExecuteScalar() >= 1);
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+        }
+
+
+
+
         public bool contraseñaCorrecta(string usuario, string contraseña)
         {
 
@@ -226,8 +263,8 @@ namespace ClinicaFrba
                     }
 
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', '{3}', {4}, {5})",
-                        // "fam", 555555, "soltero", fecha, "NULL" , 1), cn);
-                       username, idPlan, estadoCivil, "01/01/2018", idPlan, 1), cn);
+                         //"afi", 555555, "soltero", fecha, "NULL" , 0), cn);
+                       username, idPlan, estadoCivil, "01/01/2018", "NULL", 0), cn);
                     cmd.ExecuteNonQuery();
 
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Rol_de_Usuario (rol_id, username) VALUES (3, '{0}')", username), cn);
@@ -332,39 +369,12 @@ namespace ClinicaFrba
             }
         }
 
-        /*
-        public bool chequearConsultaMedica(int consulta_id, string usernameProfesional)
-        {
-            try
-            {  
-                cmd = new SqlCommand(string.Format("SELECT consulta_id FROM MISSINGNO.Consulta_medica C, MISSINGNO.Profesional P WHERE consulta_id= '{0}' and P.profesional_id = C.profesional_id and P.username = '{1}'",
-                     consulta_id, usernameProfesional), cn);
-                cmd.ExecuteNonQuery();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    reader.GetInt32(0);
-                }
-                reader.Close();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener la ID Consulta, Error: " + ex.ToString());
-                return bool;
-            }
-
-        }
-        */
-
-
 
         public void borrarAfiliado(string username)
         {
             try
             {
-                cmd = new SqlCommand(string.Format("Delete from MISSINGNO.Rol_de_Usuario where (username ='{0}' AND rol_id = 3); Delete From MISSINGNO.Afiliado where username='{0}'", username));
+                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Afiliado SET afiliado_baja_logica = 1  WHERE username = '{0}' ", username));
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -554,7 +564,7 @@ namespace ClinicaFrba
             DateTime fecha = new DateTime(2000, 11, 11);
             try
             {
-                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Usuario SET doc_tipo='{0}', doc_nro={1}, contrasenia = '{2}', nombre= '{3}', apellido='{4}', fec_nac='{5}', sexo='{6}', domicilio='{7}', mail= '{8}', telefono = {9} WHERE username='{10}'",
+                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Usuario SET doc_tipo='{0}', doc_nro={1}, contrasenia = HASHBYTES('SHA2_256','{2}'), nombre= '{3}', apellido='{4}', fec_nac='{5}', sexo='{6}', domicilio='{7}', mail= '{8}', telefono = {9} WHERE username='{10}'",
                     tipoDocumento, doc, contraseña, nombre, apellido, fecha, genero, direccion, email, tel, username), cn);
                 //"DNI", 39064509, "asdasd", "afi3", "afi", fecha, "H", "casa", "asasdsa", 01146969696969, "afi"),cn);
                 cmd.ExecuteNonQuery();
@@ -1185,7 +1195,6 @@ namespace ClinicaFrba
                     horario = reader.GetTimeSpan(0);
                 }
                 reader.Close();
-                MessageBox.Show("" + horario);
                 return horario;
             }
             catch (Exception ex)

@@ -231,6 +231,7 @@
             this.textoDocumento.Name = "textoDocumento";
             this.textoDocumento.Size = new System.Drawing.Size(218, 28);
             this.textoDocumento.TabIndex = 94;
+            this.textoDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textoDocumento_KeyPress_1);
             // 
             // label7
             // 

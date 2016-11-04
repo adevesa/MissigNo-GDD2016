@@ -54,12 +54,6 @@
     <Compile Include="Abm Afiliado\AbmAfiliado.Designer.cs">
       <DependentUpon>AbmAfiliado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Afiliado\AbmBorrarAfiliado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Afiliado\AbmBorrarAfiliado.Designer.cs">
-      <DependentUpon>AbmBorrarAfiliado.cs</DependentUpon>
-    </Compile>
     <Compile Include="Abm Afiliado\AbmBorrarAfiliado2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,10 +96,10 @@
     <Compile Include="Abm Planes\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Profesional\Form1.cs">
+    <Compile Include="AbmRol\Abm Profesional\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Profesional\Form1.Designer.cs">
+    <Compile Include="AbmRol\Abm Profesional\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmRol\AbmRolAdministrador.cs">
@@ -260,9 +254,6 @@
     <Compile Include="Usuario.cs" />
     <EmbeddedResource Include="Abm Afiliado\AbmAfiliado.resx">
       <DependentUpon>AbmAfiliado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Abm Afiliado\AbmBorrarAfiliado.resx">
-      <DependentUpon>AbmBorrarAfiliado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\AbmBorrarAfiliado2.resx">
       <DependentUpon>AbmBorrarAfiliado2.cs</DependentUpon>

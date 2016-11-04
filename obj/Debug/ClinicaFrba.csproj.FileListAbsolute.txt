@@ -23,7 +23,6 @@ C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Properties.Resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado2.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AgregarFamiliar.resources
-C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Compra_Bono.AbmComprarBono.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Compra_Bono.ComprarBonoDesdeAdministrador.resources
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.AbmListados.resources

@@ -90,6 +90,7 @@
             this.textoTelefono.Name = "textoTelefono";
             this.textoTelefono.Size = new System.Drawing.Size(156, 28);
             this.textoTelefono.TabIndex = 68;
+            this.textoTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textoTelefono_KeyPress_1);
             // 
             // label10
             // 
@@ -138,6 +139,7 @@
             this.textoDocumento.Name = "textoDocumento";
             this.textoDocumento.Size = new System.Drawing.Size(156, 28);
             this.textoDocumento.TabIndex = 63;
+            this.textoDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textoDocumento_KeyPress_1);
             // 
             // label7
             // 

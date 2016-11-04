@@ -63,6 +63,7 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 if (conexion.existeUsuario(textoUsername.Text))
                 {
+                    if(!conexion.dniEnUsoCondicionado(textoDocumento.Text, textoUsername.Text)){
                     List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
                       //List<string> lista = new List<string>();
                     conexion.modificarAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text);
@@ -71,6 +72,8 @@ namespace ClinicaFrba.Abm_Afiliado
                     this.Hide();
                     abmAfiliado.ShowDialog();
                     this.Close();
+                    }
+                    else MessageBox.Show("Nº de DNI en uso");
                 }
                 else MessageBox.Show("Usuario inexistente");
             }
@@ -167,7 +170,8 @@ namespace ClinicaFrba.Abm_Afiliado
 
     }
 
-        private void textoDocumento_KeyPress(object sender, KeyPressEventArgs e)
+
+        private void textoDocumento_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
             {
@@ -181,7 +185,6 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 e.Handled = true;
             }
-
         }
 
     }

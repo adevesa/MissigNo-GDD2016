@@ -81,8 +81,10 @@ namespace ClinicaFrba.Abm_Afiliado
              }
               else
              {
-                 if(conexion.existeUsuario(textoUsername.Text))
+                 
+                 if(!conexion.existeUsuario(textoUsername.Text))
                 {
+                   if(!conexion.dniEnUso(textoDocumento.Text)){
                 List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
                   //  List<string> lista = new List<string>();
               conexion.crearAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text);
@@ -90,6 +92,8 @@ namespace ClinicaFrba.Abm_Afiliado
               this.Hide();
               abmConsulta.ShowDialog();
               this.Close();
+                   }
+                   else MessageBox.Show("Nº de Documento en uso");
               }
                  else MessageBox.Show("Username en uso");
             }

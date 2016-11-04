@@ -47,6 +47,7 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 if(!conexion.existeUsuario(textoUsername.Text))
                 {
+                     if(!conexion.dniEnUso(textoDocumento.Text)){
                 int idAfiliado = conexion.obtenerAfiliadoId(this.userPadre);
                 conexion.crearFamiliar(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, this.direccionPadre, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text, idAfiliado);
 
@@ -54,18 +55,12 @@ namespace ClinicaFrba.Abm_Afiliado
                 familiarNuevo.nombre = textoNombre.Text;
                 familiarNuevo.apellido = textoApellido.Text;
                 listaFamiliares.Add(familiarNuevo);
-                /*abmPadre.nuevoFamiliar.username = textoUsername.Text;
-                abmPadre.nuevoFamiliar.nombre = textoNombre.Text;
-                abmPadre.nuevoFamiliar.apellido = textoApellido.Text;
-                abmPadre.listaFamiliares.Add(abmPadre.nuevoFamiliar);
-                abmPadre.dgvFamiliares.DataSource =abmPadre.listaFamiliares;
-                abmPadre.actualizar();
-                //this.listaFamiliares.Add(conexion.Buscar_afiliado_por_username(textoUsername.Text));
-                //abmPadre.listaFamiliares.Add(this.familiarNuevo);*/
                 ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar abm = new ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar(listaFamiliares, userPadre, direccionPadre);
                     this.Hide();
                     abm.ShowDialog();
                     this.Close();
+                     }
+                     else MessageBox.Show("Nº de DNI en uso");
                 } 
                 else MessageBox.Show("Username en uso");
             }
@@ -95,7 +90,7 @@ namespace ClinicaFrba.Abm_Afiliado
             //MessageBox.Show(" " + idAfiliado);
         }
 
-        private void textoTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        private void textoTelefono_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
             {
@@ -109,10 +104,9 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 e.Handled = true;
             }
-
         }
 
-        private void textoDocumento_KeyPress(object sender, KeyPressEventArgs e)
+        private void textoDocumento_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
             {
@@ -126,7 +120,6 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 e.Handled = true;
             }
-
         }
     }
 }

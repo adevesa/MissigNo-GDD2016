@@ -34,7 +34,7 @@ namespace ClinicaFrba.Listados
              txtAnio.Text = anio;
             txtSemestre.Text = semestre;
 
-            //se guardan los meses
+           /* //se guardan los meses
             guardarSemestre(semestre);
 
             //nuevo
@@ -44,7 +44,7 @@ namespace ClinicaFrba.Listados
 
             //se carga el dataGrid
             buscarLoNecesario();
-
+            */
         }
 
         private void guardarSemestre(String semestre)
@@ -73,25 +73,27 @@ namespace ClinicaFrba.Listados
 
         private void buscarLoNecesario()
         {
-            /* Aca va la consulta que hay que armar
+            // Aca va la consulta que hay que armar
             
             String conslt = "SELECT TOP 5 ";
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
+            
+            /*
+            conslt += "";
+            conslt += "";
+            conslt += "";
+            conslt += "";
+            conslt += "";
+            conslt += "";
+            conslt += "";
+            conslt += "";
+            conslt += "";
+            conslt += "";
+            */ 
              
-             
-            */
+            
 
             //a cargar el datagrid
-           // cargarDatagrid(conslt);
+            cargarDatagrid(conslt);
 
             //edito nombre de columnas del datagrid
             dataGridView.Columns[0].HeaderText = "Afiliado";

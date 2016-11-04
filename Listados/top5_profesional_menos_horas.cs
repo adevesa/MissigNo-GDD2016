@@ -35,8 +35,10 @@ namespace ClinicaFrba.Listados
         {
             txtAnio.Text = anio;
             txtSemestre.Text = semestre;
+            llenarcmbPlanes();
+            llenarcmbEspecialidades();
 
-            //se guardan los meses
+           /* //se guardan los meses
             guardarSemestre(semestre);
 
             //nuevo
@@ -46,7 +48,7 @@ namespace ClinicaFrba.Listados
 
             //se carga el dataGrid
             buscarLoNecesario();
-
+            */
         }
 
         private void guardarSemestre(String semestre)
@@ -74,25 +76,27 @@ namespace ClinicaFrba.Listados
 
         private void buscarLoNecesario()
         {
-            /* Aca va la consulta que hay que armar
+            // Aca va la consulta que hay que armar
             
            String conslt = "SELECT TOP 5 ";
-           conslt += ;
-           conslt += ;
-           conslt += ;
-           conslt += ;
-           conslt += ;
-           conslt += ;
-           conslt += ;
-           conslt += ;
-           conslt += ;
-           conslt += ;
-             
-             
+           
+           /*
+           conslt += "";
+           conslt += "";
+           conslt += "";
+           conslt += "";
+           conslt += "";
+           conslt += "";
+           conslt += "";
+           conslt += "";
+           conslt += "";
+           conslt += "";
            */
+             
+           
 
             //a cargar el datagrid
-           // cargarDatagrid(conslt);
+            cargarDatagrid(conslt);
 
             //edito nombre de columnas del datagrid
             dataGridView.Columns[0].HeaderText = "Plan";
@@ -128,6 +132,58 @@ namespace ClinicaFrba.Listados
             commandBuilder.Dispose();
             //libero
             tabla.Dispose();
+        }
+
+        private void llenarcmbPlanes()
+        {
+            //comsulta
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "select P.Plan_descripcion from MISSINGNO.Planes as p ";
+            cmd.Connection = BDComun.ObtenerConexion();
+            //ejecuto
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    cmbPlanes.Items.Add(reader["Plan_descripcion"].ToString());
+                }
+            }
+
+            cmbPlanes.SelectedIndex = 0;
+
+            //libero                 
+            reader.Close();
+            //libero
+            cmd.Dispose();
+        }
+
+        private void llenarcmbEspecialidades()
+        {
+            //comsulta
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "select E.especialidad_descripcion from MISSINGNO.Especialidad as E ";
+            cmd.Connection = BDComun.ObtenerConexion();
+            //ejecuto
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    cmbEspecialidades.Items.Add(reader["especialidad_descripcion"].ToString());
+                }
+            }
+
+            cmbEspecialidades.SelectedIndex = 0;
+
+            //libero                 
+            reader.Close();
+            //libero
+            cmd.Dispose();
         }
 
         private void botonVolver_Click(object sender, EventArgs e)

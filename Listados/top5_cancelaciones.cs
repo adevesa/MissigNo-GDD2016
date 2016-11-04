@@ -45,7 +45,7 @@ namespace ClinicaFrba.Listados
 
             //se carga el dataGrid
             buscarLoNecesario();
-
+            
         }
 
         private void guardarSemestre(String semestre)
@@ -73,30 +73,31 @@ namespace ClinicaFrba.Listados
 
         private void buscarLoNecesario()
         {
-            /* Aca va la consulta que hay que armar
-            
-            String conslt = "SELECT TOP 5 ";
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-            conslt += ;
-             
-             
+            // Aca va la consulta que hay que armar
+
+            String conslt = "SELECT TOP 5  E.especialidad_descripcion, count(C.cancelacion_id) FROM                 MISSINGNO.Cancelacion_turno AS C, MISSINGNO.Especialidad AS E, MISSINGNO.Turno AS T, MISSINGNO.Especialidad_de_profesional AS EP WHERE C.turno_id = T.turno_id AND T.profesional_id = EP.profesional_id AND EP.especialidad_id= E.especialidad_id AND YEAR(C.cancelacion_fecha) = '" + Convert.ToInt32(txtAnio.Text) + "'AND MONTH(C.cancelacion_fecha) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') group by E.especialidad_descripcion Order by count(C.cancelacion_id) desc;";
+
+            /*conslt += "E.especialidad_descripcion, count(C.cancelacion_id) AS 'Cantidad de cancelaciones'";
+            conslt += "FROM MISSINGNO.Cancelacion_turno AS C, ";
+            conslt += "MISSINGNO.Especialidad AS E,";
+            conslt += "MISSINGNO.Turno AS T";
+            conslt += "MISSINGNO.Especialidad_de_profesional AS EP";
+            conslt += "WHERE C.turno_id = T.turno_id AND";
+            conslt += "T.profesional_id = EP.profesional_id AND";
+            conslt += "EP.especialidad_id = E.especialidad_id AND";
+            conslt += "YEAR(C.cancelacion_fecha) = '" + txtAnio + "'AND";
+            conslt += "MONTH(C.cancelacion_fecha) IN ('" + mes1 +  "','" + mes2 +  "','" + mes3 +  "','" + mes4 +                           "','" + mes5 +  "','" + mes6 +  "')";
+            conslt += "GROUP BY E.especialidad_descripcion";
+            conslt += "ORDER BY count(C.cancelacion_id) desc";
             */
+             
 
-            //a cargar el datagrid
-           // cargarDatagrid(conslt);
-
+            // a cargar el datagrid
+            cargarDatagrid(conslt);
             //edito nombre de columnas del datagrid
-            dataGridView.Columns[0].HeaderText = "Tipo";
-            dataGridView.Columns[1].HeaderText = "Especialidad";
-            dataGridView.Columns[2].HeaderText = "Cancelaciones";
+            dataGridView.Columns[0].HeaderText = "Especialidad";
+            dataGridView.Columns[1].HeaderText = "Cantidad de cancelaciones";
+
         }
 
         private void cargarDatagrid(String consulta)

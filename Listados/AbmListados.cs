@@ -42,7 +42,7 @@ namespace ClinicaFrba.Listados
 
             this.semestre = cmbSemestre.GetItemText(cmbSemestre.SelectedItem);
 
-            if (cmbTop5.GetItemText(cmbTop5.SelectedItem).Equals("Especialidades con mas cancelaciones"))
+            if (cmbTop5.GetItemText(cmbTop5.SelectedItem).Equals("Especialidades con más cancelaciones"))
             { 
 
                 //nueva instancia del formulario correspondiente
@@ -99,7 +99,7 @@ namespace ClinicaFrba.Listados
             }
 
 
-            if (cmbTop5.GetItemText(cmbTop5.SelectedItem).Equals("Especialidades con mas consultas"))
+            if (cmbTop5.GetItemText(cmbTop5.SelectedItem).Equals("Especialidades con más consultas"))
             {
 
                 //nueva instancia del formulario correspondiente

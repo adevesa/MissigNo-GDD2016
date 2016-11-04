@@ -42,7 +42,7 @@
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
-            this.botonVolver.Location = new System.Drawing.Point(254, 303);
+            this.botonVolver.Location = new System.Drawing.Point(443, 309);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(153, 52);
@@ -55,6 +55,7 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(53, 91);
             this.dataGridView.Name = "dataGridView";

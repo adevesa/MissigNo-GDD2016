@@ -34,6 +34,9 @@
             this.txtAnio = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbPlanes = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +45,7 @@
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
-            this.botonVolver.Location = new System.Drawing.Point(270, 319);
+            this.botonVolver.Location = new System.Drawing.Point(454, 331);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(153, 52);
@@ -55,8 +58,9 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(64, 103);
+            this.dataGridView.Location = new System.Drawing.Point(64, 119);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.Size = new System.Drawing.Size(543, 186);
@@ -86,9 +90,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(291, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 25);
+            this.label2.Size = new System.Drawing.Size(96, 25);
             this.label2.TabIndex = 130;
-            this.label2.Text = "Semestre:";
+            this.label2.Text = "Semestre";
             // 
             // label1
             // 
@@ -96,15 +100,52 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(93, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 25);
+            this.label1.Size = new System.Drawing.Size(48, 25);
             this.label1.TabIndex = 129;
-            this.label1.Text = "Año:";
+            this.label1.Text = "Año";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
+            this.btnBuscar.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscar.Location = new System.Drawing.Point(246, 331);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(153, 52);
+            this.btnBuscar.TabIndex = 133;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(93, 81);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 25);
+            this.label3.TabIndex = 134;
+            this.label3.Text = "Plan";
+            // 
+            // cmbPlanes
+            // 
+            this.cmbPlanes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPlanes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPlanes.FormattingEnabled = true;
+            this.cmbPlanes.Location = new System.Drawing.Point(153, 81);
+            this.cmbPlanes.Name = "cmbPlanes";
+            this.cmbPlanes.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmbPlanes.Size = new System.Drawing.Size(225, 26);
+            this.cmbPlanes.TabIndex = 135;
             // 
             // top5_consultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 406);
+            this.Controls.Add(this.cmbPlanes);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtSemestre);
             this.Controls.Add(this.txtAnio);
             this.Controls.Add(this.label2);
@@ -129,5 +170,8 @@
         private System.Windows.Forms.TextBox txtAnio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbPlanes;
     }
 }

@@ -78,11 +78,11 @@
             this.cmbTop5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTop5.FormattingEnabled = true;
             this.cmbTop5.Items.AddRange(new object[] {
-            "Especialidades con mas cancelaciones",
+            "Especialidades con más cancelaciones",
             "Profesionales más consultados",
             "Profesionales más perezosos",
             "Afiliado con más bonos comprados",
-            "Especialidades con mas consultas"});
+            "Especialidades con más consultas"});
             this.cmbTop5.Location = new System.Drawing.Point(60, 159);
             this.cmbTop5.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTop5.Name = "cmbTop5";

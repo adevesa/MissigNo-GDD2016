@@ -13,7 +13,8 @@ namespace ClinicaFrba.Registro_Llegada
     public partial class cargarProfesionales : Form
     {   
         BDComun conexion = new BDComun();
-        List<Palabra> profecionales = new List<Palabra>();
+        List<Palabra> profesionales = new List<Palabra>();
+        List<Palabra> profesionalesFiltrados = new List<Palabra>();
         Palabra especialidad = new Palabra();
         Palabra profesional = new Palabra();
         int bonoId = new int();
@@ -40,8 +41,24 @@ namespace ClinicaFrba.Registro_Llegada
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
 
-           profecionales = conexion.obtenerProfesionalesPorEspecialidad(especialidad.unElemento);
-            dgvProfesionales.DataSource = profecionales;
+             
+        
+           profesionales = conexion.obtenerProfesionalesPorEspecialidad(especialidad.unElemento);
+            int i;
+            int tamaño = profesionales.Count;
+            for(i=0; tamaño>i; i++){
+                Palabra profesional = profesionales[i];
+                int num = conexion.tieneAgenda(profesional.unElemento ,especialidad.unElemento);
+                if(num ==1){
+                    profesionalesFiltrados.Add(profesional);
+                }
+                }
+
+              dgvProfesionales.DataSource = profesionalesFiltrados;
+
+              if (profesionalesFiltrados.Count == 0){
+                  MessageBox.Show("Lo sentimos, ningùn profesional se a creado una agenda con esta especialidad");
+              }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -51,7 +68,10 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-           if(profesional.unElemento.Length != 0){
+           if(!(profesional.unElemento == null))
+           {
+           //if(conexion.tieneAgenda(profesional.unElemento, especialidad.unElemento))
+          // {
             if(indicador == 0)
             {
             cargarTurnos abm = new cargarTurnos(profesional, afiliadoUsername, especialidad);
@@ -63,11 +83,12 @@ namespace ClinicaFrba.Registro_Llegada
             else
             {
                 ClinicaFrba.Cancelar_Atencion.AbmElegirHorario abm = new ClinicaFrba.Cancelar_Atencion.AbmElegirHorario(profesional, especialidad, bonoId);
-
                 this.Hide();
                 abm.ShowDialog();
                 this.Close();
             }
+           //}
+          // else MessageBox.Show("Lo sentimos, el profesional todavia no a registrado una agenda para esta especialidad");
            }
            else MessageBox.Show("Debe elegir un profesional");
 
@@ -82,6 +103,30 @@ namespace ClinicaFrba.Registro_Llegada
         {
             int posicion = dgvProfesionales.CurrentRow.Index;
             profesional.unElemento = Convert.ToString(dgvProfesionales[0, posicion].Value);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+             if(indicador == 0)
+             {
+                 RegistroDeLlegada abm = new RegistroDeLlegada();
+
+                 this.Hide();
+                 abm.ShowDialog();
+                 this.Close();
+             }
+             else
+             {
+                 ClinicaFrba.Cancelar_Atencion.AbmPedirTurno abm = new ClinicaFrba.Cancelar_Atencion.AbmPedirTurno();
+                 this.Hide();
+                 abm.ShowDialog();
+                 this.Close();
+             }
         }
     }
 }

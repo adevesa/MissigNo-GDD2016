@@ -32,6 +32,7 @@
             this.botonAceptar = new System.Windows.Forms.Button();
             this.dgvProfesionales = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfesionales)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +56,7 @@
             this.botonAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonAceptar.ForeColor = System.Drawing.Color.Black;
-            this.botonAceptar.Location = new System.Drawing.Point(142, 492);
+            this.botonAceptar.Location = new System.Drawing.Point(220, 482);
             this.botonAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(150, 61);
@@ -76,6 +77,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.botonAceptar);
             this.panel1.Controls.Add(this.dgvProfesionales);
@@ -83,6 +85,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(441, 560);
             this.panel1.TabIndex = 73;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(53, 482);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 61);
+            this.button1.TabIndex = 73;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cargarProfesionales
             // 
@@ -109,5 +126,6 @@
         private System.Windows.Forms.Button botonAceptar;
         private System.Windows.Forms.DataGridView dgvProfesionales;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
     }
 }

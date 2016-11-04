@@ -258,7 +258,6 @@
     <Compile Include="Time.cs" />
     <Compile Include="tipoTurno.cs" />
     <Compile Include="Usuario.cs" />
-    <Compile Include="UsuarioDAL.cs" />
     <EmbeddedResource Include="Abm Afiliado\AbmAfiliado.resx">
       <DependentUpon>AbmAfiliado.cs</DependentUpon>
     </EmbeddedResource>

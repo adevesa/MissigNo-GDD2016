@@ -574,7 +574,7 @@ namespace ClinicaFrba
 
             try
             {
-                cmd = new SqlCommand("SELECT especialidad_descripcion FROM MISSINGNO.Especialidad", cn);
+                cmd = new SqlCommand("SELECT especialidad_descripcion FROM MISSINGNO.Especialidad WHERE especialidad_id != -1", cn);
                 cmd.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -956,8 +956,33 @@ namespace ClinicaFrba
                 }
             }
 
+        public List<string> turnosCancelados (){
+             List<string> turnos = new List<string>(); 
+            try
+                 {
+                     cmd = new SqlCommand("SELECT turno_id FROM MISSINGNO.Cancelacion_turno", cn);
+                   cmd.ExecuteNonQuery();
+                   SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        string turno = Convert.ToString(reader.GetInt32(0));
+                        turnos.Add(turno);
+                   }
+                    reader.Close();
+                    return turnos;
+  
+                }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar turnos cancelados: " + ex.ToString());
+                return turnos;
+            }
+        }
+
+
         public void turnosSinUsarProf (string profesional, ComboBox idTurno) {
-            List<string> turnos = new List<string>(); 
+
+            List<string> cancelados = this.turnosCancelados();
             try
                  {
                      cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE (profesional_id = (SELECT profesional_id FROM  MISSINGNO.Profesional WHERE username='{0}') AND en_uso = 0)",
@@ -968,20 +993,20 @@ namespace ClinicaFrba
                 {
                     while (reader.Read())
                     {
-                        //agrego los roles al combobox
                         idTurno.Items.Add(Convert.ToString(reader.GetInt32(0)));
+                        if (cancelados.Exists((x => x == Convert.ToString(reader.GetInt32(0)))))
+                        {
+                            idTurno.Items.Remove(Convert.ToString(reader.GetInt32(0)));
+                        }
                     }
 
-                    //si hay un solo rol para el usuario
                     if (idTurno.Items.Count == 1)
                     {
-                        //ya tiene un rol
                         string turno;
                         turno = idTurno.GetItemText(idTurno.Items[0]);
                     }
                     else
                     {
-                        //el combobox muestra el primer rol por default
                         idTurno.SelectedIndex = 0;
                     }
 
@@ -999,7 +1024,8 @@ namespace ClinicaFrba
 
         public void turnosSinUsarAfi(string afiliado, ComboBox idTurno)
         {
-            List<string> turnos = new List<string>();
+            List<string> cancelados = this.turnosCancelados();
+         
             try
             {
                 cmd = new SqlCommand(string.Format("SELECT T.turno_id FROM MISSINGNO.Turno AS T, MISSINGNO.Bono AS B WHERE (en_uso = 0 AND T.bono_id = B.bono_id AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username ='{0}' ))",
@@ -1011,21 +1037,26 @@ namespace ClinicaFrba
                 {
                     while (reader.Read())
                     {
-                        //agrego los roles al combobox
+       
                         idTurno.Items.Add(Convert.ToString(reader.GetInt32(0)));
+                        if (cancelados.Exists((x => x == Convert.ToString(reader.GetInt32(0)))))
+                        {
+                            idTurno.Items.Remove(Convert.ToString(reader.GetInt32(0)));
+                        }
+                      
                     }
-
-                    //si hay un solo rol para el usuario
                     if (idTurno.Items.Count == 1)
                     {
-                        //ya tiene un rol
+              
                         string turno;
                         turno = idTurno.GetItemText(idTurno.Items[0]);
+                         
                     }
                     else
                     {
-                        //el combobox muestra el primer rol por default
+                       
                         idTurno.SelectedIndex = 0;
+                         
                     }
 
                     reader.Close();
@@ -1276,6 +1307,34 @@ namespace ClinicaFrba
             }
         }
 
+        public int tieneAgenda(string profesional, string especialidad)
+        {
+            string prof;
+            int i = new int();
+            try
+            {
+                cmd = new SqlCommand(string.Format("if exists (select * from MISSINGNO.Agenda where prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}') AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion= '{1}'))))(SELECT P.username FROM MISSINGNO.Profesional AS P, MISSINGNO.Especialidad_de_profesional AS EP WHERE (P.profesional_id = EP.profesional_id AND EP.especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{1}')))",
+                    profesional, especialidad), cn);
+                cmd.ExecuteNonQuery();
+                 SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    prof = reader.GetString(0);
+                    if (prof != null)
+                    {
+                        i = 1;
+                    }
+                    else i = 0;
+                }
+                reader.Close();
+                return i;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar profesionales: " + ex.ToString());
+                return 0;
+            }
+      }
 
 
     }

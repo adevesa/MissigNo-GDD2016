@@ -64,15 +64,19 @@ namespace ClinicaFrba.Registro_Llegada
         }
 
         private void botonFiltrar_Click(object sender, EventArgs e)
-        {
-            if(textoUsername.TextLength != 0){
+        {   
+            if(especialidad.unElemento != null)
+            {
+            if(textoUsername.TextLength != 0)
+            {
             cargarProfesionales abm = new cargarProfesionales(especialidad, textoUsername.Text, -1 , 0);
             this.Hide();
             abm.ShowDialog();
             this.Close();
            }
             else MessageBox.Show("Introduzca un afiliado");
-
+            }
+            else MessageBox.Show("Seleccione una especialidad");
         }
 
         private void dgvEspecialidades_MouseClick(object sender, MouseEventArgs e)

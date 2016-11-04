@@ -43,7 +43,9 @@ namespace ClinicaFrba.Cancelar_Atencion
         {
  
             ClinicaFrba.Registro_Llegada.cargarProfesionales abm = new ClinicaFrba.Registro_Llegada.cargarProfesionales(especialidad, Program.usuario, Convert.ToInt32(bono.Text), 1);
+            this.Hide();
             abm.ShowDialog();
+            this.Close();
         }
 
         private void botonVolver_Click(object sender, EventArgs e)

@@ -31,6 +31,15 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void cargarProfecionales_Load(object sender, EventArgs e)
         {
+            //Centra los componentes, adaptandose al tamaño del monitor//
+            Size resolucionPantalla = System.Windows.Forms.SystemInformation.PrimaryMonitorSize;
+
+
+            //Centrar Panel
+            Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
+            Int32 largoDePanel = (this.Height - panel1.Height) / 2;
+            panel1.Location = new Point(anchoDePanel, largoDePanel);
+
            profecionales = conexion.obtenerProfesionalesPorEspecialidad(especialidad.unElemento);
             dgvProfesionales.DataSource = profecionales;
         }
@@ -42,6 +51,7 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
+           if(profesional.unElemento.Length != 0){
             if(indicador == 0)
             {
             cargarTurnos abm = new cargarTurnos(profesional, afiliadoUsername, especialidad);
@@ -58,6 +68,8 @@ namespace ClinicaFrba.Registro_Llegada
                 abm.ShowDialog();
                 this.Close();
             }
+           }
+           else MessageBox.Show("Debe elegir un profesional");
 
         }
 

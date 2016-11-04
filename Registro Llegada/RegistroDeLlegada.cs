@@ -67,7 +67,9 @@ namespace ClinicaFrba.Registro_Llegada
         {
             if(textoUsername.TextLength != 0){
             cargarProfesionales abm = new cargarProfesionales(especialidad, textoUsername.Text, -1 , 0);
+            this.Hide();
             abm.ShowDialog();
+            this.Close();
            }
             else MessageBox.Show("Introduzca un afiliado");
 

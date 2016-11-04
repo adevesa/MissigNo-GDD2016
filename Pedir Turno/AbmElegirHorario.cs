@@ -35,8 +35,8 @@ namespace ClinicaFrba.Cancelar_Atencion
             int idTurno = conexion.crearTurno(profesional.unElemento, bonoId, fecha, horarioElegido);
             MessageBox.Show("Su número de turno es: " + idTurno);
             AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
-            //this.Hide();
-            //abmRolAfiliado.ShowDialog();
+            this.Hide();
+            abmRolAfiliado.ShowDialog();
             this.Close();
         }
 
@@ -53,9 +53,9 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
-           // AbmPedirTurno abmPedirTurno = new AbmPedirTurno();
-           // this.Hide();
-           // abmPedirTurno.ShowDialog();
+            AbmPedirTurno abmPedirTurno = new AbmPedirTurno();
+            this.Hide();
+            abmPedirTurno.ShowDialog();
             this.Close();
         }
 

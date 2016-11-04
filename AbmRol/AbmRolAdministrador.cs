@@ -83,5 +83,11 @@ namespace ClinicaFrba.AbmRol
             timer1.Enabled = true;
 
         }
+
+        private void botonTops_Click(object sender, EventArgs e)
+        {
+            Listados.AbmListados abmListado = new Listados.AbmListados();
+            abmListado.ShowDialog();
+        }
     }
 }

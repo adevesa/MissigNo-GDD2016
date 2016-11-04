@@ -29,14 +29,30 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void cargarTurnos_Load(object sender, EventArgs e)
         {
+            //Centra los componentes, adaptandose al tamaño del monitor//
+            Size resolucionPantalla = System.Windows.Forms.SystemInformation.PrimaryMonitorSize;
+
+
+            //Centrar Panel
+            Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
+            Int32 largoDePanel = (this.Height - panel1.Height) / 2;
+            panel1.Location = new Point(anchoDePanel, largoDePanel);
+
             turnos = conexion.obtenerTurnos(profesional.unElemento, afiliadoUsername);
             dgvTurnos.DataSource = turnos;
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
+            if(unTurno != null)
+            {
             conexion.generarConsulta(afiliadoUsername, especialidad.unElemento, profesional.unElemento, unTurno.idTurno);
+            AbmRol.AbmRolAdministrador abmRolAdministrador = new AbmRol.AbmRolAdministrador();
+            this.Hide();
+            abmRolAdministrador.ShowDialog();
             this.Close();
+            }
+            else MessageBox.Show("Primero elija un turno");
         }
 
         private void dgvTurnos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -45,6 +61,11 @@ namespace ClinicaFrba.Registro_Llegada
             unTurno.idTurno = Convert.ToInt32(dgvTurnos[0, posicion].Value);
             unTurno.fechaTurno = Convert.ToDateTime(dgvTurnos[1, posicion].Value);
             
+        }
+
+        private void dgvTurnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

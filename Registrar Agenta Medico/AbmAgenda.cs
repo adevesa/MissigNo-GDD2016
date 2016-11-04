@@ -157,7 +157,10 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
                     conexion.generarDia("Domingo", Convert.ToString(desdeDomingo.Value) + ":00:00", Convert.ToString(hastaDomingo.Value) + ":00:00", agendaId);
                 }
                 MessageBox.Show("AGENDA CREADA CON ÉXITO");
+                AbmRol.AbmRolProfesional abmRolProfesional = new AbmRol.AbmRolProfesional();
                 this.Hide();
+                abmRolProfesional.ShowDialog();
+                this.Close();
                 }
                 }
             }

@@ -31,24 +31,27 @@
             this.dgvTurnos = new System.Windows.Forms.DataGridView();
             this.botonAceptar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnos)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvTurnos
             // 
             this.dgvTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTurnos.Location = new System.Drawing.Point(56, 85);
+            this.dgvTurnos.Location = new System.Drawing.Point(52, 88);
             this.dgvTurnos.Name = "dgvTurnos";
             this.dgvTurnos.Size = new System.Drawing.Size(317, 366);
             this.dgvTurnos.TabIndex = 75;
             this.dgvTurnos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTurnos_CellClick);
+            this.dgvTurnos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTurnos_CellContentClick);
             // 
             // botonAceptar
             // 
             this.botonAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonAceptar.ForeColor = System.Drawing.Color.Black;
-            this.botonAceptar.Location = new System.Drawing.Point(141, 483);
+            this.botonAceptar.Location = new System.Drawing.Point(146, 487);
             this.botonAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(150, 61);
@@ -63,29 +66,40 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(12, 26);
+            this.label2.Location = new System.Drawing.Point(11, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(181, 37);
             this.label2.TabIndex = 73;
             this.label2.Text = "Elegir turno";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.botonAceptar);
+            this.panel1.Controls.Add(this.dgvTurnos);
+            this.panel1.Location = new System.Drawing.Point(1, 7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(430, 556);
+            this.panel1.TabIndex = 76;
+            // 
             // cargarTurnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 566);
-            this.Controls.Add(this.dgvTurnos);
-            this.Controls.Add(this.botonAceptar);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "cargarTurnos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "cargarTurnos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.cargarTurnos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnos)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -94,5 +108,6 @@
         private System.Windows.Forms.DataGridView dgvTurnos;
         private System.Windows.Forms.Button botonAceptar;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

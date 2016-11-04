@@ -39,6 +39,7 @@
             this.Usuario = new System.Windows.Forms.Label();
             this.Hora = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.botonTops = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.botonTops);
             this.panel1.Controls.Add(this.botonCerrarSesion);
             this.panel1.Controls.Add(this.botonRegistrarLlegada);
             this.panel1.Controls.Add(this.botonComprarBono);
@@ -59,9 +61,9 @@
             // botonCerrarSesion
             // 
             this.botonCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCerrarSesion.ForeColor = System.Drawing.Color.Black;
-            this.botonCerrarSesion.Location = new System.Drawing.Point(307, 441);
+            this.botonCerrarSesion.Location = new System.Drawing.Point(307, 454);
             this.botonCerrarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.botonCerrarSesion.Name = "botonCerrarSesion";
             this.botonCerrarSesion.Size = new System.Drawing.Size(158, 46);
@@ -73,9 +75,9 @@
             // botonRegistrarLlegada
             // 
             this.botonRegistrarLlegada.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonRegistrarLlegada.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
+            this.botonRegistrarLlegada.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.botonRegistrarLlegada.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonRegistrarLlegada.Location = new System.Drawing.Point(141, 302);
+            this.botonRegistrarLlegada.Location = new System.Drawing.Point(141, 229);
             this.botonRegistrarLlegada.Margin = new System.Windows.Forms.Padding(2);
             this.botonRegistrarLlegada.Name = "botonRegistrarLlegada";
             this.botonRegistrarLlegada.Size = new System.Drawing.Size(493, 101);
@@ -87,9 +89,9 @@
             // botonComprarBono
             // 
             this.botonComprarBono.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonComprarBono.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
+            this.botonComprarBono.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
             this.botonComprarBono.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonComprarBono.Location = new System.Drawing.Point(141, 175);
+            this.botonComprarBono.Location = new System.Drawing.Point(141, 118);
             this.botonComprarBono.Margin = new System.Windows.Forms.Padding(2);
             this.botonComprarBono.Name = "botonComprarBono";
             this.botonComprarBono.Size = new System.Drawing.Size(493, 107);
@@ -101,9 +103,9 @@
             // botonCrearAfiliado
             // 
             this.botonCrearAfiliado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.botonCrearAfiliado.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonCrearAfiliado.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonCrearAfiliado.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonCrearAfiliado.Location = new System.Drawing.Point(141, 56);
+            this.botonCrearAfiliado.Location = new System.Drawing.Point(141, 14);
             this.botonCrearAfiliado.Margin = new System.Windows.Forms.Padding(2);
             this.botonCrearAfiliado.Name = "botonCrearAfiliado";
             this.botonCrearAfiliado.Size = new System.Drawing.Size(493, 100);
@@ -166,6 +168,20 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // botonTops
+            // 
+            this.botonTops.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonTops.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.botonTops.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.botonTops.Location = new System.Drawing.Point(141, 334);
+            this.botonTops.Margin = new System.Windows.Forms.Padding(2);
+            this.botonTops.Name = "botonTops";
+            this.botonTops.Size = new System.Drawing.Size(493, 101);
+            this.botonTops.TabIndex = 38;
+            this.botonTops.Text = "Tops";
+            this.botonTops.UseVisualStyleBackColor = true;
+            this.botonTops.Click += new System.EventHandler(this.botonTops_Click);
+            // 
             // AbmRolAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,5 +214,6 @@
         private System.Windows.Forms.Label Usuario;
         private System.Windows.Forms.Label Hora;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button botonTops;
     }
 }

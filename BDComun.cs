@@ -879,7 +879,6 @@ namespace ClinicaFrba
                 profEspId = conseguirIdporUsernameYespecialidad(username, especialidad);
                 cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Agenda(prof_esp_id,agenda_inicio,agenda_fin) OUTPUT inserted.agenda_id VALUES ({0},'{1}','{2}')",
                     profEspId, fecha_inicio, fecha_fin), cn);
-                cmd.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {

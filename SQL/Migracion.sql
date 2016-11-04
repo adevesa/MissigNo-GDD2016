@@ -1,57 +1,36 @@
 USE GD2C2016
 GO
 
+SET NOCOUNT ON
 -- EJECUTAR LOS DELETES MAS DE UNA VEZ ( DEBE HABER UN ERROR CON LAS PRECEDENCIAS)
 
-DELETE FROM MISSINGNO.Usuario;
-DELETE FROM MISSINGNO.Afiliado;
 DBCC CHECKIDENT ('MISSINGNO.Afiliado', RESEED, 0)
 GO
-DELETE FROM MISSINGNO.Tipo_especialidad;
-DELETE FROM MISSINGNO.Profesional;
-DELETE FROM MISSINGNO.Administrativo;
 DBCC CHECKIDENT ('MISSINGNO.Administrativo', RESEED, 0)
 GO
-DELETE FROM MISSINGNO.Especialidad_de_profesional;
 DBCC CHECKIDENT ('MISSINGNO.Especialidad_de_profesional',RESEED,0)
 GO
-DELETE FROM MISSINGNO.Planes
 DBCC CHECKIDENT ('MISSINGNO.Planes',RESEED,0)
 GO
-DELETE FROM MISSINGNO.Afiliado_Historial;
 DBCC CHECKIDENT ('MISSINGNO.Afiliado_historial', RESEED, 0)
 GO
-DELETE FROM MISSINGNO.Agenda;
 DBCC CHECKIDENT ('MISSINGNO.Agenda', RESEED, 0)
 GO
-DELETE FROM MISSINGNO.Dia;
-DELETE FROM MISSINGNO.Consulta_medica;
 DBCC CHECKIDENT ('MISSINGNO.Consulta_medica', RESEED, 0)
 GO
-DELETE FROM MISSINGNO.Compra_bono;
 DBCC CHECKIDENT ('MISSINGNO.Compra_bono', RESEED, 0)
 GO
-DELETE FROM MISSINGNO.Bono;
 DBCC CHECKIDENT ('MISSINGNO.Bono', RESEED, 0)
 GO
-DELETE FROM MISSINGNO.Turno;
 DBCC CHECKIDENT ('MISSINGNO.Turno', RESEED, 0)
 GO
-DELETE FROM MISSINGNO.Cancelacion_turno;
 DBCC CHECKIDENT ('MISSINGNO.Cancelacion_turno', RESEED, 0)
 GO
-DELETE FROM MISSINGNO.Funcionalidad;
 DBCC CHECKIDENT ('MISSINGNO.Funcionalidad', RESEED, 1)
 GO
-DELETE FROM MISSINGNO.Especialidad;
 DBCC CHECKIDENT ('MISSINGNO.Especialidad', RESEED, 0)
 GO
-DELETE FROM MISSINGNO.Funcionalidad_de_rol;
-DELETE FROM MISSINGNO.Rol;
 DBCC CHECKIDENT ('MISSINGNO.Rol', RESEED, 1)
-GO
-DELETE FROM MISSINGNO.Rol_de_usuario;
-
 GO
 
 /* CREACION DE ROLES */
@@ -105,7 +84,6 @@ INSERT INTO MISSINGNO.Usuario(
 		 'admin',
 		 01140000000,
 		 'DNI')
-
 
 /* ASIGNACION DE ROL AL USUARIO "admin" */
 
@@ -222,13 +200,13 @@ DBCC CHECKIDENT ("MISSINGNO.Planes")
 
 /* DECLARACION DE VARIABLES PARA CURSORES */
 
-DECLARE @DNI numeric(18,0), @Nombre varchar(255), @Apellido varchar(255), @Domicilio varchar(255), @Telefono numeric(18,0), @Mail varchar(255), @Fec_nac datetime
-DECLARE @Plan numeric(18,0)
-DECLARE @Existe numeric(18,0)
+DECLARE @DNI bigint, @Nombre varchar(255), @Apellido varchar(255), @Domicilio varchar(255), @Telefono bigint, @Mail varchar(255), @Fec_nac datetime
+DECLARE @Plan int
+DECLARE @Existe int
 
 /* DECLARACION PARA VARIABLE ROL */
 
-DECLARE @Rol numeric(18,0)
+DECLARE @Rol int
 
 /* DECLARACION DE CURSOR DE AFILIADOS */
 
@@ -251,16 +229,23 @@ SELECT @Existe = username FROM MISSINGNO.Usuario WHERE doc_nro = @DNI
 
 IF (@Existe IS NULL) 
 	BEGIN
+		IF(EXISTS(select 1 from MISSINGNO.Usuario WHERE username = @Mail))
+		BEGIN
+		INSERT INTO MISSINGNO.Usuario (doc_nro, doc_tipo, nombre, apellido, domicilio, telefono, mail, fec_nac, sexo, username, contrasenia)
+		VALUES (@DNI, '-', @Nombre, @Apellido, @Domicilio, @Telefono, @Mail, @Fec_nac, '-', CONCAT(@Nombre,'_',@Apellido,'1','@gmail.com'), HASHBYTES('SHA2_256', CAST(@DNI AS VARCHAR(18))))
+		INSERT INTO MISSINGNO.Afiliado(username, afiliado_estado_civil, afiliado_encargado,plan_id, afiliado_baja_logica, afiliado_fec_baja) VALUES (CONCAT(@Nombre,'_',@Apellido,'1','@gmail.com'), 0, NULL, @Plan,0, NULL)
+		INSERT INTO MISSINGNO.Rol_de_usuario(username, rol_id) VALUES (CONCAT(@Nombre,'_',@Apellido,'1','@gmail.com'), @Rol)
+		END
+		ELSE
+		BEGIN
 		INSERT INTO MISSINGNO.Usuario (doc_nro, doc_tipo, nombre, apellido, domicilio, telefono, mail, fec_nac, sexo, username, contrasenia)
 		VALUES (@DNI, '-', @Nombre, @Apellido, @Domicilio, @Telefono, @Mail, @Fec_nac, '-', @Mail, HASHBYTES('SHA2_256', CAST(@DNI AS VARCHAR(18))))
-		SET @Existe = @@IDENTITY
+		INSERT INTO MISSINGNO.Afiliado(username, afiliado_estado_civil, afiliado_encargado,plan_id, afiliado_baja_logica, afiliado_fec_baja) VALUES (@Mail, 0, NULL, @Plan,0, NULL)
+		INSERT INTO MISSINGNO.Rol_de_usuario(username, rol_id) VALUES (@Mail, @Rol)
+		END
 	END
 
-IF(NOT EXISTS(SELECT username from MISSINGNO.Afiliado where username = @MAIL))
-BEGIN
-INSERT INTO MISSINGNO.Afiliado(username, afiliado_estado_civil, afiliado_encargado,plan_id, afiliado_baja_logica, afiliado_fec_baja) VALUES (@Mail, 0, NULL, @Plan,0, NULL)
-END
-INSERT INTO MISSINGNO.Rol_de_usuario(username, rol_id) VALUES (@Mail, @Rol)
+
 
 FETCH NEXT FROM cursorAfiliados INTO @DNI, @Nombre, @Apellido, @Domicilio, @Telefono, @Mail, @Fec_Nac, @Plan
 END
@@ -340,8 +325,8 @@ SET IDENTITY_INSERT MISSINGNO.Bono OFF
 /* MIGRACION DE TURNOS */
 
 SET IDENTITY_INSERT MISSINGNO.Turno ON
-INSERT INTO MISSINGNO.Turno(turno_id, profesional_id, bono_id, fecha, horario)
-SELECT DISTINCT Turno_Numero, P.profesional_id, Bono_Consulta_Numero,Turno_fecha,cast(Turno_Fecha as time)
+INSERT INTO MISSINGNO.Turno(turno_id, profesional_id, bono_id, fecha, horario, en_uso)
+SELECT DISTINCT Turno_Numero, P.profesional_id, Bono_Consulta_Numero,Turno_fecha,cast(Turno_Fecha as time), 1
 FROM gd_esquema.Maestra, MISSINGNO.Profesional P, MISSINGNO.Bono B
 WHERE Turno_Numero IS NOT NULL 
 and Bono_Consulta_Numero IS NOT NULL
@@ -352,7 +337,7 @@ SET IDENTITY_INSERT MISSINGNO.Turno OFF
 /* MIGRACION DE CONSULTAS MEDICAS */
 
 INSERT INTO MISSINGNO.Consulta_medica(turno_id, sintoma, diagnostico, profesional_id, afiliado_id, agenda_id, consulta_horario, confirmacion_de_atencion)
-SELECT Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades,P.profesional_id,A.afiliado_id, -1, cast(Turno_Fecha as time),1
+SELECT Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades,P.profesional_id,A.afiliado_id, -1, cast(Turno_Fecha as time),'SI'
 FROM gd_esquema.Maestra, MISSINGNO.Turno T, MISSINGNO.Profesional P, MISSINGNO.Afiliado A
 WHERE Consulta_Sintomas IS NOT NULL
 and Turno_Numero = T.turno_id

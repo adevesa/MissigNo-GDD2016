@@ -168,6 +168,7 @@ DROP SCHEMA [MISSINGNO]
 GO
 
 
+
 CREATE SCHEMA [MISSINGNO]
 GO
 -- CREACION DE TABLAS
@@ -188,16 +189,16 @@ GO
 	-- TABLA USUARIO
 
 	create table MISSINGNO.Usuario (
-		username varchar(50) primary key,
+		username varchar(60) primary key,
 		doc_tipo varchar(10),
 		doc_nro bigint,
 		contrasenia nvarchar(30),
-		nombre varchar(20),
-		apellido varchar(20),
+		nombre varchar(60),
+		apellido varchar(60),
 		fec_nac datetime, 
 		sexo char,
 		domicilio varchar(150),
-		mail varchar(40),
+		mail varchar(60),
 		telefono bigint,
 		unique (doc_nro))
 
@@ -205,7 +206,7 @@ GO
 
 	create table MISSINGNO.Rol_de_usuario(
 		rol_id int not null,
-		username varchar(50) not null,
+		username varchar(60) not null,
 		primary key (rol_id,username))
 
 	-- TABLA FUNCIONALIDAD_DE_ROL
@@ -239,7 +240,7 @@ GO
 
 	create table MISSINGNO.Profesional(
 		profesional_id int primary key identity,
-		username varchar(50) not null,
+		username varchar(60) not null,
 		profesional_matricula int )
 
 	-- TABLA ESPECIALIDAD_DE_PROFESIONAL
@@ -272,7 +273,7 @@ GO
 
 	create table MISSINGNO.Afiliado(
 		afiliado_id int primary key identity,
-		username varchar(50) not null,
+		username varchar(60) not null,
 		plan_id int not null,
 		afiliado_encargado int,
 		afiliado_fec_baja datetime,
@@ -340,7 +341,7 @@ GO
 	
 	create table MISSINGNO.Administrativo(
 		admin_id int primary key identity,
-		username varchar(50) not null)
+		username varchar(60) not null)
 	
 set dateformat dmy;
 GO
@@ -448,3 +449,5 @@ alter table MISSINGNO.Especialidad_de_profesional
 	add constraint FK_Especialidad_de_profesional_especialidad_id foreign key (especialidad_id) references MISSINGNO.Especialidad(especialidad_id);
 alter table MISSINGNO.Especialidad_de_profesional
 	add constraint FK_Especialidad_de_profesional_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
+
+

@@ -215,8 +215,8 @@ namespace ClinicaFrba
         public List<DateTime> fechasDisponibles(string username, string especialidad)
         {
             List<DateTime> fechas = new List<DateTime>();
-            DateTime fecha_inicio = fechaInicio(username, especialidad);
-            DateTime fecha_fin = fechaFin(username, especialidad);
+            DateTime fecha_inicio = fechasLimitesDeAgenda(username, especialidad, "agenda_inicio");
+            DateTime fecha_fin = fechasLimitesDeAgenda(username, especialidad, "agenda_fin");
             DateTime fecha;
             List<String> dias = obtenerDiasAgenda(username, especialidad);
             for (fecha = fecha_inicio; fecha <= fecha_fin; fecha = fecha.AddDays(1))
@@ -238,55 +238,6 @@ namespace ClinicaFrba
             return false;
         }
 
-        public DateTime fechaInicio(String username, String especialidad)
-        {
-            int agenda_id = obtenerAgendaId(username,especialidad);
-            DateTime fecha = new DateTime();
-            try
-            {
-                cmd = new SqlCommand(String.Format("SELECT agenda_inicio FROM MISSINGNO.Agenda WHERE agenda_id = {0}",
-                    agenda_id), cn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-
-                    fecha = reader.GetDateTime(0);
-                }
-                reader.Close();
-
-                return fecha;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al conseguir fechaInicio: " + ex.ToString());
-                return fecha;
-            }
-        }
-
-        public DateTime fechaFin(String username, String especialidad)
-        {
-            int agenda_id = obtenerAgendaId(username, especialidad);
-            DateTime fecha = new DateTime();
-            try
-            {
-                cmd = new SqlCommand(String.Format("SELECT agenda_fin FROM MISSINGNO.Agenda WHERE agenda_id = {0}",
-                    agenda_id), cn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-
-                    fecha = reader.GetDateTime(0);
-                }
-                reader.Close();
-
-                return fecha;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al conseguir fechaFin: " + ex.ToString());
-                return fecha;
-            }
-        }
 
         public List<String> obtenerDiasAgenda(String username, String especialidad)
         {
@@ -314,6 +265,35 @@ namespace ClinicaFrba
                 return dias;
             }
         }
+
+
+        public DateTime fechasLimitesDeAgenda(string profesional, string especialidad, string limite)
+        {
+            DateTime fecha = new DateTime();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT {0} FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username ='{1}') AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{2}'))",
+                    limite, profesional, especialidad), cn);
+                cmd.ExecuteNonQuery();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    fecha = reader.GetDateTime(0);
+                }
+                reader.Close();
+                return fecha;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar fechas limites: " + ex.ToString());
+
+                return fecha;
+            }
+
+
+        }
+
+
         //----BONOS-----//
 
         //@desc: dado un usuario devuelve el precio que abona un bono.
@@ -346,32 +326,7 @@ namespace ClinicaFrba
 
 
 
-        public DateTime fechasLimitesDeAgenda(string profesional, string especialidad, string limite)
-        {
-            DateTime fecha = new DateTime();
-            try
-            {
-                cmd = new SqlCommand(string.Format("SELECT {0} FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username ='{1}') AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{2}'))",
-                    limite, profesional, especialidad), cn);
-                cmd.ExecuteNonQuery();
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    fecha = reader.GetDateTime(0);
-                }
-                reader.Close();
-                return fecha;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar fechas limites: " + ex.ToString());
-
-                return fecha;
-            }
-
-
-        }
-
+       
         //-----TURNOS--------//
 
      //@desc:dado un n° de consulta medica, devuelve su turno_id

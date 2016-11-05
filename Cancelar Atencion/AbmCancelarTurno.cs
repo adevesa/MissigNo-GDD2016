@@ -25,7 +25,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
           public bool errores_de_registro()
         {
-            return ((textoIDTurno.Text.Length == 0) || (textoMotivo.Text.Length == 0) || tipoCancelacion.Text == "Tipo de cancelación"); 
+            return ((textoIDTurno.Text.Length == 0) || (textoMotivo.Text.Length == 0) || tipoCancelacion.Text.Length == 0 || textoMotivo.Text == "Escriba el motivo..."); 
 
        }
 
@@ -83,6 +83,26 @@ namespace ClinicaFrba.Cancelar_Atencion
         private void textoIDTurno_TextChanged(object sender, EventArgs e)
         {
             //error_text2.Clear();
+        }
+
+        private void textoIDTurno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tipoCancelacion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -77,6 +77,7 @@
             this.label2.TabIndex = 68;
             this.label2.Text = "Motivo";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // textoMotivo
             // 
@@ -98,6 +99,7 @@
             this.textoIDTurno.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textoIDTurno.Size = new System.Drawing.Size(298, 37);
             this.textoIDTurno.TabIndex = 98;
+            this.textoIDTurno.SelectedIndexChanged += new System.EventHandler(this.textoIDTurno_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -111,6 +113,7 @@
             this.label3.TabIndex = 99;
             this.label3.Text = "Tipo de cancelación";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // tipoCancelacion
             // 
@@ -119,6 +122,7 @@
             this.tipoCancelacion.Name = "tipoCancelacion";
             this.tipoCancelacion.Size = new System.Drawing.Size(473, 47);
             this.tipoCancelacion.TabIndex = 100;
+            this.tipoCancelacion.TextChanged += new System.EventHandler(this.tipoCancelacion_TextChanged);
             // 
             // AbmCancelarTurno
             // 

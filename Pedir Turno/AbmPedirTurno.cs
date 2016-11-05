@@ -33,7 +33,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
 
-            listaEspecialidades = conexion.obtenerEspecialidades();
+            listaEspecialidades = conexion.obtenerTodasLasEspecialidades();
             dgvEspecialidades.DataSource = listaEspecialidades;
             conexion.bonosDeAfiliado(Program.usuario, bono);
 

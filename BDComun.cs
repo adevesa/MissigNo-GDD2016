@@ -211,7 +211,7 @@ namespace ClinicaFrba
                 return horarios;
             }
         }
-
+        //@desc: Dado el username de un profesional y una de sus especialidades, devuelve una lista con los horarios de su agenda
         public List<DateTime> fechasDisponibles(string username, string especialidad)
         {
             List<DateTime> fechas = new List<DateTime>();
@@ -238,7 +238,7 @@ namespace ClinicaFrba
             return false;
         }
 
-
+        //@desc: Dado el usuario de un afiliado y una de sus especialidades obtiene los dias que trabaja de su agenda.
         public List<String> obtenerDiasAgenda(String username, String especialidad)
         {
             List<String> dias= new List<String>();
@@ -266,6 +266,8 @@ namespace ClinicaFrba
             }
         }
 
+        //@desc: Dada un username de un profesiona, una especialidades y un string devuelve el agenda_inicio 
+        //      o agenda_fin dependiendo de lo que le mande como string
 
         public DateTime fechasLimitesDeAgenda(string profesional, string especialidad, string limite)
         {
@@ -584,6 +586,8 @@ namespace ClinicaFrba
         //FUNCIONES QUE HACEN LLAMADAS A LA BASE DE DATOS PARA CORROBORAR UNA CONDICION
 
         //------USUARIO------//
+
+        //@desc: Verifica si existe un usuario
         public bool existeUsuario(string usuario)
         {
             try
@@ -601,7 +605,7 @@ namespace ClinicaFrba
         }
 
 
-
+        //@desc: Comprueba si el dni esta siendo utilizado por otro usuario
         public bool dniEnUso(string dni)
         {
             int doc = Convert.ToInt32(dni);
@@ -618,7 +622,8 @@ namespace ClinicaFrba
             }
 
         }
-
+        //@desc: Comprueba si el dni esta esta siendo usado por otro usuario, con excepcion del usuario mandado por parametro, 
+        //      Si este tiene el mismo documento, lo ignora.
         public bool dniEnUsoCondicionado(string dni, string usuario)
         {
             int doc = Convert.ToInt32(dni);
@@ -636,6 +641,7 @@ namespace ClinicaFrba
 
         }
 
+        //@desc: Dado un usuario y una contraseña se verifica en la tabla usuario si coinciden los datos
         public bool contraseñaCorrecta(string usuario, string contraseña)
         {
 
@@ -654,7 +660,7 @@ namespace ClinicaFrba
 
 
         //-----PROFESIONAL----//
-
+        //@desc: Verifica la existencia de una agenda de una especialidad de un determinado profesional
         public bool yaExisteAgenda(String username, String especialidad)
         {
             try
@@ -677,6 +683,7 @@ namespace ClinicaFrba
                 return false;
             }
         }
+
 
         public int tieneAgenda(string profesional, string especialidad)
         {

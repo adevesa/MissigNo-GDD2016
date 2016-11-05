@@ -38,17 +38,9 @@ namespace ClinicaFrba.Listados
             llenarcmbPlanes();
             llenarcmbEspecialidades();
 
-           /* //se guardan los meses
-            guardarSemestre(semestre);
-
-            //nuevo
-            bindingSource = new BindingSource();
-            //
-            dataGridView.DataSource = bindingSource;
-
-            //se carga el dataGrid
-            buscarLoNecesario();
-            */
+            //se guardan los meses
+            guardarSemestre(semestre);           
+            
         }
 
         private void guardarSemestre(String semestre)
@@ -77,32 +69,17 @@ namespace ClinicaFrba.Listados
         private void buscarLoNecesario()
         {
             // Aca va la consulta que hay que armar
-            
-           String conslt = "SELECT TOP 5 ";
-           
-           /*
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           */
-             
-           
+
+            String conslt = "SELECT TOP 5 U.nombre, U.apellido, ((count(CM.consulta_id)*30)/60) as 'Horas Trabajadas' FROM MISSINGNO.Usuario AS U, MISSINGNO.Consulta_medica AS CM, MISSINGNO.Profesional AS P, MISSINGNO.Afiliado AS AF, MISSINGNO.Planes AS PL, MISSINGNO.Turno AS T, MISSINGNO.Agenda AS AG, MISSINGNO.Especialidad_de_profesional AS EP, MISSINGNO.Especialidad AS ES WHERE	CM.confirmacion_de_atencion = 'NO' AND CM.profesional_id = P.profesional_id AND CM.afiliado_id = AF.afiliado_id AND P.username = U.username AND AF.plan_id = PL.plan_id AND CM.agenda_id = AG.agenda_id AND AG.prof_esp_id = EP.prof_esp_id AND EP.profesional_id = P.profesional_id AND EP.especialidad_id = ES.especialidad_id AND YEAR(T.fecha) = '" + Convert.ToInt32(txtAnio.Text) + "'AND MONTH(T.fecha) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') AND PL.plan_descripcion = '" + cmbPlanes.SelectedItem.ToString() + "' AND ES.especialidad_descripcion = '" + cmbEspecialidades.SelectedItem.ToString() + "' GROUP BY U.nombre, U.apellido ORDER BY 'Horas trabajadas' desc";
 
             //a cargar el datagrid
             cargarDatagrid(conslt);
 
             //edito nombre de columnas del datagrid
-            dataGridView.Columns[0].HeaderText = "Plan";
-            dataGridView.Columns[1].HeaderText = "Especialidad";
-            dataGridView.Columns[2].HeaderText = "Profesional";
-            dataGridView.Columns[3].HeaderText = "Horas";
+            dataGridView.Columns[0].HeaderText = "Nombre";
+            dataGridView.Columns[1].HeaderText = "Apellido";
+            dataGridView.Columns[2].HeaderText = "Horas trabajadas";
+
         }
 
         private void cargarDatagrid(String consulta)
@@ -192,6 +169,17 @@ namespace ClinicaFrba.Listados
             this.Hide();
             frmAbmListados.ShowDialog();
             this.Close();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            //nuevo
+            bindingSource = new BindingSource();
+            //
+            dataGridView.DataSource = bindingSource;
+
+            //se carga el dataGrid
+            buscarLoNecesario();
         }
     }
 }

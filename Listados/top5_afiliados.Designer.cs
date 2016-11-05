@@ -42,7 +42,7 @@
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
-            this.botonVolver.Location = new System.Drawing.Point(443, 309);
+            this.botonVolver.Location = new System.Drawing.Point(536, 309);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(153, 52);
@@ -57,17 +57,17 @@
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(53, 91);
+            this.dataGridView.Location = new System.Drawing.Point(64, 91);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(543, 186);
+            this.dataGridView.Size = new System.Drawing.Size(625, 186);
             this.dataGridView.TabIndex = 121;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(71, 24);
+            this.label1.Location = new System.Drawing.Point(111, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 25);
             this.label1.TabIndex = 123;
@@ -78,7 +78,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(281, 22);
+            this.label2.Location = new System.Drawing.Point(332, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 25);
             this.label2.TabIndex = 124;
@@ -88,7 +88,7 @@
             // txtAnio
             // 
             this.txtAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnio.Location = new System.Drawing.Point(131, 24);
+            this.txtAnio.Location = new System.Drawing.Point(182, 22);
             this.txtAnio.Name = "txtAnio";
             this.txtAnio.ReadOnly = true;
             this.txtAnio.Size = new System.Drawing.Size(100, 24);
@@ -97,7 +97,7 @@
             // txtSemestre
             // 
             this.txtSemestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSemestre.Location = new System.Drawing.Point(401, 23);
+            this.txtSemestre.Location = new System.Drawing.Point(453, 22);
             this.txtSemestre.Name = "txtSemestre";
             this.txtSemestre.ReadOnly = true;
             this.txtSemestre.Size = new System.Drawing.Size(195, 24);
@@ -107,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 388);
+            this.ClientSize = new System.Drawing.Size(749, 404);
             this.Controls.Add(this.txtSemestre);
             this.Controls.Add(this.txtAnio);
             this.Controls.Add(this.label2);

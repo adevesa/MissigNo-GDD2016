@@ -37,17 +37,9 @@ namespace ClinicaFrba.Listados
             txtSemestre.Text = semestre;
             llenarcmbPlanes();
 
-          /* ///se guardan los meses
+           ///se guardan los meses
             guardarSemestre(semestre);
-
-            //nuevo
-            bindingSource = new BindingSource();
-            //
-            dataGridView.DataSource = bindingSource;
-          
-            //se carga el dataGrid
-            buscarLoNecesario();
-            */
+            
         }
 
         private void guardarSemestre(String semestre)
@@ -77,38 +69,18 @@ namespace ClinicaFrba.Listados
         {
             // Aca va la consulta que hay que armar
             //Esto lo dejo para acordarme y seguir cuando vuelvo a casa
-           /*String conslt = "SELECT U.nombre, U.apellido, E.especialidad_descripcion, count(C.consulta_id)
-  FROM MISSINGNO.Usuario AS U, MISSINGNO.Especialidad AS E, MISSINGNO.Consulta_medica AS C, MISSINGNO.Profesional AS P, MISSINGNO.Afiliado AS A, MISSINGNO.Planes AS PL
-  WHERE C.profesional_id = P.profesional_id AND
-		C.afiliado_id = A.afiliado_id AND
-		A.plan_id = PL.plan_id AND
-		PL.plan_descripcion = lodelcombobox
-		group by U.nombre, U.apellido, E.especialidad_descripcion
-		order by count(C.consulta_id)"*/
-       
-           /* 
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           conslt += "";
-           */
-             
+           String conslt = "SELECT TOP 5 U.nombre, U.apellido, E.especialidad_descripcion, count(C.consulta_id) FROM MISSINGNO.Usuario AS U, MISSINGNO.Especialidad AS E, MISSINGNO.Consulta_medica AS C, MISSINGNO.Profesional AS P, MISSINGNO.Afiliado AS A, MISSINGNO.Planes AS PL, MISSINGNO.Turno AS T WHERE C.profesional_id = P.profesional_id AND C.afiliado_id = A.afiliado_id AND C.turno_id = T.turno_id AND A.plan_id = PL.plan_id AND PL.plan_descripcion = '" + cmbPlanes.SelectedItem.ToString() + "' AND P.username = U.username AND MONTH(T.fecha) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') AND YEAR(T.fecha) = '" + Convert.ToInt32(txtAnio.Text) + "' group by U.nombre, U.apellido, E.especialidad_descripcion order by count(C.consulta_id) desc";  
            
 
             //a cargar el datagrid
-            //cargarDatagrid(conslt);
+            cargarDatagrid(conslt);
 
             //edito nombre de columnas del datagrid
             dataGridView.Columns[0].HeaderText = "Nombre";
             dataGridView.Columns[1].HeaderText = "Apellido";
             dataGridView.Columns[2].HeaderText = "Especialidad";
-            dataGridView.Columns[3].HeaderText = "Consultas";
+            dataGridView.Columns[3].HeaderText = "Cantidad de consultas";
+            
         }
 
         private void cargarDatagrid(String consulta)
@@ -174,9 +146,15 @@ namespace ClinicaFrba.Listados
             this.Close();
         }
 
-        private void top5_consultados_Load(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
+            //nuevo
+            bindingSource = new BindingSource();
+            //
+            dataGridView.DataSource = bindingSource;
 
+            //se carga el dataGrid
+            buscarLoNecesario();
         }
     }
 }

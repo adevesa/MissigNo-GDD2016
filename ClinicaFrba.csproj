@@ -135,6 +135,12 @@
     <Compile Include="Cancelar Atencion\AbmCancelarTurno.Designer.cs">
       <DependentUpon>AbmCancelarTurno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cancelar Atencion\AbmCancelarTurnoProf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\AbmCancelarTurnoProf.Designer.cs">
+      <DependentUpon>AbmCancelarTurnoProf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compra Bono\AbmComprarBono.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cancelar Atencion\AbmCancelarTurno.resx">
       <DependentUpon>AbmCancelarTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\AbmCancelarTurnoProf.resx">
+      <DependentUpon>AbmCancelarTurnoProf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Compra Bono\AbmComprarBono.resx">
       <DependentUpon>AbmComprarBono.cs</DependentUpon>

@@ -89,3 +89,4 @@ C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.Re
 C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Resultado.AbmRegistroResultado.resources
 C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
 C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Login.SeleccionRol.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmCancelarTurnoProf.resources

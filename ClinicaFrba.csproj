@@ -84,18 +84,6 @@
     <Compile Include="Abm Afiliado\AgregarFamiliar.Designer.cs">
       <DependentUpon>AgregarFamiliar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Especialidades Medicas\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Especialidades Medicas\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Abm Planes\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Planes\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="AbmRol\Abm Profesional\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,8 +108,8 @@
     <Compile Include="AbmRol\AbmRolProfesional.Designer.cs">
       <DependentUpon>AbmRolProfesional.cs</DependentUpon>
     </Compile>
-    <Compile Include="AfiliadoCompleto.cs" />
-    <Compile Include="AfiliadoSimple.cs" />
+    <Compile Include="Clases\AfiliadoCompleto.cs" />
+    <Compile Include="Clases\AfiliadoSimple.cs" />
     <Compile Include="BDComun.cs" />
     <Compile Include="bin\Debug\Logueo.cs">
       <SubType>Form</SubType>
@@ -153,7 +141,7 @@
     <Compile Include="Compra Bono\ComprarBonoDesdeAdministrador.Designer.cs">
       <DependentUpon>ComprarBonoDesdeAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Palabra.cs" />
+    <Compile Include="Clases\Palabra.cs" />
     <Compile Include="Listados\AbmListado2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,8 +243,8 @@
     <Compile Include="Registro Resultado\AbmRegistroResultado.Designer.cs">
       <DependentUpon>AbmRegistroResultado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Time.cs" />
-    <Compile Include="tipoTurno.cs" />
+    <Compile Include="Clases\Time.cs" />
+    <Compile Include="Clases\tipoTurno.cs" />
     <Compile Include="Usuario.cs" />
     <EmbeddedResource Include="Abm Afiliado\AbmAfiliado.resx">
       <DependentUpon>AbmAfiliado.cs</DependentUpon>
@@ -372,33 +360,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\18968753_hiweb-e1436555480852.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\6359333591850656692016340307_hospital.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\c589bbc5cd2bdf863bfe1d7dc5d2b708.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\iStock_000049731446_Full.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\o-HOSPITAL-HALLWAY-facebook.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\bluewave-bkg-1980light.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\silver-light-blue-wave-abstract-backgrounds-powerpoint.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\blue-squares-powerpoint-backgrounds.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="bin\Debug\ClinicaFrba.exe" />
     <Content Include="bin\Debug\ClinicaFrba.pdb" />
     <Content Include="bin\Debug\ClinicaFrba.vshost.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

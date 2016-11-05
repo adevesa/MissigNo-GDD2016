@@ -71,6 +71,7 @@ namespace ClinicaFrba.Abm_Afiliado
         {
             if (dgvFamiliares.SelectedRows.Count == 1)
             {
+
                // string afiliado = Convert.ToString(dgvFamiliares.CurrentRow.Cells[1].Value);
               //  UsuarioDAL.borrarAfiliado(afiliado);
             }
@@ -89,13 +90,14 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 conexion.borrarAfiliado(userHijo);
                 MessageBox.Show("Afiliado borrado exitosamente");
-                //dgvFamiliares.Rows.RemoveAt(posicion);
+                //dgvFamiliares.Rows.RemoveAt(dgvFamiliares.CurrentRow.Index);
             }
             else MessageBox.Show("Elija un Afiliado");
         }
 
         private void dgvFamiliares_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             posicion = dgvFamiliares.CurrentRow.Index;
             userHijo = Convert.ToString(dgvFamiliares[0, posicion].Value);
           

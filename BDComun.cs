@@ -510,7 +510,7 @@ namespace ClinicaFrba
             try
             {
 
-                cmd = new SqlCommand(string.Format("SELECT X.username, nombre, apellido FROM MISSINGNO.Usuario as X JOIN MISSINGNO.Afiliado AS Y ON ( X.username = Y.username)WHERE (afiliado_id =  {0});",
+                cmd = new SqlCommand(string.Format("SELECT X.username, nombre, apellido FROM MISSINGNO.Usuario as X JOIN MISSINGNO.Afiliado AS Y ON ( X.username = Y.username)WHERE (afiliado_id =  {0} AND afiliado_baja_logica = 0);",
                      afiliadoID), cn);
                 cmd.ExecuteNonQuery();
 

@@ -23,7 +23,7 @@ namespace ClinicaFrba.Compra_Bono
 
         private void AbmComprarBono_Load(object sender, EventArgs e)
         {
-
+            conexion.usernamesFamiliares(username, comboBoxUsuario);
         }
 
         private void textoCantidadDeBonos_TextChanged(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace ClinicaFrba.Compra_Bono
 
         public bool errores_de_registro()
         {
-            return ((textoCantidadDeBonos.Text.Length == 0) || (textoCantidadDeBonos.Text == "Ingrese un número") || Convert.ToInt32(textoCantidadDeBonos.Text) <= 0);
+            return ((textoCantidadDeBonos.Text.Length == 0) || (textoCantidadDeBonos.Text == "Ingrese un número") || Convert.ToInt32(textoCantidadDeBonos.Text) <= 0 || comboBoxUsuario.Text == "Elija un afiliado");
         }
 
         private void botonConfirmar_Click(object sender, EventArgs e)
@@ -66,23 +66,17 @@ namespace ClinicaFrba.Compra_Bono
             }
             else
             {
-                if (boxUsuario.Text == "Ingrese un username")
-                {
-                    conexion.comprarBonos(Convert.ToInt32(textoCantidadDeBonos.Text), username);
-                }
-                else if (conexion.esAfiliado(boxUsuario.Text))
-                {
-                    conexion.comprarBonos(Convert.ToInt32(textoCantidadDeBonos.Text), boxUsuario.Text);
-                }
-                else
-                {
-                    MessageBox.Show("No existe afiliado con ese username");
-                }
+               conexion.comprarBonos(Convert.ToInt32(textoCantidadDeBonos.Text), comboBoxUsuario.Text);
             }
             this.Close();
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void boxUsuario_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -239,7 +239,7 @@ namespace ClinicaFrba
                         cmd.ExecuteNonQuery();
                     }
 
-                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', ¡{3}, {4}, {5})",
+                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', {3}, {4}, {5})",
                          //"afi", 555555, "soltero", fecha, "NULL" , 0), cn);
                        username, idPlan, estadoCivil, "NULL", "NULL", 0), cn);
                     cmd.ExecuteNonQuery();
@@ -1387,7 +1387,30 @@ namespace ClinicaFrba
                 return false;
             }
              }
- 
+
+       public void usernamesFamiliares(string username, ComboBox usuarios)
+       {
+
+           usuarios.Items.Add(username);
+           try
+           {
+               int encargado_id = obtenerAfiliadoId(username);
+               cmd = new SqlCommand(string.Format("SELECT username FROM MISSINGNO.Afiliado WHERE afiliado_encargo = {0}",
+                   encargado_id), cn);
+               SqlDataReader reader = cmd.ExecuteReader();
+               while (reader.Read())
+               {
+                   String usuario;
+                   usuario = reader.GetString(0);
+                   usuarios.Items.Add(usuario);
+               }
+               reader.Close();
+           }
+           catch (Exception ex)
+           {
+               
+           }
+       }
 
     }
 }

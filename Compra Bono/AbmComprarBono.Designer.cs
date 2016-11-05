@@ -32,7 +32,7 @@
             this.textoCantidadDeBonos = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.boxUsuario = new System.Windows.Forms.TextBox();
+            this.comboBoxUsuario = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // botonConfirmar
@@ -90,16 +90,15 @@
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // boxUsuario
+            // comboBoxUsuario
             // 
-            this.boxUsuario.BackColor = System.Drawing.Color.White;
-            this.boxUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxUsuario.Location = new System.Drawing.Point(39, 286);
-            this.boxUsuario.Name = "boxUsuario";
-            this.boxUsuario.Size = new System.Drawing.Size(521, 62);
-            this.boxUsuario.TabIndex = 67;
-            this.boxUsuario.Text = "Ingrese un username";
-            this.boxUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.comboBoxUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxUsuario.FormattingEnabled = true;
+            this.comboBoxUsuario.Location = new System.Drawing.Point(39, 293);
+            this.comboBoxUsuario.Name = "comboBoxUsuario";
+            this.comboBoxUsuario.Size = new System.Drawing.Size(521, 63);
+            this.comboBoxUsuario.TabIndex = 68;
+            this.comboBoxUsuario.Text = "Elija un afiliado";
             // 
             // AbmComprarBono
             // 
@@ -107,7 +106,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(584, 519);
-            this.Controls.Add(this.boxUsuario);
+            this.Controls.Add(this.comboBoxUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.botonConfirmar);
             this.Controls.Add(this.textoCantidadDeBonos);
@@ -128,6 +127,6 @@
         private System.Windows.Forms.TextBox textoCantidadDeBonos;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox boxUsuario;
+        private System.Windows.Forms.ComboBox comboBoxUsuario;
     }
 }

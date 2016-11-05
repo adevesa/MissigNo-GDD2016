@@ -239,9 +239,9 @@ namespace ClinicaFrba
                         cmd.ExecuteNonQuery();
                     }
 
-                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', '{3}', {4}, {5})",
+                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', ¡{3}, {4}, {5})",
                          //"afi", 555555, "soltero", fecha, "NULL" , 0), cn);
-                       username, idPlan, estadoCivil, "01/01/2018", "NULL", 0), cn);
+                       username, idPlan, estadoCivil, "NULL", "NULL", 0), cn);
                     cmd.ExecuteNonQuery();
 
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Rol_de_Usuario (rol_id, username) VALUES (3, '{0}')", username), cn);
@@ -274,9 +274,9 @@ namespace ClinicaFrba
                             username, tipoDocumento, doc, contraseña, nombre, apellido, fechaNacimiento, genero, direccion, email, tel), cn);
                         cmd.ExecuteNonQuery();
                     }
-                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', '{3}', {4}, {5})",
+                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', {3}, {4}, {5})",
                         // "fam", 555555, "soltero", fecha, idPadre, 1), cn);
-                      username, idPlan, estadoCivil, "01/01/2018", idPlan, 1), cn);
+                      username, idPlan, estadoCivil, "NULL", idPadre, 1), cn);
                     cmd.ExecuteNonQuery();
 
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Rol_de_Usuario (rol_id, username) VALUES (3, '{0}')", username), cn);
@@ -351,8 +351,8 @@ namespace ClinicaFrba
         {
             try
             {
-                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Afiliado SET afiliado_baja_logica = 1  WHERE username = '{0}' ",
-                    username), cn);
+                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Afiliado SET afiliado_baja_logica = 1, afiliado_fec_baja = '{1}'  WHERE username = '{0}' ",
+                    username, DateTime.Now), cn);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)

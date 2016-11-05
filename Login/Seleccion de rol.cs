@@ -33,6 +33,7 @@ namespace ClinicaFrba.Login
                 this.Close();
                 }
                 else MessageBox.Show("Lo sentimos, su rol afiliado ah sido borrado recientemente");
+
             }
             else
             {

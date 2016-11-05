@@ -34,6 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvFamiliares = new System.Windows.Forms.DataGridView();
+            this.botonBorrar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFamiliares)).BeginInit();
             this.SuspendLayout();
@@ -43,7 +44,7 @@
             this.botonConfirmar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonConfirmar.ForeColor = System.Drawing.Color.Black;
-            this.botonConfirmar.Location = new System.Drawing.Point(625, 307);
+            this.botonConfirmar.Location = new System.Drawing.Point(625, 317);
             this.botonConfirmar.Margin = new System.Windows.Forms.Padding(2);
             this.botonConfirmar.Name = "botonConfirmar";
             this.botonConfirmar.Size = new System.Drawing.Size(109, 46);
@@ -70,7 +71,7 @@
             this.butonAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butonAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.butonAgregar.ForeColor = System.Drawing.Color.Black;
-            this.butonAgregar.Location = new System.Drawing.Point(625, 170);
+            this.butonAgregar.Location = new System.Drawing.Point(625, 126);
             this.butonAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.butonAgregar.Name = "butonAgregar";
             this.butonAgregar.Size = new System.Drawing.Size(109, 46);
@@ -96,6 +97,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.botonBorrar);
             this.panel1.Controls.Add(this.dgvFamiliares);
             this.panel1.Controls.Add(this.botonConfirmar);
             this.panel1.Controls.Add(this.label4);
@@ -112,7 +114,22 @@
             this.dgvFamiliares.Name = "dgvFamiliares";
             this.dgvFamiliares.Size = new System.Drawing.Size(546, 272);
             this.dgvFamiliares.TabIndex = 96;
+            this.dgvFamiliares.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFamiliares_CellClick);
             this.dgvFamiliares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFamiliares_CellContentClick);
+            // 
+            // botonBorrar
+            // 
+            this.botonBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
+            this.botonBorrar.ForeColor = System.Drawing.Color.Black;
+            this.botonBorrar.Location = new System.Drawing.Point(625, 198);
+            this.botonBorrar.Margin = new System.Windows.Forms.Padding(2);
+            this.botonBorrar.Name = "botonBorrar";
+            this.botonBorrar.Size = new System.Drawing.Size(109, 46);
+            this.botonBorrar.TabIndex = 97;
+            this.botonBorrar.Text = "Borrar";
+            this.botonBorrar.UseVisualStyleBackColor = true;
+            this.botonBorrar.Click += new System.EventHandler(this.button1_Click);
             // 
             // AbmConsultaFamiliar
             // 
@@ -142,5 +159,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.DataGridView dgvFamiliares;
+        private System.Windows.Forms.Button botonBorrar;
     }
 }

@@ -12,6 +12,7 @@ namespace ClinicaFrba.Abm_Afiliado
 {
     public partial class AbmConsultaFamiliar : Form
     {
+        BDComun conexion = new BDComun();
         public string userPadre;
         public string direccionPadre;
         public List<AfiliadoSimple> listaFamiliares = new List <AfiliadoSimple>();
@@ -20,6 +21,7 @@ namespace ClinicaFrba.Abm_Afiliado
         public string userHijo;
         public string nombreHijo;
         public string apellidoHijo;
+        int posicion;
     
         public void actualizar(){
             dgvFamiliares.DataSource = listaFamiliares;
@@ -79,6 +81,24 @@ namespace ClinicaFrba.Abm_Afiliado
         private void dgvFamiliares_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (userHijo != null)
+            {
+                conexion.borrarAfiliado(userHijo);
+                MessageBox.Show("Afiliado borrado exitosamente");
+                //dgvFamiliares.Rows.RemoveAt(posicion);
+            }
+            else MessageBox.Show("Elija un Afiliado");
+        }
+
+        private void dgvFamiliares_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            posicion = dgvFamiliares.CurrentRow.Index;
+            userHijo = Convert.ToString(dgvFamiliares[0, posicion].Value);
+          
         }
     }
 }

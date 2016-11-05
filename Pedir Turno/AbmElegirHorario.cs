@@ -28,6 +28,12 @@ namespace ClinicaFrba.Cancelar_Atencion
             this.especialidad = esp;
             this.profesional = prof;
             InitializeComponent();
+            List<DateTime> fechas = conexion.fechasDisponibles(Convert.ToString(prof), Convert.ToString(especialidad));
+            for (int i = 0; i < fechas.Count; i++)
+            {
+                calendario.AddBoldedDate(fechas[i]);
+            }
+
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)

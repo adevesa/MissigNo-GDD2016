@@ -56,6 +56,8 @@ namespace ClinicaFrba
 
         //----AGENDA-----//
 
+        //@desc:Traduce los dias de la semana dado que el programa solo responde en inglés
+
 
         public String traductorDiaDeLaSemana(String dia)
         {
@@ -73,7 +75,7 @@ namespace ClinicaFrba
 
         }
 
-
+        //@desc:Devuelve los Turnos disponibles, dado una dia y una agenda de un profesional.
 
         public List<TimeSpan> turnoEntreHorario(string Dia, int agendaId)
         {
@@ -89,7 +91,7 @@ namespace ClinicaFrba
             return Turnos;
         }
 
-
+        //@desc: Dado una fecha, un nombre de usuario y su especialidad, de vuelve una lista con sus turnos disponibles.
 
         public List<TimeSpan> turnosEnFecha(DateTime fecha, String username, String especialidad)
         {
@@ -99,7 +101,7 @@ namespace ClinicaFrba
         }
 
 
-
+        //@desc: Dado un usuario y una especialidad, devuelve su agenda_id
 
         public int obtenerAgendaId(String username, String especialidad)
         {
@@ -125,6 +127,7 @@ namespace ClinicaFrba
             }
         }
 
+        //@desc: dado un dia y una agenda, devuelve su horario inicial
 
         public TimeSpan horarioDesde(string Dia, int agendaId)
         {
@@ -150,6 +153,8 @@ namespace ClinicaFrba
             }
         }
 
+        //@desc: dado un dia y una agenda, devuelve su horario final
+
         public TimeSpan horarioHasta(string Dia, int agendaId)
         {
             try
@@ -174,6 +179,8 @@ namespace ClinicaFrba
             }
         }
 
+        //@desc: dado una fecha y un username profesional, devuelve una lista de horarios ya usados.
+
         public List<TimeSpan> horariosUsados(DateTime Fecha, string profesional)
         {
             List<TimeSpan> horarios = new List<TimeSpan>();
@@ -183,9 +190,6 @@ namespace ClinicaFrba
                     // "2016-12-12 00:00:00.000", "renzo_Toledo@gmail.com"), cn);
                Fecha, profesional), cn);
 
-
-
-                cmd.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -205,8 +209,72 @@ namespace ClinicaFrba
             }
         }
 
+        public List<DateTime> fechasDisponibles(string username, string especialidad)
+        {
+            List<DateTime> fechas = new List<DateTime>();
+            DateTime fecha_inicio = fechaInicio(username, especialidad);
+            DateTime fecha_fin = fechaFin(username, especialidad);
+            DateTime fecha;
+            for (fecha = fecha_inicio; fecha <= fecha_fin; fecha = fecha.AddDays(1))
+            {
+                fechas.Add(fecha);
+            }
+            return fechas;
+        }
+        
+        public DateTime fechaInicio(String username, String especialidad)
+        {
+            int agenda_id = obtenerAgendaId(username,especialidad);
+            DateTime fecha = new DateTime();
+            try
+            {
+                cmd = new SqlCommand(String.Format("SELECT agenda_inicio FROM MISSINGNO.Agenda WHERE agenda_id = {0}",
+                    agenda_id), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    fecha = reader.GetDateTime(0);
+                }
+                reader.Close();
+
+                return fecha;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conseguir fechaInicio: " + ex.ToString());
+                return fecha;
+            }
+        }
+
+        public DateTime fechaFin(String username, String especialidad)
+        {
+            int agenda_id = obtenerAgendaId(username, especialidad);
+            DateTime fecha = new DateTime();
+            try
+            {
+                cmd = new SqlCommand(String.Format("SELECT agenda_fin FROM MISSINGNO.Agenda WHERE agenda_id = {0}",
+                    agenda_id), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    fecha = reader.GetDateTime(0);
+                }
+                reader.Close();
+
+                return fecha;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conseguir fechaFin: " + ex.ToString());
+                return fecha;
+            }
+        }
 
         //----BONOS-----//
+
+        //@desc: dado un usuario devuelve el precio que abona un bono.
 
      public int obtenerBonoPrecio(String username)
         {
@@ -238,6 +306,8 @@ namespace ClinicaFrba
 
         //-----TURNOS--------//
 
+     //@desc:dado un n° de consulta medica, devuelve su turno_id
+
      public int obtenerTurnoId(int consultaMedica)
      {
          try
@@ -264,6 +334,8 @@ namespace ClinicaFrba
      }
 
 
+     //@desc: dado un turno, pregunta si este esta cancelado.
+
      public bool turnoYaCancelado(int turno_id)
      {
          try
@@ -278,6 +350,8 @@ namespace ClinicaFrba
              return false;
          }
      }
+
+     //@desc: dado un usuario, devuelve todos los datos del usuario
 
      public AfiliadoCompleto obtenerDatosAfiliadoCompleto(string username)
      {
@@ -333,8 +407,9 @@ namespace ClinicaFrba
 
 
         //-----USUARIOS-----//
-     
 
+
+     //@desc: dado un usuario y una especialdiad devuelve su prof_esp_id
 
      public int conseguirIdporUsernameYespecialidad(String username, String especialidad)
         {
@@ -361,6 +436,8 @@ namespace ClinicaFrba
 
         //-------AFILIADOS----//
 
+     //@desc: dado un usuario devuelve su plan id
+
     public int obtenerPlanIdDeAfiliado(String username)
         {
             int id = new int();
@@ -383,7 +460,10 @@ namespace ClinicaFrba
                 MessageBox.Show("Error al obtener turno ID: " + ex.ToString());
                 return -1;
             }
-        }                        
+        }
+
+    //@desc: dado un nombre de plan, devuelve su id  
+     
     public int obtenerPlanId(string planDescripcion)
         {
             try
@@ -409,6 +489,7 @@ namespace ClinicaFrba
 
         }
 
+    //@desc: dado un usuario devuelve su afiliado_id
 
         public int obtenerAfiliadoId(string username)
         {
@@ -435,6 +516,8 @@ namespace ClinicaFrba
 
         }
 
+
+        //@desc: dado un afiliado_id devuelve sus datos 
 
         public AfiliadoSimple obtenerDatosAfiliadoSimple(int afiliadoID)
         {
@@ -808,7 +891,7 @@ namespace ClinicaFrba
             try
             {
                 int id = new int();
-                cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Bono(plan_id,afiliado_id,compra_bono_id,bono_estado,bono_precio) OUTPUT inserted.bono_id VALUES ({0},{1},{2},1,{3})",
+                cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Bono(plan_id,afiliado_id,compra_bono_id,bono_estado,bono_precio) OUTPUT inserted.bono_id VALUES ({0},{1},{2},0,{3})",
                     planid, afiliadoId, compraBonoId, bonoPrecio), cn);
 
                 SqlDataReader reader = cmd.ExecuteReader();

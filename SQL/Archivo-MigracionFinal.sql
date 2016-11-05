@@ -1,110 +1,7 @@
 USE GD2C2016
 GO
 
---ELIMINACION DE FOREIGN KEYS
-
-	-- TABLA ADMINISTRATIVO
-
-alter table MISSINGNO.Administrativo
-	drop constraint FK_Administrativo_username;
-
-  -- TABLA CONSULTA_MEDICA
-
-alter table MISSINGNO.Consulta_medica
-	drop constraint FK_Consulta_medica_profesional_id;
-alter table MISSINGNO.Consulta_medica
-	drop constraint FK_Consulta_medica_afiliado_id;
-alter table MISSINGNO.Consulta_medica
-	drop constraint FK_Consulta_medica_agenda_id;
-alter table MISSINGNO.Consulta_medica
-	drop constraint FK_Consulta_medica_turno_id;
-
-  -- TABLA AFILIADO
-  
-alter table MISSINGNO.Afiliado
-	drop constraint FK_Afiliado_username;
-alter table MISSINGNO.Afiliado
-	drop constraint FK_Afiliado_plan_id;
-alter table MISSINGNO.Afiliado
-	drop constraint FK_Afiliado_afiliado_encargado;
-
-  -- TABLA PROFESIONAL
-  
-alter table MISSINGNO.Profesional
-	drop constraint FK_Profesional_username;
-
-  -- TABLA AGENDA
-  
-alter table MISSINGNO.Agenda
-	drop constraint FK_Agenda_prof_esp_id;
-
-  -- TABLA CANCELACION_TURNO
-  
-alter table MISSINGNO.Cancelacion_turno
-	drop constraint FK_Cancelacion_turno_turno_id;
-
-  -- TABLA TURNO
-    
-alter table MISSINGNO.Turno
-	drop constraint FK_Turno_profesional_id;
-alter table MISSINGNO.Turno
-	drop constraint FK_Turno_bono_id;
-
-  -- TABLA COMPRA_BONO
-  
-alter table MISSINGNO.Compra_bono
-	drop constraint FK_Compra_bono_afiliado_id;
-alter table MISSINGNO.Compra_bono
-	drop constraint FK_Compra_bono_plan_id;
-
-  -- TABLA BONO
-  
-alter table MISSINGNO.Bono
-	drop constraint FK_Bono_plan_id;
-alter table MISSINGNO.Bono
-	drop constraint FK_Bono_afiliado_id;
-alter table MISSINGNO.Bono
-	drop constraint FK_Bono_compra_bono_id;
-
-	-- TABLA ROL_DE_USUARIO
-
-alter table MISSINGNO.Rol_de_usuario
-	drop constraint FK_Rol_de_usuario_rol_id;
-alter table MISSINGNO.Rol_de_usuario
-	drop constraint FK_Rol_de_usuario_username;
-
-	-- TABLA FUNCIONALIDAD_DE_ROL
-
-alter table MISSINGNO.Funcionalidad_de_rol
-	drop constraint FK_Funcionalidad_de_rol_funcionalidad_id;
-alter table MISSINGNO.Funcionalidad_de_rol
-	drop constraint FK_Funcionalidad_de_rol_rol_id;
-
-	-- TABLA ESPECIALIDAD
-alter table MISSINGNO.Especialidad
-	drop constraint FK_Especialidad_tipo_especialidad_id 
-
-	-- TABLA ESPECIALIDAD_DE_PROFESIONAL
-
-alter table MISSINGNO.Especialidad_de_profesional
-	drop constraint FK_Especialidad_de_profesional_profesional_id;
-alter table MISSINGNO.Especialidad_de_profesional
-	drop constraint FK_Especialidad_de_profesional_especialidad_id;
-
-	-- TABLA AFILIADO_HISTORIAL
-
-alter table MISSINGNO.Afiliado_historial
-	drop constraint FK_Afiliado_historial_afiliado_id;
-
-	-- TABLA DIA
-
-alter table MISSINGNO.Dia
-	drop constraint FK_Dia_agenda_id;
-
 --  ELIMINACION DE TABLAS
-
-if object_id('MISSINGNO.Tipo_especialidad') is not null
-drop table MISSINGNO.Tipo_especialidad;
 
 if object_id('MISSINGNO.Administrativo') is not null
 drop table MISSINGNO.Administrativo;
@@ -115,38 +12,11 @@ drop table MISSINGNO.Consulta_medica;
 if object_id('MISSINGNO.Afiliado_Historial') is not null
 drop table MISSINGNO.Afiliado_Historial;
 
-if object_id('MISSINGNO.Agenda') is not null
-drop table MISSINGNO.Agenda;
-
 if object_id('MISSINGNO.Cancelacion_turno') is not null
 drop table MISSINGNO.Cancelacion_turno;
 
 if object_id('MISSINGNO.Dia') is not null
 drop table MISSINGNO.Dia;
-
-if object_id('MISSINGNO.Funcionalidad') is not null
-drop table MISSINGNO.Funcionalidad;
-
-if object_id('MISSINGNO.Planes') is not null
-drop table MISSINGNO.Planes;
-
-if object_id('MISSINGNO.Profesional') is not null
-drop table MISSINGNO.Profesional;
-
-if object_id('MISSINGNO.Usuario') is not null
-drop table MISSINGNO.Usuario;
-
-if object_id('MISSINGNO.Compra_bono') is not null
-drop table MISSINGNO.Compra_bono;
-
-if object_id('MISSINGNO.Bono') is not null
-drop table MISSINGNO.Bono;
-
-if object_id('MISSINGNO.Afiliado') is not null
-drop table MISSINGNO.Afiliado;
-
-if object_id('MISSINGNO.Especialidad_de_profesional') is not null
-drop table MISSINGNO.Especialidad_de_profesional;
 
 if object_id('MISSINGNO.Turno') is not null
 drop table MISSINGNO.Turno;
@@ -154,20 +24,44 @@ drop table MISSINGNO.Turno;
 if object_id('MISSINGNO.Rol_de_usuario') is not null
 drop table MISSINGNO.Rol_de_usuario;
 
+if object_id('MISSINGNO.Funcionalidad_de_rol') is not null
+drop table MISSINGNO.Funcionalidad_de_rol;
+
 if object_id('MISSINGNO.Rol') is not null
 drop table MISSINGNO.Rol;
 
-if object_id('MISSINGNO.Funcionalidad_de_rol') is not null
-drop table MISSINGNO.Funcionalidad_de_rol;
+if object_id('MISSINGNO.Funcionalidad') is not null
+drop table MISSINGNO.Funcionalidad;
+
+if object_id('MISSINGNO.Bono') is not null
+drop table MISSINGNO.Bono;
+
+if object_id('MISSINGNO.Compra_bono') is not null
+drop table MISSINGNO.Compra_bono;
+
+if object_id('MISSINGNO.Agenda') is not null
+drop table MISSINGNO.Agenda;
+
+if object_id('MISSINGNO.Afiliado') is not null
+drop table MISSINGNO.Afiliado;
+
+if object_id('MISSINGNO.Planes') is not null
+drop table MISSINGNO.Planes;
+
+if object_id('MISSINGNO.Especialidad_de_profesional') is not null
+drop table MISSINGNO.Especialidad_de_profesional;
 
 if object_id('MISSINGNO.Especialidad') is not null
 drop table MISSINGNO.Especialidad;
 
+if object_id('MISSINGNO.Tipo_especialidad') is not null
+drop table MISSINGNO.Tipo_especialidad;
 
-DROP SCHEMA [MISSINGNO]
-GO
+if object_id('MISSINGNO.Profesional') is not null
+drop table MISSINGNO.Profesional;
 
-
+if object_id('MISSINGNO.Usuario') is not null
+drop table MISSINGNO.Usuario;
 
 CREATE SCHEMA [MISSINGNO]
 GO

@@ -84,9 +84,12 @@ namespace ClinicaFrba
             TimeSpan horario_Hasta = horarioHasta(Dia, agendaId);
             TimeSpan horario_progresivo = new TimeSpan();
             TimeSpan treinta_minutos = new TimeSpan(00, 30, 00);
+            TimeSpan error = new TimeSpan(00, 00, 00);
             for (horario_progresivo = horario_Desde; horario_progresivo <= horario_Hasta; horario_progresivo += treinta_minutos)
-            {
+            {            
+                if(horario_progresivo != error){
                 Turnos.Add(horario_progresivo);
+                }
             }
             return Turnos;
         }
@@ -342,6 +345,32 @@ namespace ClinicaFrba
         }
 
 
+
+        public DateTime fechasLimitesDeAgenda(string profesional, string especialidad, string limite)
+        {
+            DateTime fecha = new DateTime();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT {0} FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username ='{1}') AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{2}'))",
+                    limite, profesional, especialidad), cn);
+                cmd.ExecuteNonQuery();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    fecha = reader.GetDateTime(0);
+                }
+                reader.Close();
+                return fecha;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar fechas limites: " + ex.ToString());
+
+                return fecha;
+            }
+
+
+        }
 
         //-----TURNOS--------//
 

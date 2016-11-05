@@ -228,12 +228,9 @@ namespace ClinicaFrba
 
         public bool estaIncluido(String palabra, List<String> palabras)
         {
-            for (int i = 0; i <= palabras.Count; i++)
+            foreach (String pal in palabras)
             {
-                if (palabra == palabras[i])
-                {
-                    return true;
-                }
+                if (palabra == pal) return true;
             }
             return false;
         }

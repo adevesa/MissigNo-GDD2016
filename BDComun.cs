@@ -131,6 +131,7 @@ namespace ClinicaFrba
                     {
                         //agrego los roles al combobox
                         roles.Items.Add(reader.GetString(0));
+
                     }
 
                     //si hay un solo rol para el usuario
@@ -160,30 +161,6 @@ namespace ClinicaFrba
         }
         //----------------------------------------LLAMADAS A SQL PARA ADMINISTRAR AFILIADO
 
-        /*   public AfiliadoSimple Buscar_afiliado_por_username(string username)
-           {
-
-               AfiliadoSimple afiliado = new AfiliadoSimple();
-               try{
-               cmd = new SqlCommand(String.Format(
-               "SELECT afiliado_id, username FROM MISSIGNO.Afiliado where username ='{0}'", username), cn);
-               cmd.ExecuteNonQuery();
-               SqlDataReader reader = cmd.ExecuteReader();
-               while (reader.Read())
-               {
-                   afiliado.afiliado_id = reader.GetInt32(0);
-                   afiliado.username = reader.GetString(1);
-               }
-
-               return afiliado;
-              }
-               catch (Exception ex)
-               {
-                   MessageBox.Show("Error al buscar afiliado: " + ex.ToString());
-                   return afiliado;
-               }
-
-           }*/
         public string cifrarGenero(string genero)
         {
             if (genero == "Hombre")
@@ -374,7 +351,8 @@ namespace ClinicaFrba
         {
             try
             {
-                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Afiliado SET afiliado_baja_logica = 1  WHERE username = '{0}' ", username));
+                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Afiliado SET afiliado_baja_logica = 1  WHERE username = '{0}' ",
+                    username), cn);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -1286,20 +1264,17 @@ namespace ClinicaFrba
                 {
                     while (reader.Read())
                     {
-                        //agrego los roles al combobox
+
                         bonos.Items.Add(Convert.ToString(reader.GetInt32(0)));
                     }
 
-                    //si hay un solo rol para el usuario
                     if (bonos.Items.Count == 1)
                     {
-                        //ya tiene un rol
                         string bono;
                         bono = bonos.GetItemText(bonos.Items[0]);
                     }
                     else
                     {
-                        //el combobox muestra el primer rol por default
                         bonos.SelectedIndex = 0;
                     }
 
@@ -1345,6 +1320,74 @@ namespace ClinicaFrba
             }
       }
 
+        public void obtenerConsultas(string profesional, ComboBox idConsulta)
+        {
+
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT consulta_id FROM MISSINGNO.Consulta_medica WHERE profesional_id = (SELECT profesional_id  FROM MISSINGNO.Profesional WHERE username = '{0}') AND confirmacion_de_atencion= 'NO'",
+                   profesional), cn);
+                cmd.ExecuteNonQuery();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        idConsulta.Items.Add(Convert.ToString(reader.GetInt32(0)));
+
+
+                    }
+                    if (idConsulta.Items.Count == 1)
+                    {
+
+                        string turno;
+                        turno = idConsulta.GetItemText(idConsulta.Items[0]);
+
+                    }
+                    else
+                    {
+
+                        idConsulta.SelectedIndex = 0;
+
+                    }
+
+                    reader.Close();
+
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar consultas: " + ex.ToString());
+            }
+        }
+
+       public bool estadoBajaLogica(string afiliado)
+             {
+                 bool estado = new bool();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT afiliado_baja_logica FROM MISSINGNO.Afiliado where username = '{0}'",
+                    afiliado), cn);
+                cmd.ExecuteNonQuery();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    estado = reader.GetBoolean(0);
+                }
+                reader.Close();
+                return estado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar profesionales: " + ex.ToString());
+                return false;
+            }
+             }
+ 
 
     }
 }

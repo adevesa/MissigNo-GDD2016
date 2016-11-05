@@ -88,3 +88,4 @@ C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.ca
 C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.RegistroDeLlegada.resources
 C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Resultado.AbmRegistroResultado.resources
 C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Login.SeleccionRol.resources

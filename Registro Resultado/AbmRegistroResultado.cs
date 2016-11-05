@@ -63,6 +63,8 @@ namespace ClinicaFrba.Registro_Resultado
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
+
+            conexion.obtenerConsultas(Program.usuario, textoConsulta);
     
 
         }

@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textoConsulta = new System.Windows.Forms.TextBox();
+            this.textoSintoma = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textoDiagnostico = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -39,17 +40,16 @@
             this.opcionSi = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textoSintoma = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.textoConsulta = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.textoConsulta);
             this.panel1.Controls.Add(this.textoSintoma);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textoConsulta);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.textoDiagnostico);
             this.panel1.Controls.Add(this.label6);
@@ -64,14 +64,26 @@
             this.panel1.Size = new System.Drawing.Size(693, 548);
             this.panel1.TabIndex = 0;
             // 
-            // textoConsulta
+            // textoSintoma
             // 
-            this.textoConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoConsulta.Location = new System.Drawing.Point(314, 61);
-            this.textoConsulta.Name = "textoConsulta";
-            this.textoConsulta.Size = new System.Drawing.Size(295, 38);
-            this.textoConsulta.TabIndex = 124;
-            this.textoConsulta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textoConsulta_KeyPress);
+            this.textoSintoma.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoSintoma.Location = new System.Drawing.Point(314, 211);
+            this.textoSintoma.Name = "textoSintoma";
+            this.textoSintoma.Size = new System.Drawing.Size(295, 38);
+            this.textoSintoma.TabIndex = 126;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(31, 213);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 33);
+            this.label2.TabIndex = 125;
+            this.label2.Text = "Sintoma";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -189,26 +201,22 @@
             this.label1.Text = "Registrar resultados";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textoSintoma
+            // textoConsulta
             // 
-            this.textoSintoma.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoSintoma.Location = new System.Drawing.Point(314, 211);
-            this.textoSintoma.Name = "textoSintoma";
-            this.textoSintoma.Size = new System.Drawing.Size(295, 38);
-            this.textoSintoma.TabIndex = 126;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(31, 213);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 33);
-            this.label2.TabIndex = 125;
-            this.label2.Text = "Sintoma";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.textoConsulta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.textoConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textoConsulta.FormattingEnabled = true;
+            this.textoConsulta.Items.AddRange(new object[] {
+            "Soltero/a",
+            "Casado/a",
+            "Viudo/a",
+            "Concubinato",
+            "Divorciado/a"});
+            this.textoConsulta.Location = new System.Drawing.Point(314, 71);
+            this.textoConsulta.Name = "textoConsulta";
+            this.textoConsulta.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textoConsulta.Size = new System.Drawing.Size(295, 32);
+            this.textoConsulta.TabIndex = 127;
             // 
             // AbmRegistroResultado
             // 
@@ -240,8 +248,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textoDiagnostico;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textoConsulta;
         private System.Windows.Forms.TextBox textoSintoma;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox textoConsulta;
     }
 }

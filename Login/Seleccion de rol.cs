@@ -26,10 +26,13 @@ namespace ClinicaFrba.Login
         {
             if (roles.Text == "Afiliado")
             {
+                if(!conexion.estadoBajaLogica(Program.usuario)){
                 AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
                 this.Hide();
                 abmRolAfiliado.ShowDialog();
                 this.Close();
+                }
+                else MessageBox.Show("Lo sentimos, su rol afiliado ah sido borrado recientemente");
             }
             else
             {
@@ -96,5 +99,15 @@ namespace ClinicaFrba.Login
         {
             conexion.recuperarRolesHabilitados(usr, roles, rol);
         }
+
+        private void roles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+
+
     }
 }

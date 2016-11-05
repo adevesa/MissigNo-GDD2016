@@ -312,6 +312,9 @@
     <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login\Seleccion de rol.resx">
+      <DependentUpon>Seleccion de rol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pedir Turno\AbmElegirHorario.resx">
       <DependentUpon>AbmElegirHorario.cs</DependentUpon>
     </EmbeddedResource>

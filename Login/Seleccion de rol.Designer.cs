@@ -53,6 +53,7 @@
             this.roles.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.roles.Size = new System.Drawing.Size(233, 26);
             this.roles.TabIndex = 0;
+            this.roles.SelectedIndexChanged += new System.EventHandler(this.roles_SelectedIndexChanged);
             // 
             // label1
             // 

@@ -215,13 +215,29 @@ namespace ClinicaFrba
             DateTime fecha_inicio = fechaInicio(username, especialidad);
             DateTime fecha_fin = fechaFin(username, especialidad);
             DateTime fecha;
+            List<String> dias = obtenerDiasAgenda(username, especialidad);
             for (fecha = fecha_inicio; fecha <= fecha_fin; fecha = fecha.AddDays(1))
             {
-                fechas.Add(fecha);
+                if (estaIncluido(traductorDiaDeLaSemana(Convert.ToString(fecha.DayOfWeek)), dias))
+                {
+                    fechas.Add(fecha);
+                }
             }
             return fechas;
         }
-        
+
+        public bool estaIncluido(String palabra, List<String> palabras)
+        {
+            for (int i = 0; i <= palabras.Count; i++)
+            {
+                if (palabra == palabras[i])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public DateTime fechaInicio(String username, String especialidad)
         {
             int agenda_id = obtenerAgendaId(username,especialidad);
@@ -272,6 +288,32 @@ namespace ClinicaFrba
             }
         }
 
+        public List<String> obtenerDiasAgenda(String username, String especialidad)
+        {
+            List<String> dias= new List<String>();
+            int agenda_id = obtenerAgendaId(username,especialidad);
+
+            try
+            {
+                 cmd = new SqlCommand(String.Format("SELECT desc_dia FROM MISSINGNO.Dia WHERE agenda_id = {0}",
+                    agenda_id), cn);
+                 SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    String diax;
+                    diax = reader.GetString(0);
+                    dias.Add(diax);
+                }
+                reader.Close();
+
+                return dias;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conseguir dias de agenda: " + ex.ToString());
+                return dias;
+            }
+        }
         //----BONOS-----//
 
         //@desc: dado un usuario devuelve el precio que abona un bono.
@@ -842,6 +884,76 @@ namespace ClinicaFrba
             }
         }
 
+        public void cancelarDia(String usernameProfesional, DateTime fecha, String tipoCancelacion, String motivoCancelacion)
+        {
+            List<int> turnosDelDia = turnosDelDiaDelProfesional(usernameProfesional, fecha);
+            foreach (int turno in turnosDelDia)
+            {
+                cancelarTurno(turno, tipoCancelacion, motivoCancelacion);
+            }
+        }
+
+        public void cancelarDias(String usernameProfesional, DateTime fecha_inicio, DateTime fecha_fin, String tipoCancelacion, String motivoCancelacion)
+        {
+            DateTime fecha = new DateTime();
+            for (fecha = fecha_inicio; fecha <= fecha_fin; fecha = fecha.AddDays(1))
+            {
+                cancelarDia(usernameProfesional, fecha, tipoCancelacion, motivoCancelacion);
+            }
+        }
+
+        public List<int> turnosDelDiaDelProfesional(String usernameProfesional, DateTime fecha)
+        {
+            int profesional_id = obtenerProfesionalId(usernameProfesional);
+            List<int> turnos_id_de_la_Fecha = new List<int>();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE fecha = '{0}' AND profesional_id = {1}",
+                    fecha, profesional_id), cn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int turno;
+                    turno = reader.GetInt32(0);
+                    turnos_id_de_la_Fecha.Add(turno);
+
+                }
+                reader.Close();
+                return turnos_id_de_la_Fecha;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al crear turno: " + ex.ToString());
+                return turnos_id_de_la_Fecha;
+            }
+        }
+
+        public int obtenerProfesionalId(String usernameProfesional)
+        {
+            int profesional_id = new int();
+
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}'",
+                    usernameProfesional), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    profesional_id = reader.GetInt32(0);
+                }
+                reader.Close();
+                return profesional_id;
+            }
+                catch (Exception ex)
+                {
+
+                MessageBox.Show("Error al crear turno: " + ex.ToString());
+                return -3;
+                }
+        }
+        
 
         public int crearTurno(string userProfesional, int bonoId, DateTime fecha, TimeSpan horario)
         {

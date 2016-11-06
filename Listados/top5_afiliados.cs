@@ -135,5 +135,10 @@ namespace ClinicaFrba.Listados
             frmAbmListados.ShowDialog();
             this.Close();
         }
+
+        private void top5_afiliados_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

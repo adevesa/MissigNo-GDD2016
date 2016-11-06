@@ -136,12 +136,6 @@
       <DependentUpon>ComprarBonoDesdeAdministrador.cs</DependentUpon>
     </Compile>
     <Compile Include="Clases\Palabra.cs" />
-    <Compile Include="Listados\AbmListado2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Listados\AbmListado2.Designer.cs">
-      <DependentUpon>AbmListado2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Listados\AbmListados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,9 +272,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Compra Bono\ComprarBonoDesdeAdministrador.resx">
       <DependentUpon>ComprarBonoDesdeAdministrador.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Listados\AbmListado2.resx">
-      <DependentUpon>AbmListado2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listados\AbmListados.resx">
       <DependentUpon>AbmListados.cs</DependentUpon>

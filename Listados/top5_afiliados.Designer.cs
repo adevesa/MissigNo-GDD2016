@@ -118,6 +118,7 @@
             this.Name = "top5_afiliados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinica FRBA-Top 5 Afiliados";
+            this.Load += new System.EventHandler(this.top5_afiliados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

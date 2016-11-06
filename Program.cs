@@ -27,15 +27,15 @@ namespace ClinicaFrba
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 
-                List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
-                ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar login = new ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar(lista, "afi", "mi casa");
+                //List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
+                //ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar login = new ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar(lista, "afi", "mi casa");
                 //ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado login = new ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado();
                 //ClinicaFrba.Registro_Llegada.RegistroDeLlegada login = new ClinicaFrba.Registro_Llegada.RegistroDeLlegada();
                 //ClinicaFrba.Cancelar_Atencion.AbmPedirTurno login = new ClinicaFrba.Cancelar_Atencion.AbmPedirTurno();
                 //ClinicaFrba.Registro_Resultado.AbmRegistroResultado login = new ClinicaFrba.Registro_Resultado.AbmRegistroResultado();
               
 
-               // ClinicaFrba.Login.frm_login login = new ClinicaFrba.Login.frm_login();
+                ClinicaFrba.Login.frm_login login = new ClinicaFrba.Login.frm_login();
                 Application.Run(login);
 
         }

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace ClinicaFrba.Compra_Bono
 {
     public partial class ComprarBonoDesdeAdministrador : Form
-    {
+    {   //ATRIBUTOS//
         BDComun conexion = new BDComun();
         private String username;
         public ComprarBonoDesdeAdministrador()

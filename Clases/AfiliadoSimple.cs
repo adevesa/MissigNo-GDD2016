@@ -12,14 +12,16 @@ namespace ClinicaFrba
             public string username { get; set; }
             public String nombre { get; set; }
             public String apellido { get; set; }
+            public String estado { get; set; }
 
             public AfiliadoSimple() { }
 
-        public AfiliadoSimple(string pUsername, string pNombre, string pApellido)
+        public AfiliadoSimple(string pUsername, string pNombre, string pApellido, string pEstado)
         {
             this.username = pUsername;
             this.nombre = pNombre;
             this.apellido = pApellido;
+            this.estado = pEstado;
   
         }
     }

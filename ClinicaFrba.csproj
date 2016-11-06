@@ -84,12 +84,6 @@
     <Compile Include="Abm Afiliado\AgregarFamiliar.Designer.cs">
       <DependentUpon>AgregarFamiliar.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\Abm Profesional\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AbmRol\Abm Profesional\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="AbmRol\AbmRolAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>

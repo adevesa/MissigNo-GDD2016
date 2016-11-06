@@ -11,7 +11,8 @@ using System.Windows.Forms;
 namespace ClinicaFrba.Abm_Afiliado
 {
     public partial class AbmConsultaFamiliar : Form
-    {
+    {  
+        //Atributos//
         BDComun conexion = new BDComun();
         public string userPadre;
         public string direccionPadre;
@@ -55,6 +56,8 @@ namespace ClinicaFrba.Abm_Afiliado
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
+
+            //inicializo el dgv
             dgvFamiliares.DataSource = listaFamiliares;
 
         }
@@ -67,17 +70,6 @@ namespace ClinicaFrba.Abm_Afiliado
             this.Close();
         }
 
-        private void botonQuitar_Click(object sender, EventArgs e)
-        {
-            if (dgvFamiliares.SelectedRows.Count == 1)
-            {
-
-               // string afiliado = Convert.ToString(dgvFamiliares.CurrentRow.Cells[1].Value);
-              //  UsuarioDAL.borrarAfiliado(afiliado);
-            }
-            else
-                MessageBox.Show("debe de seleccionar un afiliado");
-        }
 
         private void dgvFamiliares_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -90,14 +82,14 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 conexion.borrarAfiliado(userHijo);
                 MessageBox.Show("Afiliado borrado exitosamente");
-                //dgvFamiliares.Rows.RemoveAt(dgvFamiliares.CurrentRow.Index);
+                dgvFamiliares[3, posicion].Value = "Borrado"; //le cargo a la columna 3, fila clickeada el valor de borrado
             }
             else MessageBox.Show("Elija un Afiliado");
         }
 
         private void dgvFamiliares_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            //guardo el valor de la fila clickeada del dwv en uan variable local
             posicion = dgvFamiliares.CurrentRow.Index;
             userHijo = Convert.ToString(dgvFamiliares[0, posicion].Value);
           

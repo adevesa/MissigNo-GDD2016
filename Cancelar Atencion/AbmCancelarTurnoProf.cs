@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class AbmCancelarTurnoProf : Form
-    {
+    {   //Atributos//
         BDComun conexion = new BDComun();
         private String username;
         int indicador = new int();
@@ -22,7 +22,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             InitializeComponent();
         }
 
-        public bool errores_de_registro()
+        public bool errores_de_registro()//Funcion para verificar que no haya textBox vacios
         {
             return ((textoMotivo.Text.Length == 0) || tipoCancelacion.Text.Length == 0 || textoMotivo.Text == "Escriba el motivo...");
 
@@ -30,13 +30,13 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void botonConfirmar_Click(object sender, EventArgs e)
         {
-
+            //Verifica que esten todos los campos completos
             if (errores_de_registro())
             {
                 MessageBox.Show("Faltan completar datos");
             }
             else
-            {
+            {       //verifica que la fecha de hasta no sea menor que la de desde
                 if (dateTimeDesde.Value > dateTimeHasta.Value)
                 {
                     MessageBox.Show("Error en las fechas");
@@ -55,6 +55,11 @@ namespace ClinicaFrba.Cancelar_Atencion
         }
 
         private void tipoCancelacion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AbmCancelarTurnoProf_Load(object sender, EventArgs e)
         {
 
         }

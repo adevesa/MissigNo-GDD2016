@@ -11,12 +11,11 @@ using System.Windows.Forms;
 namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class AbmElegirHorario : Form
-    {
+    {   //Atributos//
         BDComun conexion = new BDComun();
         Palabra especialidad = new Palabra();
         Palabra profesional = new Palabra();
         List<int> listaDeHorarios = new List<int>();
-     //   Time horarioElegido = new Time();
         TimeSpan horarioElegido = new TimeSpan();
         int bonoId = new int();
         string dia;

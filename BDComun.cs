@@ -430,6 +430,88 @@ namespace ClinicaFrba
          }
      }
 
+     //@desc: genera una lista con todas las especialidades de la base de datos
+     public List<Palabra> obtenerTodasLasEspecialidades()
+     {
+         List<Palabra> especialidades = new List<Palabra>();
+
+         try
+         {
+             cmd = new SqlCommand("SELECT especialidad_descripcion FROM MISSINGNO.Especialidad WHERE especialidad_id != -1", cn);
+             cmd.ExecuteNonQuery();
+             SqlDataReader reader = cmd.ExecuteReader();
+             while (reader.Read())
+             {
+                 Palabra especialidad = new Palabra();
+                 especialidad.unElemento = reader.GetString(0);
+                 especialidades.Add(especialidad);
+
+             }
+             reader.Close();
+             return especialidades;
+         }
+         catch (Exception ex)
+         {
+             MessageBox.Show("Error al obtener especialidades: " + ex.ToString());
+             return especialidades;
+         }
+     }
+
+
+     //@desc: obtiene una lista con todos los turnos de un afiliado y un profesional
+     public List<tipoTurno> obtenerTurnos(string usernameAfi, string usernameProf)
+     {
+         List<tipoTurno> turnos = new List<tipoTurno>();
+         try
+         {
+             cmd = new SqlCommand(string.Format("SELECT T.turno_id, T.fecha, T.horario FROM MISSINGNO.Turno AS T, MISSINGNO.BONO AS B  WHERE T.profesional_id= (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}' ) AND T.bono_id = B.bono_id AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username= '{1}') AND T.en_uso = 0",
+                 usernameAfi, usernameProf), cn);
+             cmd.ExecuteNonQuery();
+             SqlDataReader reader = cmd.ExecuteReader();
+             while (reader.Read())
+             {
+                 tipoTurno turno = new tipoTurno();
+                 turno.idTurno = reader.GetInt32(0);
+                 turno.fechaTurno = reader.GetDateTime(1);
+
+                 turnos.Add(turno);
+
+             }
+             reader.Close();
+             return turnos;
+         }
+         catch (Exception ex)
+         {
+             MessageBox.Show("Error al obtener turnos: " + ex.ToString());
+             return turnos;
+         }
+     }
+
+
+     //@desc: devuelve una lista con todos los turnos cancelados de la base de datos
+     public List<string> turnosCancelados()
+     {
+         List<string> turnos = new List<string>();
+         try
+         {
+             cmd = new SqlCommand("SELECT turno_id FROM MISSINGNO.Cancelacion_turno", cn);
+             cmd.ExecuteNonQuery();
+             SqlDataReader reader = cmd.ExecuteReader();
+             while (reader.Read())
+             {
+                 string turno = Convert.ToString(reader.GetInt32(0));
+                 turnos.Add(turno);
+             }
+             reader.Close();
+             return turnos;
+
+         }
+         catch (Exception ex)
+         {
+             MessageBox.Show("Error al generar turnos cancelados: " + ex.ToString());
+             return turnos;
+         }
+     }
 
         //-----USUARIOS-----//
 
@@ -560,6 +642,8 @@ namespace ClinicaFrba
                     afiliado.username = reader.GetString(0);
                     afiliado.nombre = reader.GetString(1);
                     afiliado.apellido = reader.GetString(2);
+                    afiliado.estado = "Activo";
+                    
                 }
                 reader.Close();
                 return afiliado;
@@ -572,10 +656,63 @@ namespace ClinicaFrba
 
         }
 
+
+
+
+        //@desc: dado un profesional y una fecha obtiene una lista con todos los turnos de ese dia
+        public List<int> turnosDelDiaDelProfesional(String usernameProfesional, DateTime fecha)
+        {
+            int profesional_id = obtenerProfesionalId(usernameProfesional);
+            List<int> turnos_id_de_la_Fecha = new List<int>();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE fecha = '{0}' AND profesional_id = {1}",
+                    fecha, profesional_id), cn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int turno;
+                    turno = reader.GetInt32(0);
+                    turnos_id_de_la_Fecha.Add(turno);
+
+                }
+                reader.Close();
+                return turnos_id_de_la_Fecha;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al crear turno: " + ex.ToString());
+                return turnos_id_de_la_Fecha;
+            }
+        }
+
+        //@desc: Dado un username obtiene la id de su rol profesional
+        public int obtenerProfesionalId(String usernameProfesional)
+        {
+            int profesional_id = new int();
+
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}'",
+                    usernameProfesional), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    profesional_id = reader.GetInt32(0);
+                }
+                reader.Close();
+                return profesional_id;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al crear turno: " + ex.ToString());
+                return -3;
+            }
+        }
         
-       
-
-
 
 
 
@@ -684,7 +821,7 @@ namespace ClinicaFrba
             }
         }
 
-
+        
         public int tieneAgenda(string profesional, string especialidad)
         {
             string prof;
@@ -716,6 +853,7 @@ namespace ClinicaFrba
 
 
         //---AFILIADO-----//
+        //@desc: Dado un username verifica si cuenta con el rol de afiliado
         public bool esAfiliado(String username)
         {
             try
@@ -738,7 +876,7 @@ namespace ClinicaFrba
                 return false;
             }
         }
-
+        //@desc: Dado un afiliado devuelve si tiene baja logica
         public bool estadoBajaLogica(string afiliado)
         {
             bool estado = new bool();
@@ -776,6 +914,7 @@ namespace ClinicaFrba
         //INSERT A LAS TABLAS DE LA BASE DE DATOS AL CREAR UN NUEVO DATO
 
         //---TRONCALES
+        //@desc: Le manda un genero y devuelve su primera letra
         public string cifrarGenero(string genero)
         {
             if (genero == "Hombre")
@@ -785,6 +924,7 @@ namespace ClinicaFrba
         }
 
         //---PARA CREAR AFILIADO
+        //@desc:Dado todos los datos carcados del form crearAfiliado inserta una tabla usuario, (si es que no existia), su tabla de afiliado y su tabla de rol
 
         public void crearAfiliado(string username, string tipoDocumento, string numDocumento, string contraseña, string nombre, string apellido, DateTime fechaNacimiento, string sexo, string direccion, string email, string telefono, string estadoCivil, string planMedico)
         {
@@ -821,7 +961,7 @@ namespace ClinicaFrba
 
         }
 
-
+        //@desc: Dado los datos carcados del formulario agregar familiar crea un afiliado teniendo como padre al usuario con un tutor
         public void crearFamiliar(string username, string tipoDocumento, string numDocumento, string contraseña, string nombre, string apellido, DateTime fechaNacimiento, string sexo, string direccion, string email, string telefono, string estadoCivil, string planMedico, int idPadre)
         {
             DateTime fecha = new DateTime(2000, 11, 11);
@@ -840,8 +980,8 @@ namespace ClinicaFrba
                         cmd.ExecuteNonQuery();
                     }
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', {3}, {4}, {5})",
-                        // "fam", 555555, "soltero", fecha, idPadre, 1), cn);
-                      username, idPlan, estadoCivil, "NULL", idPadre, 1), cn);
+                        // "fam", 555555, "soltero", fecha, idPadre, 0), cn);
+                      username, idPlan, estadoCivil, "NULL", idPadre, 0), cn);
                     cmd.ExecuteNonQuery();
 
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Rol_de_Usuario (rol_id, username) VALUES (3, '{0}')", username), cn);
@@ -858,6 +998,7 @@ namespace ClinicaFrba
 
 
         //-----PARA TURNOS
+        //@desc: Agrega un turno junto con un motico y un tipo de cancelacion a una tabla de turnos cancelados
         public void cancelarTurno(int numeroTurno, string tipoCancelacion, string motivoCancelacion)
         {
             try
@@ -872,6 +1013,7 @@ namespace ClinicaFrba
             }
         }
 
+        //@desc: cancela todos de un dia de un profecional
         public void cancelarDia(String usernameProfesional, DateTime fecha, String tipoCancelacion, String motivoCancelacion)
         {
             List<int> turnosDelDia = turnosDelDiaDelProfesional(usernameProfesional, fecha);
@@ -881,6 +1023,7 @@ namespace ClinicaFrba
             }
         }
 
+        //@desc: cancela todos los turnos comprendidos entre 2 fechas de la agenda de un profesional
         public void cancelarDias(String usernameProfesional, DateTime fecha_inicio, DateTime fecha_fin, String tipoCancelacion, String motivoCancelacion)
         {
             DateTime fecha = new DateTime();
@@ -890,59 +1033,9 @@ namespace ClinicaFrba
             }
         }
 
-        public List<int> turnosDelDiaDelProfesional(String usernameProfesional, DateTime fecha)
-        {
-            int profesional_id = obtenerProfesionalId(usernameProfesional);
-            List<int> turnos_id_de_la_Fecha = new List<int>();
-            try
-            {
-                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE fecha = '{0}' AND profesional_id = {1}",
-                    fecha, profesional_id), cn);
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    int turno;
-                    turno = reader.GetInt32(0);
-                    turnos_id_de_la_Fecha.Add(turno);
-
-                }
-                reader.Close();
-                return turnos_id_de_la_Fecha;
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Error al crear turno: " + ex.ToString());
-                return turnos_id_de_la_Fecha;
-            }
-        }
-
-        public int obtenerProfesionalId(String usernameProfesional)
-        {
-            int profesional_id = new int();
-
-            try
-            {
-                cmd = new SqlCommand(string.Format("SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}'",
-                    usernameProfesional), cn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    profesional_id = reader.GetInt32(0);
-                }
-                reader.Close();
-                return profesional_id;
-            }
-                catch (Exception ex)
-                {
-
-                MessageBox.Show("Error al crear turno: " + ex.ToString());
-                return -3;
-                }
-        }
-        
-
+        //@desc: Dado un username de un profesional, un bono, una fecha y un horario inserta un nuevo turno, 
+        // cambia el estado del bono a usado y devuelve el id del turno creado para que el usuario pueda anotarlo.
         public int crearTurno(string userProfesional, int bonoId, DateTime fecha, TimeSpan horario)
         {
             int idTurno = new int();
@@ -986,6 +1079,8 @@ namespace ClinicaFrba
 
 
         //--PARA BONOS
+
+        //@desc: Crea un nuevo bono a un afiliado
         public int agregarBono(int planid, int afiliadoId, int compraBonoId, int bonoPrecio)
         {
             try
@@ -1009,6 +1104,7 @@ namespace ClinicaFrba
             }
         }
 
+        //@desc: registra la compra de un bono de un afiliado
         public void comprarBonos(int cantidadBonos, String username)
         {
             int afiliadoId = obtenerAfiliadoId(username);
@@ -1045,6 +1141,8 @@ namespace ClinicaFrba
 
         //-- PARA CONSULTA MEDICA
 
+        //@desc: dado un username de afiliado y uno de profesional, una especialidad de este ùltimo y un turno 
+        // genera una nueva consulta medica y modifica el estado del turno en usado.
         public void generarConsulta(string usernameAfi, string especialidad, string usernameProf, int idTurno)
         {
 
@@ -1065,6 +1163,7 @@ namespace ClinicaFrba
         }
 
         //--PARA AGENDA
+        //@desc: Carga un dia en la agenda con sus respectivos campos
         public void generarDia(string dia, string horaInicio, string horaFin, int agendaId)
         {
             try
@@ -1079,7 +1178,7 @@ namespace ClinicaFrba
             }
         }
 
-
+        //@desc: genera una agenda con sus respectivos campos
         public int generarAgenda(String username, DateTime fecha_inicio, DateTime fecha_fin, String especialidad)
         {
             try
@@ -1120,6 +1219,7 @@ namespace ClinicaFrba
 
         //----AFILIADO----//
 
+        //@desc: dado un username de un afiliado le cambia su estado de baja logica a uno y su fecha de baja a la actual
         public void borrarAfiliado(string username)
         {
             try
@@ -1135,7 +1235,7 @@ namespace ClinicaFrba
         }
 
 
-
+        //@desc: Dado un afiliado ya creado le carga los nuevos campos menos el username, ese siempre es el mismo
         public void modificarAfiliado(string username, string tipoDocumento, string numDocumento, string contraseña, string nombre, string apellido, DateTime fechaNacimiento, string sexo, string direccion, string email, string telefono, string estadoCivil, string planMedico)
         {
 
@@ -1163,6 +1263,7 @@ namespace ClinicaFrba
 
         //----CONSULTA MEDICA---//
 
+        //@desc: Dada una consulta medica previamente creada le agrega el diagnostico, sintoma y le cambia el estado de la consulta a completada.
         public void modificarConsulta(string idConsulta, string diagnostico, string sintoma, string estado)
         {
             int id = Convert.ToInt32(idConsulta);
@@ -1191,6 +1292,7 @@ namespace ClinicaFrba
         //FUNCIONES QUE TOMAN COMO PARAMETRO UN COMBOBOX Y LE CARGAN DATOS DE LA BASE DE DATOS
 
         //--ROLES
+        //@desc: mete en un combobox los roles que tiene un usuario
         public void recuperarRolesHabilitados(string usuario, ComboBox roles, String rol)
         {
             try
@@ -1238,6 +1340,7 @@ namespace ClinicaFrba
 
         //---PROFESIONALES
 
+        //@desc: Dada una especialidad y un combobox, mete todos los username de los profesionales con esa especialidad
         public List<Palabra> obtenerProfesionalesPorEspecialidad(string especialidad)
         {
             List<Palabra> especialidades = new List<Palabra>();
@@ -1267,6 +1370,7 @@ namespace ClinicaFrba
 
 
         //-----ESPECIALIDADES
+        //@desc: dado un profesional y un combobox le mete todas las especialidades de dicho profesional
         public void obtenerEspecialidadesDelProf(string profesional, ComboBox especialidades)
         {
             try
@@ -1308,88 +1412,8 @@ namespace ClinicaFrba
         }
 
 
-        public List<Palabra> obtenerTodasLasEspecialidades()
-        {
-            List<Palabra> especialidades = new List<Palabra>();
-
-            try
-            {
-                cmd = new SqlCommand("SELECT especialidad_descripcion FROM MISSINGNO.Especialidad WHERE especialidad_id != -1", cn);
-                cmd.ExecuteNonQuery();
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    Palabra especialidad = new Palabra();
-                    especialidad.unElemento = reader.GetString(0);
-                    especialidades.Add(especialidad);
-
-                }
-                reader.Close();
-                return especialidades;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener especialidades: " + ex.ToString());
-                return especialidades;
-            }
-        }
-
         //----TURNOS----//
-        public List<tipoTurno> obtenerTurnos(string usernameAfi, string usernameProf)
-        {
-            List<tipoTurno> turnos = new List<tipoTurno>();
-            try
-            {
-                cmd = new SqlCommand(string.Format("SELECT T.turno_id, T.fecha, T.horario FROM MISSINGNO.Turno AS T, MISSINGNO.BONO AS B  WHERE T.profesional_id= (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}' ) AND T.bono_id = B.bono_id AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username= '{1}') AND T.en_uso = 0",
-                    usernameAfi, usernameProf), cn);
-                cmd.ExecuteNonQuery();
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    tipoTurno turno = new tipoTurno();
-                    turno.idTurno = reader.GetInt32(0);
-                    turno.fechaTurno = reader.GetDateTime(1);
-
-                    turnos.Add(turno);
-
-                }
-                reader.Close();
-                return turnos;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al obtener turnos: " + ex.ToString());
-                return turnos;
-            }
-        }
-
-
-
-        public List<string> turnosCancelados()
-        {
-            List<string> turnos = new List<string>();
-            try
-            {
-                cmd = new SqlCommand("SELECT turno_id FROM MISSINGNO.Cancelacion_turno", cn);
-                cmd.ExecuteNonQuery();
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    string turno = Convert.ToString(reader.GetInt32(0));
-                    turnos.Add(turno);
-                }
-                reader.Close();
-                return turnos;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al generar turnos cancelados: " + ex.ToString());
-                return turnos;
-            }
-        }
-
-
+        //@desc: dado un username de un profesional y un combobox le mete los turnos que no estan usados
         public void turnosSinUsarProf(string profesional, ComboBox idTurno)
         {
 
@@ -1433,6 +1457,7 @@ namespace ClinicaFrba
             }
         }
 
+        //@desc: dado un username de un afiliado  y un combobox le mete los turnos que no estan usados
         public void turnosSinUsarAfi(string afiliado, ComboBox idTurno)
         {
             List<string> cancelados = this.turnosCancelados();
@@ -1484,7 +1509,7 @@ namespace ClinicaFrba
 
 
         //---BONOS---//
-
+        //@desc: dado un afiliado y un combobox mete en este ultimo todos los bonos que posee el afiliado
         public void bonosDeAfiliado(string userAfiliado, ComboBox bonos)
         {
             try
@@ -1527,7 +1552,7 @@ namespace ClinicaFrba
 
 
         //---CONSULTAS MEDICAS
-
+        //@desc: dado un profesional y un combobox mete todas las consultas medicas de este profesional que esten pendientes
         public void obtenerConsultas(string profesional, ComboBox idConsulta)
         {
 
@@ -1574,7 +1599,7 @@ namespace ClinicaFrba
         }
 
         //----PLANES
-
+        //@desc: Dado un combobox mete todos planes de la base de datos en este
         public void recuperarPlanes(ComboBox planes, String plan)
         {
             try
@@ -1617,7 +1642,7 @@ namespace ClinicaFrba
         }
 
         //---AFILIADOS
-
+        //@desc: dado un usuario de un afiliado y un combobox mete todos sus username de sus familiares
         public void usernamesFamiliares(string username, ComboBox usuarios)
         {
 

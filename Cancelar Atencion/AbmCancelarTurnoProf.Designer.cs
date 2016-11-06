@@ -160,6 +160,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AbmCancelarTurnoProf";
             this.Text = "AbmCancelarTurnoProf";
+            this.Load += new System.EventHandler(this.AbmCancelarTurnoProf_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

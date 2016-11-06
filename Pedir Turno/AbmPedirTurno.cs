@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class AbmPedirTurno : Form
-    {
+    {   //Atributos//
         BDComun conexion = new BDComun();
         List<Palabra> listaEspecialidades = new List<Palabra>();
         Palabra especialidad = new Palabra();
@@ -41,7 +41,8 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
- 
+            //Le mando uno en su ùltimo campo para que el abm cargarProfesionales reconozca que provino de un abmPedirTurno
+            // y a partir de eso actua de determinada forma.
             ClinicaFrba.Registro_Llegada.cargarProfesionales abm = new ClinicaFrba.Registro_Llegada.cargarProfesionales(especialidad, Program.usuario, Convert.ToInt32(bono.Text), 1);
             this.Hide();
             abm.ShowDialog();

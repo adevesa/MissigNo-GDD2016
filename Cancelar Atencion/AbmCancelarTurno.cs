@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class AbmCancelarTurno : Form
-    {
+    {   //Atributos//
         BDComun conexion = new BDComun();
         private String username;
         int indicador = new int();
@@ -23,6 +23,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             InitializeComponent();
         }
 
+         //Funcion para verificar que no haya textBox vacios
           public bool errores_de_registro()
         {
             return ((textoIDTurno.Text.Length == 0) || (textoMotivo.Text.Length == 0) || tipoCancelacion.Text.Length == 0 || textoMotivo.Text == "Escriba el motivo..."); 
@@ -40,12 +41,8 @@ namespace ClinicaFrba.Cancelar_Atencion
         }
 
         private void Cancelar_Turno_Load(object sender, EventArgs e)
-        {
-            if (indicador == 1)
-            {
-                conexion.turnosSinUsarProf(Program.usuario, textoIDTurno);
-            }
-            else conexion.turnosSinUsarAfi(Program.usuario, textoIDTurno);
+        {   //Carga todos los turnos sin usar del afiliado
+            conexion.turnosSinUsarAfi(Program.usuario, textoIDTurno);
         }
 
         private void botonConfirmar_Click(object sender, EventArgs e)

@@ -12,9 +12,8 @@ namespace ClinicaFrba.Abm_Afiliado
 {
     public partial class AbmCrearAfiliado : Form
     {
-
+        //Atributos//
         BDComun conexion = new BDComun();
-
         String plan;
 
         public AbmCrearAfiliado()
@@ -34,6 +33,7 @@ namespace ClinicaFrba.Abm_Afiliado
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
 
+            //Inicializo el combobox con todos los planes
             conexion.recuperarPlanes(planMedico, plan);
 
         }
@@ -81,13 +81,16 @@ namespace ClinicaFrba.Abm_Afiliado
              }
               else
              {
-                 
-                 if(!conexion.existeUsuario(textoUsername.Text))
+
+                 if (!conexion.existeUsuario(textoUsername.Text))//verifico que no exista afiliado
                 {
-                   if(!conexion.dniEnUso(textoDocumento.Text)){
-                List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
-                  //  List<string> lista = new List<string>();
-              conexion.crearAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text);
+                   if(!conexion.dniEnUso(textoDocumento.Text)){//verifico que el documento ingresado no este en uso
+                List<AfiliadoSimple> lista = new List<AfiliadoSimple>();/*lista creada con la unica funcion de enviar como parametro
+                                                                          al abmConsultarFamiliar ya que este tambien es utilizado por
+                                                                          el ambEdifarAfiliado el cual le manda ya todos los familiares que
+                                                                          que tiene vajo su tutela, en este caso al ser un afiliado
+                                                                          nuevo, no hace falta utilizarla.*/
+                conexion.crearAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text);
               AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar(lista, textoUsername.Text,textoDireccion.Text);
               this.Hide();
               abmConsulta.ShowDialog();
@@ -104,7 +107,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
          }
 
-
+        //Funciones para evitar que se escribar letras en los campos documento y telefono
 
          private void textoDocumento_KeyPress_1(object sender, KeyPressEventArgs e)
          {

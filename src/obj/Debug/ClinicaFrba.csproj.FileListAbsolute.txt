@@ -1,0 +1,91 @@
+C:\Users\Matias\Documents\Visual Studio 2012\Projects\ClinicaFrba\ClinicaFrba\ClinicaFrba\bin\Debug\ClinicaFrba.exe.config
+C:\Users\Matias\Documents\Visual Studio 2012\Projects\ClinicaFrba\ClinicaFrba\ClinicaFrba\bin\Debug\ClinicaFrba.exe
+C:\Users\Matias\Documents\Visual Studio 2012\Projects\ClinicaFrba\ClinicaFrba\ClinicaFrba\bin\Debug\ClinicaFrba.pdb
+C:\Users\Matias\Documents\Visual Studio 2012\Projects\ClinicaFrba\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
+C:\Users\Matias\Documents\Visual Studio 2012\Projects\ClinicaFrba\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.Properties.Resources.resources
+C:\Users\Matias\Documents\Visual Studio 2012\Projects\ClinicaFrba\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
+C:\Users\Matias\Documents\Visual Studio 2012\Projects\ClinicaFrba\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.exe
+C:\Users\Matias\Documents\Visual Studio 2012\Projects\ClinicaFrba\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.pdb
+D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\bin\Debug\ClinicaFrba.exe.config
+D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.exe
+D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.pdb
+D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\bin\Debug\ClinicaFrba.exe
+D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\bin\Debug\ClinicaFrba.pdb
+D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
+D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.Properties.Resources.resources
+D:\Users\Agustín\Desktop\Ingeniería en Sistemas\Gestion De Datos\TP CLINICA FRBA 1.0 - 2C 2016\Aplicacion Desktop\ClinicaFrba\ClinicaFrba\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
+C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.exe.config
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.exe
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.pdb
+C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.exe
+C:\Users\ABM\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.pdb
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Properties.Resources.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado2.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AgregarFamiliar.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Compra_Bono.AbmComprarBono.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Compra_Bono.ComprarBonoDesdeAdministrador.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.AbmListados.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.AbmAgenda.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.RegistroDeLlegada.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Resultado.AbmRegistroResultado.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.AbmRol.AbmRolAdministrador.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.AbmRol.AbmRolAfiliado.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.AbmRol.AbmRolProfesional.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmAdministrarAfiliado.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_afiliados.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_especialidades.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_profesional_menos_horas.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_cancelaciones.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_consultados.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado2.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Login.frm_login.resources
+C:\Users\Juan\Documents\UTN\3er año\Gestion de datos\MissigNo-DDS2016\bin\Debug\ClinicaFrba.exe.config
+C:\Users\Juan\Documents\UTN\3er año\Gestion de datos\MissigNo-DDS2016\obj\Debug\ClinicaFrba.exe
+C:\Users\Juan\Documents\UTN\3er año\Gestion de datos\MissigNo-DDS2016\obj\Debug\ClinicaFrba.pdb
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.cargarProfesionales.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.cargarTurnos.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmElegirHorario.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmPedirTurno.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.exe.config
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.exe
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.pdb
+C:\Users\Juan\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.exe
+C:\Users\Juan\Desktop\MissigNo-DDS2016\bin\Debug\ClinicaFrba.pdb
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmAdministrarAfiliado.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmBorrarAfiliado2.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmConsultaFamiliar.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AbmCrearAfiliado2.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Abm_Afiliado.AgregarFamiliar.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.AbmRol.AbmRolAdministrador.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.AbmRol.AbmRolAfiliado.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.AbmRol.AbmRolProfesional.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmCancelarTurno.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Compra_Bono.AbmComprarBono.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Compra_Bono.ComprarBonoDesdeAdministrador.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.AbmListado2.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.AbmListados.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_afiliados.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_especialidades.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_profesional_menos_horas.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_cancelaciones.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Listados.top5_consultados.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Login.frm_login.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmElegirHorario.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmPedirTurno.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Properties.Resources.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.AbmAgenda.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.cargarProfesionales.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.cargarTurnos.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Llegada.RegistroDeLlegada.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Registro_Resultado.AbmRegistroResultado.resources
+C:\Users\Juan\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Login.SeleccionRol.resources
+C:\Users\ABM\Desktop\MissigNo-DDS2016\obj\Debug\ClinicaFrba.Cancelar_Atencion.AbmCancelarTurnoProf.resources

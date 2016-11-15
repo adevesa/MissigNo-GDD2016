@@ -36,6 +36,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
             //Inicializo el combobox de planes con todos los de la base de datos
             conexion.recuperarPlanes(planMedico, plan);
+            
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -135,6 +136,9 @@ namespace ClinicaFrba.Abm_Afiliado
                     textoApellido.Text = afiliado.apellido;
                     textoTelefono.Text = Convert.ToString(afiliado.telefono);
                     textoEmail.Text = afiliado.mail;
+                    eleccionSexo.Text = reDescifrar(afiliado.sexo);
+                    estadoCivil.Text = afiliado.afiliado_estado_civil;
+                  
                     //sumo uno al contador
                     contador ++;
                 }
@@ -142,6 +146,13 @@ namespace ClinicaFrba.Abm_Afiliado
             }
             else MessageBox.Show("Debes introducir un nombre de usuario");
         }
+
+        public string reDescifrar(string genero)
+        {
+            if (genero == "H") return "Hombre";
+            else return "Mujer";
+        }
+
 
         private void textoTelefono_TextChanged(object sender, EventArgs e)
         {

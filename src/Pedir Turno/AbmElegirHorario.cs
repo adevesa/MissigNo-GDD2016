@@ -17,13 +17,11 @@ namespace ClinicaFrba.Cancelar_Atencion
         Palabra profesional = new Palabra();
         List<int> listaDeHorarios = new List<int>();
         TimeSpan horarioElegido = new TimeSpan();
-        int bonoId = new int();
         string dia;
         DateTime fecha = new DateTime();
 
-        public AbmElegirHorario(Palabra prof, Palabra esp, int bonoId)
+        public AbmElegirHorario(Palabra prof, Palabra esp)
         {
-            this.bonoId = bonoId;
             this.especialidad = esp;
             this.profesional = prof;
 
@@ -38,6 +36,8 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
+            //Arreglar aca!, reemplazar bonoId por afiliado id cuando arreglen la migracion
+            int bonoId = new int();
             int idTurno = conexion.crearTurno(profesional.unElemento, bonoId, fecha, horarioElegido);
             MessageBox.Show("Su número de turno es: " + idTurno);
             AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();

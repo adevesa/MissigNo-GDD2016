@@ -34,8 +34,6 @@
             this.botonVolver = new System.Windows.Forms.Button();
             this.botonAceptar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.bono = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEspecialidades)).BeginInit();
             this.SuspendLayout();
@@ -43,8 +41,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.bono);
             this.panel1.Controls.Add(this.dgvEspecialidades);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.botonVolver);
@@ -58,7 +54,7 @@
             // dgvEspecialidades
             // 
             this.dgvEspecialidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEspecialidades.Location = new System.Drawing.Point(415, 158);
+            this.dgvEspecialidades.Location = new System.Drawing.Point(266, 166);
             this.dgvEspecialidades.Name = "dgvEspecialidades";
             this.dgvEspecialidades.Size = new System.Drawing.Size(240, 294);
             this.dgvEspecialidades.TabIndex = 73;
@@ -70,7 +66,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(415, 109);
+            this.label2.Location = new System.Drawing.Point(259, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(240, 37);
             this.label2.TabIndex = 72;
@@ -118,30 +114,6 @@
             this.label1.Text = "Pedido de Turno";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // bono
-            // 
-            this.bono.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bono.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bono.FormattingEnabled = true;
-            this.bono.Location = new System.Drawing.Point(137, 172);
-            this.bono.Name = "bono";
-            this.bono.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bono.Size = new System.Drawing.Size(225, 33);
-            this.bono.TabIndex = 101;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(130, 119);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 37);
-            this.label3.TabIndex = 102;
-            this.label3.Text = "Elegir bono";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // AbmPedirTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,7 +141,5 @@
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.DataGridView dgvEspecialidades;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox bono;
     }
 }

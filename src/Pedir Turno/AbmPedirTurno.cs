@@ -35,7 +35,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
             listaEspecialidades = conexion.obtenerTodasLasEspecialidades();
             dgvEspecialidades.DataSource = listaEspecialidades;
-            conexion.bonosDeAfiliado(Program.usuario, bono);
+            
 
         }
 
@@ -43,7 +43,7 @@ namespace ClinicaFrba.Cancelar_Atencion
         {
             //Le mando uno en su ùltimo campo para que el abm cargarProfesionales reconozca que provino de un abmPedirTurno
             // y a partir de eso actua de determinada forma.
-            ClinicaFrba.Registro_Llegada.cargarProfesionales abm = new ClinicaFrba.Registro_Llegada.cargarProfesionales(especialidad, Program.usuario, Convert.ToInt32(bono.Text), 1);
+            ClinicaFrba.Registro_Llegada.cargarProfesionales abm = new ClinicaFrba.Registro_Llegada.cargarProfesionales(especialidad, Program.usuario, 1);
             this.Hide();
             abm.ShowDialog();
             this.Close();

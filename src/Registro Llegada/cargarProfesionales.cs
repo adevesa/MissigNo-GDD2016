@@ -17,12 +17,10 @@ namespace ClinicaFrba.Registro_Llegada
         List<Palabra> profesionalesFiltrados = new List<Palabra>();
         Palabra especialidad = new Palabra();
         Palabra profesional = new Palabra();
-        int bonoId = new int();
         int indicador;
         string afiliadoUsername;
-        public cargarProfesionales(Palabra especialidad, string username, int bonoid, int indicador)
+        public cargarProfesionales(Palabra especialidad, string username, int indicador)
         {
-            this.bonoId = bonoid;
             this.especialidad = especialidad;
             this.afiliadoUsername = username;
             this.indicador = indicador;
@@ -82,7 +80,7 @@ namespace ClinicaFrba.Registro_Llegada
             }
             else
             {
-                ClinicaFrba.Cancelar_Atencion.AbmElegirHorario abm = new ClinicaFrba.Cancelar_Atencion.AbmElegirHorario(profesional, especialidad, bonoId);
+                ClinicaFrba.Cancelar_Atencion.AbmElegirHorario abm = new ClinicaFrba.Cancelar_Atencion.AbmElegirHorario(profesional, especialidad);
                 this.Hide();
                 abm.ShowDialog();
                 this.Close();

@@ -40,6 +40,7 @@ namespace ClinicaFrba.Registro_Llegada
 
             turnos = conexion.obtenerTurnos(profesional.unElemento, afiliadoUsername);
             dgvTurnos.DataSource = turnos;
+            conexion.bonosDeAfiliado(Program.usuario, bono);
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)

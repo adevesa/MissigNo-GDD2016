@@ -216,8 +216,6 @@ GO
 	create table MISSINGNO.Consulta_medica(
 		consulta_id int primary key identity,
 		agenda_id int,
-		afiliado_id int,
-		profesional_id int,
 		turno_id int,
 		confirmacion_de_atencion char(2),
 		diagnostico varchar(140),
@@ -282,10 +280,6 @@ alter table MISSINGNO.Consulta_medica
 	add constraint FK_Consulta_medica_agenda_id foreign key (agenda_id) references MISSINGNO.Agenda(agenda_id);
 alter table MISSINGNO.Consulta_medica	
 	add constraint FK_Consulta_medica_turno_id foreign key (turno_id) references MISSINGNO.Turno(turno_id);
-alter table MISSINGNO.Consulta_medica	
-	add constraint FK_Consulta_medica_afiliado_id foreign key (afiliado_id) references MISSINGNO.Afiliado(afiliado_id);
-alter table MISSINGNO.Consulta_medica	
-	add constraint FK_Consulta_medica_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
 
 
 	-- TABLA CANCELACION_TURNO
@@ -700,9 +694,9 @@ and P.username = Medico_Mail
 
 /* MIGRACION DE CONSULTAS MEDICAS */
 
-INSERT INTO MISSINGNO.Consulta_medica(turno_id, sintoma, diagnostico, agenda_id, consulta_horario, confirmacion_de_atencion, afiliado_id, profesional_id)
-SELECT DISTINCT Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades, AG.agenda_id , cast(Turno_Fecha as time),'SI', A.afiliado_id, P.profesional_id
-FROM gd_esquema.Maestra GD, MISSINGNO.Turno T, MISSINGNO.Profesional P, MISSINGNO.Agenda AG, MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Especialidad E, MISSINGNO.Afiliado A, MISSINGNO.Usuario U
+INSERT INTO MISSINGNO.Consulta_medica(turno_id, sintoma, diagnostico, agenda_id, consulta_horario, confirmacion_de_atencion)
+SELECT DISTINCT Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades, AG.agenda_id , cast(Turno_Fecha as time),'SI'
+FROM gd_esquema.Maestra GD, MISSINGNO.Turno T, MISSINGNO.Profesional P, MISSINGNO.Agenda AG, MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Especialidad E
 WHERE Consulta_Sintomas IS NOT NULL
 and Turno_Numero = T.turno_id
 and P.username = Medico_Mail
@@ -713,5 +707,3 @@ and EP.especialidad_id = E.especialidad_id
 and E.Especialidad_Descripcion = GD.Especialidad_Descripcion
 and T.fecha = Turno_Fecha
 and T.profesional_id = P.profesional_id
-and A.username = U.username
-and U.doc_nro = Paciente_Dni

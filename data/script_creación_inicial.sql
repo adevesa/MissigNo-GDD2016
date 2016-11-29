@@ -152,7 +152,7 @@ GO
 	create table MISSINGNO.Turno(
 		turno_id int primary key identity,
 		profesional_id int not null,
-		bono_id int not null,
+		afiliado_id int not null,
 		fecha datetime not null,
 		horario time not null,
 		en_uso bit not null)
@@ -215,9 +215,9 @@ GO
 
 	create table MISSINGNO.Consulta_medica(
 		consulta_id int primary key identity,
-		profesional_id int,
-		afiliado_id int,
 		agenda_id int,
+		afiliado_id int,
+		profesional_id int,
 		turno_id int,
 		confirmacion_de_atencion char(2),
 		diagnostico varchar(140),
@@ -278,14 +278,15 @@ alter table MISSINGNO.Afiliado
 
 	-- TABLA CONSULTA_MEDICA
 
-alter table MISSINGNO.Consulta_medica 
-	add constraint FK_Consulta_medica_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
-alter table MISSINGNO.Consulta_medica	
-	add constraint FK_Consulta_medica_afiliado_id foreign key (afiliado_id) references MISSINGNO.Afiliado(afiliado_id);
 alter table MISSINGNO.Consulta_medica
 	add constraint FK_Consulta_medica_agenda_id foreign key (agenda_id) references MISSINGNO.Agenda(agenda_id);
 alter table MISSINGNO.Consulta_medica	
 	add constraint FK_Consulta_medica_turno_id foreign key (turno_id) references MISSINGNO.Turno(turno_id);
+alter table MISSINGNO.Consulta_medica	
+	add constraint FK_Consulta_medica_afiliado_id foreign key (afiliado_id) references MISSINGNO.Afiliado(afiliado_id);
+alter table MISSINGNO.Consulta_medica	
+	add constraint FK_Consulta_medica_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
+
 
 	-- TABLA CANCELACION_TURNO
 
@@ -308,7 +309,7 @@ alter table MISSINGNO.Agenda
 alter table MISSINGNO.Turno
 	add constraint FK_Turno_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
 alter table MISSINGNO.Turno
-	add constraint FK_Turno_bono_id foreign key (bono_id) references MISSINGNO.Bono(bono_id);
+	add constraint FK_Turno_afiliado_id foreign key (afiliado_id) references MISSINGNO.Afiliado(afiliado_id);
 
 	-- TABLA ROL_DE_USUARIO
 
@@ -651,9 +652,10 @@ where P.username = Medico_Mail and
 INSERT INTO MISSINGNO.Compra_bono
 	(Afiliado_id, plan_id, fecha_compra)
 SELECT DISTINCT afiliado_id, A.plan_id , Compra_Bono_Fecha
-FROM gd_esquema.Maestra, MISSINGNO.Afiliado A, MISSINGNO.Planes P
+FROM gd_esquema.Maestra, MISSINGNO.Afiliado A, MISSINGNO.Planes P, MISSINGNO.Usuario U
 WHERE Compra_Bono_Fecha IS NOT NULL 
-and A.username = Paciente_Mail 
+and A.username = U.username 
+and U.doc_nro = Paciente_Dni
 and A.plan_id = Plan_Med_Codigo 
 and P.plan_id = A.plan_id
 
@@ -662,11 +664,12 @@ and P.plan_id = A.plan_id
 SET IDENTITY_INSERT MISSINGNO.Bono ON
 INSERT INTO MISSINGNO.Bono(bono_id, plan_id, afiliado_id, compra_bono_id, bono_estado, bono_precio)
 SELECT DISTINCT Bono_Consulta_Numero, C.plan_id, C.afiliado_id, C.compra_bono_id, 0, Plan_Med_Precio_Bono_Consulta
-	FROM gd_esquema.Maestra, MISSINGNO.Compra_bono C, MISSINGNO.Afiliado A, MISSINGNO.Planes P
+	FROM gd_esquema.Maestra, MISSINGNO.Compra_bono C, MISSINGNO.Afiliado A, MISSINGNO.Planes P, MISSINGNO.Usuario U
 	WHERE Compra_Bono_Fecha IS NOT NULL 
 	and C.plan_id = Plan_Med_Codigo 
 	and C.afiliado_id = A.afiliado_id 
-	and A.username = Paciente_Mail 
+	and A.username = U.username 
+	and U.doc_nro = Paciente_Dni
 	and P.plan_id = C.plan_id 
 	and C.fecha_compra = Compra_Bono_Fecha
 SET IDENTITY_INSERT MISSINGNO.Bono OFF
@@ -674,21 +677,41 @@ SET IDENTITY_INSERT MISSINGNO.Bono OFF
 /* MIGRACION DE TURNOS */
 
 SET IDENTITY_INSERT MISSINGNO.Turno ON
-INSERT INTO MISSINGNO.Turno(turno_id, profesional_id, bono_id, fecha, horario, en_uso)
-SELECT DISTINCT Turno_Numero, P.profesional_id, Bono_Consulta_Numero,Turno_fecha,cast(Turno_Fecha as time), 1
-FROM gd_esquema.Maestra, MISSINGNO.Profesional P, MISSINGNO.Bono B
-WHERE Turno_Numero IS NOT NULL 
-and Bono_Consulta_Numero IS NOT NULL
+INSERT INTO MISSINGNO.Turno(turno_id, profesional_id, fecha, horario, en_uso, afiliado_id)
+SELECT DISTINCT Turno_Numero, P.profesional_id, Turno_fecha,cast(Turno_Fecha as time), 1, A.afiliado_id
+FROM gd_esquema.Maestra, MISSINGNO.Profesional P, MISSINGNO.Bono B, MISSINGNO.Afiliado A, MISSINGNO.Usuario U
+WHERE Turno_Numero IS NOT NULL
 and P.username = Medico_Mail
 and Bono_Consulta_Numero = B.bono_id
+and U.doc_nro = Paciente_Dni
+and U.username = A.username
 SET IDENTITY_INSERT MISSINGNO.Turno OFF
+
+/* MIGRACION DE AGENDAS */
+
+INSERT INTO MISSINGNO.Agenda(prof_esp_id, agenda_inicio, agenda_fin)
+SELECT DISTINCT EP.prof_esp_id, Turno_fecha, DATEADD(minute,30,Turno_Fecha)
+FROM gd_esquema.Maestra GD, MISSINGNO.Profesional P, MISSINGNO.Especialidad E, MISSINGNO.Especialidad_de_profesional EP
+WHERE EP.profesional_id = P.profesional_id
+and EP.especialidad_id = E.especialidad_id
+and E.especialidad_descripcion = GD.Especialidad_Descripcion
+and P.username = Medico_Mail
+
 
 /* MIGRACION DE CONSULTAS MEDICAS */
 
-INSERT INTO MISSINGNO.Consulta_medica(turno_id, sintoma, diagnostico, profesional_id, afiliado_id, agenda_id, consulta_horario, confirmacion_de_atencion)
-SELECT Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades,P.profesional_id,A.afiliado_id, -1, cast(Turno_Fecha as time),'SI'
-FROM gd_esquema.Maestra, MISSINGNO.Turno T, MISSINGNO.Profesional P, MISSINGNO.Afiliado A
+INSERT INTO MISSINGNO.Consulta_medica(turno_id, sintoma, diagnostico, agenda_id, consulta_horario, confirmacion_de_atencion, afiliado_id, profesional_id)
+SELECT DISTINCT Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades, AG.agenda_id , cast(Turno_Fecha as time),'SI', A.afiliado_id, P.profesional_id
+FROM gd_esquema.Maestra GD, MISSINGNO.Turno T, MISSINGNO.Profesional P, MISSINGNO.Agenda AG, MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Especialidad E, MISSINGNO.Afiliado A, MISSINGNO.Usuario U
 WHERE Consulta_Sintomas IS NOT NULL
 and Turno_Numero = T.turno_id
 and P.username = Medico_Mail
-and A.username = Paciente_Mail
+and AG.agenda_inicio = Turno_Fecha
+and AG.prof_esp_id = EP.prof_esp_id
+and EP.profesional_id = P.profesional_id
+and EP.especialidad_id = E.especialidad_id
+and E.Especialidad_Descripcion = GD.Especialidad_Descripcion
+and T.fecha = Turno_Fecha
+and T.profesional_id = P.profesional_id
+and A.username = U.username
+and U.doc_nro = Paciente_Dni

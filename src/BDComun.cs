@@ -1304,8 +1304,8 @@ namespace ClinicaFrba
 
             try
             {
-                cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Compra_Bono(afiliado_id,plan_id,fecha_compra) OUTPUT inserted.compra_bono_id VALUES ({0},{1},getDate())",
-                    afiliadoId, planid), cn);
+                cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Compra_Bono(afiliado_id,plan_id,fecha_compra) OUTPUT inserted.compra_bono_id VALUES ({0},{1},'{2}')",
+                    afiliadoId, planid, DateTime.Now), cn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -1320,12 +1320,18 @@ namespace ClinicaFrba
 
             int i;
             int bono;
+            List<int> bonos = new List<int>();
+            int precioFinal = 0;
 
             for (i = 0; i < cantidadBonos; i++)
             {
                 bono = agregarBono(planid, afiliadoId, compraBonoId, bonoPrecio);
-                MessageBox.Show("BONO COMPRADO: " + bono);
+                bonos.Add(bono);
+                precioFinal = precioFinal + bonoPrecio;
+                //    MessageBox.Show("BONO COMPRADO: " + bono);
             }
+
+            MessageBox.Show("Bonos Comprados :" + cantidadBonos.ToString() + "\n Precio Final:" + precioFinal.ToString());
 
         }
 

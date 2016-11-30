@@ -82,18 +82,17 @@ namespace ClinicaFrba.Cancelar_Atencion
              fecha = calendario.SelectionStart.Date;
             
             //conexion.turnosEnFecha(Convert.ToDateTime("02-11-2016"), "faustino_Gallardo@gmail.com", "Angiología y Cirugía Vascular");
-           DateTime fechaMaxima = conexion.fechasLimitesDeAgenda(this.profesional.unElemento, this.especialidad.unElemento, "agenda_fin");
-           DateTime fechaMinima = conexion.fechasLimitesDeAgenda(this.profesional.unElemento, this.especialidad.unElemento, "agenda_inicio");
-            
 
-             if(fechaMinima<fecha && fechaMaxima>fecha){
-           List<TimeSpan> horariosUsados = conexion.horariosUsados(fecha, this.profesional.unElemento);
-           List<TimeSpan> horariosTotales = conexion.turnosEnFecha(fecha, this.profesional.unElemento, this.especialidad.unElemento);
+           if(conexion.estaIncluidaEnSusIntervalos(this.profesional.unElemento,this.especialidad.unElemento,fecha))
+           {
+                 List<TimeSpan> horariosUsados = conexion.horariosUsados(fecha, this.profesional.unElemento);
+                 List<TimeSpan> horariosTotales = conexion.turnosEnFecha(fecha, this.profesional.unElemento, this.especialidad.unElemento);
 
-           //dgvHorarios.DataSource = convertirEnTime(horariosTotales);
-           dgvHorarios.DataSource = convertirEnTime(filtrarHorarios(horariosUsados, horariosTotales));
-             }
-            else {
+                //dgvHorarios.DataSource = convertirEnTime(horariosTotales);
+                 dgvHorarios.DataSource = convertirEnTime(filtrarHorarios(horariosUsados, horariosTotales));
+           }
+            else 
+           {
                  dgvHorarios.DataSource = null;
                  MessageBox.Show("Sobrepasaste los limites de la agenda");
             }

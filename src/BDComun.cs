@@ -131,6 +131,32 @@ namespace ClinicaFrba
             }
         }
 
+        public List<int> obtenerAgendasId(String username, String especialidad)
+        {
+            List<int> listaAgendas = new List<int>();
+            try
+            {
+                int prof_esp_id = conseguirIdporUsernameYespecialidad(username, especialidad);
+                int id = new int();
+                cmd = new SqlCommand(string.Format("SELECT agenda_id FROM MISSINGNO.Agenda WHERE prof_esp_id = {0}",
+                    prof_esp_id), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                    listaAgendas.Add(id);
+                }
+                reader.Close();
+                return listaAgendas;
+            }
+            catch (Exception ex)
+            {
+                TimeSpan horario2 = new TimeSpan();
+                MessageBox.Show("Error en obtenerAgendasId: " + ex.ToString());
+                return listaAgendas;
+            }
+        }
+
         //@desc: dado un dia y una agenda, devuelve su horario inicial
 
         public TimeSpan horarioDesde(string Dia, int agendaId)
@@ -212,29 +238,22 @@ namespace ClinicaFrba
                 return horarios;
             }
         }
-        //@desc: Dado el username de un profesional y una de sus especialidades, devuelve una lista con los horarios de su agenda
-        public List<DateTime> fechasDisponibles(string username, string especialidad)
-        {
-            List<DateTime> fechas = new List<DateTime>();
-            DateTime fecha_inicio = fechasLimitesDeAgenda(username, especialidad, "agenda_inicio");
-            DateTime fecha_fin = fechasLimitesDeAgenda(username, especialidad, "agenda_fin");
-            DateTime fecha;
-            List<String> dias = obtenerDiasAgenda(username, especialidad);
-            for (fecha = fecha_inicio; fecha <= fecha_fin; fecha = fecha.AddDays(1))
-            {
-                if (estaIncluido(traductorDiaDeLaSemana(Convert.ToString(fecha.DayOfWeek)), dias))
-                {
-                    fechas.Add(fecha);
-                }
-            }
-            return fechas;
-        }
+
 
         public bool estaIncluido(String palabra, List<String> palabras)
         {
             foreach (String pal in palabras)
             {
                 if (palabra == pal) return true;
+            }
+            return false;
+        }
+
+        public bool estaIncluidoTuplas(String palabra, List<Tuple<String,int>> tuplas)
+        {
+            foreach (Tuple<String,int> tupla in tuplas)
+            {
+                if (palabra == tupla.Item1) return true;
             }
             return false;
         }
@@ -265,6 +284,36 @@ namespace ClinicaFrba
                 MessageBox.Show("Error al conseguir dias de agenda: " + ex.ToString());
                 return dias;
             }
+        }
+
+        public List<Tuple<String,int>> obtenerDiasAgendas(String username, String especialidad)
+        {
+            List<Tuple<String, int>> dias = new List<Tuple<String, int>>();
+            List<int> agendas_id = obtenerAgendasId(username, especialidad);
+
+
+            foreach (int agenda_id in agendas_id)
+            {
+                try
+                {
+                    cmd = new SqlCommand(String.Format("SELECT desc_dia FROM MISSINGNO.Dia WHERE agenda_id = {0}",
+                       agenda_id), cn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Tuple<String, int> tupla = new Tuple<String, int>(reader.GetString(0), agenda_id);
+                        dias.Add(tupla);
+                    }
+                    reader.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al conseguir dias de agenda: " + ex.ToString());
+                }
+               
+            }
+            return dias;
         }
 
         //@desc: Dada un username de un profesiona, una especialidades y un string devuelve el agenda_inicio 
@@ -800,30 +849,168 @@ namespace ClinicaFrba
 
         //-----PROFESIONAL----//
         //@desc: Verifica la existencia de una agenda de una especialidad de un determinado profesional
-        public bool yaExisteAgenda(String username, String especialidad)
+        public bool yaExisteAgendaParaElIntervalo(String profesional, DateTime fechaInicio, DateTime fechaFin)
         {
+            List<Tuple<DateTime, DateTime>> FECHAS = intervalosFecha(profesional);
+            foreach (Tuple<DateTime, DateTime> F in FECHAS)
+            {
+                if (fechaMutuamenteExcluyentes(F, fechaInicio, fechaFin))
+                {
+                }
+                else
+                {
+                    return true;
+                }
+            }
+                return false;
+        }
+
+        //@desc: Dado el username de un profesional y una de sus especialidades, devuelve una lista con los horarios de su agenda
+        public List<DateTime> fechasDisponibles(string username, string especialidad)
+        {
+              List<DateTime> fechas = new List<DateTime>();
+      //      DateTime fecha_inicio = fechasLimitesDeAgenda(username, especialidad, "agenda_inicio");
+      //      DateTime fecha_fin = fechasLimitesDeAgenda(username, especialidad, "agenda_fin");
+              List<Tuple<String,int>> diasAgenda = obtenerDiasAgendas(username, especialidad);
+              List<Tuple<DateTime,DateTime>> listaFechas = intervalosFechaEspecialidadActuales(username, especialidad);
+              foreach (Tuple<DateTime, DateTime> T in listaFechas)
+              {
+                  for (DateTime fecha = T.Item1; fecha <= T.Item2; fecha = fecha.AddDays(1))
+                  {
+                      if (estaIncluidoTuplas(traductorDiaDeLaSemana(Convert.ToString(fecha.DayOfWeek)), diasAgenda) && IntervalosIguales(T,diasAgenda))
+                      {
+                          fechas.Add(fecha);
+                      }
+                  }
+              }
+            return fechas;
+        }
+
+        public bool IntervalosIguales(Tuple<DateTime, DateTime> tupla, List<Tuple<String, int>> listaDeTuplas)
+        {
+            foreach (Tuple<String, int> L in listaDeTuplas)
+            {
+                Tuple<DateTime, DateTime> intervalox = obtenerIntervaloDeAgenda(L.Item2);
+                if (intervalox.Item1 == tupla.Item1 && intervalox.Item2 == tupla.Item2) return true;
+            }
+            return false;
+        }
+
+        public Tuple<DateTime,DateTime> obtenerIntervaloDeAgenda(int agenda_id)
+        {
+            Tuple<DateTime, DateTime> tupla = new Tuple<DateTime, DateTime>(new DateTime(), new DateTime());
+
             try
             {
-                int id = new int();
-                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Agenda A ,MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Profesional P, MISSINGNO.Especialidad E where EP.profesional_id = P.profesional_id AND P.username = '{0}'  AND EP.especialidad_id = E.especialidad_id AND E.especialidad_descripcion = '{1}' AND A.prof_esp_id = EP.prof_esp_id",
-                username, especialidad), cn);
-                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(string.Format("SELECT agenda_inicio, agenda_fin FROM MISSINGNO.Agenda WHERE agenda_id = {0}",
+                    agenda_id), cn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    id = reader.GetInt32(0);
+                    tupla = new Tuple<DateTime, DateTime>(reader.GetDateTime(0), reader.GetDateTime(1));
                 }
                 reader.Close();
-                return (id > 0);
+                return tupla;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al conseguir prof_esp_id: " + ex.ToString());
-                return false;
+                MessageBox.Show("Error en obtenerIntervaloDeAgenda: " + ex.ToString());
+                return tupla;
+
             }
         }
 
-        
+        public bool estaIncluidaEnSusIntervalos(string profesional, string especialidad, DateTime fecha)
+        {
+            List<Tuple<DateTime, DateTime>> intervalos = intervalosFechaEspecialidad(profesional,especialidad);
+            foreach (Tuple<DateTime, DateTime> I in intervalos)
+            {
+                if (fecha <= I.Item2 && fecha.Date >= I.Item1.Date)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
+        public bool fechaMutuamenteExcluyentes(Tuple<DateTime,DateTime> tupla, DateTime fechaInicio2, DateTime fechaFin2)
+        {
+            if ((fechaInicio2 < tupla.Item1 && fechaFin2 < tupla.Item1) || (fechaInicio2 > tupla.Item2 && fechaFin2 > tupla.Item2)) return true;
+            else return false;
+        }
+
+        public List<Tuple<DateTime,DateTime>> intervalosFecha(String profesional)
+        {
+            List<Tuple<DateTime, DateTime>> FECHAS = new List<Tuple<DateTime, DateTime>>();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT agenda_inicio, agenda_fin FROM MISSINGNO.Agenda AG, MISSINGNO.Profesional P , MISSINGNO.Especialidad_de_profesional EP WHERE AG.prof_esp_id = EP.prof_esp_id and EP.profesional_id = P.profesional_id and P.username = '{0}'",
+                    profesional), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Tuple<DateTime, DateTime> tupla = new Tuple<DateTime, DateTime>(reader.GetDateTime(0), reader.GetDateTime(1));
+                    FECHAS.Add(tupla);
+                }
+                reader.Close();
+                return FECHAS;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error en intervalosFech: " + ex.ToString());
+                return FECHAS;
+            }
+        }
+
+        public List<Tuple<DateTime, DateTime>> intervalosFechaEspecialidad(String profesional, String especialidad)
+        {
+            List<Tuple<DateTime, DateTime>> FECHAS = new List<Tuple<DateTime, DateTime>>();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT agenda_inicio, agenda_fin FROM MISSINGNO.Especialidad E, MISSINGNO.Agenda AG, MISSINGNO.Profesional P , MISSINGNO.Especialidad_de_profesional EP WHERE AG.prof_esp_id = EP.prof_esp_id and EP.profesional_id = P.profesional_id and P.username = '{0}' and EP.especialidad_id = E.especialidad_id and E.especialidad_descripcion = '{1}'",
+                    profesional,especialidad), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Tuple<DateTime, DateTime> tupla = new Tuple<DateTime, DateTime>(reader.GetDateTime(0), reader.GetDateTime(1));
+                    FECHAS.Add(tupla);
+                }
+                reader.Close();
+                return FECHAS;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en intervalosFechaEspecialidad: " + ex.ToString());
+                return FECHAS;
+            }
+        }
+
+        public List<Tuple<DateTime, DateTime>> intervalosFechaEspecialidadActuales(String profesional, String especialidad)
+        {
+            List<Tuple<DateTime, DateTime>> FECHAS = new List<Tuple<DateTime, DateTime>>();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT agenda_inicio, agenda_fin FROM MISSINGNO.Especialidad E, MISSINGNO.Agenda AG, MISSINGNO.Profesional P , MISSINGNO.Especialidad_de_profesional EP WHERE AG.prof_esp_id = EP.prof_esp_id and EP.profesional_id = P.profesional_id and P.username = '{0}' and EP.especialidad_id = E.especialidad_id and E.especialidad_descripcion = '{1}' and AG.agenda_inicio > '{2}'",
+                    profesional, especialidad, DateTime.Now), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Tuple<DateTime, DateTime> tupla = new Tuple<DateTime, DateTime>(reader.GetDateTime(0), reader.GetDateTime(1));
+                    FECHAS.Add(tupla);
+                }
+                reader.Close();
+                return FECHAS;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en intervalosFechaEspecialidadACTUALES: " + ex.ToString());
+                return FECHAS;
+            }
+        }
+
+
+       
         public int tieneAgenda(string profesional, string especialidad)
         {
             string prof;

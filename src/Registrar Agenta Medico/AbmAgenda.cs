@@ -115,9 +115,9 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
             }
             else
             {
-                if(conexion.yaExisteAgenda(usernameProfesional,textoEspecialidad.Text))
+                if(conexion.yaExisteAgendaParaElIntervalo(usernameProfesional,dateTimePicker1.Value, dateTimePicker2.Value))
                 {
-                    MessageBox.Show("Ya existe agenda para ese profesional");
+                    MessageBox.Show("Ya existe agenda para ese intervalo en el profesional");
                 }
                 else
                 {

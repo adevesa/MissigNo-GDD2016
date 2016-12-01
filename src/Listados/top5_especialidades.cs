@@ -76,7 +76,7 @@ namespace ClinicaFrba.Listados
         {
             // Aca va la consulta que hay que armar
 
-            String conslt = " SELECT TOP 5 E.especialidad_descripcion, count(B.bono_id) FROM MISSINGNO.Especialidad AS E, MISSINGNO.Turno AS T, MISSINGNO.Bono AS B, MISSINGNO.Especialidad_de_profesional AS EP WHERE B.bono_id = T.bono_id AND T.profesional_id=EP.profesional_id AND E.especialidad_id = EP.especialidad_id AND YEAR(T.fecha) = '" + Convert.ToInt32(txtAnio.Text) + "'AND MONTH(T.fecha) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') group by E.especialidad_descripcion Order by count(B.bono_id) desc";
+            String conslt = " SELECT TOP 5 E.especialidad_descripcion, count(B.bono_id) FROM MISSINGNO.Especialidad AS E, MISSINGNO.Turno AS T, MISSINGNO.Bono AS B, MISSINGNO.Especialidad_de_profesional AS EP, MISSINGNO.Consulta_medica AS CM WHERE B.bono_id = CM.bono_id AND CM.turno_id = T.turno_id AND T.profesional_id=EP.profesional_id AND E.especialidad_id = EP.especialidad_id AND YEAR(T.fecha) = '" + Convert.ToInt32(txtAnio.Text) + "'AND MONTH(T.fecha) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') group by E.especialidad_descripcion Order by count(B.bono_id) desc";
 
             
             /*

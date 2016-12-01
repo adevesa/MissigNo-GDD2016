@@ -992,7 +992,7 @@ namespace ClinicaFrba
             try
             {
                 cmd = new SqlCommand(string.Format("SELECT agenda_inicio, agenda_fin FROM MISSINGNO.Especialidad E, MISSINGNO.Agenda AG, MISSINGNO.Profesional P , MISSINGNO.Especialidad_de_profesional EP WHERE AG.prof_esp_id = EP.prof_esp_id and EP.profesional_id = P.profesional_id and P.username = '{0}' and EP.especialidad_id = E.especialidad_id and E.especialidad_descripcion = '{1}' and AG.agenda_inicio > '{2}'",
-                    profesional, especialidad, DateTime.Now), cn);
+                    profesional, especialidad, Program.fecha), cn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -1193,8 +1193,8 @@ namespace ClinicaFrba
         {
             try
             {
-                SqlCommand comando = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Cancelacion_Turno(turno_id, cancelacion_motivo, cancelacion_tipo, cancelacion_fecha) VALUES ({0},'{1}','{2}',getDate())",
-                    numeroTurno, tipoCancelacion, motivoCancelacion), cn);
+                SqlCommand comando = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Cancelacion_Turno(turno_id, cancelacion_motivo, cancelacion_tipo, cancelacion_fecha) VALUES ({0},'{1}','{2}','{3}')",
+                    numeroTurno, tipoCancelacion, motivoCancelacion, Program.fecha), cn);
                 comando.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -1301,7 +1301,7 @@ namespace ClinicaFrba
             try
             {
                 cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Compra_Bono(afiliado_id,plan_id,fecha_compra) OUTPUT inserted.compra_bono_id VALUES ({0},{1},'{2}')",
-                    afiliadoId, planid, DateTime.Now), cn);
+                    afiliadoId, planid, Program.fecha), cn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -1758,8 +1758,8 @@ namespace ClinicaFrba
 
             try
             {
-                cmd = new SqlCommand(string.Format("SELECT consulta_id FROM MISSINGNO.Consulta_medica WHERE  confirmacion_de_atencion= 'NO' AND agenda_id = (SELECT agenda_id FROM MISSINGNO.Agenda WHERE GETDATE() BETWEEN agenda_inicio AND agenda_fin AND prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}')))",
-                   profesional), cn);
+                cmd = new SqlCommand(string.Format("SELECT consulta_id FROM MISSINGNO.Consulta_medica WHERE  confirmacion_de_atencion= 'NO' AND agenda_id = (SELECT agenda_id FROM MISSINGNO.Agenda WHERE '{1}' BETWEEN agenda_inicio AND agenda_fin AND prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}')))",
+                   profesional, Program.fecha), cn);
                 cmd.ExecuteNonQuery();
 
                 SqlDataReader reader = cmd.ExecuteReader();

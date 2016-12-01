@@ -487,7 +487,7 @@ namespace ClinicaFrba
 
          try
          {
-             cmd = new SqlCommand("SELECT especialidad_descripcion FROM MISSINGNO.Especialidad WHERE especialidad_id != -1", cn);
+             cmd = new SqlCommand("SELECT especialidad_descripcion FROM MISSINGNO.Especialidad WHERE especialidad_id != -1 ORDER BY 1", cn);
              cmd.ExecuteNonQuery();
              SqlDataReader reader = cmd.ExecuteReader();
              while (reader.Read())
@@ -514,7 +514,7 @@ namespace ClinicaFrba
          List<tipoTurno> turnos = new List<tipoTurno>();
          try
          {
-             cmd = new SqlCommand(string.Format("SELECT T.turno_id, T.fecha, T.horario FROM MISSINGNO.Turno AS T, MISSINGNO.BONO AS B  WHERE T.profesional_id= (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}' ) AND T.bono_id = B.bono_id AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username= '{1}') AND T.en_uso = 0",
+             cmd = new SqlCommand(string.Format("SELECT distinct T.turno_id, T.fecha, T.horario FROM MISSINGNO.Turno AS T, MISSINGNO.BONO AS B  WHERE T.profesional_id= (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username = '{0}' ) AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username= '{1}') AND T.en_uso = 0",
                  usernameAfi, usernameProf), cn);
              cmd.ExecuteNonQuery();
              SqlDataReader reader = cmd.ExecuteReader();
@@ -1226,21 +1226,17 @@ namespace ClinicaFrba
 
         //@desc: Dado un username de un profesional, un bono, una fecha y un horario inserta un nuevo turno, 
         // cambia el estado del bono a usado y devuelve el id del turno creado para que el usuario pueda anotarlo.
-        public int crearTurno(string userProfesional, int bonoId, DateTime fecha, TimeSpan horario)
+        public int crearTurno(string userProfesional, int afiliadoId, DateTime fecha, TimeSpan horario)
         {
             int idTurno = new int();
             try
             {
-                cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Turno (profesional_id, bono_id, fecha, horario, en_uso) VALUES((SELECT profesional_id FROM MISSINGNO.Profesional WHERE username ='{0}'), {1} ,'{2}', '{3}', 0)",
-                    userProfesional, bonoId, fecha, horario), cn);
+                cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Turno (profesional_id, afiliado_id, fecha, horario, en_uso) VALUES((SELECT profesional_id FROM MISSINGNO.Profesional WHERE username ='{0}'), {1} ,'{2}', '{3}', 0)",
+                    userProfesional, afiliadoId, fecha, horario), cn);
                 cmd.ExecuteNonQuery();
 
-                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Bono SET bono_estado = 1 WHERE bono_id = {0}",
-               bonoId), cn);
-                cmd.ExecuteNonQuery();
-
-                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}') AND bono_id = {1} AND fecha = '{2}' AND horario = '{3}')",
-                    userProfesional, bonoId, fecha, horario), cn);
+                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}') AND afiliado_id = {1} AND fecha = '{2}' AND horario = '{3}')",
+                    userProfesional, afiliadoId, fecha, horario), cn);
                 cmd.ExecuteNonQuery();
 
 
@@ -1333,18 +1329,24 @@ namespace ClinicaFrba
 
         //@desc: dado un username de afiliado y uno de profesional, una especialidad de este ùltimo y un turno 
         // genera una nueva consulta medica y modifica el estado del turno en usado.
-        public void generarConsulta(string usernameAfi, string especialidad, string usernameProf, int idTurno)
+        public void generarConsulta(int bonoId, string especialidad, string usernameProf, int idTurno)
         {
 
             try
             {
-                cmd = new SqlCommand(string.Format(" INSERT INTO MISSINGNO.Consulta_medica (profesional_id, afiliado_id, agenda_id, turno_id, confirmacion_de_atencion, consulta_horario) VALUES ((SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}'), (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username = '{1}'), (SELECT agenda_id FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}') AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{2}')))), {3}, 'NO', (SELECT horario FROM MISSINGNO.Turno WHERE turno_id = {3}))",
-               usernameProf, usernameAfi, especialidad, idTurno), cn);
+                cmd = new SqlCommand(string.Format(" INSERT INTO MISSINGNO.Consulta_medica (agenda_id, turno_id, confirmacion_de_atencion, consulta_horario) VALUES ((SELECT agenda_id FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}') AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{1}'))) AND (SELECT fecha FROM MISSINGNO.Turno WHERE turno_id={2}) BETWEEN agenda_inicio AND agenda_fin), {2}, 'NO', (SELECT horario FROM MISSINGNO.Turno WHERE turno_id = {2}))",
+               usernameProf, especialidad, idTurno), cn);
                 cmd.ExecuteNonQuery();
 
                 cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Turno SET en_uso = 1 WHERE turno_id = {0}",
                     idTurno), cn);
                 cmd.ExecuteNonQuery();
+
+               cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Bono SET bono_estado = 1 WHERE bono_id = {0}",
+               bonoId), cn);
+               cmd.ExecuteNonQuery();
+
+
             }
             catch (Exception ex)
             {
@@ -1750,7 +1752,7 @@ namespace ClinicaFrba
 
             try
             {
-                cmd = new SqlCommand(string.Format("SELECT consulta_id FROM MISSINGNO.Consulta_medica WHERE profesional_id = (SELECT profesional_id  FROM MISSINGNO.Profesional WHERE username = '{0}') AND confirmacion_de_atencion= 'NO'",
+                cmd = new SqlCommand(string.Format("SELECT consulta_id FROM MISSINGNO.Consulta_medica WHERE  confirmacion_de_atencion= 'NO' AND agenda_id = (SELECT agenda_id FROM MISSINGNO.Agenda WHERE GETDATE() BETWEEN agenda_inicio AND agenda_fin AND prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}')))",
                    profesional), cn);
                 cmd.ExecuteNonQuery();
 

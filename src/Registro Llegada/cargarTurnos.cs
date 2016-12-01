@@ -40,20 +40,22 @@ namespace ClinicaFrba.Registro_Llegada
 
             turnos = conexion.obtenerTurnos(profesional.unElemento, afiliadoUsername);
             dgvTurnos.DataSource = turnos;
-            conexion.bonosDeAfiliado(Program.usuario, bono);
+            conexion.bonosDeAfiliado(afiliadoUsername, bono);
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            if(unTurno != null)
+            if((unTurno != null) || (bono != null))
             {
-            conexion.generarConsulta(afiliadoUsername, especialidad.unElemento, profesional.unElemento, unTurno.idTurno);
+            int bonoId = Convert.ToInt32(bono.Text);
+            conexion.generarConsulta(bonoId, especialidad.unElemento, profesional.unElemento, unTurno.idTurno);
             AbmRol.AbmRolAdministrador abmRolAdministrador = new AbmRol.AbmRolAdministrador();
+            MessageBox.Show("Consulta creada correctamente");
             this.Hide();
             abmRolAdministrador.ShowDialog();
             this.Close();
             }
-            else MessageBox.Show("Primero elija un turno");
+            else MessageBox.Show("Primero elija un turno y un bono");
         }
 
         private void dgvTurnos_CellClick(object sender, DataGridViewCellEventArgs e)

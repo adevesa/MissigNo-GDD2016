@@ -216,6 +216,7 @@ GO
 	create table MISSINGNO.Consulta_medica(
 		consulta_id int primary key identity,
 		agenda_id int,
+		bono_id int,
 		turno_id int,
 		confirmacion_de_atencion char(2),
 		diagnostico varchar(140),
@@ -280,7 +281,8 @@ alter table MISSINGNO.Consulta_medica
 	add constraint FK_Consulta_medica_agenda_id foreign key (agenda_id) references MISSINGNO.Agenda(agenda_id);
 alter table MISSINGNO.Consulta_medica	
 	add constraint FK_Consulta_medica_turno_id foreign key (turno_id) references MISSINGNO.Turno(turno_id);
-
+alter table MISSINGNO.Consulta_medica	
+	add constraint FK_Consulta_medica_bono_id foreign key (bono_id) references MISSINGNO.BONO(bono_id);
 
 	-- TABLA CANCELACION_TURNO
 
@@ -463,58 +465,6 @@ INSERT INTO MISSINGNO.Funcionalidad_de_rol(
 
 GO
 
---VALORES MIGRADOS.
-INSERT INTO MISSINGNO.Usuario(
-		username,
-		doc_nro ,
-		contrasenia, 
-		nombre, 
-		apellido, 
-		fec_nac, 
-		sexo, 
-		domicilio, 
-		mail, 
-		telefono,
-		doc_tipo) 
-	VALUES(
-		'MIGRADO',
-		-2, 
-		HASHBYTES('SHA2_256', 'MIGRADO'),
-		'MIGRADO',
-		'MIGRADO',
-		'16/01/1995',
-		'M',
-		'CASA MIGRADA',
-		 'MIGRADO',
-		 01140000000,
-		 'DNI')
-
-SET IDENTITY_INSERT MISSINGNO.Administrativo ON
-INSERT INTO MISSINGNO.Administrativo(admin_id,username) VALUES(1,'admin')
-SET IDENTITY_INSERT MISSINGNO.Administrativo OFF
-
-SET IDENTITY_INSERT MISSINGNO.Tipo_especialidad ON
-INSERT INTO MISSINGNO.Tipo_especialidad(tipo_especialidad_id,tipo_especialidad_desc) VALUES(-1,'MIGRADO')
-SET IDENTITY_INSERT MISSINGNO.Tipo_especialidad OFF
-
-SET IDENTITY_INSERT MISSINGNO.Especialidad ON
-INSERT INTO MISSINGNO.Especialidad(especialidad_id,especialidad_descripcion,tipo_especialidad_id) VALUES(-1,'MIGRADO',-1)
-SET IDENTITY_INSERT MISSINGNO.Especialidad OFF
-
-SET IDENTITY_INSERT MISSINGNO.Profesional ON
-INSERT INTO MISSINGNO.Profesional(profesional_id,username,profesional_matricula) VALUES(-1,'MIGRADO',-1)
-SET IDENTITY_INSERT MISSINGNO.Profesional OFF
-
-SET IDENTITY_INSERT MISSINGNO.Especialidad_de_profesional ON
-INSERT INTO MISSINGNO.Especialidad_de_profesional(prof_esp_id,especialidad_id,profesional_id) VALUES(-1,-1,-1)
-SET IDENTITY_INSERT MISSINGNO.Especialidad_de_profesional OFF
-
-
-SET IDENTITY_INSERT MISSINGNO.Agenda ON
-INSERT INTO MISSINGNO.Agenda(agenda_id,prof_esp_id,agenda_inicio,agenda_fin) VALUES(-1,-1,getdate(),getdate()) -- Valor migrado
-SET IDENTITY_INSERT MISSINGNO.Agenda OFF
-
-
 /* MIGRACION DE TIPOS DE ESPECIALIDAD */
 SET IDENTITY_INSERT MISSINGNO.Tipo_especialidad ON
 INSERT INTO MISSINGNO.Tipo_especialidad(tipo_especialidad_id,tipo_especialidad_desc)
@@ -694,8 +644,8 @@ and P.username = Medico_Mail
 
 /* MIGRACION DE CONSULTAS MEDICAS */
 
-INSERT INTO MISSINGNO.Consulta_medica(turno_id, sintoma, diagnostico, agenda_id, consulta_horario, confirmacion_de_atencion)
-SELECT DISTINCT Turno_Numero, Consulta_Sintomas, Consulta_Enfermedades, AG.agenda_id , cast(Turno_Fecha as time),'SI'
+INSERT INTO MISSINGNO.Consulta_medica(turno_id, bono_id, sintoma, diagnostico, agenda_id, consulta_horario, confirmacion_de_atencion)
+SELECT DISTINCT Turno_Numero, Bono_Consulta_Numero, Consulta_Sintomas, Consulta_Enfermedades, AG.agenda_id , cast(Turno_Fecha as time),'SI'
 FROM gd_esquema.Maestra GD, MISSINGNO.Turno T, MISSINGNO.Profesional P, MISSINGNO.Agenda AG, MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Especialidad E
 WHERE Consulta_Sintomas IS NOT NULL
 and Turno_Numero = T.turno_id

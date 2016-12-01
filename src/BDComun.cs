@@ -1340,7 +1340,7 @@ namespace ClinicaFrba
 
             try
             {
-                cmd = new SqlCommand(string.Format(" INSERT INTO MISSINGNO.Consulta_medica (agenda_id, turno_id, confirmacion_de_atencion, consulta_horario) VALUES ((SELECT agenda_id FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}') AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{1}'))) AND (SELECT fecha FROM MISSINGNO.Turno WHERE turno_id={2}) BETWEEN agenda_inicio AND agenda_fin), {2}, 'NO', (SELECT horario FROM MISSINGNO.Turno WHERE turno_id = {2}))",
+                cmd = new SqlCommand(string.Format(" INSERT INTO MISSINGNO.Consulta_medica (bono_id, agenda_id, turno_id, confirmacion_de_atencion, consulta_horario) VALUES (bonoId, (SELECT agenda_id FROM MISSINGNO.Agenda WHERE prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE (profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}') AND especialidad_id = (SELECT especialidad_id FROM MISSINGNO.Especialidad WHERE especialidad_descripcion = '{1}'))) AND (SELECT fecha FROM MISSINGNO.Turno WHERE turno_id={2}) BETWEEN agenda_inicio AND agenda_fin), {2}, 'NO', (SELECT horario FROM MISSINGNO.Turno WHERE turno_id = {2}))",
                usernameProf, especialidad, idTurno), cn);
                 cmd.ExecuteNonQuery();
 

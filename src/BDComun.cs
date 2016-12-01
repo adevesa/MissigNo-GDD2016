@@ -1664,7 +1664,7 @@ namespace ClinicaFrba
 
             try
             {
-                cmd = new SqlCommand(string.Format("SELECT T.turno_id FROM MISSINGNO.Turno AS T, MISSINGNO.Bono AS B WHERE (en_uso = 0 AND T.bono_id = B.bono_id AND B.afiliado_id = (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username ='{0}' ))",
+                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE (en_uso = 0 AND afiliado_id= (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username = '{0}'))",
                    afiliado), cn);
                 cmd.ExecuteNonQuery();
 

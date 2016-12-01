@@ -75,7 +75,7 @@ namespace ClinicaFrba.Listados
         {
             // Aca va la consulta que hay que armar
 
-            String conslt = "SELECT TOP 5 U.nombre, U.apellido, count(B.bono_id), 'Pertenece grupo familiar' = CASE WHEN afiliado_encargado = 0 THEN 'NO' WHEN afiliado_encargado = 1 THEN 'SI' ELSE 'NO SE REGISTRAN DATOS INGRESADOS' END FROM MISSINGNO.Usuario AS U, MISSINGNO.Bono AS B, MISSINGNO.Afiliado AS A, MISSINGNO.Compra_bono AS CB WHERE A.afiliado_id = B.afiliado_id AND A.username = U.username AND B.compra_bono_id = CB.compra_bono_id AND YEAR(CB.fecha_compra) = '" + Convert.ToInt32(txtAnio.Text) + "'AND MONTH(CB.fecha_compra) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') GROUP BY U.nombre,U.apellido, A.afiliado_encargado ORDER BY count(B.bono_id) desc";      
+            String conslt = "SELECT TOP 5 U.nombre, U.apellido, count(B.bono_id), 'Pertenece grupo familiar' = CASE WHEN afiliado_encargado = 0 THEN 'NO' WHEN afiliado_encargado = 1 THEN 'SI' ELSE 'NO SE REGISTRAN DATOS INGRESADOS' END FROM MISSINGNO.Usuario AS U, MISSINGNO.Bono AS B, MISSINGNO.Afiliado AS A, MISSINGNO.Compra_bono AS CB WHERE	A.afiliado_id = B.afiliado_id AND A.username = U.username AND B.compra_bono_id = CB.compra_bono_id AND YEAR (CB.fecha_compra) = '" + Convert.ToInt32(txtAnio.Text) + "'AND MONTH(CB.fecha_compra) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') GROUP BY U.nombre,U.apellido, A.afiliado_encargado ORDER BY count(B.bono_id) desc";
             
 
             //a cargar el datagrid

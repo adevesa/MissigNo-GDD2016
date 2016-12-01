@@ -37,8 +37,8 @@ namespace ClinicaFrba.Cancelar_Atencion
         private void botonAceptar_Click(object sender, EventArgs e)
         {
             //Arreglar aca!, reemplazar bonoId por afiliado id cuando arreglen la migracion
-            int bonoId = new int();
-            int idTurno = conexion.crearTurno(profesional.unElemento, bonoId, fecha, horarioElegido);
+            int afiliadoId = conexion.obtenerAfiliadoId(Program.usuario);
+            int idTurno = conexion.crearTurno(profesional.unElemento, afiliadoId, fecha, horarioElegido);
             MessageBox.Show("Su número de turno es: " + idTurno);
             AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
             this.Hide();

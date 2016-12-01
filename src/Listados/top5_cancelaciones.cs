@@ -75,7 +75,7 @@ namespace ClinicaFrba.Listados
         {
             // Aca va la consulta que hay que armar
 
-            String conslt = "SELECT TOP 5  E.especialidad_descripcion, count(C.cancelacion_id) FROM                 MISSINGNO.Cancelacion_turno AS C, MISSINGNO.Especialidad AS E, MISSINGNO.Turno AS T, MISSINGNO.Especialidad_de_profesional AS EP WHERE C.turno_id = T.turno_id AND T.profesional_id = EP.profesional_id AND EP.especialidad_id= E.especialidad_id AND YEAR(C.cancelacion_fecha) = '" + Convert.ToInt32(txtAnio.Text) + "'AND MONTH(C.cancelacion_fecha) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') group by E.especialidad_descripcion Order by count(C.cancelacion_id) desc;";
+            String conslt = "SELECT TOP 5  E.especialidad_descripcion, count(C.cancelacion_id) FROM MISSINGNO.Cancelacion_turno AS C, MISSINGNO.Especialidad AS E, MISSINGNO.Turno AS T, MISSINGNO.Especialidad_de_profesional AS EP WHERE C.turno_id = T.turno_id AND T.profesional_id = EP.profesional_id AND EP.especialidad_id= E.especialidad_id AND YEAR(C.cancelacion_fecha) = '" + Convert.ToInt32(txtAnio.Text) + "'AND MONTH(C.cancelacion_fecha) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') group by E.especialidad_descripcion Order by count(C.cancelacion_id) desc";
 
             // a cargar el datagrid
             cargarDatagrid(conslt);

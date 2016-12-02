@@ -37,6 +37,8 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbPlanes = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbEspecialidades = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +47,7 @@
             this.botonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.botonVolver.ForeColor = System.Drawing.Color.Black;
-            this.botonVolver.Location = new System.Drawing.Point(454, 331);
+            this.botonVolver.Location = new System.Drawing.Point(433, 345);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(153, 52);
@@ -63,13 +65,13 @@
             this.dataGridView.Location = new System.Drawing.Point(64, 119);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(543, 186);
+            this.dataGridView.Size = new System.Drawing.Size(653, 191);
             this.dataGridView.TabIndex = 119;
             // 
             // txtSemestre
             // 
             this.txtSemestre.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSemestre.Location = new System.Drawing.Point(408, 29);
+            this.txtSemestre.Location = new System.Drawing.Point(505, 29);
             this.txtSemestre.Name = "txtSemestre";
             this.txtSemestre.ReadOnly = true;
             this.txtSemestre.Size = new System.Drawing.Size(199, 24);
@@ -78,7 +80,7 @@
             // txtAnio
             // 
             this.txtAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnio.Location = new System.Drawing.Point(153, 29);
+            this.txtAnio.Location = new System.Drawing.Point(116, 28);
             this.txtAnio.Name = "txtAnio";
             this.txtAnio.ReadOnly = true;
             this.txtAnio.Size = new System.Drawing.Size(100, 24);
@@ -88,7 +90,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(291, 29);
+            this.label2.Location = new System.Drawing.Point(376, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 25);
             this.label2.TabIndex = 130;
@@ -98,7 +100,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(93, 29);
+            this.label1.Location = new System.Drawing.Point(59, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 25);
             this.label1.TabIndex = 129;
@@ -109,7 +111,7 @@
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F);
             this.btnBuscar.ForeColor = System.Drawing.Color.Black;
-            this.btnBuscar.Location = new System.Drawing.Point(246, 331);
+            this.btnBuscar.Location = new System.Drawing.Point(212, 345);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(153, 52);
@@ -122,7 +124,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(93, 81);
+            this.label3.Location = new System.Drawing.Point(59, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 25);
             this.label3.TabIndex = 134;
@@ -133,17 +135,41 @@
             this.cmbPlanes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPlanes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPlanes.FormattingEnabled = true;
-            this.cmbPlanes.Location = new System.Drawing.Point(153, 81);
+            this.cmbPlanes.Location = new System.Drawing.Point(116, 81);
             this.cmbPlanes.Name = "cmbPlanes";
             this.cmbPlanes.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbPlanes.Size = new System.Drawing.Size(225, 26);
             this.cmbPlanes.TabIndex = 135;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(376, 80);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 25);
+            this.label4.TabIndex = 141;
+            this.label4.Text = "Especialidad";
+            // 
+            // cmbEspecialidades
+            // 
+            this.cmbEspecialidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEspecialidades.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEspecialidades.FormattingEnabled = true;
+            this.cmbEspecialidades.Location = new System.Drawing.Point(505, 79);
+            this.cmbEspecialidades.Name = "cmbEspecialidades";
+            this.cmbEspecialidades.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmbEspecialidades.Size = new System.Drawing.Size(212, 26);
+            this.cmbEspecialidades.TabIndex = 140;
+            this.cmbEspecialidades.SelectedIndexChanged += new System.EventHandler(this.cmbEspecialidades_SelectedIndexChanged);
+            // 
             // top5_consultados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 406);
+            this.ClientSize = new System.Drawing.Size(766, 451);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cmbEspecialidades);
             this.Controls.Add(this.cmbPlanes);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBuscar);
@@ -174,5 +200,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbPlanes;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbEspecialidades;
     }
 }

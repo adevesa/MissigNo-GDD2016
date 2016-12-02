@@ -36,6 +36,7 @@ namespace ClinicaFrba.Listados
             txtAnio.Text = anio;
             txtSemestre.Text = semestre;
             llenarcmbPlanes();
+            llenarcmbEspecialidades();
 
            ///se guardan los meses
             guardarSemestre(semestre);
@@ -69,7 +70,7 @@ namespace ClinicaFrba.Listados
         {
             // Aca va la consulta que hay que armar
             //Esto lo dejo para acordarme y seguir cuando vuelvo a casa
-           String conslt = "SELECT TOP 5 U.nombre, U.apellido, E.especialidad_descripcion, count(C.consulta_id) FROM MISSINGNO.Usuario AS U, MISSINGNO.Especialidad AS E, MISSINGNO.Consulta_medica AS C, MISSINGNO.Profesional AS P, MISSINGNO.Afiliado AS A, MISSINGNO.Planes AS PL, MISSINGNO.Turno AS T WHERE C.turno_id = T.turno_id AND T.profesional_id = P.profesional_id AND T.afiliado_id = A.afiliado_id AND A.plan_id = PL.plan_id AND PL.plan_descripcion = '" + cmbPlanes.SelectedItem.ToString() + "' AND P.username = U.username AND MONTH(T.fecha) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') AND YEAR(T.fecha) = '" + Convert.ToInt32(txtAnio.Text) + "' group by U.nombre, U.apellido, E.especialidad_descripcion order by count(C.consulta_id) desc";  
+            String conslt = "SELECT TOP 5 U.nombre, U.apellido, E.especialidad_descripcion, count(C.consulta_id) FROM MISSINGNO.Usuario AS U, MISSINGNO.Especialidad AS E, MISSINGNO.Especialidad_de_profesional AS EP, MISSINGNO.Consulta_medica AS C, MISSINGNO.Profesional AS P, MISSINGNO.Afiliado AS A, MISSINGNO.Planes AS PL, MISSINGNO.Turno AS T WHERE C.turno_id = T.turno_id AND T.profesional_id = P.profesional_id AND T.afiliado_id = A.afiliado_id AND A.plan_id = PL.plan_id AND PL.plan_descripcion = '" + cmbPlanes.SelectedItem.ToString() + "' AND E.especialidad_descripcion = '" + cmbEspecialidades.SelectedItem.ToString() + "' AND P.username = U.username AND MONTH(T.fecha) IN ('" + mes1 + "','" + mes2 + "','" + mes3 + "','" + mes4 + "','" + mes5 + "','" + mes6 + "') AND YEAR(T.fecha) = '" + Convert.ToInt32(txtAnio.Text) + "'AND P.profesional_id = EP.profesional_id AND EP.especialidad_id = E.especialidad_id group by U.nombre, U.apellido, E.especialidad_descripcion order by count(C.consulta_id) desc";  
            
 
             //a cargar el datagrid
@@ -79,7 +80,7 @@ namespace ClinicaFrba.Listados
             dataGridView.Columns[0].HeaderText = "Nombre";
             dataGridView.Columns[1].HeaderText = "Apellido";
             dataGridView.Columns[2].HeaderText = "Especialidad";
-            dataGridView.Columns[3].HeaderText = "Cantidad de consultas";
+            dataGridView.Columns[3].HeaderText = "Consultas totales al profesional";
             
         }
 
@@ -138,6 +139,32 @@ namespace ClinicaFrba.Listados
             cmd.Dispose();
         }
 
+        private void llenarcmbEspecialidades()
+        {
+            //comsulta
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.CommandText = "select E.especialidad_descripcion from MISSINGNO.Especialidad as E ";
+            cmd.Connection = BDComun.ObtenerConexion();
+            //ejecuto
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    cmbEspecialidades.Items.Add(reader["especialidad_descripcion"].ToString());
+                }
+            }
+
+            cmbEspecialidades.SelectedIndex = 0;
+
+            //libero                 
+            reader.Close();
+            //libero
+            cmd.Dispose();
+        }
+
         private void botonVolver_Click(object sender, EventArgs e)
         {
             Listados.AbmListados frmAbmListados = new Listados.AbmListados();
@@ -155,6 +182,11 @@ namespace ClinicaFrba.Listados
 
             //se carga el dataGrid
             buscarLoNecesario();
+        }
+
+        private void cmbEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -100,5 +100,10 @@ namespace ClinicaFrba.Registro_Resultado
                 e.Handled = true;
             }
         }
+
+        private void textoConsulta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

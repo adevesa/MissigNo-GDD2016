@@ -74,6 +74,7 @@
             this.textoConsulta.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textoConsulta.Size = new System.Drawing.Size(295, 32);
             this.textoConsulta.TabIndex = 127;
+            this.textoConsulta.SelectedIndexChanged += new System.EventHandler(this.textoConsulta_SelectedIndexChanged);
             // 
             // textoSintoma
             // 

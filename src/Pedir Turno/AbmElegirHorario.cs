@@ -55,7 +55,10 @@ namespace ClinicaFrba.Cancelar_Atencion
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
-            
+
+            calendario.SelectionStart = Program.fecha;
+
+
         }
 
         private void botonVolver_Click(object sender, EventArgs e)

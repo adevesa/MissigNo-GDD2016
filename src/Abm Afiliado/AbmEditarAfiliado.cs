@@ -17,6 +17,7 @@ namespace ClinicaFrba.Abm_Afiliado
         BDComun conexion = new BDComun();
         public int contador = 0;
         public string plan;
+        public int planIdViejo = -1;
 
         public AbmCrearAfiliado2()
         {
@@ -52,7 +53,7 @@ namespace ClinicaFrba.Abm_Afiliado
         //@Desc evita que se manden textBox vacios
         public bool errores_de_registro()
         {
-            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoDireccion.Text.Length == 0 || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length == 0 || textoUsername.Text.Length == 0);
+            return (textoDireccion.Text.Length == 0 || textoTelefono.Text.Length == 0 ||  eleccionSexo.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoUsername.Text.Length == 0 || textMotivo.Text.Length == 0);
 
         }
 
@@ -66,18 +67,15 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 if (conexion.existeUsuario(textoUsername.Text))//verifico existencia del usuario
                 {
-                    if(!conexion.dniEnUsoCondicionado(textoDocumento.Text, textoUsername.Text)){//verifico que el dni nuevo no exista ya en la base de datos
-                                                                                                 //exeptuando que sea el mismo afiliado al que se le hacen las modificaciones
-                    List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
-                    conexion.modificarAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text);
+                     List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
+                    conexion.modificarAfiliado(textoUsername.Text, textoContraseña.Text, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text, textMotivo.Text);
                     AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
                     MessageBox.Show("Usuario modificado exitosamente");
                     this.Hide();
                     abmAfiliado.ShowDialog();
                     this.Close();
-                    }
-                    else MessageBox.Show("Nº de DNI en uso");
                 }
+                   
                 else MessageBox.Show("Usuario inexistente");
             }
             
@@ -102,7 +100,7 @@ namespace ClinicaFrba.Abm_Afiliado
             //verifico si el contador es distinto de 0 para poder avanzara  la siguiente abm,
             //este contador cambia de valor al realizar una busqueda exitosa de un username.
             //Es decir, hasta que no se busque un usuario no te deja modificar datos
-     if(contador != 0){
+      if(contador != 0){
             int tam = afiliado.hijos.Count();
             if (tam != 0){
             int i;
@@ -129,16 +127,12 @@ namespace ClinicaFrba.Abm_Afiliado
                     //obtengo todos los datos del afiliado buscado y los guardo en una clase
                     afiliado = conexion.obtenerDatosAfiliadoCompleto(textoUsername.Text);
                     //Copio los datos guardados en la clase en los textBox del abm                                                                       
-                    textoTipoDocumento.Text = afiliado.doc_tipo;
-                    textoDocumento.Text =Convert.ToString(afiliado.doc_nro);
                     textoDireccion.Text = afiliado.domicilio;
-                    textoNombre.Text = afiliado.nombre;
-                    textoApellido.Text = afiliado.apellido;
                     textoTelefono.Text = Convert.ToString(afiliado.telefono);
                     textoEmail.Text = afiliado.mail;
                     eleccionSexo.Text = reDescifrar(afiliado.sexo);
                     estadoCivil.Text = afiliado.afiliado_estado_civil;
-                  
+                    planIdViejo = conexion.obtenerPlanIdDeAfiliado(textoUsername.Text);
                     //sumo uno al contador
                     contador ++;
                 }
@@ -200,5 +194,42 @@ namespace ClinicaFrba.Abm_Afiliado
             }
         }
 
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textoContraseña_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textMotivo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textoNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void planMedico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void comprobarCambio(object sender, EventArgs e)
+        {
+            if (planIdViejo != -1)
+            {
+                if (conexion.obtenerPlanId(planMedico.Text).ToString() != planIdViejo.ToString())
+                {
+                    textMotivo.Enabled = true;
+                }
+                else
+                    textMotivo.Enabled = false;
+            }
+        }
     }
 }

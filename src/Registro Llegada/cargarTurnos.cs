@@ -41,10 +41,21 @@ namespace ClinicaFrba.Registro_Llegada
             turnos = conexion.obtenerTurnos(profesional.unElemento, afiliadoUsername);
             dgvTurnos.DataSource = turnos;
             conexion.bonosDeAfiliado(afiliadoUsername, bono);
+            if (dgvTurnos.RowCount == 0)                // DETECTAR SI LA DGV ESTA VACÍA...
+            {
+                MessageBox.Show("No hay turnos asociados a ese profesional");
+                this.Hide();
+                AbmRol.AbmRolAdministrador abmRolAdministrador = new AbmRol.AbmRolAdministrador();
+                abmRolAdministrador.ShowDialog();
+                this.Close();
+            }
+
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
+            
+            
             if((unTurno != null) || (bono != null))
             {
             int bonoId = Convert.ToInt32(bono.Text);
@@ -56,6 +67,7 @@ namespace ClinicaFrba.Registro_Llegada
             this.Close();
             }
             else MessageBox.Show("Primero elija un turno y un bono");
+            
         }
 
         private void dgvTurnos_CellClick(object sender, DataGridViewCellEventArgs e)

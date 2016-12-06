@@ -32,8 +32,8 @@
             this.botonAceptar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.bono = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTurnos)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -42,7 +42,10 @@
             // 
             this.dgvTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTurnos.Location = new System.Drawing.Point(52, 83);
+            this.dgvTurnos.MultiSelect = false;
             this.dgvTurnos.Name = "dgvTurnos";
+            this.dgvTurnos.ReadOnly = true;
+            this.dgvTurnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTurnos.Size = new System.Drawing.Size(317, 220);
             this.dgvTurnos.TabIndex = 75;
             this.dgvTurnos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTurnos_CellClick);
@@ -88,6 +91,17 @@
             this.panel1.Size = new System.Drawing.Size(430, 556);
             this.panel1.TabIndex = 76;
             // 
+            // bono
+            // 
+            this.bono.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bono.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bono.FormattingEnabled = true;
+            this.bono.Location = new System.Drawing.Point(98, 400);
+            this.bono.Name = "bono";
+            this.bono.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bono.Size = new System.Drawing.Size(225, 33);
+            this.bono.TabIndex = 102;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -100,17 +114,6 @@
             this.label1.TabIndex = 76;
             this.label1.Text = "Elegir bono";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // bono
-            // 
-            this.bono.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bono.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bono.FormattingEnabled = true;
-            this.bono.Location = new System.Drawing.Point(98, 400);
-            this.bono.Name = "bono";
-            this.bono.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bono.Size = new System.Drawing.Size(225, 33);
-            this.bono.TabIndex = 102;
             // 
             // cargarTurnos
             // 

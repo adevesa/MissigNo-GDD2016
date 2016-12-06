@@ -614,7 +614,7 @@ namespace ClinicaFrba
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener turno ID: " + ex.ToString());
+                MessageBox.Show("Error obtenerPlanIdDeAfiliado: " + ex.ToString());
                 return -1;
             }
         }
@@ -991,7 +991,7 @@ namespace ClinicaFrba
             List<Tuple<DateTime, DateTime>> FECHAS = new List<Tuple<DateTime, DateTime>>();
             try
             {
-                cmd = new SqlCommand(string.Format("SELECT agenda_inicio, agenda_fin FROM MISSINGNO.Especialidad E, MISSINGNO.Agenda AG, MISSINGNO.Profesional P , MISSINGNO.Especialidad_de_profesional EP WHERE AG.prof_esp_id = EP.prof_esp_id and EP.profesional_id = P.profesional_id and P.username = '{0}' and EP.especialidad_id = E.especialidad_id and E.especialidad_descripcion = '{1}' and AG.agenda_inicio > '{2}'",
+                cmd = new SqlCommand(string.Format("SELECT agenda_inicio, agenda_fin FROM MISSINGNO.Especialidad E, MISSINGNO.Agenda AG, MISSINGNO.Profesional P , MISSINGNO.Especialidad_de_profesional EP WHERE AG.prof_esp_id = EP.prof_esp_id and EP.profesional_id = P.profesional_id and P.username = '{0}' and EP.especialidad_id = E.especialidad_id and E.especialidad_descripcion = '{1}' and AG.agenda_inicio >= '{2}'",
                     profesional, especialidad, Program.fecha), cn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -1435,23 +1435,29 @@ namespace ClinicaFrba
 
 
         //@desc: Dado un afiliado ya creado le carga los nuevos campos menos el username, ese siempre es el mismo
-        public void modificarAfiliado(string username, string tipoDocumento, string numDocumento, string contraseña, string nombre, string apellido, DateTime fechaNacimiento, string sexo, string direccion, string email, string telefono, string estadoCivil, string planMedico)
+        public void modificarAfiliado(string username, string contraseña, string sexo, string direccion, string email, string telefono, string estadoCivil, string planMedico, string Motivo)
         {
-
-            int doc = Convert.ToInt32(numDocumento);
             UInt64 tel = Convert.ToUInt64(telefono);
             string genero = cifrarGenero(sexo);
+            int afiliado_plan_id = obtenerPlanIdDeAfiliado(username);
             int idPlan = obtenerPlanId(planMedico);
-            //DateTime fecha = new DateTime(2000, 11, 11);
+            int afiliado_id = obtenerAfiliadoId(username);
             try
             {
-                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Usuario SET doc_tipo='{0}', doc_nro={1}, contrasenia = HASHBYTES('SHA2_256','{2}'), nombre= '{3}', apellido='{4}', fec_nac='{5}', sexo='{6}', domicilio='{7}', mail= '{8}', telefono = {9} WHERE username='{10}'",
-                    tipoDocumento, doc, contraseña, nombre, apellido, fechaNacimiento, genero, direccion, email, tel, username), cn);
+                cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Usuario SET contrasenia = HASHBYTES('SHA2_256','{0}'), sexo='{1}', domicilio='{2}', mail= '{3}', telefono = {4} WHERE username='{5}'",
+                    contraseña, genero, direccion, email, tel, username), cn);
                 //"DNI", 39064509, "asdasd", "afi3", "afi", fecha, "H", "casa", "asasdsa", 01146969696969, "afi"),cn);
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Afiliado SET plan_id={0}, afiliado_estado_civil='{1}' WHERE username='{2}'",
                 idPlan, estadoCivil, username), cn);
                 cmd.ExecuteNonQuery();
+                if (afiliado_plan_id != idPlan)
+                {
+
+                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado_historial(afiliado_id,motivo,fecha_modif) VALUES ({0},'{1}','{2}'",
+                        afiliado_id, Motivo, Program.fecha), cn);
+                    cmd.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {

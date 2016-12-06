@@ -607,7 +607,7 @@ and P.plan_id = A.plan_id
 
 SET IDENTITY_INSERT MISSINGNO.Bono ON
 INSERT INTO MISSINGNO.Bono(bono_id, plan_id, afiliado_id, compra_bono_id, bono_estado, bono_precio)
-SELECT DISTINCT Bono_Consulta_Numero, C.plan_id, C.afiliado_id, C.compra_bono_id, 0, Plan_Med_Precio_Bono_Consulta
+SELECT DISTINCT Bono_Consulta_Numero, C.plan_id, C.afiliado_id, C.compra_bono_id, 1, Plan_Med_Precio_Bono_Consulta
 	FROM gd_esquema.Maestra, MISSINGNO.Compra_bono C, MISSINGNO.Afiliado A, MISSINGNO.Planes P, MISSINGNO.Usuario U
 	WHERE Compra_Bono_Fecha IS NOT NULL 
 	and C.plan_id = Plan_Med_Codigo 

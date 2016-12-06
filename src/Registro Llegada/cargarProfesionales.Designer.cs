@@ -69,7 +69,10 @@
             // 
             this.dgvProfesionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProfesionales.Location = new System.Drawing.Point(53, 99);
+            this.dgvProfesionales.MultiSelect = false;
             this.dgvProfesionales.Name = "dgvProfesionales";
+            this.dgvProfesionales.ReadOnly = true;
+            this.dgvProfesionales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProfesionales.Size = new System.Drawing.Size(317, 366);
             this.dgvProfesionales.TabIndex = 72;
             this.dgvProfesionales.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProfecionales_CellClick);
@@ -110,7 +113,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "cargarProfesionales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "cargarProfecionales";
+            this.Text = "Clinica FRBA - Cargar Profesionales";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.cargarProfecionales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfesionales)).EndInit();

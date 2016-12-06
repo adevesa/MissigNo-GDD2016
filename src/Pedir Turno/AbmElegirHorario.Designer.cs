@@ -65,6 +65,7 @@
             this.dgvHorarios.Location = new System.Drawing.Point(487, 176);
             this.dgvHorarios.Name = "dgvHorarios";
             this.dgvHorarios.ReadOnly = true;
+            this.dgvHorarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHorarios.Size = new System.Drawing.Size(282, 311);
             this.dgvHorarios.TabIndex = 53;
             this.dgvHorarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHorarios_CellClick);
@@ -76,7 +77,9 @@
             this.calendario.Location = new System.Drawing.Point(17, 176);
             this.calendario.MaxSelectionCount = 1;
             this.calendario.Name = "calendario";
+            this.calendario.ShowTodayCircle = false;
             this.calendario.TabIndex = 52;
+            this.calendario.TodayDate = new System.DateTime(2016, 1, 1, 0, 0, 0, 0);
             this.calendario.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.calendario_DateChanged);
             // 
             // botonVolver

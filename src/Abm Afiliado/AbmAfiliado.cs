@@ -60,5 +60,11 @@ namespace ClinicaFrba.Abm_Afiliado
             abmRolAdministrador.ShowDialog();
             this.Close();
         }
+
+        private void historialAfiliado_Click(object sender, EventArgs e)
+        {
+            HistorialAfiliado histAfiliado = new HistorialAfiliado();
+            histAfiliado.ShowDialog();
+        }
     }
 }

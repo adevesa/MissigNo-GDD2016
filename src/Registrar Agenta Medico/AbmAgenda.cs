@@ -68,6 +68,9 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
 
             conexion.obtenerEspecialidadesDelProf(Program.usuario, textoEspecialidad);
 
+            dateTimePicker1.Value = Program.fecha;
+            dateTimePicker2.Value = Program.fecha;
+
         }
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
@@ -103,69 +106,75 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
         private void BotonConfirmar2_Click(object sender, EventArgs e)
         {
             int agendaId;
-            if(textoEspecialidad.Text.Length == 0)
+            if (textoEspecialidad.Text.Length == 0)
             {
                 MessageBox.Show("Selecciona una especialidad");
             }
             else
             {
-            if (botonLunes.Checked == false && botonMartes.Checked == false && botonMiercoles.Checked == false && botonJueves.Checked == false && botonViernes.Checked == false && botonSabado.Checked == false && botonDomingo.Checked == false)
-            {
-                MessageBox.Show("Agrega algún dia");
-            }
-            else
-            {
-                if(conexion.yaExisteAgendaParaElIntervalo(usernameProfesional,dateTimePicker1.Value, dateTimePicker2.Value))
+                if (desdeLunes.Value > hastaLunes.Value && desdeMartes.Value > hastaMartes.Value && desdeMiercoles.Value > hastaMiercoles.Value && desdeJueves.Value > hastaJueves.Value && desdeViernes.Value > HastaViernes.Value && desdeSabado.Value > hastaSabado.Value && desdeDomingo.Value > hastaDomingo.Value)
                 {
-                    MessageBox.Show("Ya existe agenda para ese intervalo en el profesional");
+                    MessageBox.Show("Horario/s mal asignado/s");
                 }
                 else
                 {
-                    if (dateTimePicker2.Value < dateTimePicker1.Value)
+                    if (botonLunes.Checked == false && botonMartes.Checked == false && botonMiercoles.Checked == false && botonJueves.Checked == false && botonViernes.Checked == false && botonSabado.Checked == false && botonDomingo.Checked == false)
                     {
-                    MessageBox.Show("El dia de vigencia final es menor al dia de vigencia inicial");
-                }
-                else
-                {
-                agendaId = conexion.generarAgenda(usernameProfesional, dateTimePicker1.Value, dateTimePicker2.Value, textoEspecialidad.Text);
-                if (botonLunes.Checked == true)
-                {
-                    conexion.generarDia("Lunes", Convert.ToString(desdeLunes.Value) + ":00:00", Convert.ToString(hastaLunes.Value) + ":00:00", agendaId);
-                }
-                if (botonMartes.Checked == true)
-                {
-                    conexion.generarDia("Martes", Convert.ToString(desdeMartes.Value) + ":00:00", Convert.ToString(hastaMartes.Value) + ":00:00", agendaId);
-                }
-                if (botonMiercoles.Checked == true)
-                {
-                    conexion.generarDia("Miercoles", Convert.ToString(desdeMiercoles.Value) + ":00:00", Convert.ToString(hastaMiercoles.Value) + ":00:00", agendaId);
-                }
-                if (botonJueves.Checked == true)
-                {
-                    conexion.generarDia("Jueves", Convert.ToString(desdeJueves.Value) + ":00:00", Convert.ToString(hastaJueves.Value) + ":00:00", agendaId);
-                }
-                if (botonViernes.Checked == true)
-                {
-                    conexion.generarDia("Viernes", Convert.ToString(desdeViernes.Value) + ":00:00", Convert.ToString(HastaViernes.Value) + ":00:00", agendaId);
-                }
-                if (botonSabado.Checked == true)
-                {
-                    conexion.generarDia("Sabado", Convert.ToString(desdeSabado.Value) + ":00:00", Convert.ToString(hastaSabado.Value) + ":00:00", agendaId);
-                }
-                if (botonDomingo.Checked == true)
-                {
-                    conexion.generarDia("Domingo", Convert.ToString(desdeDomingo.Value) + ":00:00", Convert.ToString(hastaDomingo.Value) + ":00:00", agendaId);
-                }
-                MessageBox.Show("AGENDA CREADA CON ÉXITO");
-                AbmRol.AbmRolProfesional abmRolProfesional = new AbmRol.AbmRolProfesional();
-                this.Hide();
-                abmRolProfesional.ShowDialog();
-                this.Close();
-                }
+                        MessageBox.Show("Agrega algún dia");
+                    }
+                    else
+                    {
+                        if (conexion.yaExisteAgendaParaElIntervalo(usernameProfesional, dateTimePicker1.Value, dateTimePicker2.Value))
+                        {
+                            MessageBox.Show("Ya existe agenda para ese intervalo en el profesional");
+                        }
+                        else
+                        {
+                            if (dateTimePicker2.Value < dateTimePicker1.Value)
+                            {
+                                MessageBox.Show("El dia de vigencia final es menor al dia de vigencia inicial");
+                            }
+                            else
+                            {
+                                agendaId = conexion.generarAgenda(usernameProfesional, dateTimePicker1.Value, dateTimePicker2.Value, textoEspecialidad.Text);
+                                if (botonLunes.Checked == true)
+                                {
+                                    conexion.generarDia("Lunes", Convert.ToString(desdeLunes.Value) + ":00:00", Convert.ToString(hastaLunes.Value) + ":00:00", agendaId);
+                                }
+                                if (botonMartes.Checked == true)
+                                {
+                                    conexion.generarDia("Martes", Convert.ToString(desdeMartes.Value) + ":00:00", Convert.ToString(hastaMartes.Value) + ":00:00", agendaId);
+                                }
+                                if (botonMiercoles.Checked == true)
+                                {
+                                    conexion.generarDia("Miercoles", Convert.ToString(desdeMiercoles.Value) + ":00:00", Convert.ToString(hastaMiercoles.Value) + ":00:00", agendaId);
+                                }
+                                if (botonJueves.Checked == true)
+                                {
+                                    conexion.generarDia("Jueves", Convert.ToString(desdeJueves.Value) + ":00:00", Convert.ToString(hastaJueves.Value) + ":00:00", agendaId);
+                                }
+                                if (botonViernes.Checked == true)
+                                {
+                                    conexion.generarDia("Viernes", Convert.ToString(desdeViernes.Value) + ":00:00", Convert.ToString(HastaViernes.Value) + ":00:00", agendaId);
+                                }
+                                if (botonSabado.Checked == true)
+                                {
+                                    conexion.generarDia("Sabado", Convert.ToString(desdeSabado.Value) + ":00:00", Convert.ToString(hastaSabado.Value) + ":00:00", agendaId);
+                                }
+                                if (botonDomingo.Checked == true)
+                                {
+                                    conexion.generarDia("Domingo", Convert.ToString(desdeDomingo.Value) + ":00:00", Convert.ToString(hastaDomingo.Value) + ":00:00", agendaId);
+                                }
+                                MessageBox.Show("AGENDA CREADA CON ÉXITO");
+                                AbmRol.AbmRolProfesional abmRolProfesional = new AbmRol.AbmRolProfesional();
+                                this.Hide();
+                                abmRolProfesional.ShowDialog();
+                                this.Close();
+                            }
+                        }
+                    }
                 }
             }
-            }
-             
         }
 
         private void botonVolver_Click(object sender, EventArgs e)

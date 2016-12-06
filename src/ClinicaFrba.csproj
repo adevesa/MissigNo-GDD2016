@@ -84,6 +84,12 @@
     <Compile Include="Abm Afiliado\AgregarFamiliar.Designer.cs">
       <DependentUpon>AgregarFamiliar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Afiliado\HistorialAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\HistorialAfiliado.Designer.cs">
+      <DependentUpon>HistorialAfiliado.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmRol\AbmRolAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\AgregarFamiliar.resx">
       <DependentUpon>AgregarFamiliar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\HistorialAfiliado.resx">
+      <DependentUpon>HistorialAfiliado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AbmRolAdministrador.resx">
       <DependentUpon>AbmRolAdministrador.cs</DependentUpon>

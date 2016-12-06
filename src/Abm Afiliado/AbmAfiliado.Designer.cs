@@ -33,12 +33,14 @@
             this.botonBorrarAfiliado = new System.Windows.Forms.Button();
             this.botonModificarAfiliado = new System.Windows.Forms.Button();
             this.botonCrearAfiliado = new System.Windows.Forms.Button();
+            this.historialAfiliado = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.historialAfiliado);
             this.panel1.Controls.Add(this.botonVolver);
             this.panel1.Controls.Add(this.botonBorrarAfiliado);
             this.panel1.Controls.Add(this.botonModificarAfiliado);
@@ -68,10 +70,10 @@
             this.botonBorrarAfiliado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonBorrarAfiliado.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonBorrarAfiliado.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonBorrarAfiliado.Location = new System.Drawing.Point(141, 324);
+            this.botonBorrarAfiliado.Location = new System.Drawing.Point(141, 242);
             this.botonBorrarAfiliado.Margin = new System.Windows.Forms.Padding(2);
             this.botonBorrarAfiliado.Name = "botonBorrarAfiliado";
-            this.botonBorrarAfiliado.Size = new System.Drawing.Size(493, 139);
+            this.botonBorrarAfiliado.Size = new System.Drawing.Size(493, 104);
             this.botonBorrarAfiliado.TabIndex = 22;
             this.botonBorrarAfiliado.Text = "Borrar Afiliado";
             this.botonBorrarAfiliado.UseVisualStyleBackColor = true;
@@ -82,10 +84,10 @@
             this.botonModificarAfiliado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.botonModificarAfiliado.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
             this.botonModificarAfiliado.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonModificarAfiliado.Location = new System.Drawing.Point(141, 165);
+            this.botonModificarAfiliado.Location = new System.Drawing.Point(141, 122);
             this.botonModificarAfiliado.Margin = new System.Windows.Forms.Padding(2);
             this.botonModificarAfiliado.Name = "botonModificarAfiliado";
-            this.botonModificarAfiliado.Size = new System.Drawing.Size(493, 139);
+            this.botonModificarAfiliado.Size = new System.Drawing.Size(493, 104);
             this.botonModificarAfiliado.TabIndex = 21;
             this.botonModificarAfiliado.Text = "Modificar Afiliado";
             this.botonModificarAfiliado.UseVisualStyleBackColor = true;
@@ -99,11 +101,25 @@
             this.botonCrearAfiliado.Location = new System.Drawing.Point(141, 2);
             this.botonCrearAfiliado.Margin = new System.Windows.Forms.Padding(2);
             this.botonCrearAfiliado.Name = "botonCrearAfiliado";
-            this.botonCrearAfiliado.Size = new System.Drawing.Size(493, 139);
+            this.botonCrearAfiliado.Size = new System.Drawing.Size(493, 104);
             this.botonCrearAfiliado.TabIndex = 20;
             this.botonCrearAfiliado.Text = "Crear Afiliado";
             this.botonCrearAfiliado.UseVisualStyleBackColor = true;
             this.botonCrearAfiliado.Click += new System.EventHandler(this.botonCrearAfiliado_Click);
+            // 
+            // historialAfiliado
+            // 
+            this.historialAfiliado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.historialAfiliado.Font = new System.Drawing.Font("Microsoft JhengHei UI Light", 36F);
+            this.historialAfiliado.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.historialAfiliado.Location = new System.Drawing.Point(141, 362);
+            this.historialAfiliado.Margin = new System.Windows.Forms.Padding(2);
+            this.historialAfiliado.Name = "historialAfiliado";
+            this.historialAfiliado.Size = new System.Drawing.Size(493, 104);
+            this.historialAfiliado.TabIndex = 36;
+            this.historialAfiliado.Text = "Historial de Afiliado";
+            this.historialAfiliado.UseVisualStyleBackColor = true;
+            this.historialAfiliado.Click += new System.EventHandler(this.historialAfiliado_Click);
             // 
             // AbmAdministrarAfiliado
             // 
@@ -129,5 +145,6 @@
         private System.Windows.Forms.Button botonModificarAfiliado;
         private System.Windows.Forms.Button botonCrearAfiliado;
         private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.Button historialAfiliado;
     }
 }

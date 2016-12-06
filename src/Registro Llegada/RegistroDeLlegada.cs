@@ -94,5 +94,10 @@ namespace ClinicaFrba.Registro_Llegada
             especialidad.unElemento = Convert.ToString( dgvEspecialidades[0, posicion].Value);
  
         }
+
+        private void dgvEspecialidades_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

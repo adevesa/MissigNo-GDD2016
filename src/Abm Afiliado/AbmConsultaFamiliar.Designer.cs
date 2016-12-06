@@ -33,8 +33,8 @@
             this.butonAgregar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvFamiliares = new System.Windows.Forms.DataGridView();
             this.botonBorrar = new System.Windows.Forms.Button();
+            this.dgvFamiliares = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFamiliares)).BeginInit();
             this.SuspendLayout();
@@ -107,16 +107,6 @@
             this.panel1.Size = new System.Drawing.Size(783, 542);
             this.panel1.TabIndex = 96;
             // 
-            // dgvFamiliares
-            // 
-            this.dgvFamiliares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFamiliares.Location = new System.Drawing.Point(26, 112);
-            this.dgvFamiliares.Name = "dgvFamiliares";
-            this.dgvFamiliares.Size = new System.Drawing.Size(546, 272);
-            this.dgvFamiliares.TabIndex = 96;
-            this.dgvFamiliares.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFamiliares_CellClick);
-            this.dgvFamiliares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFamiliares_CellContentClick);
-            // 
             // botonBorrar
             // 
             this.botonBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -130,6 +120,19 @@
             this.botonBorrar.Text = "Borrar";
             this.botonBorrar.UseVisualStyleBackColor = true;
             this.botonBorrar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dgvFamiliares
+            // 
+            this.dgvFamiliares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFamiliares.Location = new System.Drawing.Point(26, 112);
+            this.dgvFamiliares.MultiSelect = false;
+            this.dgvFamiliares.Name = "dgvFamiliares";
+            this.dgvFamiliares.ReadOnly = true;
+            this.dgvFamiliares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFamiliares.Size = new System.Drawing.Size(546, 272);
+            this.dgvFamiliares.TabIndex = 96;
+            this.dgvFamiliares.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFamiliares_CellClick);
+            this.dgvFamiliares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFamiliares_CellContentClick);
             // 
             // AbmConsultaFamiliar
             // 

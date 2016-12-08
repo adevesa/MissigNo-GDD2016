@@ -23,10 +23,11 @@ namespace ClinicaFrba
             public Int64 telefono { get; set; }
             public List<int> hijos  { get; set; }
             public string afiliado_estado_civil { get; set; }
+            public int planId { get; set; }
 
             public AfiliadoCompleto() { }
 
-            public AfiliadoCompleto(/*string pUsername,*/ string pDoc_tipo, int pDoc_nro, string pContrasenia, string pNombre, string pApellido, DateTime pFec_nac, string pSexo, string pDomicilio, string pMail, int pTelefono, List<Int32> pHijos, string pAfiliado_estado_civil)
+            public AfiliadoCompleto(/*string pUsername,*/ string pDoc_tipo, int pDoc_nro, string pContrasenia, string pNombre, string pApellido, DateTime pFec_nac, string pSexo, string pDomicilio, string pMail, int pTelefono, List<Int32> pHijos, string pAfiliado_estado_civil, int pPlanId)
             {
                 //this.username = pUsername;
                 this.doc_tipo = pDoc_tipo;
@@ -41,7 +42,7 @@ namespace ClinicaFrba
                 this.telefono = pTelefono;
                 //this.hijos = pHijos;
                 this.afiliado_estado_civil = pAfiliado_estado_civil;
-
+                this.planId = pPlanId;
             }
 
         }

@@ -10,6 +10,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using ClinicaFrba.Clases;
 
 namespace ClinicaFrba
 {
@@ -433,7 +434,7 @@ namespace ClinicaFrba
          AfiliadoCompleto afiliado = new AfiliadoCompleto();
          try
          {
-             cmd = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono, afiliado_estado_civil FROM MISSINGNO.Usuario as X , MISSINGNO.Afiliado AS Y WHERE (Y.username = '{0}' AND X.username = '{0}')",
+             cmd = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono, afiliado_estado_civil, plan_id FROM MISSINGNO.Usuario as X , MISSINGNO.Afiliado AS Y WHERE (Y.username = '{0}' AND X.username = '{0}')",
                   username), cn);
              //SqlCommand comando = new SqlCommand(string.Format("SELECT doc_tipo, doc_nro, nombre, apellido, fec_nac, sexo, domicilio, mail, telefono FROM MISSINGNO.Usuario WHERE username = '{0}'",
              //  username), cn);
@@ -452,6 +453,7 @@ namespace ClinicaFrba
                  afiliado.mail = reader.GetString(7);
                  afiliado.telefono = reader.GetInt64(8);
                  afiliado.afiliado_estado_civil = reader.GetString(9);
+                 afiliado.planId = reader.GetInt32(10);
              }
              reader.Close();
              List<int> listaID = new List<int>();
@@ -592,6 +594,40 @@ namespace ClinicaFrba
 
 
         //-------AFILIADOS----//
+
+
+      //@desc: dado un afiliado id obtiene su historial
+
+    public List<tipoHistorial> obtenerHistorialAfiliado(int idAfiliado)
+        {
+            List<tipoHistorial> historiales = new List<tipoHistorial>();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT  fecha_modif, motivo FROM MISSINGNO.Afiliado_historial WHERE afiliado_id = {0} ORDER BY fecha_modif",
+                    idAfiliado), cn);
+                cmd.ExecuteNonQuery();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    tipoHistorial historial = new tipoHistorial();
+                    historial.fecha = reader.GetDateTime(0);
+                    historial.motivo = reader.GetString(1);
+                    historiales.Add(historial);
+
+                }
+                reader.Close();
+                return historiales;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error obtenerHistorialAfiliado: " + ex.ToString());
+                return historiales;
+            }
+        }
+
+
+
 
      //@desc: dado un usuario devuelve su plan id
 
@@ -763,8 +799,31 @@ namespace ClinicaFrba
             }
         }
         
+        //-----PLAN 
 
+        //@desc: Dado un plan medico id obtiene su descripcion
+        public string obtenerDescripcionDePlan(int planId)
+        {
+            Palabra descripcion = new Palabra();
+            try
+            {
+                cmd = new SqlCommand(string.Format("SELECT plan_descripcion FROM MISSINGNO.Planes WHERE plan_id = {0}",
+                    planId), cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    descripcion.unElemento = reader.GetString(0);
+                }
+                reader.Close();
+                return descripcion.unElemento;
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show("Error al crear turno: " + ex.ToString());
+                return descripcion.unElemento;
+            }
+        }
 
 
         //////////////////////////////////////////////////////////////////////////////////
@@ -1442,6 +1501,7 @@ namespace ClinicaFrba
             int afiliado_plan_id = obtenerPlanIdDeAfiliado(username);
             int idPlan = obtenerPlanId(planMedico);
             int afiliado_id = obtenerAfiliadoId(username);
+            DateTime ejFecha = new DateTime(2016, 1, 1);
             try
             {
                 cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Usuario SET contrasenia = HASHBYTES('SHA2_256','{0}'), sexo='{1}', domicilio='{2}', mail= '{3}', telefono = {4} WHERE username='{5}'",
@@ -1454,8 +1514,9 @@ namespace ClinicaFrba
                 if (afiliado_plan_id != idPlan)
                 {
 
-                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado_historial(afiliado_id,motivo,fecha_modif) VALUES ({0},'{1}','{2}'",
-                        afiliado_id, Motivo, Program.fecha), cn);
+                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado_historial(afiliado_id,motivo,fecha_modif) VALUES ({0},'{1}','{2}')",
+                       afiliado_id, Motivo, Program.fecha), cn);
+                      // afiliado_id, Motivo, ejFecha), cn);
                     cmd.ExecuteNonQuery();
                 }
             }

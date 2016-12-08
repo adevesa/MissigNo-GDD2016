@@ -65,8 +65,14 @@ namespace ClinicaFrba.Abm_Afiliado
             }
             else
             {
-                if (conexion.existeUsuario(textoUsername.Text))//verifico existencia del usuario
+                if (textMotivo.Text.Length > 139) 
+                { 
+                    MessageBox.Show("El motivo no debe superar los 140 caracteres");
+                }
+                else
                 {
+                 if (conexion.existeUsuario(textoUsername.Text))//verifico existencia del usuario
+                    {
                      List<AfiliadoSimple> lista = new List<AfiliadoSimple>();
                     conexion.modificarAfiliado(textoUsername.Text, textoContraseña.Text, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text, textMotivo.Text);
                     AbmAdministrarAfiliado abmAfiliado = new AbmAdministrarAfiliado();
@@ -74,9 +80,10 @@ namespace ClinicaFrba.Abm_Afiliado
                     this.Hide();
                     abmAfiliado.ShowDialog();
                     this.Close();
+                  }
+                 else MessageBox.Show("Usuario inexistente");
                 }
-                   
-                else MessageBox.Show("Usuario inexistente");
+                
             }
             
             
@@ -132,6 +139,9 @@ namespace ClinicaFrba.Abm_Afiliado
                     textoEmail.Text = afiliado.mail;
                     eleccionSexo.Text = reDescifrar(afiliado.sexo);
                     estadoCivil.Text = afiliado.afiliado_estado_civil;
+                    string descripcionDePlan = conexion.obtenerDescripcionDePlan(afiliado.planId);
+                    planMedico.Text = descripcionDePlan;
+                    //planMedico.Text
                     planIdViejo = conexion.obtenerPlanIdDeAfiliado(textoUsername.Text);
                     //sumo uno al contador
                     contador ++;

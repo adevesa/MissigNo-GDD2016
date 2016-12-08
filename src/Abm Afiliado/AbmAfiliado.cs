@@ -64,7 +64,9 @@ namespace ClinicaFrba.Abm_Afiliado
         private void historialAfiliado_Click(object sender, EventArgs e)
         {
             HistorialAfiliado histAfiliado = new HistorialAfiliado();
+            this.Hide();
             histAfiliado.ShowDialog();
+            this.Close();
         }
     }
 }

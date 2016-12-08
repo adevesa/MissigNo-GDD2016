@@ -129,6 +129,7 @@
     <Compile Include="Cancelar Atencion\AbmCancelarTurnoProf.Designer.cs">
       <DependentUpon>AbmCancelarTurnoProf.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clases\tipoHistorial.cs" />
     <Compile Include="Compra Bono\AbmComprarBono.cs">
       <SubType>Form</SubType>
     </Compile>

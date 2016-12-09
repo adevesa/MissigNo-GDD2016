@@ -56,17 +56,20 @@ namespace ClinicaFrba.Registro_Llegada
         {
             
             
-            if((unTurno != null) || (bono != null))
+            if(unTurno == null || bono == null)
             {
-            int bonoId = Convert.ToInt32(bono.Text);
-            conexion.generarConsulta(bonoId, especialidad.unElemento, profesional.unElemento, unTurno.idTurno);
-            AbmRol.AbmRolAdministrador abmRolAdministrador = new AbmRol.AbmRolAdministrador();
-            MessageBox.Show("Consulta creada correctamente");
-            this.Hide();
-            abmRolAdministrador.ShowDialog();
-            this.Close();
+                MessageBox.Show("Primero elija un turno y un bono");
             }
-            else MessageBox.Show("Primero elija un turno y un bono");
+            else
+            {
+                int bonoId = Convert.ToInt32(bono.Text);
+                conexion.generarConsulta(bonoId, especialidad.unElemento, profesional.unElemento, unTurno.idTurno);
+                AbmRol.AbmRolAdministrador abmRolAdministrador = new AbmRol.AbmRolAdministrador();
+                MessageBox.Show("Consulta creada correctamente");
+                this.Hide();
+                abmRolAdministrador.ShowDialog();
+                this.Close();   
+            };
             
         }
 

@@ -30,6 +30,13 @@ namespace ClinicaFrba.Cancelar_Atencion
 
        }
 
+          public bool errores_de_exceso()
+          {
+              return ((textoMotivo.Text.Length < 140) && tipoCancelacion.Text.Length < 20);
+
+          }
+
+
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
@@ -47,7 +54,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void botonConfirmar_Click(object sender, EventArgs e)
         {
-
+            if (errores_de_exceso()){
             if (errores_de_registro())
             {
                 MessageBox.Show("Faltan completar datos");
@@ -65,8 +72,9 @@ namespace ClinicaFrba.Cancelar_Atencion
                 }
                 this.Close();
             }
+            }
+            else MessageBox.Show("Se sobrepasò el maximo de caracteres");
         }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             

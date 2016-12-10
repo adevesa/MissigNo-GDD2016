@@ -70,18 +70,26 @@ namespace ClinicaFrba.Abm_Afiliado
 
          public bool errores_de_registro()
         {
-            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoDireccion.Text.Length == 0 || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length ==0 || textoUsername.Text.Length == 0); 
+            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoDireccion.Text.Length == 0 || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length ==0 || textoUsername.Text.Length == 0 || estadoCivil.Text.Length == 0); 
 
        }
+
+          public bool errores_de_exceso()
+        {
+            return ((textoApellido.Text.Length < 60) && (textoNombre.Text.Length < 60) && textoDireccion.Text.Length < 150 && textoTelefono.Text.Length < 15 && textoDocumento.Text.Length < 15 && textoContraseña.Text.Length < 30 && textoEmail.Text.Length < 60 && textoTipoDocumento.Text.Length < 10 && textoUsername.Text.Length < 60); 
+        }
+
          private void botonConfirmar_Click(object sender, EventArgs e)
-         {
+          {
+              if (errores_de_exceso())
+               {
              if (errores_de_registro())
              {
                  MessageBox.Show("Faltan completar datos");
              }
               else
              {
-
+             
                  if (!conexion.existeUsuario(textoUsername.Text))//verifico que no exista afiliado
                 {
                    if(!conexion.dniEnUso(textoDocumento.Text)){//verifico que el documento ingresado no este en uso
@@ -100,7 +108,10 @@ namespace ClinicaFrba.Abm_Afiliado
                    else MessageBox.Show("Nº de Documento en uso");
               }
                  else MessageBox.Show("Username en uso");
-            }
+            
+           }
+               }
+         else MessageBox.Show("Hay exceso de caracteres en uno de los campos");
          }
    
          private void fechaDeNacimiento_ValueChanged(object sender, EventArgs e)

@@ -23,6 +23,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void botonBorrar_Click(object sender, EventArgs e)
         {
+            if(textoUsername.Text.Length < 60) {
             if (!conexion.esAfiliado(textoUsername.Text))
             {
                 MessageBox.Show("No existe afiliado con ese username");
@@ -33,6 +34,7 @@ namespace ClinicaFrba.Abm_Afiliado
                 historial = conexion.obtenerHistorialAfiliado(afiliadoId);
                 dgvAfiliadoHistorial.DataSource = historial;
             }
+            } MessageBox.Show("Username demaciado largo");
         }
 
         private void botonVolver_Click(object sender, EventArgs e)

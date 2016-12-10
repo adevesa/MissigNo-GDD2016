@@ -57,6 +57,9 @@ namespace ClinicaFrba.Abm_Afiliado
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
 
+            //listaFamiliares = listaFamiliares.FindAll(x => x.username.Length != 0);
+
+
             //inicializo el dgv
             dgvFamiliares.DataSource = listaFamiliares;
 

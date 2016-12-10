@@ -27,7 +27,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if(textoUsername.Text.Length < 60) {
             if (conexion.existeUsuario(textoUsername.Text)) //verifico primero la existencia del usuario ingresado
             {
             conexion.borrarAfiliado(textoUsername.Text);
@@ -35,6 +35,8 @@ namespace ClinicaFrba.Abm_Afiliado
             textoUsername.Clear();
                 }
             else  MessageBox.Show("Usuario inexistente");
+        }
+            else MessageBox.Show("Username demaciado largo");
         }
 
         private void button3_Click(object sender, EventArgs e)

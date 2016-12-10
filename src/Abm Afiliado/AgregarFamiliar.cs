@@ -35,8 +35,17 @@ namespace ClinicaFrba.Abm_Afiliado
             return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length == 0 || textoUsername.Text.Length == 0);  
         }
 
+        public bool errores_de_exceso()
+        {
+            return ((textoApellido.Text.Length < 60) && (textoNombre.Text.Length < 60) && textoTelefono.Text.Length < 15 && textoDocumento.Text.Length < 15 && textoContraseña.Text.Length < 30 && textoEmail.Text.Length < 60 && textoTipoDocumento.Text.Length < 10 && textoUsername.Text.Length < 60);
+        }
+
+
         private void BotonConfirmar2_Click(object sender, EventArgs e)
         {
+
+             if (errores_de_exceso())
+               {
             //verifico no tener errores de registro
             if (errores_de_registro())
             {
@@ -67,6 +76,8 @@ namespace ClinicaFrba.Abm_Afiliado
                 } 
                 else MessageBox.Show("Username en uso");
             }
+               }
+             else MessageBox.Show("Hay exceso de caracteres en uno de los campos");
         }
 
         private void button1_Click(object sender, EventArgs e)

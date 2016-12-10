@@ -58,8 +58,16 @@ namespace ClinicaFrba.Abm_Afiliado
 
         }
 
+        public bool errores_de_exceso()
+        {
+            return (textoDireccion.Text.Length < 150 && textoTelefono.Text.Length < 15 && textoContraseña.Text.Length < 30 && textoEmail.Text.Length < 60 && textoUsername.Text.Length < 60);
+        }
+
         private void BotonConfirmar2_Click(object sender, EventArgs e)
         {
+
+            if( errores_de_exceso())
+                {
             if (errores_de_registro())//verifico que esten todos los datos
             {
                 MessageBox.Show("Faltan completar datos");
@@ -86,6 +94,8 @@ namespace ClinicaFrba.Abm_Afiliado
                 }
                 
             }
+                }
+            else MessageBox.Show("Hay exceso de caracteres en uno de los campos");
             
             
             
@@ -128,7 +138,8 @@ namespace ClinicaFrba.Abm_Afiliado
        
             */
 
-
+             if( errores_de_exceso())
+                {
              if (errores_de_registro())//verifico que esten todos los datos
             {
                 MessageBox.Show("Faltan completar datos");
@@ -163,6 +174,8 @@ namespace ClinicaFrba.Abm_Afiliado
 
         }
             }
+                }
+             else MessageBox.Show("Hay exceso de caracteres en uno de los campos");
         }
 
         private void botonBuscar_Click(object sender, EventArgs e)

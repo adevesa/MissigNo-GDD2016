@@ -17,6 +17,7 @@ namespace ClinicaFrba.Cancelar_Atencion
         Palabra profesional = new Palabra();
         List<int> listaDeHorarios = new List<int>();
         TimeSpan horarioElegido = new TimeSpan();
+        int cont = 0;
         string dia;
         DateTime fecha = new DateTime();
 
@@ -35,15 +36,23 @@ namespace ClinicaFrba.Cancelar_Atencion
 
 
         private void botonAceptar_Click(object sender, EventArgs e)
-        {
-            //Arreglar aca!, reemplazar bonoId por afiliado id cuando arreglen la migracion
+        {    
+            
+         if(cont == 1){
+             if(! (horarioElegido.Hours == 00 )){
+
             int afiliadoId = conexion.obtenerAfiliadoId(Program.usuario);
             int idTurno = conexion.crearTurno(profesional.unElemento, afiliadoId, fecha, horarioElegido);
             MessageBox.Show("Su número de turno es: " + idTurno);
             AbmRol.AbmRolAfiliado abmRolAfiliado = new AbmRol.AbmRolAfiliado();
+            cont = 0;
             this.Hide();
             abmRolAfiliado.ShowDialog();
             this.Close();
+             }
+             else MessageBox.Show("Elija un horario");
+         }
+         else MessageBox.Show("Primero filtre por una fecha");
         }
 
         private void AbmElegirHorario_Load(object sender, EventArgs e)
@@ -93,6 +102,7 @@ namespace ClinicaFrba.Cancelar_Atencion
 
                 //dgvHorarios.DataSource = convertirEnTime(horariosTotales);
                  dgvHorarios.DataSource = convertirEnTime(filtrarHorarios(horariosUsados, horariosTotales));
+               cont = 1;
            }
             else 
            {

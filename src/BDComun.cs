@@ -378,6 +378,32 @@ namespace ClinicaFrba
         }
 
 
+     //@desc: genera una lista con todos los bonos de un afiliado
+     public List<int> obtenerBonosDeAfiliado(int afiliadoId)
+     {
+         List<int> bonos = new List<int>();
+
+         try
+         {
+             cmd = new SqlCommand(string.Format("SELECT bono_Id FROM MISSINGNO.Bono WHERE afiliado_id = {0} AND bono_estado = 0",
+                 afiliadoId ), cn);
+             cmd.ExecuteNonQuery();
+             SqlDataReader reader = cmd.ExecuteReader();
+             while (reader.Read())
+             {
+                 int bono = new int();              
+                 bono = reader.GetInt32(0);
+                 bonos.Add(bono);
+             }
+             reader.Close();
+             return bonos;
+         }
+         catch (Exception ex)
+         {
+             MessageBox.Show("Error al obtener lista de bonos: " + ex.ToString());
+             return bonos;
+         }
+     }
 
        
         //-----TURNOS--------//

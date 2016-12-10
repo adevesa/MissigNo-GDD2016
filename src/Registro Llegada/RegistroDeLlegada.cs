@@ -65,16 +65,25 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void botonFiltrar_Click(object sender, EventArgs e)
         {   
+            
+
+
             if(especialidad.unElemento != null)
             {
             if(textoUsername.TextLength != 0)
             {
                 if (conexion.esAfiliado(textoUsername.Text))
                 {
+                    int afiliadoId = conexion.obtenerAfiliadoId(textoUsername.Text);
+                    List<int> bonos = conexion.obtenerBonosDeAfiliado(afiliadoId);
+                    if(bonos.Count != 0){
+            
             cargarProfesionales abm = new cargarProfesionales(especialidad, textoUsername.Text, 0);
             this.Hide();
             abm.ShowDialog();
             this.Close();
+                    }
+                    else MessageBox.Show("Afiliado sin bonos");
                 }
                 else MessageBox.Show("Afiliado inexistente");
            }

@@ -19,6 +19,7 @@ namespace ClinicaFrba.Registro_Llegada
         Palabra profesional = new Palabra();
         Palabra especialidad = new Palabra();
         string afiliadoUsername;
+       
         public cargarTurnos(Palabra profesional, string afiliado, Palabra especialidad)
         {
             this.especialidad = especialidad;
@@ -37,7 +38,7 @@ namespace ClinicaFrba.Registro_Llegada
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
-
+            unTurno.idTurno = -1;
             turnos = conexion.obtenerTurnos(profesional.unElemento, afiliadoUsername);
             dgvTurnos.DataSource = turnos;
             conexion.bonosDeAfiliado(afiliadoUsername, bono);
@@ -54,9 +55,9 @@ namespace ClinicaFrba.Registro_Llegada
 
         private void botonAceptar_Click(object sender, EventArgs e)
         {
-            
-            
-            if((unTurno != null) || (bono != null))
+
+
+            if (unTurno.idTurno != -1)
             {
             int bonoId = Convert.ToInt32(bono.Text);
             conexion.generarConsulta(bonoId, especialidad.unElemento, profesional.unElemento, unTurno.idTurno);
@@ -66,7 +67,7 @@ namespace ClinicaFrba.Registro_Llegada
             abmRolAdministrador.ShowDialog();
             this.Close();
             }
-            else MessageBox.Show("Primero elija un turno y un bono");
+            else MessageBox.Show("Primero elija un turno");
             
         }
 

@@ -218,6 +218,7 @@ GO
 		agenda_id int,
 		bono_id int,
 		turno_id int,
+		profesional_id int,
 		confirmacion_de_atencion char(2),
 		diagnostico varchar(140),
 		consulta_horario time,
@@ -283,6 +284,8 @@ alter table MISSINGNO.Consulta_medica
 	add constraint FK_Consulta_medica_turno_id foreign key (turno_id) references MISSINGNO.Turno(turno_id);
 alter table MISSINGNO.Consulta_medica	
 	add constraint FK_Consulta_medica_bono_id foreign key (bono_id) references MISSINGNO.BONO(bono_id);
+alter table MISSINGNO.Consulta_medica	
+	add constraint FK_Consulta_medica_profesibonal_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
 
 	-- TABLA CANCELACION_TURNO
 
@@ -644,8 +647,8 @@ and P.username = Medico_Mail
 
 /* MIGRACION DE CONSULTAS MEDICAS */
 
-INSERT INTO MISSINGNO.Consulta_medica(turno_id, bono_id, sintoma, diagnostico, agenda_id, consulta_horario, confirmacion_de_atencion)
-SELECT DISTINCT Turno_Numero, Bono_Consulta_Numero, Consulta_Sintomas, Consulta_Enfermedades, AG.agenda_id , cast(Turno_Fecha as time),'SI'
+INSERT INTO MISSINGNO.Consulta_medica(turno_id, bono_id, sintoma, diagnostico, agenda_id, consulta_horario, confirmacion_de_atencion, profesional_id)
+SELECT DISTINCT Turno_Numero, Bono_Consulta_Numero, Consulta_Sintomas, Consulta_Enfermedades, AG.agenda_id , cast(Turno_Fecha as time),'SI', P.profesional_id
 FROM gd_esquema.Maestra GD, MISSINGNO.Turno T, MISSINGNO.Profesional P, MISSINGNO.Agenda AG, MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Especialidad E
 WHERE Consulta_Sintomas IS NOT NULL
 and Turno_Numero = T.turno_id

@@ -99,6 +99,7 @@
             this.comboBoxUsuario.Size = new System.Drawing.Size(521, 63);
             this.comboBoxUsuario.TabIndex = 68;
             this.comboBoxUsuario.Text = "Elija un afiliado";
+            this.comboBoxUsuario.SelectedIndexChanged += new System.EventHandler(this.comboBoxUsuario_SelectedIndexChanged);
             // 
             // AbmComprarBono
             // 

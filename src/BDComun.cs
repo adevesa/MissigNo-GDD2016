@@ -1945,7 +1945,7 @@ namespace ClinicaFrba
             try
             {
                 int encargado_id = obtenerAfiliadoId(username);
-                cmd = new SqlCommand(string.Format("SELECT username FROM MISSINGNO.Afiliado WHERE afiliado_encargo = {0}",
+                cmd = new SqlCommand(string.Format("SELECT username FROM MISSINGNO.Afiliado WHERE afiliado_encargado = {0}",
                     encargado_id), cn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())

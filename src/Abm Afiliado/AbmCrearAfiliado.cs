@@ -91,6 +91,7 @@ namespace ClinicaFrba.Abm_Afiliado
                                                                           que tiene vajo su tutela, en este caso al ser un afiliado
                                                                           nuevo, no hace falta utilizarla.*/
                 conexion.crearAfiliado(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text);
+                MessageBox.Show("AFILIADO CREADO CON EXITO");
               AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar(lista, textoUsername.Text,textoDireccion.Text);
               this.Hide();
               abmConsulta.ShowDialog();

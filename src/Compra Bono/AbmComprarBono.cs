@@ -80,5 +80,10 @@ namespace ClinicaFrba.Compra_Bono
         {
 
         }
+
+        private void comboBoxUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

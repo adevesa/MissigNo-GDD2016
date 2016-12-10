@@ -52,6 +52,7 @@ namespace ClinicaFrba.Abm_Afiliado
                 int idAfiliado = conexion.obtenerAfiliadoId(this.userPadre);
                          //insert al familiar nuevo
                 conexion.crearFamiliar(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, this.direccionPadre, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text, idAfiliado);
+                MessageBox.Show("FAMILIAR CREADO CON EXITO!");
                 //guardo los datos de los textBox para meter en una lista y poder devolverselo al abmConsultaFamiliar 
                 familiarNuevo.username = textoUsername.Text;
                 familiarNuevo.nombre = textoNombre.Text;

@@ -778,7 +778,7 @@ namespace ClinicaFrba
             List<int> turnos_id_de_la_Fecha = new List<int>();
             try
             {
-                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE fecha = '{0}' AND profesional_id = {1}",
+                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE fecha = '{0}' AND profesional_id = {1} AND en_uso = 0",
                     fecha, profesional_id), cn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -1281,6 +1281,9 @@ namespace ClinicaFrba
                 SqlCommand comando = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Cancelacion_Turno(turno_id, cancelacion_motivo, cancelacion_tipo, cancelacion_fecha) VALUES ({0},'{1}','{2}','{3}')",
                     numeroTurno, tipoCancelacion, motivoCancelacion, Program.fecha), cn);
                 comando.ExecuteNonQuery();
+                SqlCommand cmd = new SqlCommand(string.Format("UPDATE MISSINGNO.Turno SET en_uso = 1 where turno_id = {0}",
+                    numeroTurno), cn);
+                cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

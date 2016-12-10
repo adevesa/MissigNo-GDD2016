@@ -112,7 +112,7 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
             }
             else
             {
-                if (desdeLunes.Value > hastaLunes.Value && desdeMartes.Value > hastaMartes.Value && desdeMiercoles.Value > hastaMiercoles.Value && desdeJueves.Value > hastaJueves.Value && desdeViernes.Value > HastaViernes.Value && desdeSabado.Value > hastaSabado.Value && desdeDomingo.Value > hastaDomingo.Value)
+                if (desdeLunes.Value > hastaLunes.Value || desdeMartes.Value > hastaMartes.Value || desdeMiercoles.Value > hastaMiercoles.Value || desdeJueves.Value > hastaJueves.Value || desdeViernes.Value > HastaViernes.Value || desdeSabado.Value > hastaSabado.Value || desdeDomingo.Value > hastaDomingo.Value)
                 {
                     MessageBox.Show("Horario/s mal asignado/s");
                 }

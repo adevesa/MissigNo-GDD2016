@@ -20,6 +20,8 @@ namespace ClinicaFrba.Cancelar_Atencion
         {
             this.username = Program.usuario;
             InitializeComponent();
+            dateTimeDesde.Value = Program.fecha;
+            dateTimeHasta.Value = Program.fecha.AddDays(1);
         }
 
         public bool errores_de_registro()//Funcion para verificar que no haya textBox vacios
@@ -44,8 +46,9 @@ namespace ClinicaFrba.Cancelar_Atencion
                 else
                 {
                     conexion.cancelarDias(username, dateTimeDesde.Value, dateTimeHasta.Value, tipoCancelacion.Text, textoMotivo.Text);
+                    this.Close();
                 }
-            this.Close();
+
             }
         }
 
@@ -61,6 +64,29 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void AbmCancelarTurnoProf_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void botonConfirmar_Click_1(object sender, EventArgs e)
+        {
+            if (errores_de_registro())
+            {
+                MessageBox.Show("Faltan completar datos");
+            }
+            else
+            {       //verifica que la fecha de hasta no sea menor que la de desde
+                if (dateTimeDesde.Value > dateTimeHasta.Value)
+                {
+                    MessageBox.Show("Error en las fechas");
+                }
+                else
+                {
+                    conexion.cancelarDias(username, dateTimeDesde.Value, dateTimeHasta.Value, tipoCancelacion.Text, textoMotivo.Text);
+                    MessageBox.Show("FECHAS CANCELADAS");
+                    this.Close();
+                }
+
+            }
 
         }
     }

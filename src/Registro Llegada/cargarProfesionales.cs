@@ -55,7 +55,7 @@ namespace ClinicaFrba.Registro_Llegada
               dgvProfesionales.DataSource = profesionalesFiltrados;
 
               if (profesionalesFiltrados.Count == 0){
-                  MessageBox.Show("Lo sentimos, ningùn profesional se a creado una agenda con esta especialidad");
+                  MessageBox.Show("Lo sentimos, ningún profesional ha creado una agenda con esta especialidad");
               }
         }
 

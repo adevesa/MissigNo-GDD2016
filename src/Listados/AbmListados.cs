@@ -115,7 +115,7 @@ namespace ClinicaFrba.Listados
 
                 this.DialogResult = DialogResult.Yes;
                 this.Hide();
-                frmEspMasConsultas.Show();
+                frmEspMasConsultas.ShowDialog();
                 this.Close();
             }
 

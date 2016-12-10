@@ -107,7 +107,7 @@ namespace ClinicaFrba.Abm_Afiliado
             //verifico si el contador es distinto de 0 para poder avanzara  la siguiente abm,
             //este contador cambia de valor al realizar una busqueda exitosa de un username.
             //Es decir, hasta que no se busque un usuario no te deja modificar datos
-      if(contador != 0){
+     /* if(contador != 0){
             int tam = afiliado.hijos.Count();
             if (tam != 0){
             int i;
@@ -115,6 +115,7 @@ namespace ClinicaFrba.Abm_Afiliado
                AfiliadoSimple datosAfiliado =  conexion.obtenerDatosAfiliadoSimple(afiliado.hijos[i]);
                lista.Add(datosAfiliado);
                 }
+
             }
      
             AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar(lista, textoUsername.Text, textoDireccion.Text);
@@ -124,13 +125,51 @@ namespace ClinicaFrba.Abm_Afiliado
      }
      else MessageBox.Show("Primero debes buscar un usuario");
        
+            */
+
+
+             if (errores_de_registro())//verifico que esten todos los datos
+            {
+                MessageBox.Show("Faltan completar datos");
+            }
+            else
+            {
+                if (textMotivo.Text.Length > 139) 
+                { 
+                    MessageBox.Show("El motivo no debe superar los 140 caracteres");
+                }
+                else
+                {
+                 if (conexion.existeUsuario(textoUsername.Text))//verifico existencia del usuario
+                    {
+      if(contador != 0){
+            int tam = afiliado.hijos.Count();
+            if (tam != 0){
+            int i;
+            for(i = 0; tam>i; i++)  {
+               AfiliadoSimple datosAfiliado =  conexion.obtenerDatosAfiliadoSimple(afiliado.hijos[i]);
+               lista.Add(datosAfiliado);
+                }
+                }
+            conexion.modificarAfiliado(textoUsername.Text, textoContraseña.Text, eleccionSexo.Text, textoDireccion.Text, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text, textMotivo.Text);
+            AbmConsultaFamiliar abmConsulta = new AbmConsultaFamiliar(lista, textoUsername.Text, textoDireccion.Text);
+            this.Hide();
+            abmConsulta.ShowDialog();
+            this.Close();
+                  }
+                 else MessageBox.Show("Usuario inexistente");
+                }
+
+        }
+            }
         }
 
         private void botonBuscar_Click(object sender, EventArgs e)
         {//verifica que hayan escrito algo en el textBox del username
             if((textoUsername.Text).Length != 0){
                 //controlo que exista el username
-                if(conexion.existeUsuario(textoUsername.Text)){
+                if (conexion.esAfiliado(textoUsername.Text))
+                {
                     //obtengo todos los datos del afiliado buscado y los guardo en una clase
                     afiliado = conexion.obtenerDatosAfiliadoCompleto(textoUsername.Text);
                     //Copio los datos guardados en la clase en los textBox del abm                                                                       
@@ -146,7 +185,7 @@ namespace ClinicaFrba.Abm_Afiliado
                     //sumo uno al contador
                     contador ++;
                 }
-                else MessageBox.Show("Usuario inexistente");
+                else MessageBox.Show("Afiliado inexistente");
             }
             else MessageBox.Show("Debes introducir un nombre de usuario");
         }

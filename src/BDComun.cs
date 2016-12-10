@@ -1854,7 +1854,7 @@ namespace ClinicaFrba
 
             try
             {
-                cmd = new SqlCommand(string.Format("SELECT consulta_id FROM MISSINGNO.Consulta_medica WHERE  confirmacion_de_atencion= 'NO' AND agenda_id = (SELECT agenda_id FROM MISSINGNO.Agenda WHERE '{1}' BETWEEN cast(agenda_inicio as date) AND  cast(agenda_fin as date) AND prof_esp_id = (SELECT prof_esp_id FROM MISSINGNO.Especialidad_de_profesional WHERE profesional_id = (SELECT profesional_id FROM MISSINGNO.Profesional WHERE username='{0}')))",
+                cmd = new SqlCommand(string.Format("SELECT DISTINCT consulta_id FROM MISSINGNO.Consulta_medica C, MISSINGNO.Agenda A, MISSINGNO.Especialidad_de_profesional EP, MISSINGNO.Profesional P WHERE  C.confirmacion_de_atencion= 'NO' AND '{1}' BETWEEN cast(A.agenda_inicio as date) AND cast(A.agenda_fin as date) AND EP.prof_esp_id = A.prof_esp_id AND EP.profesional_id = P.profesional_id AND P.username = '{0}'",
                    profesional, Program.fecha), cn);
                 cmd.ExecuteNonQuery();
                 SqlDataReader reader = cmd.ExecuteReader();

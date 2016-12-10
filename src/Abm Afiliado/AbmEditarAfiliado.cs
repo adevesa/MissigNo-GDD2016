@@ -34,6 +34,7 @@ namespace ClinicaFrba.Abm_Afiliado
             Int32 anchoDePanel = (this.Width - panel1.Width) / 2;
             Int32 largoDePanel = (this.Height - panel1.Height) / 2;
             panel1.Location = new Point(anchoDePanel, largoDePanel);
+            textMotivo.Enabled = false;
 
             //Inicializo el combobox de planes con todos los de la base de datos
             conexion.recuperarPlanes(planMedico, plan);
@@ -53,7 +54,7 @@ namespace ClinicaFrba.Abm_Afiliado
         //@Desc evita que se manden textBox vacios
         public bool errores_de_registro()
         {
-            return (textoDireccion.Text.Length == 0 || textoTelefono.Text.Length == 0 ||  eleccionSexo.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoUsername.Text.Length == 0 || textMotivo.Text.Length == 0);
+            return (textoDireccion.Text.Length == 0 || textoTelefono.Text.Length == 0 ||  eleccionSexo.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoUsername.Text.Length == 0 || (textMotivo.Text.Length == 0 && textMotivo.Enabled == true));
 
         }
 

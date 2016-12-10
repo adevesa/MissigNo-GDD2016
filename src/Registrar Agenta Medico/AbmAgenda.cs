@@ -69,7 +69,7 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
             conexion.obtenerEspecialidadesDelProf(Program.usuario, textoEspecialidad);
 
             dateTimePicker1.Value = Program.fecha;
-            dateTimePicker2.Value = Program.fecha;
+            dateTimePicker2.Value = Program.fecha.AddDays(1);
 
         }
 

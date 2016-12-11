@@ -34,7 +34,7 @@ namespace ClinicaFrba.Abm_Afiliado
         //Funcion para verificar que no haya ningun textbox vacio
         public bool errores_de_registro() 
         {
-            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length == 0 || textoUsername.Text.Length == 0 || (checkConcubinato.Checked == true && ((estadoCivil.Text != "Casado/a") && (estadoCivil.Text != "Concubinato"))));  
+            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length == 0 || textoUsername.Text.Length == 0 || fechaDeNacimiento.Value > Program.fecha || (checkConcubinato.Checked == true && ((estadoCivil.Text != "Casado/a") && (estadoCivil.Text != "Concubinato"))));  
         }
 
         public bool errores_de_exceso()
@@ -105,6 +105,9 @@ namespace ClinicaFrba.Abm_Afiliado
 
             if (estadoCivilPadre == "Casado/a" || estadoCivilPadre == "Concubinato") checkConcubinato.Enabled = true; else checkConcubinato.Enabled = false;
             if (conexion.yaExisteConcubinato(userPadre)) checkConcubinato.Enabled = false;
+
+            fechaDeNacimiento.Value = Program.fecha;
+
         }
 
 

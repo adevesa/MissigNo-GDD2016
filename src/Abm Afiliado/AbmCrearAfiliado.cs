@@ -36,6 +36,8 @@ namespace ClinicaFrba.Abm_Afiliado
             //Inicializo el combobox con todos los planes
             conexion.recuperarPlanes(planMedico, plan);
 
+            fechaDeNacimiento.Value = Program.fecha;
+
         }
 
 
@@ -85,7 +87,7 @@ namespace ClinicaFrba.Abm_Afiliado
                {
              if (errores_de_registro())
              {
-                 MessageBox.Show("Faltan completar datos");
+                 MessageBox.Show("Faltan completar datos o hay errores en los campos");
              }
               else
              {

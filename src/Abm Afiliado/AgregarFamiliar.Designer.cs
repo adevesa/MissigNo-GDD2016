@@ -56,6 +56,7 @@
             this.eleccionSexo = new System.Windows.Forms.ComboBox();
             this.estadoCivil = new System.Windows.Forms.ComboBox();
             this.planMedico = new System.Windows.Forms.ComboBox();
+            this.checkConcubinato = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -324,6 +325,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checkConcubinato);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.eleccionSexo);
             this.panel1.Controls.Add(this.estadoCivil);
@@ -399,6 +401,7 @@
             this.estadoCivil.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.estadoCivil.Size = new System.Drawing.Size(157, 26);
             this.estadoCivil.TabIndex = 104;
+            this.estadoCivil.SelectedIndexChanged += new System.EventHandler(this.estadoCivil_SelectedIndexChanged);
             // 
             // planMedico
             // 
@@ -410,6 +413,17 @@
             this.planMedico.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.planMedico.Size = new System.Drawing.Size(159, 26);
             this.planMedico.TabIndex = 103;
+            // 
+            // checkConcubinato
+            // 
+            this.checkConcubinato.AutoSize = true;
+            this.checkConcubinato.Location = new System.Drawing.Point(456, 446);
+            this.checkConcubinato.Name = "checkConcubinato";
+            this.checkConcubinato.Size = new System.Drawing.Size(228, 17);
+            this.checkConcubinato.TabIndex = 107;
+            this.checkConcubinato.Text = "¿Casad@ o Concubina con el encargado?";
+            this.checkConcubinato.UseVisualStyleBackColor = true;
+            this.checkConcubinato.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // AgregarFamiliar
             // 
@@ -459,5 +473,6 @@
         private System.Windows.Forms.ComboBox eleccionSexo;
         private System.Windows.Forms.ComboBox estadoCivil;
         private System.Windows.Forms.ComboBox planMedico;
+        private System.Windows.Forms.CheckBox checkConcubinato;
     }
 }

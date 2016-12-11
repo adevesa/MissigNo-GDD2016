@@ -735,6 +735,32 @@ namespace ClinicaFrba
 
         }
 
+        public string obtenerEstadoCivil(string username)
+        {
+            string estCivil = "A";
+            try
+            {
+               
+                cmd = new SqlCommand(string.Format("SELECT afiliado_estado_civil FROM MISSINGNO.Afiliado WHERE username= '{0}'",
+                     username), cn);
+                cmd.ExecuteNonQuery();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    estCivil = reader.GetString(0);
+                }
+                reader.Close();
+                return estCivil;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener afiliado ID: " + ex.ToString());
+                return "ERROR";
+            }
+
+        }
+
 
         //@desc: dado un afiliado_id devuelve sus datos 
 
@@ -1219,9 +1245,15 @@ namespace ClinicaFrba
                         cmd.ExecuteNonQuery();
                     }
 
-                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', {3}, {4}, {5})",
+                    //cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', {3}, {4}, {5})",
                         //"afi", 555555, "soltero", fecha, "NULL" , 0), cn);
-                       username, idPlan, estadoCivil, "NULL", "NULL", 0), cn);
+                    //   username, idPlan, estadoCivil, "NULL", "NULL", 0), cn);
+
+                    cmd = new SqlCommand(string.Format("EXECUTE PR_CREAR_FAMILIAR @username = '{0}', @PLAN_ID = {1}, @ENCARGADO = NULL, @ESTADO_CIVIL = '{2}', @ES_CONCUBINATO = 0",
+                        //"afi", 555555, "soltero", fecha, "NULL" , 0), cn);
+                       username, idPlan, estadoCivil), cn);
+                                       
+                    
                     cmd.ExecuteNonQuery();
 
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Rol_de_Usuario (rol_id, username) VALUES (3, '{0}')", username), cn);
@@ -1236,8 +1268,112 @@ namespace ClinicaFrba
 
         }
 
+        public bool yaExisteConcubinato(string usernamePadre)
+        {
+            try
+            {
+                int cant = new int();
+                int afiliado_padre = obtenerAfiliadoId(usernamePadre);
+                int afiliado_concubinado = afiliado_padre + 1;
+                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Afiliado WHERE afiliado_id= {0}",
+                     afiliado_concubinado), cn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                     cant = reader.GetInt32(0);
+                }
+                reader.Close();
+                if (cant > 0) return true; else return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en yaExisteConcubinato: " + ex.ToString());
+                return false;
+            }
+
+        }
+
+        public bool tienePadre(string username)
+        {
+            try
+            {
+                int cant = new int();
+                int afiliado = obtenerAfiliadoId(username);
+                cmd = new SqlCommand(string.Format("SELECT count(*) FROM MISSINGNO.Afiliado WHERE afiliado_id= {0} AND afiliado_encargado IS NOT NULL",
+                     afiliado), cn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cant = reader.GetInt32(0);
+                }
+                reader.Close();
+                if (cant > 0) return true; else return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en tienePadre: " + ex.ToString());
+                return false;
+            }
+
+        }
+
+        public string padreDeUser(string username)
+        {
+            string padre = "A";
+
+            try
+            {
+                int afiliado = obtenerAfiliadoId(username);
+                cmd = new SqlCommand(string.Format("SELECT afiliado_encargado FROM MISSINGNO.Afiliado WHERE afiliado_id= {0}",
+                     afiliado), cn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    padre = reader.GetString(0);
+                }
+                reader.Close();
+                return padre;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en padreDeUser: " + ex.ToString());
+                return "ERROR";
+            }
+
+        }
+
+        public string estadoCivilPadre(string username)
+        {
+            string estCiv = "A";
+
+            try
+            {
+                string padre = padreDeUser(username);
+                cmd = new SqlCommand(string.Format("SELECT afiliado_estado_civil FROM MISSINGNO.Afiliado WHERE username = '{0}'",
+                     padre), cn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    estCiv = reader.GetString(0);
+                }
+                reader.Close();
+                return estCiv;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en estadoCivilPadre: " + ex.ToString());
+                return "ERROR";
+            }
+
+        }
+
+
         //@desc: Dado los datos carcados del formulario agregar familiar crea un afiliado teniendo como padre al usuario con un tutor
-        public void crearFamiliar(string username, string tipoDocumento, string numDocumento, string contraseña, string nombre, string apellido, DateTime fechaNacimiento, string sexo, string direccion, string email, string telefono, string estadoCivil, string planMedico, int idPadre)
+        public void crearFamiliar(string username, string tipoDocumento, string numDocumento, string contraseña, string nombre, string apellido, DateTime fechaNacimiento, string sexo, string direccion, string email, string telefono, string estadoCivil, string planMedico, int idPadre, int esConcubinado)
         {
             DateTime fecha = new DateTime(2000, 11, 11);
             int doc = Convert.ToInt32(numDocumento);
@@ -1254,9 +1390,9 @@ namespace ClinicaFrba
                             username, tipoDocumento, doc, contraseña, nombre, apellido, fechaNacimiento, genero, direccion, email, tel), cn);
                         cmd.ExecuteNonQuery();
                     }
-                    cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Afiliado (username, plan_id, afiliado_estado_civil, afiliado_fec_baja, afiliado_encargado, afiliado_baja_logica) VALUES ('{0}', {1} , '{2}', {3}, {4}, {5})",
+                    cmd = new SqlCommand(string.Format("EXECUTE PR_CREAR_FAMILIAR @username = '{0}', @PLAN_ID = {1}, @ENCARGADO = {3}, @ESTADO_CIVIL = '{2}', @ES_CONCUBINATO = {4}",
                         // "fam", 555555, "soltero", fecha, idPadre, 0), cn);
-                      username, idPlan, estadoCivil, "NULL", idPadre, 0), cn);
+                      username, idPlan, estadoCivil, idPadre, esConcubinado), cn);
                     cmd.ExecuteNonQuery();
 
                     cmd = new SqlCommand(string.Format("INSERT INTO MISSINGNO.Rol_de_Usuario (rol_id, username) VALUES (3, '{0}')", username), cn);
@@ -1266,7 +1402,7 @@ namespace ClinicaFrba
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo crear afiliado. Error: " + ex.ToString());
+                
             }
 
         }

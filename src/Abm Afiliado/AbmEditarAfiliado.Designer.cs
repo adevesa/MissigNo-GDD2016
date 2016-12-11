@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textMotivo = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.textoEmail = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,8 +51,6 @@
             this.textoDireccion = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textMotivo = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,6 +86,31 @@
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // textMotivo
+            // 
+            this.textMotivo.BackColor = System.Drawing.Color.White;
+            this.textMotivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textMotivo.Location = new System.Drawing.Point(33, 357);
+            this.textMotivo.Multiline = true;
+            this.textMotivo.Name = "textMotivo";
+            this.textMotivo.Size = new System.Drawing.Size(376, 246);
+            this.textMotivo.TabIndex = 109;
+            this.textMotivo.TextChanged += new System.EventHandler(this.textMotivo_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(29, 325);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(84, 29);
+            this.label14.TabIndex = 108;
+            this.label14.Text = "Motivo";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -114,7 +139,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F);
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(28, 224);
+            this.label9.Location = new System.Drawing.Point(28, 225);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(136, 29);
             this.label9.TabIndex = 105;
@@ -125,7 +150,7 @@
             // 
             this.textoContraseña.BackColor = System.Drawing.Color.White;
             this.textoContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textoContraseña.Location = new System.Drawing.Point(184, 226);
+            this.textoContraseña.Location = new System.Drawing.Point(183, 226);
             this.textoContraseña.Name = "textoContraseña";
             this.textoContraseña.Size = new System.Drawing.Size(218, 28);
             this.textoContraseña.TabIndex = 104;
@@ -174,6 +199,7 @@
             this.estadoCivil.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.estadoCivil.Size = new System.Drawing.Size(218, 26);
             this.estadoCivil.TabIndex = 101;
+            this.estadoCivil.SelectedIndexChanged += new System.EventHandler(this.estadoCivil_SelectedIndexChanged);
             // 
             // planMedico
             // 
@@ -210,6 +236,7 @@
             this.textoUsername.Name = "textoUsername";
             this.textoUsername.Size = new System.Drawing.Size(339, 44);
             this.textoUsername.TabIndex = 58;
+            this.textoUsername.TextChanged += new System.EventHandler(this.textoUsername_TextChanged);
             // 
             // butonAgregar
             // 
@@ -338,31 +365,6 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Username de \r\nafiliado a editar";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(29, 325);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 29);
-            this.label14.TabIndex = 108;
-            this.label14.Text = "Motivo";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label14.Click += new System.EventHandler(this.label14_Click);
-            // 
-            // textMotivo
-            // 
-            this.textMotivo.BackColor = System.Drawing.Color.White;
-            this.textMotivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textMotivo.Location = new System.Drawing.Point(33, 357);
-            this.textMotivo.Multiline = true;
-            this.textMotivo.Name = "textMotivo";
-            this.textMotivo.Size = new System.Drawing.Size(376, 246);
-            this.textMotivo.TabIndex = 109;
-            this.textMotivo.TextChanged += new System.EventHandler(this.textMotivo_TextChanged);
             // 
             // AbmCrearAfiliado2
             // 

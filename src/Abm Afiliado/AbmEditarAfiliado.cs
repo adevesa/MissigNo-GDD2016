@@ -38,6 +38,19 @@ namespace ClinicaFrba.Abm_Afiliado
 
             //Inicializo el combobox de planes con todos los de la base de datos
             conexion.recuperarPlanes(planMedico, plan);
+
+            textoDireccion.Enabled = false;
+            estadoCivil.Enabled = false;
+            textoContraseña.Enabled = false;
+            textoTelefono.Enabled = false;
+            planMedico.Enabled = false;
+            eleccionSexo.Enabled = false;
+            textoEmail.Enabled = false;
+            BotonConfirmar2.Enabled = false;
+            butonAgregar.Hide();
+
+
+
             
         }
 
@@ -198,6 +211,21 @@ namespace ClinicaFrba.Abm_Afiliado
                     planIdViejo = conexion.obtenerPlanIdDeAfiliado(textoUsername.Text);
                     //sumo uno al contador
                     contador ++;
+
+                    textoDireccion.Enabled = true;
+                    estadoCivil.Enabled = true;
+                    textoContraseña.Enabled = true;
+                    textoTelefono.Enabled = true;
+                    planMedico.Enabled = true;
+                    eleccionSexo.Enabled = true;
+                    textoEmail.Enabled = true;
+                    BotonConfirmar2.Enabled = true;
+
+                    if (!conexion.tienePadre(textoUsername.Text)) butonAgregar.Show();
+                    else
+                    {
+                    }
+
                 }
                 else MessageBox.Show("Afiliado inexistente");
             }
@@ -293,6 +321,24 @@ namespace ClinicaFrba.Abm_Afiliado
                 else
                     textMotivo.Enabled = false;
             }
+        }
+
+        private void estadoCivil_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textoUsername_TextChanged(object sender, EventArgs e)
+        {
+            textoDireccion.Enabled = false;
+            estadoCivil.Enabled = false;
+            textoContraseña.Enabled = false;
+            textoTelefono.Enabled = false;
+            planMedico.Enabled = false;
+            eleccionSexo.Enabled = false;
+            textoEmail.Enabled = false;
+            BotonConfirmar2.Enabled = false;
+            butonAgregar.Hide();
         }
     }
 }

@@ -18,7 +18,8 @@ namespace ClinicaFrba.Abm_Afiliado
         public List<AfiliadoSimple> listaFamiliares = new List<AfiliadoSimple>();
         public AfiliadoSimple familiarNuevo = new AfiliadoSimple();
         public string plan;
-        
+        public int concubinado = 0;
+        public string estadoCivilPadre;
 
         public AgregarFamiliar(List<AfiliadoSimple> lista, string padre, string direccion)
         {
@@ -26,13 +27,14 @@ namespace ClinicaFrba.Abm_Afiliado
            // this.abmPadre = abmConsulta;
             this.userPadre = padre;
             this.direccionPadre = direccion;
+            this.estadoCivilPadre = conexion.obtenerEstadoCivil(userPadre);
             InitializeComponent();
         }
 
         //Funcion para verificar que no haya ningun textbox vacio
         public bool errores_de_registro() 
         {
-            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length == 0 || textoUsername.Text.Length == 0);  
+            return ((textoApellido.Text.Length == 0) || (textoNombre.Text.Length == 0) || textoTelefono.Text.Length == 0 || textoDocumento.Text.Length == 0 || eleccionSexo.Text.Length == 0 || fechaDeNacimiento.Text.Length == 0 || planMedico.Text == "Elija uno" || eleccionSexo.Text == "Sexo" || textoContraseña.Text.Length == 0 || textoEmail.Text.Length == 0 || textoTipoDocumento.Text.Length == 0 || textoUsername.Text.Length == 0 || (checkConcubinato.Checked == true && ((estadoCivil.Text != "Casado/a") && (estadoCivil.Text != "Concubinato"))));  
         }
 
         public bool errores_de_exceso()
@@ -49,7 +51,7 @@ namespace ClinicaFrba.Abm_Afiliado
             //verifico no tener errores de registro
             if (errores_de_registro())
             {
-                MessageBox.Show("Faltan completar datos");
+                MessageBox.Show("Faltan completar datos o hay datos ilógicos");
                 
             }
             else
@@ -60,7 +62,8 @@ namespace ClinicaFrba.Abm_Afiliado
                      if(!conexion.dniEnUso(textoDocumento.Text)){
                 int idAfiliado = conexion.obtenerAfiliadoId(this.userPadre);
                          //insert al familiar nuevo
-                conexion.crearFamiliar(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, this.direccionPadre, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text, idAfiliado);
+                if (checkConcubinato.Checked == true) concubinado = 1; else concubinado = 0;
+                conexion.crearFamiliar(textoUsername.Text, textoTipoDocumento.Text, textoDocumento.Text, textoContraseña.Text, textoNombre.Text, textoApellido.Text, fechaDeNacimiento.Value, eleccionSexo.Text, this.direccionPadre, textoEmail.Text, textoTelefono.Text, estadoCivil.Text, planMedico.Text, idAfiliado, concubinado);
                 MessageBox.Show("FAMILIAR CREADO CON EXITO!");
                 //guardo los datos de los textBox para meter en una lista y poder devolverselo al abmConsultaFamiliar 
                 familiarNuevo.username = textoUsername.Text;
@@ -99,6 +102,9 @@ namespace ClinicaFrba.Abm_Afiliado
             panel1.Location = new Point(anchoDePanel, largoDePanel);
 
             conexion.recuperarPlanes(planMedico, plan);
+
+            if (estadoCivilPadre == "Casado/a" || estadoCivilPadre == "Concubinato") checkConcubinato.Enabled = true; else checkConcubinato.Enabled = false;
+            if (conexion.yaExisteConcubinato(userPadre)) checkConcubinato.Enabled = false;
         }
 
 
@@ -133,6 +139,31 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 e.Handled = true;
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkConcubinato.Enabled == false)
+            {
+                concubinado = 0;
+            }
+            else
+            {
+                if (checkConcubinato.Checked == false) concubinado = 0;
+                if (checkConcubinato.Checked == true) concubinado = 1;
+            }
+
+        }
+
+        private void estadoCivil_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (conexion.yaExisteConcubinato(userPadre) || (estadoCivilPadre != "Casado/a" && estadoCivilPadre != "Concubinato")) checkConcubinato.Enabled = false;
+            else
+            {
+                if (estadoCivil.Text == "Casado/a" || estadoCivil.Text == "Concubinato") checkConcubinato.Enabled = true;
+                else checkConcubinato.Enabled = false;
+            }
+            
         }
     }
 }

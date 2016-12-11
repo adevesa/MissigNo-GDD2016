@@ -157,11 +157,19 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void estadoCivil_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (conexion.yaExisteConcubinato(userPadre) || (estadoCivilPadre != "Casado/a" && estadoCivilPadre != "Concubinato")) checkConcubinato.Enabled = false;
+            if (conexion.yaExisteConcubinato(userPadre) || (estadoCivilPadre != "Casado/a" && estadoCivilPadre != "Concubinato"))
+            {
+                checkConcubinato.Enabled = false;
+
+            }
             else
             {
                 if (estadoCivil.Text == "Casado/a" || estadoCivil.Text == "Concubinato") checkConcubinato.Enabled = true;
-                else checkConcubinato.Enabled = false;
+                else
+                {
+                    checkConcubinato.Enabled = false;
+                    checkConcubinato.Checked = false;
+                }
             }
             
         }

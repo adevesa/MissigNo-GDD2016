@@ -199,3 +199,4 @@ C:\Users\ABM\Desktop\MissigNo-GDD2016\src\obj\Debug\ClinicaFrba.Registro_Llegada
 C:\Users\ABM\Desktop\MissigNo-GDD2016\src\obj\Debug\ClinicaFrba.Registro_Llegada.RegistroDeLlegada.resources
 C:\Users\ABM\Desktop\MissigNo-GDD2016\src\obj\Debug\ClinicaFrba.Registro_Resultado.AbmRegistroResultado.resources
 C:\Users\ABM\Desktop\MissigNo-GDD2016\src\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
+C:\Users\Juan\Desktop\MissigNo-GDD2016\src\obj\Debug\ClinicaFrba.Abm_Afiliado.HistorialAfiliado.resources

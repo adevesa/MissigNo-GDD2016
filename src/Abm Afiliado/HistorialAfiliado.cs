@@ -23,18 +23,23 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void botonBorrar_Click(object sender, EventArgs e)
         {
-            if(textoUsername.Text.Length < 60) {
-            if (!conexion.esAfiliado(textoUsername.Text))
+            if (textoUsername.Text.Length < 60)
             {
-                MessageBox.Show("No existe afiliado con ese username");
+                if (!conexion.esAfiliado(textoUsername.Text))
+                {
+                    MessageBox.Show("No existe afiliado con ese username");
+                }
+                else
+                {
+                    int afiliadoId = conexion.obtenerAfiliadoId(textoUsername.Text);
+                    historial = conexion.obtenerHistorialAfiliado(afiliadoId);
+                    dgvAfiliadoHistorial.DataSource = historial;
+                }
             }
             else
             {
-                int afiliadoId = conexion.obtenerAfiliadoId(textoUsername.Text);
-                historial = conexion.obtenerHistorialAfiliado(afiliadoId);
-                dgvAfiliadoHistorial.DataSource = historial;
+                MessageBox.Show("Username demasiado largo");
             }
-            } MessageBox.Show("Username demaciado largo");
         }
 
         private void botonVolver_Click(object sender, EventArgs e)

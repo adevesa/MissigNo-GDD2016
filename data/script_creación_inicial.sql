@@ -1,6 +1,8 @@
 USE GD2C2016
 GO
 
+
+
 --  ELIMINACION DE TABLAS
 /*
 
@@ -351,6 +353,60 @@ alter table MISSINGNO.Especialidad_de_profesional
 	add constraint FK_Especialidad_de_profesional_profesional_id foreign key (profesional_id) references MISSINGNO.Profesional(profesional_id);
 
 
+
+/* PROCEDURES */
+
+CREATE PROCEDURE PR_CREAR_FAMILIAR( @username varchar(60), @plan_id int, @ENCARGADO int, @ESTADO_CIVIL varchar(15), @ES_CONCUBINATO bit)
+AS 
+BEGIN
+
+	DECLARE @ID_FAMILIAR int
+	SET @ID_FAMILIAR = (SELECT max(afiliado_id) FROM MISSINGNO.Afiliado)
+
+	IF(@ID_FAMILIAR > 10000) SET @ID_FAMILIAR = @ID_FAMILIAR / 100 + 1
+
+	IF(@ENCARGADO IS NULL)
+		SET IDENTITY_INSERT MISSINGNO.AFILIADO ON
+		INSERT INTO MISSINGNO.Afiliado(afiliado_id, username, plan_id,afiliado_encargado,afiliado_fec_baja,afiliado_estado_civil,afiliado_baja_logica) 
+		VALUES (( @ID_FAMILIAR* 100 + 1), @username, @plan_id, NULL, NULL, @ESTADO_CIVIL, 0)
+		SET IDENTITY_INSERT MISSINGNO.AFILIADO OFF
+
+	if(@ENCARGADO IS NOT NULL AND @ES_CONCUBINATO = 1)
+	BEGIN
+		SET IDENTITY_INSERT MISSINGNO.AFILIADO ON
+		INSERT INTO MISSINGNO.Afiliado(afiliado_id, username, plan_id,afiliado_encargado,afiliado_fec_baja,afiliado_estado_civil,afiliado_baja_logica) 
+		VALUES (@ENCARGADO + 1, @username, @plan_id, @ENCARGADO, NULL, @ESTADO_CIVIL, 0)
+
+	END
+
+	if(@ENCARGADO IS NOT NULL AND @ES_CONCUBINATO = 0)
+	BEGIN
+		DECLARE @YA_EXISTE bit
+		DECLARE @CONTADOR tinyint
+		SET @YA_EXISTE = 1
+		SET @CONTADOR = 2
+
+		WHILE(@YA_EXISTE = 1)
+		BEGIN
+			IF(NOT EXISTS (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE afiliado_id = @ENCARGADO + @CONTADOR))
+				BEGIN
+					SET @YA_EXISTE = 0
+					
+				END
+			ELSE
+			begin
+			SET @CONTADOR = @CONTADOR + 1
+			end
+		END
+		
+		SET IDENTITY_INSERT MISSINGNO.AFILIADO ON
+		INSERT INTO MISSINGNO.Afiliado(afiliado_id, username, plan_id,afiliado_encargado,afiliado_fec_baja,afiliado_estado_civil,afiliado_baja_logica) 
+		VALUES((@ENCARGADO + @CONTADOR), @username, @plan_id, @ENCARGADO, NULL, @ESTADO_CIVIL, 0)
+
+	END
+END;
+
+
 	--MIGRACION
 
 SET NOCOUNT ON
@@ -663,55 +719,3 @@ and EP.especialidad_id = E.especialidad_id
 and E.Especialidad_Descripcion = GD.Especialidad_Descripcion
 and T.fecha = Turno_Fecha
 and T.profesional_id = P.profesional_id
-
-/* PROCEDURES */
-
-CREATE PROCEDURE PR_CREAR_FAMILIAR( @username varchar(60), @plan_id int, @ENCARGADO int, @ESTADO_CIVIL varchar(15), @ES_CONCUBINATO bit)
-AS 
-BEGIN
-
-	DECLARE @ID_FAMILIAR int
-	SET @ID_FAMILIAR = (SELECT max(afiliado_id) FROM MISSINGNO.Afiliado)
-
-	IF(@ID_FAMILIAR > 10000) SET @ID_FAMILIAR = @ID_FAMILIAR / 100 + 1
-
-	IF(@ENCARGADO IS NULL)
-		SET IDENTITY_INSERT MISSINGNO.AFILIADO ON
-		INSERT INTO MISSINGNO.Afiliado(afiliado_id, username, plan_id,afiliado_encargado,afiliado_fec_baja,afiliado_estado_civil,afiliado_baja_logica) 
-		VALUES (( @ID_FAMILIAR* 100 + 1), @username, @plan_id, NULL, NULL, @ESTADO_CIVIL, 0)
-		SET IDENTITY_INSERT MISSINGNO.AFILIADO OFF
-
-	if(@ENCARGADO IS NOT NULL AND @ES_CONCUBINATO = 1)
-	BEGIN
-		SET IDENTITY_INSERT MISSINGNO.AFILIADO ON
-		INSERT INTO MISSINGNO.Afiliado(afiliado_id, username, plan_id,afiliado_encargado,afiliado_fec_baja,afiliado_estado_civil,afiliado_baja_logica) 
-		VALUES (@ENCARGADO + 1, @username, @plan_id, @ENCARGADO, NULL, @ESTADO_CIVIL, 0)
-
-	END
-
-	if(@ENCARGADO IS NOT NULL AND @ES_CONCUBINATO = 0)
-	BEGIN
-		DECLARE @YA_EXISTE bit
-		DECLARE @CONTADOR tinyint
-		SET @YA_EXISTE = 1
-		SET @CONTADOR = 2
-
-		WHILE(@YA_EXISTE = 1)
-		BEGIN
-			IF(NOT EXISTS (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE afiliado_id = @ENCARGADO + @CONTADOR))
-				BEGIN
-					SET @YA_EXISTE = 0
-					
-				END
-			ELSE
-			begin
-			SET @CONTADOR = @CONTADOR + 1
-			end
-		END
-		
-		SET IDENTITY_INSERT MISSINGNO.AFILIADO ON
-		INSERT INTO MISSINGNO.Afiliado(afiliado_id, username, plan_id,afiliado_encargado,afiliado_fec_baja,afiliado_estado_civil,afiliado_baja_logica) 
-		VALUES((@ENCARGADO + @CONTADOR), @username, @plan_id, @ENCARGADO, NULL, @ESTADO_CIVIL, 0)
-
-	END
-END;

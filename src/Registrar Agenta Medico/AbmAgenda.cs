@@ -136,47 +136,54 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
                             }
                             else
                             {
-                                agendaId = conexion.generarAgenda(usernameProfesional, dateTimePicker1.Value, dateTimePicker2.Value, textoEspecialidad.Text);
-                                if (botonLunes.Checked == true)
+
+                                if (!menorA48Horas())
                                 {
-                                    conexion.generarDia("Lunes", Convert.ToString(desdeLunes.Value) + ":00:00", Convert.ToString(hastaLunes.Value) + ":00:00", agendaId);
+                                    MessageBox.Show("El rango asignado es mayor a 48 horas semanales");
                                 }
-                                if (botonMartes.Checked == true)
+                                else
                                 {
-                                    conexion.generarDia("Martes", Convert.ToString(desdeMartes.Value) + ":00:00", Convert.ToString(hastaMartes.Value) + ":00:00", agendaId);
+                                    agendaId = conexion.generarAgenda(usernameProfesional, dateTimePicker1.Value, dateTimePicker2.Value, textoEspecialidad.Text);
+                                    if (botonLunes.Checked == true)
+                                    {
+                                        conexion.generarDia("Lunes", Convert.ToString(desdeLunes.Value) + ":00:00", Convert.ToString(hastaLunes.Value) + ":00:00", agendaId);
+                                    }
+                                    if (botonMartes.Checked == true)
+                                    {
+                                        conexion.generarDia("Martes", Convert.ToString(desdeMartes.Value) + ":00:00", Convert.ToString(hastaMartes.Value) + ":00:00", agendaId);
+                                    }
+                                    if (botonMiercoles.Checked == true)
+                                    {
+                                        conexion.generarDia("Miercoles", Convert.ToString(desdeMiercoles.Value) + ":00:00", Convert.ToString(hastaMiercoles.Value) + ":00:00", agendaId);
+                                    }
+                                    if (botonJueves.Checked == true)
+                                    {
+                                        conexion.generarDia("Jueves", Convert.ToString(desdeJueves.Value) + ":00:00", Convert.ToString(hastaJueves.Value) + ":00:00", agendaId);
+                                    }
+                                    if (botonViernes.Checked == true)
+                                    {
+                                        conexion.generarDia("Viernes", Convert.ToString(desdeViernes.Value) + ":00:00", Convert.ToString(HastaViernes.Value) + ":00:00", agendaId);
+                                    }
+                                    if (botonSabado.Checked == true)
+                                    {
+                                        conexion.generarDia("Sabado", Convert.ToString(desdeSabado.Value) + ":00:00", Convert.ToString(hastaSabado.Value) + ":00:00", agendaId);
+                                    }
+                                    if (botonDomingo.Checked == true)
+                                    {
+                                        conexion.generarDia("Domingo", Convert.ToString(desdeDomingo.Value) + ":00:00", Convert.ToString(hastaDomingo.Value) + ":00:00", agendaId);
+                                    }
+                                    MessageBox.Show("AGENDA CREADA CON ÉXITO");
+                                    AbmRol.AbmRolProfesional abmRolProfesional = new AbmRol.AbmRolProfesional();
+                                    this.Hide();
+                                    abmRolProfesional.ShowDialog();
+                                    this.Close();
                                 }
-                                if (botonMiercoles.Checked == true)
-                                {
-                                    conexion.generarDia("Miercoles", Convert.ToString(desdeMiercoles.Value) + ":00:00", Convert.ToString(hastaMiercoles.Value) + ":00:00", agendaId);
-                                }
-                                if (botonJueves.Checked == true)
-                                {
-                                    conexion.generarDia("Jueves", Convert.ToString(desdeJueves.Value) + ":00:00", Convert.ToString(hastaJueves.Value) + ":00:00", agendaId);
-                                }
-                                if (botonViernes.Checked == true)
-                                {
-                                    conexion.generarDia("Viernes", Convert.ToString(desdeViernes.Value) + ":00:00", Convert.ToString(HastaViernes.Value) + ":00:00", agendaId);
-                                }
-                                if (botonSabado.Checked == true)
-                                {
-                                    conexion.generarDia("Sabado", Convert.ToString(desdeSabado.Value) + ":00:00", Convert.ToString(hastaSabado.Value) + ":00:00", agendaId);
-                                }
-                                if (botonDomingo.Checked == true)
-                                {
-                                    conexion.generarDia("Domingo", Convert.ToString(desdeDomingo.Value) + ":00:00", Convert.ToString(hastaDomingo.Value) + ":00:00", agendaId);
-                                }
-                                MessageBox.Show("AGENDA CREADA CON ÉXITO");
-                                AbmRol.AbmRolProfesional abmRolProfesional = new AbmRol.AbmRolProfesional();
-                                this.Hide();
-                                abmRolProfesional.ShowDialog();
-                                this.Close();
                             }
                         }
                     }
                 }
             }
         }
-
         private void botonVolver_Click(object sender, EventArgs e)
         {
             AbmRol.AbmRolProfesional abmRolProfesional = new AbmRol.AbmRolProfesional();
@@ -283,6 +290,31 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public bool menorA48Horas()
+        {
+            int horarios = new int();
+            horarios = 0;
+            if (botonLunes.Checked == true) 
+                horarios = horarios + Convert.ToInt32(hastaLunes.Value - desdeLunes.Value);
+            if (botonMartes.Checked == true)
+                horarios = horarios + Convert.ToInt32(hastaMartes.Value - desdeMartes.Value);
+            if (botonMiercoles.Checked == true)
+                horarios = horarios + Convert.ToInt32(hastaMiercoles.Value - desdeMiercoles.Value);
+            if (botonJueves.Checked == true)
+                horarios = horarios + Convert.ToInt32(hastaJueves.Value - desdeJueves.Value);
+            if (botonViernes.Checked == true)
+                horarios = horarios + Convert.ToInt32(HastaViernes.Value - desdeViernes.Value);
+            if (botonSabado.Checked == true)
+                horarios = horarios + Convert.ToInt32(hastaSabado.Value - desdeSabado.Value);
+            if (botonDomingo.Checked == true)
+                horarios = horarios + Convert.ToInt32(hastaDomingo.Value - desdeDomingo.Value);
+
+            if (horarios < 48)
+                return true;
+            else
+                return false;
         }
     }
 }

@@ -1307,7 +1307,11 @@ namespace ClinicaFrba
             DateTime fecha = new DateTime();
             for (fecha = fecha_inicio; fecha <= fecha_fin; fecha = fecha.AddDays(1))
             {
-                cancelarDia(usernameProfesional, fecha, tipoCancelacion, motivoCancelacion);
+
+                if (fecha >= Program.fecha.AddDays(1))
+                {
+                    cancelarDia(usernameProfesional, fecha, tipoCancelacion, motivoCancelacion);
+                }
             }
         }
 
@@ -1760,8 +1764,8 @@ namespace ClinicaFrba
 
             try
             {
-                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE (en_uso = 0 AND afiliado_id= (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username = '{0}'))",
-                   afiliado), cn);
+                cmd = new SqlCommand(string.Format("SELECT turno_id FROM MISSINGNO.Turno WHERE (en_uso = 0 AND afiliado_id= (SELECT afiliado_id FROM MISSINGNO.Afiliado WHERE username = '{0}') AND cast(fecha as date) >= '{1}')",
+                   afiliado, Program.fecha.AddDays(1)), cn);
                 cmd.ExecuteNonQuery();
 
                 SqlDataReader reader = cmd.ExecuteReader();
